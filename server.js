@@ -1,6 +1,8 @@
 const express = require("express");
 const app = express();
 const fs = require('fs');
+const http = require('http').Server(app);
+const io = require('socket.io')(http);
 
 app.use(express.static("public"));
 
@@ -13,9 +15,6 @@ app.get("/", function(request, response) {
 const listener = app.listen(process.env.PORT, function() {
   console.log("Your app is listening on port " + listener.address().port);
 });
-
-
-
 
 const storeData = (data, path) => {
   try {
@@ -35,4 +34,15 @@ const loadData = (path) => {
   }
 }
 
-storeData("hi,78","/app/record.json");
+
+io.on('connection', function(socket){
+
+socket.on('new-net-space',function(netSpace){ // Listen for new-player event on this client 
+  //  socket.broadcast.emit('text-changed',"howdy");
+      //get old record.json
+  //update with new data
+  //storeData("hi,78","/app/record.json");
+  console.log("new net space = "+netSpace);
+    })
+
+});

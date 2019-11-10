@@ -1,3 +1,4 @@
+var socket=io();
 var createMode;
 
 var queryString = decodeURIComponent(window.location.search);
@@ -250,6 +251,7 @@ function generateNetSpace() {
     newLevelArray = [];
   }
   console.log(newNetSpace);
+  socket.emit("new-net-space",newNetSpace);
 }
 
 // const fs = require('fs');
