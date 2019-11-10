@@ -49,7 +49,7 @@ const loadData = (path) => {
 
 
 io.on('connection', function(socket){
-console.log("connected");
+//console.log("connected");
 socket.on('new-net-space',function(netSpace){ // Listen for new-player event on this client 
   //  socket.broadcast.emit('text-changed',"howdy");
       //get old record.json
