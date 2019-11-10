@@ -1,58 +1,67 @@
-<!-- This is a static file -->
-<!-- served from your routes in server.js -->
-
-<!-- You might want to try something fancier: -->
-<!-- html/nunjucks docs: https://mozilla.github.io/nunjucks/ -->
-<!-- pug: https://pugjs.org/ -->
-<!-- haml: http://haml.info/ -->
-<!-- hbs(handlebars): http://handlebarsjs.com/ -->
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Welcome to Glitch!</title>
-    <meta name="description" content="A cool thing made with Glitch">
-    <link id="favicon" rel="icon" href="https://glitch.com/edit/favicon-app.ico" type="image/x-icon">
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Netrunning</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <!-- import the webpage's stylesheet -->
-    <link rel="stylesheet" href="/style.css">
-    
-    <!-- import the webpage's client-side javascript file -->
+    <link rel="stylesheet" href="/style.css" />
+
+    <!-- import the webpage's javascript file -->
     <script src="/client.js" defer></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
   </head>
   <body>
-    <header>
-      <h1>
-        A Dream of the Future
-      </h1>
-    </header>
+    <h1>Netrunning</h1>
 
-    <main>
-      <p class="bold">Oh hi,</p>
-      
-      <p>Tell me your hopes and dreams:</p>
-      
-      <form>
-        <input name="dream" type="text" maxlength="100" placeholder="Dreams!" aria-labelledby="submit-dream">
-        <button type="submit" id="submit-dream">Submit Dream</button>
-      </form>
-      
-      <section class="dreams">
-        <ul id="dreams"></ul>
-      </section>
-    </main>
+    <p>
+      Welcome to the Net.
+    </p>
+    <div id="createMode">
+      <div id="create">
+        <p>
+          Create here
+        </p>
+<!--         <div id="createLevel"> -->
+                <div id="Level 0">
+          <span id="levelLabel">Level 0 </span>
+          <select onchange="onLevelTypeChange(this)">
+            <option>Empty</option>
+            <option>Password</option>
+            <option>File</option>
+            <option>Virus</option>
+            <option>Hellhound</option>
+            <option>Control Node</option>
+          </select>
 
-    <footer>
-      Made with <a href="https://glitch.com">Glitch</a>!
-    </footer>
+          <input placeholder="DV" size="5" />
+          <textarea placeholder=""></textarea>
+        </div>
+      </div>
+      <br />
+      <button onclick="addNewLevel()">
+        Add new level
+      </button>
+      <button onclick="deleteLevel()">
+        Delete Level
+      </button>
+      <br />
+      <br />
+      <input id="netSpaceName" placeholder="New NetSpace name"/>
+      <button onclick="generateNetSpace()">
+        Generate NetSpace link
+      </button>
+    </div>
 
-    <!-- include the Glitch button to show what the webpage is about and
-          to make it easier for folks to view source and remix -->
-    <div class="glitchButton" style="position:fixed;top:20px;right:20px;"></div>
-    <script src="https://button.glitch.me/button.js"></script>
+    <div id="hacker">
+      <div id="log">
+        <p>You are on <b>Level 0</b></p>
+      </div>
 
+      <input id="input" class="hackerInput" />
+    </div>
   </body>
 </html>
+

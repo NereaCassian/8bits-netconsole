@@ -1,42 +1,266 @@
-// client-side js
-// run by the browser each time your view template is loaded
+var createMode;
 
-console.log("hello world :o");
+var queryString = decodeURIComponent(window.location.search);
+//  queryString = queryString.substring(1);
+queryString = queryString.replace("?", "");
+if (queryString == "create") {
+  createMode = true;
+} else {
+  createMode = false;
+}
 
-// our default array of dreams
-const dreams = [
-  "Find and count some sheep",
-  "Climb a really tall mountain",
-  "Wash the dishes"
+var clickable;
+var input = document.getElementById("input");
+
+if (createMode) {
+  $("#hacker").hide();
+  $("#createMode").show();
+  clickable = true;
+} else {
+  $("#hacker").show();
+  $("#createMode").hide();
+  input.focus();
+  input.select();
+  clickable = false;
+}
+
+var map = [
+  ["Level 0", "Empty", 0, ""],
+  ["Level 1", "Password", 11, "12345"],
+  ["Level 2", "File", 15, "Security Plans"]
 ];
+var currentLevel = 0;
+var levelStatus = "";
 
-// define variables that reference elements on our page
-const dreamsList = document.getElementById("dreams");
-const dreamsForm = document.forms[0];
-const dreamInput = dreamsForm.elements["dream"];
+var rollIsFor = "";
 
-// a helper function that creates a list item for a given dream
-const appendNewDream = function(dream) {
-  const newListItem = document.createElement("li");
-  newListItem.innerHTML = dream;
-  dreamsList.appendChild(newListItem);
+var makingLevel = 1;
+
+if (!clickable) {
+  input.focus();
+  input.select();
+}
+
+document.onclick = function() {
+  if (!clickable) {
+    input.focus();
+    input.select();
+  }
 };
 
-// iterate through every dream and add it to our page
-dreams.forEach(function(dream) {
-  appendNewDream(dream);
+input.addEventListener("keyup", function(event) {
+  // Execute a function when the user releases a key on the keyboard
+
+  if (event.keyCode === 13) {
+    // Number 13 is the "Enter" key on the keyboard
+    inputEntered(input.value);
+    input.value = "";
+  }
 });
 
-// listen for the form to be submitted and add a new dream when it is
-dreamsForm.onsubmit = function(event) {
-  // stop our form submission from refreshing the page
-  event.preventDefault();
+function inputEntered(inputValue) {
+  inputValue = inputValue.charAt(0).toUpperCase() + inputValue.slice(1);
+  addLogText(inputValue, true);
 
-  // get dream value and add it to the list
-  dreams.push(dreamInput.value);
-  appendNewDream(dreamInput.value);
+  //split
+  //if last part is a number
+  //backdoor (roll)
 
-  // reset form
-  dreamInput.value = "";
-  dreamInput.focus();
-};
+  if (inputValue == "Backdoor") {
+    rollIsFor = "Backdoor";
+    addLogText("Roll <b> 1d10 </b>+ Interface.");
+  } else if (inputValue == "Pathfinder") {
+    rollIsFor = "Pathfinder";
+    addLogText("Roll <b> 1d10 </b>+ Interface.");
+    //addLogText(map[currentLevel][0], false);
+  } else if (inputValue == "Move down") {
+    if (levelStatus == "Password") {
+      addLogText("You cannot move down past a password.");
+    } else {
+      currentLevel++;
+      if (currentLevel > map.length) {
+        currentLevel--;
+        addLogText("You are already on the last level.");
+      } else {
+        levelStatus = map[currentLevel][1];
+        addLogText(
+          "You are on <b>Level " +
+            currentLevel +
+            ": " +
+            map[currentLevel][1] +
+            "</b>"
+        );
+      }
+    }
+  } else if (inputValue == "Move up") {
+    currentLevel--;
+    levelStatus = map[currentLevel][1];
+    addLogText(
+      "You are on <b>Level " +
+        currentLevel +
+        ": " +
+        map[currentLevel][1] +
+        "</b>",
+      false
+    );
+  } else if (inputValue == "Attack") {
+    currentLevel--;
+    addLogText("Roll 3d6.");
+    addLogText("Take <b> 5 </b>damage.", false, true);
+  } else if (inputValue == "Jack out" || inputValue == "Jack Out") {
+    addLogText("You have left the netspace.", false);
+    currentLevel = 0;
+  } else if (inputValue == "Level") {
+    addLogText(
+      "You are on <b>Level " +
+        currentLevel +
+        ": " +
+        map[currentLevel][1] +
+        "</b>",
+      false
+    );
+  } else if (
+    inputValue == "Eye-Dee" ||
+    inputValue == "Eye-dee" ||
+    inputValue == "Eyedee" ||
+    inputValue == "EyeDee"
+  ) {
+    rollIsFor = "Eye-Dee";
+    addLogText("Roll <b> 1d10 </b>+ Interface.");
+  } else if (!isNaN(inputValue) && inputValue != "") {
+    //if is a number and not blank
+    //check what roll is for
+    if (rollIsFor == "Backdoor") onBackdoor(inputValue);
+    // addLogText(rollIsFor);
+    else if (rollIsFor == "Eye-Dee") {
+      onEyeDee(inputValue);
+    } else if (rollIsFor == "Pathfinder") {
+      onPathFinder(inputValue);
+    }
+    rollIsFor = "";
+  } else if (inputValue != "") {
+    addLogText("Command Unknown");
+  }
+}
+
+function addLogText(text, user, damage) {
+  var userText = document.createElement("P");
+  userText.innerHTML = text;
+  if (user) userText.className = "userText";
+  else if (damage) userText.className = "damageText";
+  var log = document.getElementById("log");
+  log.appendChild(userText);
+}
+
+function onBackdoor(roll) {
+  if (levelStatus != "Password")
+    addLogText("Backdoor can only be used on a password.");
+  else if (roll >= map[currentLevel][2]) {
+    addLogText("Success");
+    currentLevel++;
+    levelStatus = map[currentLevel][1];
+    addLogText(
+      "You are on <b>Level " +
+        currentLevel +
+        ": " +
+        map[currentLevel][1] +
+        "</b>",
+      false
+    );
+  } else {
+    addLogText("Backdoor attempt was unsuccessful.");
+  }
+}
+
+function onEyeDee(roll) {
+  if (levelStatus != "File") addLogText("Eye-Dee can only be used on a File.");
+  else if (roll >= map[currentLevel][2]) {
+    addLogText("Success");
+
+    addLogText("File contents: " + map[currentLevel][3]);
+  } else {
+    addLogText("Eye-Dee attempt was unsuccessful.");
+  }
+}
+
+function onPathFinder(roll) {
+  generateMap();
+}
+
+function generateMap() {
+  var visibleMap = "";
+  for (var i = 0; i < map.length; i++) {
+    visibleMap += map[i][0] + ": " + map[i][1] + "<br>";
+  }
+  addLogText(visibleMap);
+}
+
+function addNewLevel() {
+  var lastLevel = document.getElementById("Level 0");
+  var newLevel = lastLevel.cloneNode(true);
+  var children = newLevel.children;
+
+  children[0].innerHTML = "Level " + makingLevel;
+
+  children[2].value = "";
+  children[3].value = "";
+  children[3].placeholder = "";
+
+  newLevel.id = "Level " + makingLevel;
+  //newLevel.children
+  makingLevel++;
+
+  var create = document.getElementById("create");
+  create.appendChild(newLevel);
+}
+
+function deleteLevel() {
+  var oldLevelNumber = makingLevel - 1;
+  var oldLevel = document.getElementById("Level " + oldLevelNumber);
+  if(oldLevelNumber!=0){
+  oldLevel.remove();
+  makingLevel--;
+  }
+}
+
+function onLevelTypeChange(elmt) {
+  var textArea = elmt.parentNode.children[3];
+
+  if (elmt.value == "File") textArea.placeholder = "File contents when opened";
+  else if (elmt.value == "Empty") textArea.placeholder = "";
+  else if (elmt.value == "Password") textArea.placeholder = "Correct password";
+  else if (elmt.value == "Virus")
+    textArea.placeholder = "What the Virus is doing";
+  else if (elmt.value == "Hellhound") textArea.placeholder = "";
+  else if (elmt.value == "Control Node")
+    textArea.placeholder = "What the Control Node controls";
+}
+
+function generateNetSpace() {
+  var newNetSpace = [];
+  var newLevelArray = [];
+
+  for (var j = 0; j < makingLevel; j++) {
+    var level = document.getElementById("Level " + j);
+    newLevelArray.push(j);
+    for (var i = 1; i < 4; i++) {
+      newLevelArray.push(level.children[i].value);
+    }
+    newNetSpace.push(newLevelArray);
+    newLevelArray = [];
+  }
+  console.log(newNetSpace);
+}
+
+// const fs = require('fs');
+
+// storeData("dsf","/app/record.json");
+
+// const storeData = (data, path) => {
+//   try {
+//     fs.writeFileSync(path, JSON.stringify(data))
+//   } catch (err) {
+//     console.error(err)
+//   }
+// }
+

@@ -1,17 +1,10 @@
-// server.js
-// where your node app starts
-
-// init project
 const express = require("express");
 const app = express();
+const fs = require('fs');
 
-// we've started you off with Express,
-// but feel free to use whatever libs or frameworks you'd like through `package.json`.
-
-// http://expressjs.com/en/starter/static-files.html
 app.use(express.static("public"));
 
-// http://expressjs.com/en/starter/basic-routing.html
+
 app.get("/", function(request, response) {
   response.sendFile(__dirname + "/views/index.html");
 });
@@ -20,3 +13,26 @@ app.get("/", function(request, response) {
 const listener = app.listen(process.env.PORT, function() {
   console.log("Your app is listening on port " + listener.address().port);
 });
+
+
+
+
+const storeData = (data, path) => {
+  try {
+    fs.writeFileSync(path, JSON.stringify(data))
+  } catch (err) {
+    console.error(err)
+  }
+}
+  
+
+const loadData = (path) => {
+  try {
+    return fs.readFileSync(path, 'utf8')
+  } catch (err) {
+    console.error(err)
+    return false
+  }
+}
+
+storeData("hi,78","/app/record.json");
