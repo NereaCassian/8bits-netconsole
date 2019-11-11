@@ -174,8 +174,15 @@ function callCommand(command, roll, extraInfo) {
     case "Move Up":
       // code block
       break;
-      // default:
-      //   // code block
+      case "Eye-Dee":
+      onEyeDee(roll);
+      break;
+      case "EyeDee":
+      onEyeDee(roll);
+      break;
+      case "Eyedee":
+      onEyeDee(roll);
+      break;
   }
 }
 function onLevel() {
@@ -331,6 +338,7 @@ function onBackdoor(roll) {
   }
 }
 function onEyeDee(roll) {
+  console.log("on eye dee here ");
   if (levelStatus != "File") addLogText("Eye-Dee can only be used on a File.");
   else if (roll >= map[currentLevel][2]) {
     addLogText("Success");
