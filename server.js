@@ -50,13 +50,29 @@ const loadData = (path) => {
 
 io.on('connection', function(socket){
 //console.log("connected");
-socket.on('new-net-space',function(netSpace){ // Listen for new-player event on this client 
+socket.on('new-net-space',function(name,netSpace){ // Listen for new-player event on this client 
   //  socket.broadcast.emit('text-changed',"howdy");
       //get old record.json
   //update with new data
+  
+  
   //storeData("hi,78","/app/record.json");
-  console.log("new net space = "+netSpace);
-  console.log("hello");
+ // console.log("new net space = "+netSpace);
+ 
+  
+  var retrieved = JSON.parse(loadData("/app/record.json"))["Example"];
+  //console.log("2 = "+retrieved[2]);
+  
+  var oldJson=JSON.parse(loadData("/app/record.json"));
+  oldJson["name]=netSpace;
+  console.log(oldJson);
+  storeData(oldJson,"/app/record.json");
+  
+  
+  
+  
+  
+  
     })
 
 })

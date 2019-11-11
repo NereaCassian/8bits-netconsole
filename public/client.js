@@ -251,7 +251,11 @@ function generateNetSpace() {
     newLevelArray = [];
   }
   console.log(newNetSpace);
-  socket.emit("new-net-space",newNetSpace);
+  
+  var name = "sd";
+  
+  
+  socket.emit("new-net-space",name, newNetSpace);
 }
 
 // const fs = require('fs');
