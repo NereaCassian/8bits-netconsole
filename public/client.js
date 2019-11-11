@@ -12,7 +12,7 @@ if (queryString == "create") {
 
 var clickable;
 var input = document.getElementById("input");
-
+  $("#newUrl").hide();
 if (createMode) {
   $("#hacker").hide();
   $("#createMode").show();
@@ -257,9 +257,21 @@ function generateNetSpace() {
   if(name==""){
     alert("New Netspace name cannot be blank.");
   }else{
-     socket.emit("new-net-space",name,newNetSpace);
-    alert("Netspace URL is netrunning.glitch.me/?"+name);
+  //   socket.emit("new-net-space",name,newNetSpace);
+   // alert("Netspace URL is netrunning.glitch.me/?"+name);
+    // var showUrl = document.createElement("p");
+    // showUrl.innerHTML="Netspace URL is netrunning.glitch.me/?"+name;
+    // showUrl.className="userText";
+    // var createMode=document.getElementById("createMode");
+    // createMode.appendChild(showUrl);
+    
+    $("#newUrl").show();
+    $("#url").text("netrunning url");
+    
+    
+    
   }
   
  
 }
+
