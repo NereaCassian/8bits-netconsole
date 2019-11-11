@@ -1,6 +1,5 @@
 var socket = io();
 var createMode;
-
 var queryString = decodeURIComponent(window.location.search);
 //  queryString = queryString.substring(1);
 queryString = queryString.replace("?", "");
@@ -9,7 +8,6 @@ if (queryString == "create") {
 } else {
   createMode = false;
 }
-
 var clickable;
 var input = document.getElementById("input");
 $("#newUrl").hide();
@@ -25,7 +23,6 @@ if (createMode) {
   clickable = false;
   setUpHackerMode();
 }
-
 var map = [
   [0, "Empty", 0, ""],
   [1, "Password", 11, "12345"],
@@ -33,52 +30,42 @@ var map = [
 ];
 var currentLevel = 0;
 var levelStatus = "";
-
 var rollIsFor = "";
-
 var makingLevel = 1;
-
 if (!clickable) {
   input.focus();
   input.select();
 }
-
 document.onclick = function() {
   if (!clickable) {
     input.focus();
     input.select();
   }
 };
-
 function setUpHackerMode() {
   if (queryString != "") {
     socket.emit("get-net-space", queryString);
   }
 }
-
 socket.on("load-map", function(loadedMap, name) {
   map = loadedMap;
   if (queryString != "") $("#title").text("Netrunning: " + name);
   console.log("new map added");
 });
-
 input.addEventListener("keyup", function(event) {
   // Execute a function when the user releases a key on the keyboard
-
   if (event.keyCode === 13) {
     // Number 13 is the "Enter" key on the keyboard
     inputEntered(input.value);
     input.value = "";
   }
 });
-
 //input value
 //split
 //if number
 //call new function
 //else wait for number
 //then call function
-
 var knownCommands = [
   "Move up",
   "Move down",
@@ -92,61 +79,43 @@ var knownCommands = [
   "Move",
   "Password"
 ];
-
 var noRollNeeded = ["Level", "Move", "Move up", "Move down"];
-
 //on input
-
 function inputEntered(inputValue) {
   inputValue = inputValue.charAt(0).toUpperCase() + inputValue.slice(1); //make first letter Uppercase
   addLogText(inputValue, true); //add user's text to log
-  
   var entries = inputValue.split(" ");
   if(entries.length ==1){
     if(!isNaN(inputValue) && inputValue != ""){ //if one roll
-       inputValue = parseInt(inputValue);
+      inputValue = parseInt(inputValue);
       callCommand(rollIsFor, inputValue);
-       rollIsFor = "";
+      rollIsFor = "";
     }
     else{ //1 word command not a number
       var command= inputValue;
-       var isKnown = knownCommands.indexOf(command) != -1;
-  var rollNeeded = noRollNeeded.indexOf(command) == -1;
-      
+      var isKnown = knownCommands.indexOf(command) != -1;
+      var rollNeeded = noRollNeeded.indexOf(command) == -1;
       if(!isKnown){
-         if(command!="") addLogText("Command Unknown.");
+        if(command!="") addLogText("Command Unknown.");
       }else if(!rollNeeded){
         callCommand(command);
       }else{ //roll is needed
-      addLogText("Roll <b> 1d10 </b>+ Interface.");
-      rollIsFor = command;
+        addLogText("Roll <b> 1d10 </b>+ Interface.");
+        rollIsFor = command;
       }
     }
-    
-    
   } else{ // if multiple
     var lastWord = entries[length-1];
     if(isNaN(lastWord) && lastWord != ""){
       if(entries.length==2){
         var command = entries[0];
         var roll = entries[entries.length-1];
-      //getting others for extra info
+        //getting others for extra info
         callCommand(command,roll);
-      
       }
     } else{ //if last isn't number
-      
-      
     }
-    
-    
   }
-  
-  
-  
-  
-  
-  
   // if (!isNaN(inputValue) && inputValue != "") {
   //   //if is a number
   //   inputValue = parseInt(inputValue);
@@ -154,21 +123,17 @@ function inputEntered(inputValue) {
   //   rollIsFor = "";
   // } else commandEntered(inputValue);
 }
-
 function commandEntered(inputValue) {
   inputValue = inputValue.charAt(0).toUpperCase() + inputValue.slice(1); //make first letter Uppercase
   addLogText(inputValue, true); //add user's text to log
-
   var entries = inputValue.split(" ");
   var command = entries[0];
-
   var isKnown = knownCommands.indexOf(command) != -1;
   var rollNeeded = noRollNeeded.indexOf(command) == -1;
   console.log("roll needed = " + rollNeeded);
   if (!isKnown) {
     addLogText("Command Unknown.");
   }
-
   if (!rollNeeded) {
     callCommand(command);
   } else {
@@ -192,7 +157,6 @@ function commandEntered(inputValue) {
     }
   }
 }
-
 function callCommand(command, roll, extraInfo) {
   switch (command) {
     case "Backdoor":
@@ -210,32 +174,24 @@ function callCommand(command, roll, extraInfo) {
     case "Move Up":
       // code block
       break;
-    // default:
-    //   // code block
+      // default:
+      //   // code block
   }
 }
-
 function onLevel() {
   addLogText(
-    "You are on <b>Level " +
-      currentLevel +
-      ": " +
-      map[currentLevel][1] +
-      "</b>",
-    false
-  );
+    "You are on <b>Level " + currentLevel +": " + map[currentLevel][1] +"</b>");
 }
-
 function move(direction) {
   if (direction == "up" || direction == "Up") {
     currentLevel--;
     levelStatus = map[currentLevel][1];
     addLogText(
       "You are on <b>Level " +
-        currentLevel +
-        ": " +
-        map[currentLevel][1] +
-        "</b>",
+      currentLevel +
+      ": " +
+      map[currentLevel][1] +
+      "</b>",
       false
     );
   } else if (direction == "down" || direction == "Down") {
@@ -251,31 +207,26 @@ function move(direction) {
         levelStatus = map[currentLevel][1];
         addLogText(
           "You are on <b>Level " +
-            currentLevel +
-            ": " +
-            map[currentLevel][1] +
-            "</b>"
+          currentLevel +
+          ": " +
+          map[currentLevel][1] +
+          "</b>"
         );
       }
     }
   }
 }
-
 function onPathfinder(roll) {
   addLogText("Pathfindererere");
 }
-
 function inputEntered2(inputValue) {
   inputValue = inputValue.charAt(0).toUpperCase() + inputValue.slice(1);
   addLogText(inputValue, true);
-
   var entries = inputValue.split(" ");
   inputValue = entries[0];
-
   //split
   //if last part is a number
   //backdoor (roll)
-
   if (inputValue == "Backdoor") {
     console.log("Backdoor dv = " + map[currentLevel][2]);
     rollIsFor = "Backdoor";
@@ -296,10 +247,10 @@ function inputEntered2(inputValue) {
         levelStatus = map[currentLevel][1];
         addLogText(
           "You are on <b>Level " +
-            currentLevel +
-            ": " +
-            map[currentLevel][1] +
-            "</b>"
+          currentLevel +
+          ": " +
+          map[currentLevel][1] +
+          "</b>"
         );
       }
     }
@@ -308,10 +259,10 @@ function inputEntered2(inputValue) {
     levelStatus = map[currentLevel][1];
     addLogText(
       "You are on <b>Level " +
-        currentLevel +
-        ": " +
-        map[currentLevel][1] +
-        "</b>",
+      currentLevel +
+      ": " +
+      map[currentLevel][1] +
+      "</b>",
       false
     );
   } else if (inputValue == "Attack") {
@@ -324,10 +275,10 @@ function inputEntered2(inputValue) {
   } else if (inputValue == "Level") {
     addLogText(
       "You are on <b>Level " +
-        currentLevel +
-        ": " +
-        map[currentLevel][1] +
-        "</b>",
+      currentLevel +
+      ": " +
+      map[currentLevel][1] +
+      "</b>",
       false
     );
   } else if (
@@ -353,7 +304,6 @@ function inputEntered2(inputValue) {
     addLogText("Command Unknown");
   }
 }
-
 function addLogText(text, user, damage) {
   var userText = document.createElement("P");
   userText.innerHTML = text;
@@ -362,7 +312,6 @@ function addLogText(text, user, damage) {
   var log = document.getElementById("log");
   log.appendChild(userText);
 }
-
 function onBackdoor(roll) {
   var dv = parseInt(map[currentLevel][2], 10);
   if (levelStatus != "Password")
@@ -373,32 +322,28 @@ function onBackdoor(roll) {
     levelStatus = map[currentLevel][1];
     addLogText(
       "You are on <b>Level " +
-        currentLevel +
-        ": " +
-        map[currentLevel][1] +
-        "</b>",
+      currentLevel +
+      ": " +
+      map[currentLevel][1] +
+      "</b>",
       false
     );
   } else {
     addLogText("Backdoor attempt was unsuccessful.");
   }
 }
-
 function onEyeDee(roll) {
   if (levelStatus != "File") addLogText("Eye-Dee can only be used on a File.");
   else if (roll >= map[currentLevel][2]) {
     addLogText("Success");
-
     addLogText("File contents: " + map[currentLevel][3]);
   } else {
     addLogText("Eye-Dee attempt was unsuccessful.");
   }
 }
-
 function onPathFinder(roll) {
   generateMap();
 }
-
 function generateMap() {
   var visibleMap = "";
   for (var i = 0; i < map.length; i++) {
@@ -406,28 +351,21 @@ function generateMap() {
   }
   addLogText(visibleMap);
 }
-
 //------------------------------------------------------------------------------------- Create mode code --------------------------------------
-
 function addNewLevel() {
   var lastLevel = document.getElementById("Level 0");
   var newLevel = lastLevel.cloneNode(true);
   var children = newLevel.children;
-
   children[0].innerHTML = "Level " + makingLevel;
-
   children[2].value = "";
   children[3].value = "";
   children[3].placeholder = "";
-
   newLevel.id = "Level " + makingLevel;
   //newLevel.children
   makingLevel++;
-
   var create = document.getElementById("create");
   create.appendChild(newLevel);
 }
-
 function deleteLevel() {
   var oldLevelNumber = makingLevel - 1;
   var oldLevel = document.getElementById("Level " + oldLevelNumber);
@@ -436,10 +374,8 @@ function deleteLevel() {
     makingLevel--;
   }
 }
-
 function onLevelTypeChange(elmt) {
   var textArea = elmt.parentNode.children[3];
-
   if (elmt.value == "File") textArea.placeholder = "File contents when opened";
   else if (elmt.value == "Empty") textArea.placeholder = "";
   else if (elmt.value == "Password") textArea.placeholder = "Correct password";
@@ -449,11 +385,9 @@ function onLevelTypeChange(elmt) {
   else if (elmt.value == "Control Node")
     textArea.placeholder = "What the Control Node controls";
 }
-
 function generateNetSpace() {
   var newNetSpace = [];
   var newLevelArray = [];
-
   for (var j = 0; j < makingLevel; j++) {
     var level = document.getElementById("Level " + j);
     newLevelArray.push(j);
@@ -464,21 +398,17 @@ function generateNetSpace() {
     newLevelArray = [];
   }
   console.log(newNetSpace);
-
   var name = document.getElementById("netSpaceName").value;
-
   if (name == "") {
     alert("New Netspace name cannot be blank.");
   } else {
     socket.emit("new-net-space", name, newNetSpace);
-
     $("#newUrl").show();
     $("#url").text("netrunning.glitch.me/?" + name);
     var url = $("#url");
     selectText("url");
   }
 }
-
 function selectText(id) {
   var node = document.getElementById(id);
   if (document.body.createTextRange) {
@@ -495,7 +425,6 @@ function selectText(id) {
     alert("Could not select text: Unsupported browser.");
   }
 }
-
 function copyUrl() {
   var url = $("#url");
   selectText("url");
