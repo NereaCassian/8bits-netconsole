@@ -89,7 +89,8 @@ var knownCommands = [
   "Attack",
   "Eye-Dee",
   "Eyedee",
-  "Move"
+  "Move",
+  "Password"
 ];
 
 var noRollNeeded = ["Level", "Move", "Move up", "Move down"];
@@ -102,7 +103,7 @@ function inputEntered(inputValue) {
   
   var entries = inputValue.split(" ");
   if(entries.length ==1){
-    if(!isNaN(inputValue) && inputValue != ""){ //if one word roll
+    if(!isNaN(inputValue) && inputValue != ""){ //if one roll
        inputValue = parseInt(inputValue);
       callCommand(rollIsFor, inputValue);
        rollIsFor = "";
