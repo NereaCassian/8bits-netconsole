@@ -252,21 +252,14 @@ function generateNetSpace() {
   }
   console.log(newNetSpace);
   
-  var name = "sd";
+  var name = document.getElementById("netSpaceName").value;
   
+  if(name==""){
+    alert("New Netspace name cannot be blank.");
+  }else{
+     socket.emit("new-net-space",name,newNetSpace);
+    alert("Netspace URL is netrunning.glitch.me/?"+name);
+  }
   
-  socket.emit("new-net-space",name, newNetSpace);
+ 
 }
-
-// const fs = require('fs');
-
-// storeData("dsf","/app/record.json");
-
-// const storeData = (data, path) => {
-//   try {
-//     fs.writeFileSync(path, JSON.stringify(data))
-//   } catch (err) {
-//     console.error(err)
-//   }
-// }
-

@@ -64,7 +64,7 @@ socket.on('new-net-space',function(name,netSpace){ // Listen for new-player even
   //console.log("2 = "+retrieved[2]);
   
   var oldJson=JSON.parse(loadData("/app/record.json"));
-  oldJson["name]=netSpace;
+  oldJson[name]=netSpace;
   console.log(oldJson);
   storeData(oldJson,"/app/record.json");
   
