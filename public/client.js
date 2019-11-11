@@ -105,8 +105,10 @@ function inputEntered(inputValue) {
       }
     }
   } else{                                           // if multiple
+    console.log("multiple words");
     var lastWord = entries[length-1];
     if(isNaN(lastWord) && lastWord != ""){
+      console.log("last is number");
       if(entries.length==2){
         var command = entries[0];
         var roll = entries[entries.length-1];
@@ -116,7 +118,7 @@ function inputEntered(inputValue) {
         // more than 2 and last is number
       }
     } else{ //if last isn't number
-     // onCommand(inputValue);
+      onCommand(inputValue);
       
     }
   }
@@ -129,6 +131,7 @@ function inputEntered(inputValue) {
 }
 
 function onCommand(inputValue){
+  console.log("onCommand called");
    var command= inputValue;
       var isKnown = knownCommands.indexOf(command) != -1;
       var rollNeeded = noRollNeeded.indexOf(command) == -1;
