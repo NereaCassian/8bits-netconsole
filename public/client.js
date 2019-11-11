@@ -92,6 +92,8 @@ var knownCommands = [
   "Move"
 ];
 
+var noRollNeeded = ["Level","Move","Move up","Move down"];
+
 // prettier-ignore
 function inputEntered2(inputValue) { //on input
   
@@ -102,10 +104,14 @@ function inputEntered2(inputValue) { //on input
   var command = entries[0];
 
   var isKnown = knownCommands.indexOf(command) != -1;
+  var rollNeeded = noRollNeeded.indexOf(command) != -1;
+  
   if (!isKnown) {
     addLogText("Command Unknown.");
   }
 
+  if(!rollNeeded) callCommand(command);
+  
   if (entries.length > 1) {
     var roll = entries[entries.length - 1];
     if (!isNaN(roll) && roll != "") {  //roll is number
@@ -118,13 +124,15 @@ function inputEntered2(inputValue) { //on input
   }
 }
 
+
+
 function callCommand(command, roll) {
   switch (command) {
     case "Backdoor":
       onBackdoor(roll);
       break;
     case "Level":
-      // code block
+    //  onLevel();
       break;
     case "Pathfinder":
       // code block
