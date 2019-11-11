@@ -92,8 +92,9 @@ var knownCommands = [
   "Move"
 ];
 
-function inputEntered2(inputValue) {
-  //on input
+// prettier-ignore
+function inputEntered2(inputValue) { //on input
+  
   inputValue = inputValue.charAt(0).toUpperCase() + inputValue.slice(1); //make first letter Uppercase
   addLogText(inputValue, true); //add user's text to log
 
@@ -107,13 +108,13 @@ function inputEntered2(inputValue) {
 
   if (entries.length > 1) {
     var roll = entries[entries.length - 1];
-    if (!isNaN(roll) && roll != "") {
-      //roll is number
+    if (!isNaN(roll) && roll != "") {  //roll is number
+     
       roll = parseInt(roll);
       callCommand(command, roll);
     }
-  } else {
-    // if no roll on command
+  } else { // if no roll on command
+    
   }
 }
 
