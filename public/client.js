@@ -1,4 +1,4 @@
-var socket=io();
+var socket = io();
 var createMode;
 
 var queryString = decodeURIComponent(window.location.search);
@@ -12,7 +12,7 @@ if (queryString == "create") {
 
 var clickable;
 var input = document.getElementById("input");
-  $("#newUrl").hide();
+$("#newUrl").hide();
 if (createMode) {
   $("#hacker").hide();
   $("#createMode").show();
@@ -50,21 +50,17 @@ document.onclick = function() {
   }
 };
 
-function setUpHackerMode(){
-  if(queryString !=""){
-    socket.emit("get-net-space",queryString);
-    
+function setUpHackerMode() {
+  if (queryString != "") {
+    socket.emit("get-net-space", queryString);
   }
 }
 
-socket.on("load-map", function(loadedMap,name) {
-  map=loadedMap;
-  if(queryString !="") $("#title").text("Netrunning: "+name);
+socket.on("load-map", function(loadedMap, name) {
+  map = loadedMap;
+  if (queryString != "") $("#title").text("Netrunning: " + name);
   console.log("new map added");
 });
-
-
-
 
 input.addEventListener("keyup", function(event) {
   // Execute a function when the user releases a key on the keyboard
@@ -76,36 +72,60 @@ input.addEventListener("keyup", function(event) {
   }
 });
 
-
 //input value
 //split
 //if number
-//call new function 
+//call new function
 //else wait for number
 //then call function
 
+function inputEntered2(inputValue) {
+  inputValue = inputValue.charAt(0).toUpperCase() + inputValue.slice(1);
+  addLogText(inputValue, true);
 
+  var entries = inputValue.split(" ");
+  var command = entries[0];
+  if (entries.lengt) {
+    var roll = entries[1];
+    callCommand(command, roll);
+  }
+}
 
-
-
+function callCommand(command, roll) {
+  switch (command) {
+    case "Backdoor":
+      // code block
+      break;
+    case "Level":
+      // code block
+      break;
+    case "Pathfinder":
+      // code block
+      break;
+    case "Move Down":
+      // code block
+      break;
+    case "Move Up":
+      // code block
+      break;
+    // default:
+    //   // code block
+  }
+}
 
 function inputEntered(inputValue) {
   inputValue = inputValue.charAt(0).toUpperCase() + inputValue.slice(1);
   addLogText(inputValue, true);
 
-  var entries=inputValue.split(" ");
-  inputValue=entries[0];
-  
-  
-  
-  
-  
+  var entries = inputValue.split(" ");
+  inputValue = entries[0];
+
   //split
   //if last part is a number
   //backdoor (roll)
 
   if (inputValue == "Backdoor") {
-     console.log("Backdoor dv = "+map[currentLevel][2]);
+    console.log("Backdoor dv = " + map[currentLevel][2]);
     rollIsFor = "Backdoor";
     addLogText("Roll <b> 1d10 </b>+ Interface.");
   } else if (inputValue == "Pathfinder") {
@@ -192,7 +212,7 @@ function addLogText(text, user, damage) {
 }
 
 function onBackdoor(roll) {
-  var dv=parseInt(map[currentLevel][2],10);
+  var dv = parseInt(map[currentLevel][2], 10);
   if (levelStatus != "Password")
     addLogText("Backdoor can only be used on a password.");
   else if (roll >= dv) {
@@ -230,7 +250,7 @@ function onPathFinder(roll) {
 function generateMap() {
   var visibleMap = "";
   for (var i = 0; i < map.length; i++) {
-    visibleMap += "Level "+map[i][0] + ": " + map[i][1] + "<br>";
+    visibleMap += "Level " + map[i][0] + ": " + map[i][1] + "<br>";
   }
   addLogText(visibleMap);
 }
@@ -259,9 +279,9 @@ function addNewLevel() {
 function deleteLevel() {
   var oldLevelNumber = makingLevel - 1;
   var oldLevel = document.getElementById("Level " + oldLevelNumber);
-  if(oldLevelNumber!=0){
-  oldLevel.remove();
-  makingLevel--;
+  if (oldLevelNumber != 0) {
+    oldLevel.remove();
+    makingLevel--;
   }
 }
 
@@ -292,44 +312,41 @@ function generateNetSpace() {
     newLevelArray = [];
   }
   console.log(newNetSpace);
-  
+
   var name = document.getElementById("netSpaceName").value;
-  
-  if(name==""){
+
+  if (name == "") {
     alert("New Netspace name cannot be blank.");
-  }else{
-    socket.emit("new-net-space",name,newNetSpace);
-  
+  } else {
+    socket.emit("new-net-space", name, newNetSpace);
+
     $("#newUrl").show();
-    $("#url").text("netrunning.glitch.me/?"+name);
-  var url=$("#url");
+    $("#url").text("netrunning.glitch.me/?" + name);
+    var url = $("#url");
     selectText("url");
   }
-  
- 
 }
 
 function selectText(id) {
-   var node = document.getElementById(id);
-    if (document.body.createTextRange) {
-        const range = document.body.createTextRange();
-        range.moveToElementText(node);
-        range.select();
-    } else if (window.getSelection) {
-        const selection = window.getSelection();
-        const range = document.createRange();
-        range.selectNodeContents(node);
-        selection.removeAllRanges();
-        selection.addRange(range);
-    } else {
-        alert("Could not select text: Unsupported browser.");
-    }
+  var node = document.getElementById(id);
+  if (document.body.createTextRange) {
+    const range = document.body.createTextRange();
+    range.moveToElementText(node);
+    range.select();
+  } else if (window.getSelection) {
+    const selection = window.getSelection();
+    const range = document.createRange();
+    range.selectNodeContents(node);
+    selection.removeAllRanges();
+    selection.addRange(range);
+  } else {
+    alert("Could not select text: Unsupported browser.");
+  }
 }
 
-
-function copyUrl(){
-  var url=$("#url");
- selectText("url");
+function copyUrl() {
+  var url = $("#url");
+  selectText("url");
   url.select;
-  document.execCommand('copy');
+  document.execCommand("copy");
 }
