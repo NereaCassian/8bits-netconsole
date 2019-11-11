@@ -172,11 +172,12 @@ function addLogText(text, user, damage) {
 }
 
 function onBackdoor(roll) {
-  console.log("Backdoor Roll = "+roll+" dv = "+map[currentLevel][2]);
-  console.log(roll+" is bigger than "+map[currentLevel][2]+" = "+(roll>=map[currentLevel][2]));
+  var dv=parseInt(map[currentLevel][2],10);
+  // console.log("Backdoor Roll = "+roll+" dv = "+map[currentLevel][2]);
+  // console.log(roll+" is bigger than "+map[currentLevel][2]+" = "+(roll>=dv));
   if (levelStatus != "Password")
     addLogText("Backdoor can only be used on a password.");
-  else if (roll >= map[currentLevel][2]) {
+  else if (roll >= dv) {
     addLogText("Success");
     currentLevel++;
     levelStatus = map[currentLevel][1];

@@ -28,5 +28,12 @@
     [0, "Empty", "", ""],
     [1, "Password", "5", "danmaristhebest"],
     [2, "Virus", "10", "Copying all data out of this port"]
-  ]
+  ],
+  "re": [
+    [0, "Empty", "", ""],
+    [1, "Password", "4", "12345"],
+    [2, "Virus", "3", ""],
+    [3, "File", "2", ""]
+  ],
+  "s": [[0, "Empty", "", ""]]
 }
