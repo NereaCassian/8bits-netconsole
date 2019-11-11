@@ -97,12 +97,36 @@ var noRollNeeded = ["Level", "Move", "Move up", "Move down"];
 //on input
 
 function inputEntered(inputValue) {
-  if (!isNaN(inputValue) && inputValue != "") {
-    //if is a number
-    inputValue = parseInt(inputValue);
-    callCommand(rollIsFor, inputValue);
-    rollIsFor = "";
-  } else commandEntered(inputValue);
+  inputValue = inputValue.charAt(0).toUpperCase() + inputValue.slice(1); //make first letter Uppercase
+  addLogText(inputValue, true); //add user's text to log
+  
+  var entries = inputValue.split(" ");
+  if(entries.length ==1){
+    if(!isNaN(inputValue) && inputValue != ""){
+      
+    }
+    else{ //1 word command not a number
+       addLogText("Roll <b> 1d10 </b>+ Interface.");
+      rollIsFor = inputValue;
+      
+      
+    }
+    
+    
+    
+  }
+  
+  
+  
+  
+  
+  
+  // if (!isNaN(inputValue) && inputValue != "") {
+  //   //if is a number
+  //   inputValue = parseInt(inputValue);
+  //   callCommand(rollIsFor, inputValue);
+  //   rollIsFor = "";
+  // } else commandEntered(inputValue);
 }
 
 function commandEntered(inputValue) {
