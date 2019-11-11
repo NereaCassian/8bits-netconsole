@@ -96,16 +96,16 @@ var noRollNeeded = ["Level", "Move", "Move up", "Move down"];
 
 //on input
 
-
-function inputEntered2(inputValue){
-  if(!isNaN(inputValue) && inputValue != ""){
-     
-     }
-  else commandEntered(inputValue);
+function inputEntered(inputValue) {
+  if (!isNaN(inputValue) && inputValue != "") {
+    //if is a number
+    inputValue = parseInt(inputValue);
+    callCommand(rollIsFor, inputValue);
+    rollIsFor = "";
+  } else commandEntered(inputValue);
 }
 
-function commandEntered(inputValue) { 
-
+function commandEntered(inputValue) {
   inputValue = inputValue.charAt(0).toUpperCase() + inputValue.slice(1); //make first letter Uppercase
   addLogText(inputValue, true); //add user's text to log
 
@@ -113,24 +113,32 @@ function commandEntered(inputValue) {
   var command = entries[0];
 
   var isKnown = knownCommands.indexOf(command) != -1;
-  var rollNeeded = noRollNeeded.indexOf(command) != -1;
-
+  var rollNeeded = noRollNeeded.indexOf(command) == -1;
+  console.log("roll needed = " + rollNeeded);
   if (!isKnown) {
     addLogText("Command Unknown.");
   }
 
-  if (!rollNeeded) callCommand(command);
-  else {
+  if (!rollNeeded) {
+    callCommand(command);
+  } else {
+    //if roll needed
     if (entries.length > 1) {
       var roll = entries[entries.length - 1];
       if (!isNaN(roll) && roll != "") {
-        //roll is number
-
         roll = parseInt(roll);
-        callCommand(command, roll);
+        //roll is number
+        if (entries.length > 2) {
+          var extraInfo = entries[entries.length - 2];
+          callCommand(command, roll, extraInfo);
+        } else {
+          callCommand(command, roll);
+        }
       }
-    } else { // if no roll on command
-      rollIsFor=command;
+    } else {
+      // if no roll on command
+      addLogText("Roll <b> 1d10 </b>+ Interface.");
+      rollIsFor = command;
     }
   }
 }
@@ -203,7 +211,9 @@ function move(direction) {
   }
 }
 
-function inputEntered(inputValue) {
+function onPathfinder(roll) {}
+
+function inputEntered2(inputValue) {
   inputValue = inputValue.charAt(0).toUpperCase() + inputValue.slice(1);
   addLogText(inputValue, true);
 
