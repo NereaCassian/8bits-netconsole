@@ -124,6 +124,9 @@ function inputEntered(inputValue) {
     }
     
     
+  } else{ // if multiple
+    
+    
     
   }
   
