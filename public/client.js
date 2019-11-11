@@ -257,21 +257,38 @@ function generateNetSpace() {
   if(name==""){
     alert("New Netspace name cannot be blank.");
   }else{
-  //   socket.emit("new-net-space",name,newNetSpace);
-   // alert("Netspace URL is netrunning.glitch.me/?"+name);
-    // var showUrl = document.createElement("p");
-    // showUrl.innerHTML="Netspace URL is netrunning.glitch.me/?"+name;
-    // showUrl.className="userText";
-    // var createMode=document.getElementById("createMode");
-    // createMode.appendChild(showUrl);
-    
+    socket.emit("new-net-space",name,newNetSpace);
+  
     $("#newUrl").show();
-    $("#url").text("netrunning url");
-    
-    
-    
+    $("#url").text("netrunning.glitch.me/?"+name);
+  var url=$("#url");
+    selectText("url");
   }
   
  
 }
 
+function selectText(id) {
+   var node = document.getElementById(id);
+
+    if (document.body.createTextRange) {
+        const range = document.body.createTextRange();
+        range.moveToElementText(node);
+        range.select();
+    } else if (window.getSelection) {
+        const selection = window.getSelection();
+        const range = document.createRange();
+        range.selectNodeContents(node);
+        selection.removeAllRanges();
+        selection.addRange(range);
+    } else {
+        console.warn("Could not select text in node: Unsupported browser.");
+    }
+}
+
+
+function copyUrl(){
+  var url=$("#url");
+  url.select;
+  document.execCommand('copy');
+}
