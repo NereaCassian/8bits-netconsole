@@ -217,6 +217,8 @@ function generateMap() {
   addLogText(visibleMap);
 }
 
+//------------------------------------------------------------------------------------- Create mode code --------------------------------------
+
 function addNewLevel() {
   var lastLevel = document.getElementById("Level 0");
   var newLevel = lastLevel.cloneNode(true);
@@ -302,7 +304,7 @@ function selectText(id) {
         selection.removeAllRanges();
         selection.addRange(range);
     } else {
-        console.warn("Could not select text in node: Unsupported browser.");
+        alert("Could not select text: Unsupported browser.");
     }
 }
 
