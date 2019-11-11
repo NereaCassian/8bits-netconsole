@@ -95,7 +95,16 @@ var knownCommands = [
 var noRollNeeded = ["Level", "Move", "Move up", "Move down"];
 
 //on input
-function inputEntered2(inputValue) { 
+
+
+function inputEntered2(inputValue){
+  if(!isNaN(inputValue) && inputValue != ""){
+     
+     }
+  else commandEntered(inputValue);
+}
+
+function commandEntered(inputValue) { 
 
   inputValue = inputValue.charAt(0).toUpperCase() + inputValue.slice(1); //make first letter Uppercase
   addLogText(inputValue, true); //add user's text to log
@@ -120,8 +129,8 @@ function inputEntered2(inputValue) {
         roll = parseInt(roll);
         callCommand(command, roll);
       }
-    } else {
-      // if no roll on command
+    } else { // if no roll on command
+      rollIsFor=command;
     }
   }
 }
