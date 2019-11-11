@@ -212,7 +212,7 @@ function onPathFinder(roll) {
 function generateMap() {
   var visibleMap = "";
   for (var i = 0; i < map.length; i++) {
-    visibleMap += map[i][0] + ": " + map[i][1] + "<br>";
+    visibleMap += "Level "+map[i][0] + ": " + map[i][1] + "<br>";
   }
   addLogText(visibleMap);
 }
@@ -291,7 +291,6 @@ function generateNetSpace() {
 
 function selectText(id) {
    var node = document.getElementById(id);
-
     if (document.body.createTextRange) {
         const range = document.body.createTextRange();
         range.moveToElementText(node);
