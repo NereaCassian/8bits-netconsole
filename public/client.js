@@ -114,7 +114,7 @@ function inputEntered(inputValue) {
   var rollNeeded = noRollNeeded.indexOf(command) == -1;
       
       if(!isKnown){
-         addLogText("Command Unknown.");
+         if(command!="") addLogText("Command Unknown.");
       }else if(!rollNeeded){
         callCommand(command);
       }else{ //roll is needed
@@ -130,10 +130,13 @@ function inputEntered(inputValue) {
       if(entries.length==2){
         var command = entries[0];
         var roll = entries[entries.length-1];
-        
+      //getting others for extra info
         callCommand(command,roll);
-        
+      
       }
+    } else{ //if last isn't number
+      
+      
     }
     
     
