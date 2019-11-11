@@ -86,12 +86,12 @@ function inputEntered(inputValue) {
   addLogText(inputValue, true); //add user's text to log
   var entries = inputValue.split(" ");
   if(entries.length ==1){
-    if(!isNaN(inputValue) && inputValue != ""){ //if one roll
+    if(!isNaN(inputValue) && inputValue != ""){     //if one roll
       inputValue = parseInt(inputValue);
       callCommand(rollIsFor, inputValue);
       rollIsFor = "";
     }
-    else{ //1 word command not a number
+    else{                                             //1 word command not a number
       var command= inputValue;
       var isKnown = knownCommands.indexOf(command) != -1;
       var rollNeeded = noRollNeeded.indexOf(command) == -1;
@@ -104,7 +104,7 @@ function inputEntered(inputValue) {
         rollIsFor = command;
       }
     }
-  } else{ // if multiple
+  } else{                                           // if multiple
     var lastWord = entries[length-1];
     if(isNaN(lastWord) && lastWord != ""){
       if(entries.length==2){
@@ -112,8 +112,12 @@ function inputEntered(inputValue) {
         var roll = entries[entries.length-1];
         //getting others for extra info
         callCommand(command,roll);
+      } else{ //more than 2 entries
+        // more than 2 and last is number
       }
     } else{ //if last isn't number
+     // onCommand(inputValue);
+      
     }
   }
   // if (!isNaN(inputValue) && inputValue != "") {
@@ -123,40 +127,62 @@ function inputEntered(inputValue) {
   //   rollIsFor = "";
   // } else commandEntered(inputValue);
 }
-function commandEntered(inputValue) {
-  inputValue = inputValue.charAt(0).toUpperCase() + inputValue.slice(1); //make first letter Uppercase
-  addLogText(inputValue, true); //add user's text to log
-  var entries = inputValue.split(" ");
-  var command = entries[0];
-  var isKnown = knownCommands.indexOf(command) != -1;
-  var rollNeeded = noRollNeeded.indexOf(command) == -1;
-  console.log("roll needed = " + rollNeeded);
-  if (!isKnown) {
-    addLogText("Command Unknown.");
-  }
-  if (!rollNeeded) {
-    callCommand(command);
-  } else {
-    //if roll needed
-    if (entries.length > 1) {
-      var roll = entries[entries.length - 1];
-      if (!isNaN(roll) && roll != "") {
-        roll = parseInt(roll);
-        //roll is number
-        if (entries.length > 2) {
-          var extraInfo = entries[entries.length - 2];
-          callCommand(command, roll, extraInfo);
-        } else {
-          callCommand(command, roll);
-        }
+
+function onCommand(inputValue){
+   var command= inputValue;
+      var isKnown = knownCommands.indexOf(command) != -1;
+      var rollNeeded = noRollNeeded.indexOf(command) == -1;
+      if(!isKnown){
+        if(command!="") addLogText("Command Unknown.");
+      }else if(!rollNeeded){
+        callCommand(command);
+      }else{ //roll is needed
+        addLogText("Roll <b> 1d10 </b>+ Interface.");
+        rollIsFor = command;
       }
-    } else {
-      // if no roll on command
-      addLogText("Roll <b> 1d10 </b>+ Interface.");
-      rollIsFor = command;
-    }
-  }
 }
+
+
+
+
+// function commandEntered(inputValue) {
+//   inputValue = inputValue.charAt(0).toUpperCase() + inputValue.slice(1); //make first letter Uppercase
+//   addLogText(inputValue, true); //add user's text to log
+//   var entries = inputValue.split(" ");
+//   var command = entries[0];
+//   var isKnown = knownCommands.indexOf(command) != -1;
+//   var rollNeeded = noRollNeeded.indexOf(command) == -1;
+//   console.log("roll needed = " + rollNeeded);
+//   if (!isKnown) {
+//     addLogText("Command Unknown.");
+//   }
+//   if (!rollNeeded) {
+//     callCommand(command);
+//   } else {
+//     //if roll needed
+//     if (entries.length > 1) {
+//       var roll = entries[entries.length - 1];
+//       if (!isNaN(roll) && roll != "") {
+//         roll = parseInt(roll);
+//         //roll is number
+//         if (entries.length > 2) {
+//           var extraInfo = entries[entries.length - 2];
+//           callCommand(command, roll, extraInfo);
+//         } else {
+//           callCommand(command, roll);
+//         }
+//       }
+//     } else {
+//       // if no roll on command
+//       addLogText("Roll <b> 1d10 </b>+ Interface.");
+//       rollIsFor = command;
+//     }
+//   }
+// }
+
+
+
+
 function callCommand(command, roll, extraInfo) {
   switch (command) {
     case "Backdoor":
@@ -171,8 +197,8 @@ function callCommand(command, roll, extraInfo) {
     case "Move":
       move(extraInfo);
       break;
-    case "Move Up":
-      // code block
+      case "Move down":
+      move("down");
       break;
       case "Eye-Dee":
       onEyeDee(roll);
