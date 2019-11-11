@@ -216,9 +216,7 @@ function move(direction) {
     }
   }
 }
-function onPathfinder(roll) {
-  addLogText("Pathfindererere");
-}
+
 function inputEntered2(inputValue) {
   inputValue = inputValue.charAt(0).toUpperCase() + inputValue.slice(1);
   addLogText(inputValue, true);
