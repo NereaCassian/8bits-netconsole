@@ -52,14 +52,14 @@ document.onclick = function() {
 
 function setUpHackerMode(){
   if(queryString !=""){
-    $("#title").text("Netrunning: "+queryString);
     socket.emit("get-net-space",queryString);
     
   }
 }
 
-socket.on("load-map", function(loadedMap) {
+socket.on("load-map", function(loadedMap,name) {
   map=loadedMap;
+  if(queryString !="") $("#title").text("Netrunning: "+name);
   console.log("new map added");
 });
 

@@ -49,6 +49,6 @@ io.on("connection", function(socket) {
 
   socket.on("get-net-space", function(name) {
     var netspace = JSON.parse(loadData("/app/record.json"))[name];
-    socket.emit("load-map", netspace);
+    socket.emit("load-map", netspace,name);
   });
 });
