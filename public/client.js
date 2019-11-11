@@ -23,6 +23,7 @@ if (createMode) {
   input.focus();
   input.select();
   clickable = false;
+  setUpHackerMode();
 }
 
 var map = [
@@ -48,6 +49,22 @@ document.onclick = function() {
     input.select();
   }
 };
+
+function setUpHackerMode(){
+  if(queryString !=""){
+    $("#title").text("Netrunning: "+queryString);
+    socket.emit("get-net-space",queryString);
+    
+  }
+}
+
+socket.on("load-map", function(loadedMap) {
+  map=loadedMap;
+  console.log("")
+});
+
+
+
 
 input.addEventListener("keyup", function(event) {
   // Execute a function when the user releases a key on the keyboard

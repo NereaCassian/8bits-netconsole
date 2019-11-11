@@ -1,17 +1,12 @@
 const express = require("express");
 const app = express();
-const http = require('http').Server(app);
-const io = require('socket.io')(http);
-const got = require('got');
+const http = require("http").Server(app);
+const io = require("socket.io")(http);
+const got = require("got");
 
-const fs = require('fs');
-
-
-
-
+const fs = require("fs");
 
 app.use(express.static("public"));
-
 
 app.get("/", function(request, response) {
   response.sendFile(__dirname + "/views/index.html");
@@ -22,57 +17,42 @@ app.get("/", function(request, response) {
 //   console.log("Your app is listening on port " + listener.address().port);
 // });
 
-
-app.set('port', (process.env.PORT || 5000));
-http.listen(app.get('port'), function(){
-  console.log('listening on port',app.get('port'));
+app.set("port", process.env.PORT || 5000);
+http.listen(app.get("port"), function() {
+  console.log("listening on port", app.get("port"));
 });
-
 
 const storeData = (data, path) => {
   try {
-    fs.writeFileSync(path, JSON.stringify(data))
+    fs.writeFileSync(path, JSON.stringify(data));
   } catch (err) {
-    console.error(err)
+    console.error(err);
   }
-}
-  
+};
 
-const loadData = (path) => {
+const loadData = path => {
   try {
-    return fs.readFileSync(path, 'utf8')
+    return fs.readFileSync(path, "utf8");
   } catch (err) {
-    console.error(err)
-    return false
+    console.error(err);
+    return false;
   }
-}
+};
 
-
-io.on('connection', function(socket){
-//console.log("connected");
-socket.on('new-net-space',function(name,netSpace){ // Listen for new-player event on this client 
-  //  socket.broadcast.emit('text-changed',"howdy");
-      //get old record.json
-  //update with new data
+io.on("connection", function(socket) {
+  
+  socket.on("new-net-space", function(name, netSpace) {
+   // var retrieved = JSON.parse(loadData("/app/record.json"))["Example"];
+    var oldJson = JSON.parse(loadData("/app/record.json"));
+    oldJson[name] = netSpace;
+   // console.log(oldJson);
+    storeData(oldJson, "/app/record.json");
+  });
   
   
-  //storeData("hi,78","/app/record.json");
- // console.log("new net space = "+netSpace);
- 
+   socket.on("get-net-space", function(name) {
+    var netspace = JSON.parse(loadData("/app/record.json"))[name];
+     socket.broadcast.emit("load-map",netspace);
+   });
   
-  var retrieved = JSON.parse(loadData("/app/record.json"))["Example"];
-  //console.log("2 = "+retrieved[2]);
-  
-  var oldJson=JSON.parse(loadData("/app/record.json"));
-  oldJson[name]=netSpace;
-  console.log(oldJson);
-  storeData(oldJson,"/app/record.json");
-  
-  
-  
-  
-  
-  
-    })
-
-})
+});
