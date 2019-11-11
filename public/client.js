@@ -79,33 +79,48 @@ input.addEventListener("keyup", function(event) {
 //else wait for number
 //then call function
 
-var knownCommands=["Move up","Move down","Backdoor","Pathfinder","Virus","Level","Attack","Eye-Dee","Eyedee","Move"];
-
+var knownCommands = [
+  "Move up",
+  "Move down",
+  "Backdoor",
+  "Pathfinder",
+  "Virus",
+  "Level",
+  "Attack",
+  "Eye-Dee",
+  "Eyedee",
+  "Move"
+];
 
 function inputEntered2(inputValue) {
-  inputValue = inputValue.charAt(0).toUpperCase() + inputValue.slice(1);
-  addLogText(inputValue, true);
+  //on input
+  inputValue = inputValue.charAt(0).toUpperCase() + inputValue.slice(1); //make first letter Uppercase
+  addLogText(inputValue, true); //add user's text to log
 
   var entries = inputValue.split(" ");
   var command = entries[0];
-  
-  var isKnown =knownCommands.indexOf(command)!=-1;
-  if(!isKnown){
+
+  var isKnown = knownCommands.indexOf(command) != -1;
+  if (!isKnown) {
     addLogText("Command Unknown.");
   }
-  
 
-  if (entries.length>1) {
-    var roll = entries[entries.length-1];
-    if(roll)
-    callCommand(command, roll);
+  if (entries.length > 1) {
+    var roll = entries[entries.length - 1];
+    if (!isNaN(roll) && roll != "") {
+      //roll is number
+      roll = parseInt(roll);
+      callCommand(command, roll);
+    }
+  } else {
+    // if no roll on command
   }
 }
 
 function callCommand(command, roll) {
   switch (command) {
     case "Backdoor":
-      // code block
+      onBackdoor(roll);
       break;
     case "Level":
       // code block
