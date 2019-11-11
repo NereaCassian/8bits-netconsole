@@ -125,7 +125,16 @@ function inputEntered(inputValue) {
     
     
   } else{ // if multiple
-    
+    var lastWord = entries[length-1];
+    if(isNaN(lastWord) && lastWord != ""){
+      if(entries.length==2){
+        var command = entries[0];
+        var roll = entries[entries.length-1];
+        
+        callCommand(command,roll);
+        
+      }
+    }
     
     
   }
