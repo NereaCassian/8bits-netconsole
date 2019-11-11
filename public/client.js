@@ -79,14 +79,25 @@ input.addEventListener("keyup", function(event) {
 //else wait for number
 //then call function
 
+var knownCommands=["Move up","Move down","Backdoor","Pathfinder","Virus","Level","Attack","Eye-Dee","Eyedee","Move"];
+
+
 function inputEntered2(inputValue) {
   inputValue = inputValue.charAt(0).toUpperCase() + inputValue.slice(1);
   addLogText(inputValue, true);
 
   var entries = inputValue.split(" ");
   var command = entries[0];
-  if (entries.lengt) {
-    var roll = entries[1];
+  
+  var isKnown =knownCommands.indexOf(command)!=-1;
+  if(!isKnown){
+    addLogText("Command Unknown.");
+  }
+  
+
+  if (entries.length>1) {
+    var roll = entries[entries.length-1];
+    if(roll)
     callCommand(command, roll);
   }
 }
