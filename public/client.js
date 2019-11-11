@@ -60,7 +60,7 @@ function setUpHackerMode(){
 
 socket.on("load-map", function(loadedMap) {
   map=loadedMap;
-  console.log("")
+  console.log("new map added");
 });
 
 
@@ -306,6 +306,7 @@ function selectText(id) {
 
 function copyUrl(){
   var url=$("#url");
+ selectText("url");
   url.select;
   document.execCommand('copy');
 }

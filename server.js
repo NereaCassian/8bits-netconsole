@@ -42,17 +42,13 @@ const loadData = path => {
 io.on("connection", function(socket) {
   
   socket.on("new-net-space", function(name, netSpace) {
-   // var retrieved = JSON.parse(loadData("/app/record.json"))["Example"];
     var oldJson = JSON.parse(loadData("/app/record.json"));
     oldJson[name] = netSpace;
-   // console.log(oldJson);
     storeData(oldJson, "/app/record.json");
   });
-  
-  
-   socket.on("get-net-space", function(name) {
+
+  socket.on("get-net-space", function(name) {
     var netspace = JSON.parse(loadData("/app/record.json"))[name];
-     socket.broadcast.emit("load-map",netspace);
-   });
-  
+    socket.emit("load-map", netspace);
+  });
 });
