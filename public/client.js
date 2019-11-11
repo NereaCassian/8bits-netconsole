@@ -126,19 +126,19 @@ function inputEntered2(inputValue) { //on input
 
 
 
-function callCommand(command, roll) {
+function callCommand(command, roll, extraInfo) {
   switch (command) {
     case "Backdoor":
       onBackdoor(roll);
       break;
     case "Level":
-    //  onLevel();
+      onLevel();
       break;
     case "Pathfinder":
       // code block
       break;
-    case "Move Down":
-      // code block
+    case "Move":
+      move(extraInfo);
       break;
     case "Move Up":
       // code block
@@ -146,6 +146,15 @@ function callCommand(command, roll) {
     // default:
     //   // code block
   }
+}
+
+
+function onLevel(){
+  addLogText("You are on <b>Level " + currentLevel + ": " + map[currentLevel][1] + "</b>", false);
+}
+
+function move(direction){
+  
 }
 
 function inputEntered(inputValue) {
