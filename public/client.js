@@ -85,6 +85,7 @@ function inputEntered(inputValue) {
   //backdoor (roll)
 
   if (inputValue == "Backdoor") {
+     console.log("Backdoor dv = "+map[currentLevel][2]);
     rollIsFor = "Backdoor";
     addLogText("Roll <b> 1d10 </b>+ Interface.");
   } else if (inputValue == "Pathfinder") {
@@ -171,6 +172,8 @@ function addLogText(text, user, damage) {
 }
 
 function onBackdoor(roll) {
+  console.log("Backdoor Roll = "+roll+" dv = "+map[currentLevel][2]);
+  console.log(roll+" is bigger than "+map[currentLevel][2]+" = "+(roll>=map[currentLevel][2]));
   if (levelStatus != "Password")
     addLogText("Backdoor can only be used on a password.");
   else if (roll >= map[currentLevel][2]) {
