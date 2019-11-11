@@ -80,6 +80,13 @@ function inputEntered(inputValue) {
   inputValue = inputValue.charAt(0).toUpperCase() + inputValue.slice(1);
   addLogText(inputValue, true);
 
+  var entries=inputValue.split(" ");
+  inputValue=entries[0];
+  
+  
+  
+  
+  
   //split
   //if last part is a number
   //backdoor (roll)
@@ -173,8 +180,6 @@ function addLogText(text, user, damage) {
 
 function onBackdoor(roll) {
   var dv=parseInt(map[currentLevel][2],10);
-  // console.log("Backdoor Roll = "+roll+" dv = "+map[currentLevel][2]);
-  // console.log(roll+" is bigger than "+map[currentLevel][2]+" = "+(roll>=dv));
   if (levelStatus != "Password")
     addLogText("Backdoor can only be used on a password.");
   else if (roll >= dv) {
