@@ -76,6 +76,19 @@ input.addEventListener("keyup", function(event) {
   }
 });
 
+
+//input value
+//split
+//if number
+//call new function 
+//else wait for number
+//then call function
+
+
+
+
+
+
 function inputEntered(inputValue) {
   inputValue = inputValue.charAt(0).toUpperCase() + inputValue.slice(1);
   addLogText(inputValue, true);
