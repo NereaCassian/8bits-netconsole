@@ -92,11 +92,11 @@ var knownCommands = [
   "Move"
 ];
 
-var noRollNeeded = ["Level","Move","Move up","Move down"];
+var noRollNeeded = ["Level", "Move", "Move up", "Move down"];
 
-// prettier-ignore
-function inputEntered2(inputValue) { //on input
-  
+//on input
+function inputEntered2(inputValue) { 
+
   inputValue = inputValue.charAt(0).toUpperCase() + inputValue.slice(1); //make first letter Uppercase
   addLogText(inputValue, true); //add user's text to log
 
@@ -105,26 +105,26 @@ function inputEntered2(inputValue) { //on input
 
   var isKnown = knownCommands.indexOf(command) != -1;
   var rollNeeded = noRollNeeded.indexOf(command) != -1;
-  
+
   if (!isKnown) {
     addLogText("Command Unknown.");
   }
 
-  if(!rollNeeded) callCommand(command);
-  
-  if (entries.length > 1) {
-    var roll = entries[entries.length - 1];
-    if (!isNaN(roll) && roll != "") {  //roll is number
-     
-      roll = parseInt(roll);
-      callCommand(command, roll);
+  if (!rollNeeded) callCommand(command);
+  else {
+    if (entries.length > 1) {
+      var roll = entries[entries.length - 1];
+      if (!isNaN(roll) && roll != "") {
+        //roll is number
+
+        roll = parseInt(roll);
+        callCommand(command, roll);
+      }
+    } else {
+      // if no roll on command
     }
-  } else { // if no roll on command
-    
   }
 }
-
-
 
 function callCommand(command, roll, extraInfo) {
   switch (command) {
@@ -148,13 +148,50 @@ function callCommand(command, roll, extraInfo) {
   }
 }
 
-
-function onLevel(){
-  addLogText("You are on <b>Level " + currentLevel + ": " + map[currentLevel][1] + "</b>", false);
+function onLevel() {
+  addLogText(
+    "You are on <b>Level " +
+      currentLevel +
+      ": " +
+      map[currentLevel][1] +
+      "</b>",
+    false
+  );
 }
 
-function move(direction){
-  
+function move(direction) {
+  if (direction == "up" || direction == "Up") {
+    currentLevel--;
+    levelStatus = map[currentLevel][1];
+    addLogText(
+      "You are on <b>Level " +
+        currentLevel +
+        ": " +
+        map[currentLevel][1] +
+        "</b>",
+      false
+    );
+  } else if (direction == "down" || direction == "Down") {
+    if (levelStatus == "Password") {
+      addLogText("You cannot move down past a password.");
+    } else {
+      currentLevel++;
+      if (currentLevel => map.length) {
+        //think equal
+        currentLevel--;
+        addLogText("You are already on the last level.");
+      } else {
+        levelStatus = map[currentLevel][1];
+        addLogText(
+          "You are on <b>Level " +
+            currentLevel +
+            ": " +
+            map[currentLevel][1] +
+            "</b>"
+        );
+      }
+    }
+  }
 }
 
 function inputEntered(inputValue) {
