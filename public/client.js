@@ -27,9 +27,9 @@ if (createMode) {
 }
 
 var map = [
-  ["Level 0", "Empty", 0, ""],
-  ["Level 1", "Password", 11, "12345"],
-  ["Level 2", "File", 15, "Security Plans"]
+  [0, "Empty", 0, ""],
+  [1, "Password", 11, "12345"],
+  [2, "File", 15, "Security Plans"]
 ];
 var currentLevel = 0;
 var levelStatus = "";
@@ -102,14 +102,24 @@ function inputEntered(inputValue) {
   
   var entries = inputValue.split(" ");
   if(entries.length ==1){
-    if(!isNaN(inputValue) && inputValue != ""){
-      
+    if(!isNaN(inputValue) && inputValue != ""){ //if one word roll
+       inputValue = parseInt(inputValue);
+      callCommand(rollIsFor, inputValue);
+       rollIsFor = "";
     }
     else{ //1 word command not a number
-       addLogText("Roll <b> 1d10 </b>+ Interface.");
-      rollIsFor = inputValue;
+      var command= inputValue;
+       var isKnown = knownCommands.indexOf(command) != -1;
+  var rollNeeded = noRollNeeded.indexOf(command) == -1;
       
-      
+      if(!isKnown){
+         addLogText("Command Unknown.");
+      }else if(!rollNeeded){
+        callCommand(command);
+      }else{ //roll is needed
+      addLogText("Roll <b> 1d10 </b>+ Interface.");
+      rollIsFor = command;
+      }
     }
     
     
@@ -176,7 +186,7 @@ function callCommand(command, roll, extraInfo) {
       onLevel();
       break;
     case "Pathfinder":
-      // code block
+      onPathFinder(roll);
       break;
     case "Move":
       move(extraInfo);
@@ -235,7 +245,9 @@ function move(direction) {
   }
 }
 
-function onPathfinder(roll) {}
+function onPathfinder(roll) {
+  addLogText("Pathfindererere");
+}
 
 function inputEntered2(inputValue) {
   inputValue = inputValue.charAt(0).toUpperCase() + inputValue.slice(1);
