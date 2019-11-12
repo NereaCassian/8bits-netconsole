@@ -452,7 +452,7 @@ function generateMap() {
 
 function rollPasses(roll){
   var dv = map[currentLevel][2];
-  if(dv==""||dv==undefined) dv=0;
+  if(dv==""||dv==undefined) dv = 0;
   dv=parseInt(dv);
   roll=parseInt(roll);
   return roll >= dv;
