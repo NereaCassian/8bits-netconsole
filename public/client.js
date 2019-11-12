@@ -80,46 +80,53 @@ var knownCommands = [
   "Password"
 ];
 var noRollNeeded = ["Level", "Move", "Move up", "Move down"];
+
 //on input
 function inputEntered(inputValue) {
   inputValue = inputValue.charAt(0).toUpperCase() + inputValue.slice(1); //make first letter Uppercase
   addLogText(inputValue, true); //add user's text to log
   var entries = inputValue.split(" ");
-  if(entries.length ==1){
-    if(!isNaN(inputValue) && inputValue != ""){     //if one roll
+  if (entries.length == 1) {
+    if (!isNaN(inputValue) && inputValue != "") {
+      //if one roll
       inputValue = parseInt(inputValue);
       callCommand(rollIsFor, inputValue);
       rollIsFor = "";
+    } else {
+      //1 word command not a number
+      // var command = inputValue;
+      // var isKnown = knownCommands.indexOf(command) != -1;
+      // var rollNeeded = noRollNeeded.indexOf(command) == -1;
+      // if (!isKnown) {
+      //   if (command != "") addLogText("Command Unknown.");
+      // } else if (!rollNeeded) {
+      //   callCommand(command);
+      // } else {
+      //   //roll is needed
+      //   addLogText("Roll <b> 1d10 </b>+ Interface.");
+      //   rollIsFor = command;
+      // }
+      
+      onCommand(in);
     }
-    else{                                             //1 word command not a number
-      var command= inputValue;
-      var isKnown = knownCommands.indexOf(command) != -1;
-      var rollNeeded = noRollNeeded.indexOf(command) == -1;
-      if(!isKnown){
-        if(command!="") addLogText("Command Unknown.");
-      }else if(!rollNeeded){
-        callCommand(command);
-      }else{ //roll is needed
-        addLogText("Roll <b> 1d10 </b>+ Interface.");
-        rollIsFor = command;
-      }
-    }
-  } else{                                           // if multiple
+  } else {
+    // if multiple
     console.log("multiple words");
-    var lastWord = entries[length-1];
-    if(isNaN(lastWord) && lastWord != ""){
+    var lastWord = entries[length - 1];
+    if (isNaN(lastWord) && lastWord != "") {
       console.log("last is number");
-      if(entries.length==2){
+      if (entries.length == 2) {
         var command = entries[0];
-        var roll = entries[entries.length-1];
+        var roll = entries[entries.length - 1];
         //getting others for extra info
-        callCommand(command,roll);
-      } else{ //more than 2 entries
+        callCommand(command, roll);
+      } else {
+        //more than 2 entries
         // more than 2 and last is number
       }
-    } else{ //if last isn't number
+    } else {
+      //if last isn't number
       onCommand(inputValue);
-      
     }
   }
   // if (!isNaN(inputValue) && inputValue != "") {
@@ -130,23 +137,25 @@ function inputEntered(inputValue) {
   // } else commandEntered(inputValue);
 }
 
-function onCommand(inputValue){
+function onCommand(inputValue, roll) {
   console.log("onCommand called");
-   var command= inputValue;
-      var isKnown = knownCommands.indexOf(command) != -1;
-      var rollNeeded = noRollNeeded.indexOf(command) == -1;
-      if(!isKnown){
-        if(command!="") addLogText("Command Unknown.");
-      }else if(!rollNeeded){
-        callCommand(command);
-      }else{ //roll is needed
-        addLogText("Roll <b> 1d10 </b>+ Interface.");
-        rollIsFor = command;
-      }
+  var command = inputValue;
+  var isKnown = knownCommands.indexOf(command) != -1;
+  var rollNeeded = noRollNeeded.indexOf(command) == -1;
+  if (!isKnown) {
+    if (command != "") addLogText("Command Unknown.");
+  } else if (!rollNeeded) {
+    callCommand(command);
+  } else {
+    //roll is needed
+    if (!roll) {
+      addLogText("Roll <b> 1d10 </b>+ Interface.");
+      rollIsFor = command;
+    } else{
+      callCommand(command,roll);
+    }
+  }
 }
-
-
-
 
 // function commandEntered(inputValue) {
 //   inputValue = inputValue.charAt(0).toUpperCase() + inputValue.slice(1); //make first letter Uppercase
@@ -183,9 +192,6 @@ function onCommand(inputValue){
 //   }
 // }
 
-
-
-
 function callCommand(command, roll, extraInfo) {
   switch (command) {
     case "Backdoor":
@@ -200,23 +206,24 @@ function callCommand(command, roll, extraInfo) {
     case "Move":
       move(extraInfo);
       break;
-      case "Move down":
+    case "Move down":
       move("down");
       break;
-      case "Eye-Dee":
+    case "Eye-Dee":
       onEyeDee(roll);
       break;
-      case "EyeDee":
+    case "EyeDee":
       onEyeDee(roll);
       break;
-      case "Eyedee":
+    case "Eyedee":
       onEyeDee(roll);
       break;
   }
 }
 function onLevel() {
   addLogText(
-    "You are on <b>Level " + currentLevel +": " + map[currentLevel][1] +"</b>");
+    "You are on <b>Level " + currentLevel + ": " + map[currentLevel][1] + "</b>"
+  );
 }
 function move(direction) {
   if (direction == "up" || direction == "Up") {
@@ -224,10 +231,10 @@ function move(direction) {
     levelStatus = map[currentLevel][1];
     addLogText(
       "You are on <b>Level " +
-      currentLevel +
-      ": " +
-      map[currentLevel][1] +
-      "</b>",
+        currentLevel +
+        ": " +
+        map[currentLevel][1] +
+        "</b>",
       false
     );
   } else if (direction == "down" || direction == "Down") {
@@ -243,10 +250,10 @@ function move(direction) {
         levelStatus = map[currentLevel][1];
         addLogText(
           "You are on <b>Level " +
-          currentLevel +
-          ": " +
-          map[currentLevel][1] +
-          "</b>"
+            currentLevel +
+            ": " +
+            map[currentLevel][1] +
+            "</b>"
         );
       }
     }
@@ -281,10 +288,10 @@ function inputEntered2(inputValue) {
         levelStatus = map[currentLevel][1];
         addLogText(
           "You are on <b>Level " +
-          currentLevel +
-          ": " +
-          map[currentLevel][1] +
-          "</b>"
+            currentLevel +
+            ": " +
+            map[currentLevel][1] +
+            "</b>"
         );
       }
     }
@@ -293,10 +300,10 @@ function inputEntered2(inputValue) {
     levelStatus = map[currentLevel][1];
     addLogText(
       "You are on <b>Level " +
-      currentLevel +
-      ": " +
-      map[currentLevel][1] +
-      "</b>",
+        currentLevel +
+        ": " +
+        map[currentLevel][1] +
+        "</b>",
       false
     );
   } else if (inputValue == "Attack") {
@@ -309,10 +316,10 @@ function inputEntered2(inputValue) {
   } else if (inputValue == "Level") {
     addLogText(
       "You are on <b>Level " +
-      currentLevel +
-      ": " +
-      map[currentLevel][1] +
-      "</b>",
+        currentLevel +
+        ": " +
+        map[currentLevel][1] +
+        "</b>",
       false
     );
   } else if (
@@ -356,10 +363,10 @@ function onBackdoor(roll) {
     levelStatus = map[currentLevel][1];
     addLogText(
       "You are on <b>Level " +
-      currentLevel +
-      ": " +
-      map[currentLevel][1] +
-      "</b>",
+        currentLevel +
+        ": " +
+        map[currentLevel][1] +
+        "</b>",
       false
     );
   } else {
@@ -466,8 +473,8 @@ function copyUrl() {
   url.select;
   document.execCommand("copy");
 }
-function openLink(){
+function openLink() {
   var link = $("#url").text();
-  link = "http://"+link;
+  link = "http://" + link;
   window.open(link);
 }
