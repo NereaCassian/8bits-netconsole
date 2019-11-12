@@ -275,7 +275,9 @@ function move(direction) {
       addLogText("You cannot move down past a password.");
     } else {
       currentLevel++;
-      if (currentLevel => map.length) {
+      console.log("new level = "+currentLevel);
+      console.log("map length = "+map.length);
+      if (currentLevel >= map.length) {
         //think equal
         currentLevel--;
         addLogText("You are already on the last level.");
