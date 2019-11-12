@@ -114,7 +114,7 @@ function inputEntered(inputValue) {
     }
   } else {
     // if multiple words
-    console.log("multiple words");
+  //  console.log("multiple words");
 
     var command = entries[0];
     var roll ="";
@@ -168,7 +168,7 @@ function inputEntered(inputValue) {
 // } else commandEntered(inputValue);
 
 function onCommand(command, roll, extraInfo) {
-  console.log("onCommand called "+command +" roll = "+roll+" info = "+extraInfo);
+  // console.log("onCommand called "+command +" roll = "+roll+" info = "+extraInfo);
   var isKnown = knownCommands.indexOf(command) != -1;
   var rollNeeded = noRollNeeded.indexOf(command) == -1;
   if (!isKnown) {
@@ -223,7 +223,6 @@ function onCommand(command, roll, extraInfo) {
 // }
 
 function callCommand(command, roll, extraInfo) {
- // console.log("call command extra info = "+extraInfo);
   switch (command) {
     case "Backdoor":
       onBackdoor(roll);
@@ -269,7 +268,6 @@ function onLevel() {
   );
 }
 function move(direction) {
-  console.log("move function "+direction);
   if (direction == "up" || direction == "Up") {
     currentLevel--;
     levelStatus = map[currentLevel][1];
@@ -424,7 +422,7 @@ function onJack(extraInfo){
 function onEyeDee(roll) {
  // console.log("on eye dee here ");
   if (levelStatus != "File") addLogText("Eye-Dee can only be used on a File.");
-  else if (roll >= map[currentLevel][2]) {
+  else if (rollPasses(roll)) {
     addLogText("Success");
     addLogText("File contents: " + map[currentLevel][3]);
   } else {
@@ -455,6 +453,8 @@ function rollPasses(roll){
   if(dv==""||dv==undefined) dv = 0;
   dv=parseInt(dv);
   roll=parseInt(roll);
+  
+  console.log("roll passes roll="+roll+" dv = "+dv);
   return roll >= dv;
 }
 //------------------------------------------------------------------------------------- Create mode code --------------------------------------
