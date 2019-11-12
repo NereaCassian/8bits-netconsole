@@ -151,7 +151,7 @@ function onCommand(command, roll, extraInfo) {
       addLogText("Roll <b> 1d10 </b>+ Interface.");
       rollIsFor = command;
     } else{
-      callCommand(command,roll);
+      callCommand(command,roll,extraInfo);
     }
   }
 }
