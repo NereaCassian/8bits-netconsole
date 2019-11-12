@@ -182,9 +182,7 @@ function callCommand(command, roll, extraInfo) {
   }
 }
 function onLevel() {
-  addLogText(
-    "You are on <b>Level " + currentLevel + ": " + map[currentLevel][1] + "</b>"
-  );
+  addLogText("You are on <b>Level " + currentLevel + ": " + map[currentLevel][1] + "</b>");
 }
 function move(direction) {
   if (direction == "up" || direction == "Up") {
@@ -234,9 +232,10 @@ function onBackdoor(roll) {
     addLogText("Backdoor can only be used on a password.");
   else if (rollPasses(roll)) {
     addLogText("Success");
-    currentLevel++;
-    levelStatus = map[currentLevel][1];
-    addLogText("You are on <b>Level " +currentLevel +": " +map[currentLevel][1] +"</b>");
+    // currentLevel++;
+    // levelStatus = map[currentLevel][1];
+    // addLogText("You are on <b>Level " +currentLevel +": " +map[currentLevel][1] +"</b>");
+    move("down");
   } else {
     addLogText("Backdoor attempt was unsuccessful.");
   }
@@ -271,6 +270,8 @@ function onEyeDee(roll) {
 
 function onPassword(password){
   addLogText("Password attempted <b>"+password+"</b>.");
+  var correctPassword = map[currentLevel][3];
+  
   //if level is password
   
 }
