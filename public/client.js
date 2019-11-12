@@ -77,9 +77,12 @@ var knownCommands = [
   "Eye-Dee",
   "Eyedee",
   "Move",
-  "Password"
+  "Password",
+  "Slide",
+  "Banhammer",
+  "Jack"
 ];
-var noRollNeeded = ["Level", "Move", "Move up", "Move down","Password"];
+var noRollNeeded = ["Level", "Move", "Move up", "Move down","Password","Jack"];
 
 //on input
 function inputEntered(inputValue) {
@@ -246,8 +249,17 @@ function callCommand(command, roll, extraInfo) {
     case "Eyedee":
       onEyeDee(roll);
       break;
-      case "Password":
+    case "Password":
       onPassword(extraInfo);
+      break;
+    case "Slide":
+     onSlide(roll);
+      break;
+    case "Banhammer":
+     onBanhammer(roll);
+      break;
+    case "Jack":
+     onJack(extraInfo);
       break;
   }
 }
@@ -261,22 +273,12 @@ function move(direction) {
   if (direction == "up" || direction == "Up") {
     currentLevel--;
     levelStatus = map[currentLevel][1];
-    addLogText(
-      "You are on <b>Level " +
-        currentLevel +
-        ": " +
-        map[currentLevel][1] +
-        "</b>"
-    );
+    addLogText("You are on <b>Level " +currentLevel +": " +map[currentLevel][1] +"</b>");
   } else if (direction == "down" || direction == "Down") {
-    
-    console.log("moving in a downwards direction");
-    if (levelStatus == "Password") {
-      addLogText("You cannot move down past a password.");
+    if (levelStatus == "Password"||levelStatus=="Hellhound") {
+      addLogText("You cannot move down past a "+levelStatus+".");
     } else {
       currentLevel++;
-      console.log("new level = "+currentLevel);
-      console.log("map length = "+map.length);
       if (currentLevel >= map.length) {
         //think equal
         currentLevel--;
@@ -406,6 +408,24 @@ function onBackdoor(roll) {
     );
   } else {
     addLogText("Backdoor attempt was unsuccessful.");
+  }
+}
+
+
+function onSlide(roll){
+  
+  addLogText("Slide with attempt of <b>"+roll+"</b>.");
+  
+}
+
+function onBanhammer(roll){
+  addLogText("Banhammer with attempt of <b>"+roll+"</b>.");
+}
+function onJack(extraInfo){
+  if(extraInfo=="Out"||extraInfo=="out"){
+  addLogText("You have successfully left the netspace.")
+  }else{
+    addLogText("Command Unknown");
   }
 }
 function onEyeDee(roll) {
