@@ -220,7 +220,7 @@ function onCommand(command, roll, extraInfo) {
 // }
 
 function callCommand(command, roll, extraInfo) {
-  console.log("call command extra info = "+extraInfo);
+ // console.log("call command extra info = "+extraInfo);
   switch (command) {
     case "Backdoor":
       onBackdoor(roll);
@@ -407,7 +407,7 @@ function onBackdoor(roll) {
   }
 }
 function onEyeDee(roll) {
-  console.log("on eye dee here ");
+ // console.log("on eye dee here ");
   if (levelStatus != "File") addLogText("Eye-Dee can only be used on a File.");
   else if (roll >= map[currentLevel][2]) {
     addLogText("Success");
@@ -442,7 +442,6 @@ function addNewLevel() {
   children[3].value = "";
   children[3].placeholder = "";
   newLevel.id = "Level " + makingLevel;
-  //newLevel.children
   makingLevel++;
   var create = document.getElementById("create");
   create.appendChild(newLevel);
