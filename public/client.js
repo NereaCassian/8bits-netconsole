@@ -466,3 +466,8 @@ function copyUrl() {
   url.select;
   document.execCommand("copy");
 }
+function openLink(){
+  var link = $("#url").text();
+  link = "http://"+link;
+  window.open(link);
+}
