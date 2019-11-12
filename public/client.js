@@ -60,12 +60,7 @@ input.addEventListener("keyup", function(event) {
     input.value = "";
   }
 });
-//input value
-//split
-//if number
-//call new function
-//else wait for number
-//then call function
+
 var knownCommands = [
   "Move up",
   "Move down",
@@ -76,6 +71,7 @@ var knownCommands = [
   "Attack",
   "Eye-Dee",
   "Eyedee",
+  "Eye",
   "Move",
   "Password",
   "Slide",
@@ -120,7 +116,7 @@ function inputEntered(inputValue) {
 }
 
 function onCommand(command, roll, extraInfo) {
-  // console.log("onCommand called "+command +" roll = "+roll+" info = "+extraInfo);
+   console.log("onCommand called "+command +" roll = "+roll+" info = "+extraInfo);
   var isKnown = knownCommands.indexOf(command) != -1;
   var rollNeeded = noRollNeeded.indexOf(command) == -1;
   if (!isKnown) {
@@ -163,6 +159,10 @@ function callCommand(command, roll, extraInfo) {
       break;
     case "Eyedee":
       onEyeDee(roll);
+      break;
+    case "Eye":
+      console.log("eyeye "+extraInfo);
+      if(extraInfo=="Dee"|| extraInfo=="dee") onEyeDee(roll);
       break;
     case "Password":
       onPassword(extraInfo);
@@ -250,6 +250,7 @@ function onJack(extraInfo){
   }
 }
 function onEyeDee(roll) {
+  console.log("onEyeDee roll = "+roll);
   if (levelStatus != "File") addLogText("Eye-Dee can only be used on a File.");
   else if (rollPasses(roll)) {
     addLogText("Success");
