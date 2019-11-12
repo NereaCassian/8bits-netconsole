@@ -118,7 +118,7 @@ function inputEntered(inputValue) {
 }
 
 function onCommand(command, roll, extraInfo) {
-   console.log("onCommand called "+command +" roll = "+roll+" info = "+extraInfo);
+ //  console.log("onCommand called "+command +" roll = "+roll+" info = "+extraInfo);
   var isKnown = knownCommands.indexOf(command) != -1;
   var rollNeeded = noRollNeeded.indexOf(command) == -1;
   if (!isKnown) {
@@ -188,6 +188,14 @@ function callCommand(command, roll, extraInfo) {
 function onLevel() {
   addLogText("You are on <b>Level " + currentLevel + ": " + map[currentLevel][1] + "</b>");
   //get public info and add
+  
+  if(levelStatus == "Virus"){
+    addLogText("Virus is "+map[currentLevel][3]);
+  }else if(levelStatus=="Control Node"){
+    addLogText("Control Node controls "+map[currentLevel][3]);
+  }
+  
+  
 }
 function move(direction) {
   if (direction == "up" || direction == "Up") {
@@ -197,7 +205,7 @@ function move(direction) {
       currentLevel++;
     }else{
     levelStatus = map[currentLevel][1];
-    addLogText("You are on <b>Level " +currentLevel +": " +map[currentLevel][1] +"</b>");
+    onLevel();
     }
   } else if (direction == "down" || direction == "Down") {
     if (levelStatus == "Password"||levelStatus=="Hellhound") {
@@ -210,13 +218,7 @@ function move(direction) {
         addLogText("You are already on the last level.");
       } else {
         levelStatus = map[currentLevel][1];
-        addLogText(
-          "You are on <b>Level " +
-            currentLevel +
-            ": " +
-            map[currentLevel][1] +
-            "</b>"
-        );
+        onLevel();
       }
     }
   }
@@ -262,7 +264,7 @@ function onJack(extraInfo){
   }
 }
 function onEyeDee(roll) {
-  console.log("onEyeDee roll = "+roll);
+ // console.log("onEyeDee roll = "+roll);
   if (levelStatus != "File") addLogText("Eye-Dee can only be used on a File.");
   else if (rollPasses(roll)) {
     addLogText("Success");
@@ -286,7 +288,11 @@ function onPassword(password){
 }
 
 function onControl(roll){
-  addLogText("on control "+roll);
+  if(rollPasses(roll)){
+     addLogText("You have successfully taken control of this node.");
+  }else{
+     addLogText("Control attempt failed.");
+  }
 }
 
 function onPathFinder(roll) {
