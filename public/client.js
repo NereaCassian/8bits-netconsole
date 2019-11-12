@@ -79,7 +79,7 @@ var knownCommands = [
   "Move",
   "Password"
 ];
-var noRollNeeded = ["Level", "Move", "Move up", "Move down"];
+var noRollNeeded = ["Level", "Move", "Move up", "Move down","Password"];
 
 //on input
 function inputEntered(inputValue) {
@@ -106,8 +106,8 @@ function inputEntered(inputValue) {
       //   addLogText("Roll <b> 1d10 </b>+ Interface.");
       //   rollIsFor = command;
       // }
-      var inputValuejo = inputValue;
-      onCommand(inputValuejo);
+    
+      onCommand(inputValue);
     }
   } else {
     // if multiple words
@@ -122,7 +122,7 @@ function inputEntered(inputValue) {
     var lastWord = entries[entries.length - 1];
     if (isNaN(lastWord)) {
       //if last word is not number
-      extraInfo = extraInfo + " " + lastWord;
+      extraInfo = extraInfo + lastWord;
     } else {
       // if last word is number
        roll = lastWord;
@@ -165,19 +165,20 @@ function inputEntered(inputValue) {
 // } else commandEntered(inputValue);
 
 function onCommand(command, roll, extraInfo) {
-  console.log("onCommand called "+command +" "+roll+" "+extraInfo);
+  console.log("onCommand called "+command +" roll = "+roll+" info = "+extraInfo);
   var isKnown = knownCommands.indexOf(command) != -1;
   var rollNeeded = noRollNeeded.indexOf(command) == -1;
   if (!isKnown) {
     if (command != "") addLogText("Command Unknown.");
   } else if (!rollNeeded) {
-    callCommand(command);
+    callCommand(command,roll,extraInfo);
   } else {
     //roll is needed
     if (!roll) {
       addLogText("Roll <b> 1d10 </b>+ Interface.");
       rollIsFor = command;
     } else {
+        console.log("on command callign extra info = "+extraInfo);
       callCommand(command, roll, extraInfo);
     }
   }
@@ -219,6 +220,7 @@ function onCommand(command, roll, extraInfo) {
 // }
 
 function callCommand(command, roll, extraInfo) {
+  console.log("call command extra info = "+extraInfo);
   switch (command) {
     case "Backdoor":
       onBackdoor(roll);
@@ -230,7 +232,6 @@ function callCommand(command, roll, extraInfo) {
       onPathFinder(roll);
       break;
     case "Move":
-      
       move(extraInfo);
       break;
     case "Move down":
@@ -245,6 +246,9 @@ function callCommand(command, roll, extraInfo) {
     case "Eyedee":
       onEyeDee(roll);
       break;
+      case "Password":
+      onPassword(extraInfo);
+      break;
   }
 }
 function onLevel() {
@@ -253,7 +257,7 @@ function onLevel() {
   );
 }
 function move(direction) {
-  console.log()
+  console.log("move function "+direction);
   if (direction == "up" || direction == "Up") {
     currentLevel--;
     levelStatus = map[currentLevel][1];
@@ -265,6 +269,8 @@ function move(direction) {
         "</b>"
     );
   } else if (direction == "down" || direction == "Down") {
+    
+    console.log("moving in a downwards direction");
     if (levelStatus == "Password") {
       addLogText("You cannot move down past a password.");
     } else {
@@ -291,7 +297,7 @@ function move(direction) {
 //   inputValue = inputValue.charAt(0).toUpperCase() + inputValue.slice(1);
 //   addLogText(inputValue, true);
 //   var entries = inputValue.split(" ");
-//   inputValue = entries[0];
+// inputValue = entries[0];
 //   //split
 //   //if last part is a number
 //   //backdoor (roll)
@@ -409,6 +415,11 @@ function onEyeDee(roll) {
   } else {
     addLogText("Eye-Dee attempt was unsuccessful.");
   }
+}
+
+
+function onPassword(password){
+  addLogText("Password attempted <b>"+password+"</b>.");
 }
 function onPathFinder(roll) {
   generateMap();
