@@ -183,6 +183,7 @@ function callCommand(command, roll, extraInfo) {
 }
 function onLevel() {
   addLogText("You are on <b>Level " + currentLevel + ": " + map[currentLevel][1] + "</b>");
+  //get public info and add
 }
 function move(direction) {
   if (direction == "up" || direction == "Up") {
@@ -235,7 +236,7 @@ function onBackdoor(roll) {
     // currentLevel++;
     // levelStatus = map[currentLevel][1];
     // addLogText("You are on <b>Level " +currentLevel +": " +map[currentLevel][1] +"</b>");
-    move("down");
+    nextLevelDown();
   } else {
     addLogText("Backdoor attempt was unsuccessful.");
   }
@@ -295,6 +296,18 @@ function rollPasses(roll){
   
   console.log("roll passes roll= "+roll+" dv = "+dv);
   return roll >= dv;
+}
+
+function nextLevelDown(){
+  currentLevel++;
+  if (currentLevel >= map.length) {
+        //think equal
+        currentLevel--;
+        addLogText("You are already on the last level.");
+      } else {
+        levelStatus = map[currentLevel][1];
+       onLevel();
+      }
 }
 //------------------------------------------------------------------------------------- Create mode code --------------------------------------
 function addNewLevel() {
