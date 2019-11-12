@@ -109,11 +109,10 @@ function inputEntered(inputValue) {
       var inputValuejo=inputValue;
       onCommand(inputValuejo);
     }
-  } else {
-    // if multiple
+  } else { // if multiple words
     console.log("multiple words");
-    var lastWord = entries[length - 1];
-    if (isNaN(lastWord) && lastWord != "") {
+    var lastWord = entries[entries.length - 1];
+    if (!isNaN(lastWord)) {
       console.log("last is number");
       if (entries.length == 2) {
         var command = entries[0];
