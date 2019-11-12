@@ -82,7 +82,7 @@ var knownCommands = [
   "Banhammer",
   "Jack"
 ];
-var noRollNeeded = ["Level", "Move", "Move up", "Move down","Password","Jack"];
+var noRollNeeded = ["Level", "Move","Password","Jack"];
 
 //on input
 function inputEntered(inputValue) {
@@ -394,7 +394,7 @@ function onBackdoor(roll) {
   var dv = parseInt(map[currentLevel][2], 10);
   if (levelStatus != "Password")
     addLogText("Backdoor can only be used on a password.");
-  else if (roll >= dv) {
+  else if (rollPasses(roll)) {
     addLogText("Success");
     currentLevel++;
     levelStatus = map[currentLevel][1];
@@ -423,7 +423,7 @@ function onBanhammer(roll){
 }
 function onJack(extraInfo){
   if(extraInfo=="Out"||extraInfo=="out"){
-  addLogText("You have successfully left the netspace.")
+  addLogText("You have left the netspace.")
   }else{
     addLogText("Command Unknown");
   }
@@ -442,6 +442,8 @@ function onEyeDee(roll) {
 
 function onPassword(password){
   addLogText("Password attempted <b>"+password+"</b>.");
+  //if level is password
+  
 }
 function onPathFinder(roll) {
   generateMap();
@@ -453,6 +455,15 @@ function generateMap() {
     visibleMap += "Level " + map[i][0] + ": " + map[i][1] + "<br>";
   }
   addLogText(visibleMap);
+}
+
+function rollPasses(roll){
+  
+  var dv = map[currentLevel][2];
+  if(dv==""||dv==undefined) dv=0;
+  dv=parseInt(dv);
+  roll=parseInt(roll);
+  return roll>=dv;
 }
 //------------------------------------------------------------------------------------- Create mode code --------------------------------------
 function addNewLevel() {
