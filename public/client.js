@@ -106,8 +106,8 @@ function inputEntered(inputValue) {
       //   addLogText("Roll <b> 1d10 </b>+ Interface.");
       //   rollIsFor = command;
       // }
-      
-      onCommand(in);
+      var inputValuejo=inputValue;
+      onCommand(inputValuejo);
     }
   } else {
     // if multiple
@@ -137,9 +137,8 @@ function inputEntered(inputValue) {
   // } else commandEntered(inputValue);
 }
 
-function onCommand(inputValue, roll) {
+function onCommand(command, roll, extraInfo) {
   console.log("onCommand called");
-  var command = inputValue;
   var isKnown = knownCommands.indexOf(command) != -1;
   var rollNeeded = noRollNeeded.indexOf(command) == -1;
   if (!isKnown) {
