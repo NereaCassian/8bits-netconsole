@@ -270,12 +270,16 @@ function onEyeDee(roll) {
 
 
 function onPassword(password){
-  addLogText("Password attempted <b>"+password+"</b>.");
+  //addLogText("Password attempted <b>"+password+"</b>.");
   var correctPassword = map[currentLevel][3];
-  
-  //if level is password
-  
+  if(password ==correctPassword){ 
+    addLogText("Password <b>"+password+"</b> is correct.");
+    nextLevelDown();
+  }else{
+    addLogText("Incorrect Password");
+  }
 }
+
 function onPathFinder(roll) {
   generateMap();
   //then determine how much of the map to show
