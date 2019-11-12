@@ -78,7 +78,8 @@ var knownCommands = [
   "Slide",
   "Banhammer",
   "Jack",
-  "Cloak"
+  "Cloak",
+  "Control"
 ];
 var noRollNeeded = ["Level", "Move","Password","Jack"];
 
@@ -178,6 +179,9 @@ function callCommand(command, roll, extraInfo) {
       break;
     case "Jack":
      onJack(extraInfo);
+      break;
+    case "Control":
+    onControl(roll);
       break;
   }
 }
@@ -279,6 +283,10 @@ function onPassword(password){
   }else{
     addLogText("Incorrect Password");
   }
+}
+
+function onControl(roll){
+  addLogText("on control "+roll);
 }
 
 function onPathFinder(roll) {
