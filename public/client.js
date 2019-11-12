@@ -112,13 +112,43 @@ function inputEntered(inputValue) {
   } else { // if multiple words
     console.log("multiple words");
     var lastWord = entries[entries.length - 1];
+  
+     var command = entries[0];
+     for(var i=1;i<entries.length-1;i++){
+          extraInfo=extraInfo+" "+entries[i];
+        }
+    
+     if(!roll){
+          extraInfo=extraInfo+" "+entries[entries.length-1];
+        }
+    
+    
+    
+    
+    
     if (!isNaN(lastWord)) { //if last is number
       console.log("last is number");
       if (entries.length == 2) {
         var command = entries[0];
         var roll = entries[entries.length - 1];
         //getting others for extra info
-        callCommand(command, roll);
+        var extraInfo="";
+        for(var i=1;i<entries.length-1;i++){
+          extraInfo=extraInfo+" "+entries[i];
+        }
+        if(!roll){
+          extraInfo=extraInfo+" "+entries[entries.length-1];
+        }
+        
+        callCommand(command, roll, extraInfo);
+        
+        
+        
+        
+        
+        
+        
+        
       } else {
         //more than 2 entries
         // more than 2 and last is number
@@ -232,8 +262,7 @@ function move(direction) {
         currentLevel +
         ": " +
         map[currentLevel][1] +
-        "</b>",
-      false
+        "</b>"
     );
   } else if (direction == "down" || direction == "Down") {
     if (levelStatus == "Password") {
@@ -258,91 +287,91 @@ function move(direction) {
   }
 }
 
-function inputEntered2(inputValue) {
-  inputValue = inputValue.charAt(0).toUpperCase() + inputValue.slice(1);
-  addLogText(inputValue, true);
-  var entries = inputValue.split(" ");
-  inputValue = entries[0];
-  //split
-  //if last part is a number
-  //backdoor (roll)
-  if (inputValue == "Backdoor") {
-    console.log("Backdoor dv = " + map[currentLevel][2]);
-    rollIsFor = "Backdoor";
-    addLogText("Roll <b> 1d10 </b>+ Interface.");
-  } else if (inputValue == "Pathfinder") {
-    rollIsFor = "Pathfinder";
-    addLogText("Roll <b> 1d10 </b>+ Interface.");
-    //addLogText(map[currentLevel][0], false);
-  } else if (inputValue == "Move down") {
-    if (levelStatus == "Password") {
-      addLogText("You cannot move down past a password.");
-    } else {
-      currentLevel++;
-      if (currentLevel > map.length) {
-        currentLevel--;
-        addLogText("You are already on the last level.");
-      } else {
-        levelStatus = map[currentLevel][1];
-        addLogText(
-          "You are on <b>Level " +
-            currentLevel +
-            ": " +
-            map[currentLevel][1] +
-            "</b>"
-        );
-      }
-    }
-  } else if (inputValue == "Move up") {
-    currentLevel--;
-    levelStatus = map[currentLevel][1];
-    addLogText(
-      "You are on <b>Level " +
-        currentLevel +
-        ": " +
-        map[currentLevel][1] +
-        "</b>",
-      false
-    );
-  } else if (inputValue == "Attack") {
-    currentLevel--;
-    addLogText("Roll 3d6.");
-    addLogText("Take <b> 5 </b>damage.", false, true);
-  } else if (inputValue == "Jack out" || inputValue == "Jack Out") {
-    addLogText("You have left the netspace.", false);
-    currentLevel = 0;
-  } else if (inputValue == "Level") {
-    addLogText(
-      "You are on <b>Level " +
-        currentLevel +
-        ": " +
-        map[currentLevel][1] +
-        "</b>",
-      false
-    );
-  } else if (
-    inputValue == "Eye-Dee" ||
-    inputValue == "Eye-dee" ||
-    inputValue == "Eyedee" ||
-    inputValue == "EyeDee"
-  ) {
-    rollIsFor = "Eye-Dee";
-    addLogText("Roll <b> 1d10 </b>+ Interface.");
-  } else if (!isNaN(inputValue) && inputValue != "") {
-    //if is a number and not blank
-    //check what roll is for
-    if (rollIsFor == "Backdoor") onBackdoor(inputValue);
-    // addLogText(rollIsFor);
-    else if (rollIsFor == "Eye-Dee") {
-      onEyeDee(inputValue);
-    } else if (rollIsFor == "Pathfinder") {
-      onPathFinder(inputValue);
-    }
-    rollIsFor = "";
-  } else if (inputValue != "") {
-    addLogText("Command Unknown");
-  }
-}
+// function inputEntered2(inputValue) {
+//   inputValue = inputValue.charAt(0).toUpperCase() + inputValue.slice(1);
+//   addLogText(inputValue, true);
+//   var entries = inputValue.split(" ");
+//   inputValue = entries[0];
+//   //split
+//   //if last part is a number
+//   //backdoor (roll)
+//   if (inputValue == "Backdoor") {
+//     console.log("Backdoor dv = " + map[currentLevel][2]);
+//     rollIsFor = "Backdoor";
+//     addLogText("Roll <b> 1d10 </b>+ Interface.");
+//   } else if (inputValue == "Pathfinder") {
+//     rollIsFor = "Pathfinder";
+//     addLogText("Roll <b> 1d10 </b>+ Interface.");
+//     //addLogText(map[currentLevel][0], false);
+//   } else if (inputValue == "Move down") {
+//     if (levelStatus == "Password") {
+//       addLogText("You cannot move down past a password.");
+//     } else {
+//       currentLevel++;
+//       if (currentLevel > map.length) {
+//         currentLevel--;
+//         addLogText("You are already on the last level.");
+//       } else {
+//         levelStatus = map[currentLevel][1];
+//         addLogText(
+//           "You are on <b>Level " +
+//             currentLevel +
+//             ": " +
+//             map[currentLevel][1] +
+//             "</b>"
+//         );
+//       }
+//     }
+//   } else if (inputValue == "Move up") {
+//     currentLevel--;
+//     levelStatus = map[currentLevel][1];
+//     addLogText(
+//       "You are on <b>Level " +
+//         currentLevel +
+//         ": " +
+//         map[currentLevel][1] +
+//         "</b>",
+//       false
+//     );
+//   } else if (inputValue == "Attack") {
+//     currentLevel--;
+//     addLogText("Roll 3d6.");
+//     addLogText("Take <b> 5 </b>damage.", false, true);
+//   } else if (inputValue == "Jack out" || inputValue == "Jack Out") {
+//     addLogText("You have left the netspace.", false);
+//     currentLevel = 0;
+//   } else if (inputValue == "Level") {
+//     addLogText(
+//       "You are on <b>Level " +
+//         currentLevel +
+//         ": " +
+//         map[currentLevel][1] +
+//         "</b>",
+//       false
+//     );
+//   } else if (
+//     inputValue == "Eye-Dee" ||
+//     inputValue == "Eye-dee" ||
+//     inputValue == "Eyedee" ||
+//     inputValue == "EyeDee"
+//   ) {
+//     rollIsFor = "Eye-Dee";
+//     addLogText("Roll <b> 1d10 </b>+ Interface.");
+//   } else if (!isNaN(inputValue) && inputValue != "") {
+//     //if is a number and not blank
+//     //check what roll is for
+//     if (rollIsFor == "Backdoor") onBackdoor(inputValue);
+//     // addLogText(rollIsFor);
+//     else if (rollIsFor == "Eye-Dee") {
+//       onEyeDee(inputValue);
+//     } else if (rollIsFor == "Pathfinder") {
+//       onPathFinder(inputValue);
+//     }
+//     rollIsFor = "";
+//   } else if (inputValue != "") {
+//     addLogText("Command Unknown");
+//   }
+// }
 function addLogText(text, user, damage) {
   var userText = document.createElement("P");
   userText.innerHTML = text;
@@ -383,6 +412,7 @@ function onEyeDee(roll) {
 }
 function onPathFinder(roll) {
   generateMap();
+  //then determine how much of the map to show
 }
 function generateMap() {
   var visibleMap = "";
