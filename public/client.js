@@ -112,7 +112,7 @@ function inputEntered(inputValue) {
   } else { // if multiple words
     console.log("multiple words");
     var lastWord = entries[entries.length - 1];
-    if (!isNaN(lastWord)) {
+    if (!isNaN(lastWord)) { //if last is number
       console.log("last is number");
       if (entries.length == 2) {
         var command = entries[0];
