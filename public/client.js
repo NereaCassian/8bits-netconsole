@@ -270,8 +270,9 @@ function onEyeDee(roll) {
 
 
 function onPassword(password){
-  //addLogText("Password attempted <b>"+password+"</b>.");
+  
   var correctPassword = map[currentLevel][3];
+  //console.log("password = "+password+" correctPassword = "+correctPassword+" is correct ="+(password==correctPassword));
   if(password ==correctPassword){ 
     addLogText("Password <b>"+password+"</b> is correct.");
     nextLevelDown();
