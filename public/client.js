@@ -70,6 +70,7 @@ var knownCommands = [
   "Level",
   "Attack",
   "Eye-Dee",
+  "Eye-dee",
   "Eyedee",
   "Eye",
   "Move",
@@ -160,9 +161,11 @@ function callCommand(command, roll, extraInfo) {
     case "Eyedee":
       onEyeDee(roll);
       break;
+    case "Eye-dee":
+      onEyeDee(roll);
+      break;
     case "Eye":
-      console.log("eyeye "+extraInfo);
-      if(extraInfo=="Dee"|| extraInfo=="dee") onEyeDee(roll);
+        onEyeDee(roll);
       break;
     case "Password":
       onPassword(extraInfo);
@@ -186,8 +189,13 @@ function onLevel() {
 function move(direction) {
   if (direction == "up" || direction == "Up") {
     currentLevel--;
+    if(currentLevel<0){
+      addLogText("You are already at the top level.");
+      currentLevel++;
+    }else{
     levelStatus = map[currentLevel][1];
     addLogText("You are on <b>Level " +currentLevel +": " +map[currentLevel][1] +"</b>");
+    }
   } else if (direction == "down" || direction == "Down") {
     if (levelStatus == "Password"||levelStatus=="Hellhound") {
       addLogText("You cannot move down past a "+levelStatus+".");
@@ -284,7 +292,7 @@ function rollPasses(roll){
   dv=parseInt(dv);
   roll=parseInt(roll);
   
-  console.log("roll passes roll="+roll+" dv = "+dv);
+  console.log("roll passes roll= "+roll+" dv = "+dv);
   return roll >= dv;
 }
 //------------------------------------------------------------------------------------- Create mode code --------------------------------------
