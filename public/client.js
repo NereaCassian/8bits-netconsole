@@ -398,14 +398,7 @@ function onBackdoor(roll) {
     addLogText("Success");
     currentLevel++;
     levelStatus = map[currentLevel][1];
-    addLogText(
-      "You are on <b>Level " +
-        currentLevel +
-        ": " +
-        map[currentLevel][1] +
-        "</b>",
-      false
-    );
+    addLogText("You are on <b>Level " +currentLevel +": " +map[currentLevel][1] +"</b>");
   } else {
     addLogText("Backdoor attempt was unsuccessful.");
   }
@@ -458,12 +451,11 @@ function generateMap() {
 }
 
 function rollPasses(roll){
-  
   var dv = map[currentLevel][2];
   if(dv==""||dv==undefined) dv=0;
   dv=parseInt(dv);
   roll=parseInt(roll);
-  return roll>=dv;
+  return roll >= dv;
 }
 //------------------------------------------------------------------------------------- Create mode code --------------------------------------
 function addNewLevel() {
