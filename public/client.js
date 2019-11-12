@@ -106,68 +106,66 @@ function inputEntered(inputValue) {
       //   addLogText("Roll <b> 1d10 </b>+ Interface.");
       //   rollIsFor = command;
       // }
-      var inputValuejo=inputValue;
+      var inputValuejo = inputValue;
       onCommand(inputValuejo);
     }
-  } else { // if multiple words
+  } else {
+    // if multiple words
     console.log("multiple words");
-    var lastWord = entries[entries.length - 1];
-  
-     var command = entries[0];
-     for(var i=1;i<entries.length-1;i++){
-          extraInfo=extraInfo+" "+entries[i];
-        }
-    
-     if(!roll){
-          extraInfo=extraInfo+" "+entries[entries.length-1];
-        }
-    
-    
-    
-    
-    
-    if (!isNaN(lastWord)) { //if last is number
-      console.log("last is number");
-      if (entries.length == 2) {
-        var command = entries[0];
-        var roll = entries[entries.length - 1];
-        //getting others for extra info
-        var extraInfo="";
-        for(var i=1;i<entries.length-1;i++){
-          extraInfo=extraInfo+" "+entries[i];
-        }
-        if(!roll){
-          extraInfo=extraInfo+" "+entries[entries.length-1];
-        }
-        
-        callCommand(command, roll, extraInfo);
-        
-        
-        
-        
-        
-        
-        
-        
-      } else {
-        //more than 2 entries
-        // more than 2 and last is number
-      }
-    } else {
-      //if last isn't number
-      onCommand(inputValue);
+
+    var command = entries[0];
+    var roll ="";
+    var extraInfo = "";
+    for (var i = 1; i < entries.length - 1; i++) {
+      extraInfo = extraInfo + " " + entries[i];
     }
+    var lastWord = entries[entries.length - 1];
+    if (isNaN(lastWord)) {
+      //if last word is not number
+      extraInfo = extraInfo + " " + lastWord;
+    } else {
+      // if last word is number
+       roll = lastWord;
+    }
+    
+    onCommand(command,roll,extraInfo);
   }
-  // if (!isNaN(inputValue) && inputValue != "") {
-  //   //if is a number
-  //   inputValue = parseInt(inputValue);
-  //   callCommand(rollIsFor, inputValue);
-  //   rollIsFor = "";
-  // } else commandEntered(inputValue);
 }
 
+//     if (!isNaN(lastWord)) { //if last is number
+//       console.log("last is number");
+//       if (entries.length == 2) {
+//         var command = entries[0];
+//        // var roll = entries[entries.length - 1];
+//         //getting others for extra info
+//         var extraInfo="";
+//         for(var i=1;i<entries.length-1;i++){
+//           extraInfo=extraInfo+" "+entries[i];
+//         }
+//         if(!roll){
+//           extraInfo=extraInfo+" "+entries[entries.length-1];
+//         }
+
+//         callCommand(command, roll, extraInfo);
+
+//       } else {
+//         //more than 2 entries
+//         // more than 2 and last is number
+//       }
+//     } else {
+//       //if last isn't number
+//       onCommand(inputValue);
+//     }
+
+// if (!isNaN(inputValue) && inputValue != "") {
+//   //if is a number
+//   inputValue = parseInt(inputValue);
+//   callCommand(rollIsFor, inputValue);
+//   rollIsFor = "";
+// } else commandEntered(inputValue);
+
 function onCommand(command, roll, extraInfo) {
-  console.log("onCommand called");
+  console.log("onCommand called "+command +" "+roll+" "+extraInfo);
   var isKnown = knownCommands.indexOf(command) != -1;
   var rollNeeded = noRollNeeded.indexOf(command) == -1;
   if (!isKnown) {
@@ -179,8 +177,8 @@ function onCommand(command, roll, extraInfo) {
     if (!roll) {
       addLogText("Roll <b> 1d10 </b>+ Interface.");
       rollIsFor = command;
-    } else{
-      callCommand(command,roll,extraInfo);
+    } else {
+      callCommand(command, roll, extraInfo);
     }
   }
 }
@@ -232,6 +230,7 @@ function callCommand(command, roll, extraInfo) {
       onPathFinder(roll);
       break;
     case "Move":
+      
       move(extraInfo);
       break;
     case "Move down":
@@ -254,6 +253,7 @@ function onLevel() {
   );
 }
 function move(direction) {
+  console.log()
   if (direction == "up" || direction == "Up") {
     currentLevel--;
     levelStatus = map[currentLevel][1];
