@@ -363,6 +363,7 @@ function generateMap(currentLevel,additionalLevels) {
   var visibleMap = "";
   currentLevel++;
   var visibleLevels = currentLevel+additionalLevels;
+  var originalLevels = visibleLevels;
   if (map.length<visibleLevels) visibleLevels=map.length;
    console.log("visible levels = "+visibleLevels);
   for (var i = 0; i < visibleLevels; i++) {
