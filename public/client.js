@@ -373,7 +373,8 @@ function generateMap(currentLevel,additionalLevels) {
   
   //check if end or not
   //add unknown or end
-  if(map.length >visibleLevels){
+  console.log("map length = "+map.length+" visibleLevels = "+visibleLevels);
+  if(map.length > visibleLevels-1){
     visibleMap += "Unknown";
   }else{
      visibleMap += "End";
