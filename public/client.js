@@ -381,6 +381,15 @@ function nextLevelDown(){
       }
 }
 
+
+function onDiceRoll(multiple,dice){
+  var total=0;
+  for(var i=0;i<multiple;i++){
+    total += Math.random(1,dice);
+  }
+  return total;
+}
+
 //------------------------------------------------------------------------------------- Create mode code --------------------------------------
 function addNewLevel() {
   var lastLevel = document.getElementById("Level 0");
