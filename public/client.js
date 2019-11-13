@@ -297,7 +297,7 @@ function onControl(roll){
 }
 
 function onPathFinder(roll) {
-  generateMap();
+  
   //then determine how much of the map to show
   //1 - 20
   //under 5 1 level
@@ -322,6 +322,8 @@ function onPathFinder(roll) {
       levels = 6;
   }
   
+  generateMap(currentLevel,levels);
+  
   
   //all others before current level
   //then plus roll amount
@@ -334,6 +336,7 @@ function onPathFinder(roll) {
 function generateMap(currentLevel,additionalLevels) {
   var visibleMap = "";
   var visibleLevels = currentLevel+additionalLevels;
+  if (map.length<visibleLevels) visibleLevels=map.length;
   for (var i = 0; i < map.length; i++) {
     visibleMap += "Level " + map[i][0] + ": " + map[i][1] + "<br>";
   }
