@@ -385,8 +385,9 @@ function nextLevelDown(){
 function onDiceRoll(multiple,dice){
   var total=0;
   for(var i=0;i<multiple;i++){
-    total += Math.random(1,dice);
+    total += Math.floor(Math.random() * dice) + 1;
   }
+  console.log("onDiceRoll "+total);
   return total;
 }
 
