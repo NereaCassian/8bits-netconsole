@@ -366,7 +366,7 @@ function generateMap(currentLevel,additionalLevels) {
   if (map.length<visibleLevels) visibleLevels=map.length;
    console.log("visible levels = "+visibleLevels);
   for (var i = 0; i < visibleLevels; i++) {
-    visibleMap += "Level " + map[i][0] + ": " + map[i][1] + "<br>";
+    if(ivisibleMap += "Level " + map[i][0] + ": " + map[i][1] + "<br>";
   }
   
   //check if end or not
