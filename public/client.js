@@ -183,8 +183,8 @@ function callCommand(command, roll, extraInfo) {
     case "Control":
     onControl(roll);
       break;
-    case "Control":
-    onControl(roll);
+    case "Cloak":
+    onCloak(roll);
       break;
   }
 }
@@ -300,8 +300,16 @@ function onControl(roll){
 }
 
 function onCloak(roll){
-  
-  
+  var dv = map.length * 2;
+  if(rollPasses(roll, dv)){
+    addLogText("You have successfully cloaked your actions.")
+  }else{
+    addLogText("Cloak attempt unsuccessful.")
+  }
+}
+
+function onZap(roll){
+  addLogText("Zap attempt");
 }
 
 function onPathFinder(roll) {
@@ -351,8 +359,8 @@ function generateMap(currentLevel,additionalLevels) {
   addLogText(visibleMap);
 }
 
-function rollPasses(roll){
-  var dv = map[currentLevel][2];
+function rollPasses(roll,dv){
+  if (!dv)  dv = map[currentLevel][2];
   if(dv==""||dv==undefined) dv = 0;
   dv=parseInt(dv);
   roll=parseInt(roll);
@@ -372,6 +380,7 @@ function nextLevelDown(){
        onLevel();
       }
 }
+
 //------------------------------------------------------------------------------------- Create mode code --------------------------------------
 function addNewLevel() {
   var lastLevel = document.getElementById("Level 0");
