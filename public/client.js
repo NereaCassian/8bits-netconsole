@@ -308,20 +308,32 @@ function onPathFinder(roll) {
  // 18-10 6 levels
   var levels = 0;
   switch(roll){
-    case roll<=5:
+    case (roll>5):
       levels = 1;
+      break;
     case roll>5&&roll<=10:
       levels=2;
+      break;
     case roll>10&&roll<=13:
       levels = 3;
+      break;
     case roll>13&&roll<=15:
       levels=4;
+      break;
     case roll>15&&roll<=17:
       levels=5;
+      break;
     case roll>17:
       levels = 6;
+      break;
+      
+  
+      
+      if(roll>=5){
+          levels = 1;
+      }else
   }
-  console.log("roll = "+roll);
+  console.log("levels = "+levels);
   generateMap(currentLevel,levels);
   
   
