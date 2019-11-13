@@ -327,12 +327,12 @@ function onPathFinder(roll) {
   //     levels = 6;
   //     break;
  
-      if(roll>=5){
+      if(roll <= 5){
       levels = 1;
-      }else if(roll>5&&roll<=10){
+      }else if(roll > 5 &&roll <= 10){
         levels =2 ;
       }
-      else if(roll>10&&roll<=13){
+      else if(roll> 10 &&roll <= 13){
         levels =3 ;
       }
       else if(roll>13&&roll<=15){
