@@ -361,12 +361,16 @@ function onPathFinder(roll) {
 function generateMap(currentLevel,additionalLevels) {
   console.log("generate map current = "+currentLevel+" additional = "+additionalLevels);
   var visibleMap = "";
+  currentLevel++;
   var visibleLevels = currentLevel+additionalLevels;
   if (map.length<visibleLevels) visibleLevels=map.length;
    console.log("visible levels = "+visibleLevels);
   for (var i = 0; i < visibleLevels; i++) {
     visibleMap += "Level " + map[i][0] + ": " + map[i][1] + "<br>";
   }
+  
+  //check if end or not
+  //add unknown or end
   addLogText(visibleMap);
 }
 
