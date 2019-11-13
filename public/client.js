@@ -79,7 +79,8 @@ var knownCommands = [
   "Banhammer",
   "Jack",
   "Cloak",
-  "Control"
+  "Control",
+  "Zap"
 ];
 var noRollNeeded = ["Level", "Move","Password","Jack"];
 
@@ -186,6 +187,9 @@ function callCommand(command, roll, extraInfo) {
     case "Cloak":
     onCloak(roll);
       break;
+    case "Zap":
+    onZap(roll);
+      break;
   }
 }
 function onLevel() {
@@ -242,9 +246,6 @@ function onBackdoor(roll) {
     addLogText("Backdoor can only be used on a password.");
   else if (rollPasses(roll)) {
     addLogText("Success");
-    // currentLevel++;
-    // levelStatus = map[currentLevel][1];
-    // addLogText("You are on <b>Level " +currentLevel +": " +map[currentLevel][1] +"</b>");
     nextLevelDown();
   } else {
     addLogText("Backdoor attempt was unsuccessful.");
@@ -253,7 +254,18 @@ function onBackdoor(roll) {
 
 
 function onSlide(roll){
-  addLogText("Slide with attempt of <b>"+roll+"</b>.");
+  if(levelStatus != "Hellhound"){ 
+    addLogText("Slide can only be used on a Hellhound or Black Ice.");
+  }else{
+    if(rollPasses(roll)){
+      addLogText("Slide successful.");
+      nextLevelDown();
+    }else{
+      addLogText("Slide attempt failed.");
+    }
+  }
+  
+  
 }
 
 function onBanhammer(roll){
@@ -334,8 +346,6 @@ function onPathFinder(roll) {
   generateMap(currentLevel,levels);
   }
  
-  
-    
   
 
 function generateMap(currentLevel,additionalLevels) {
