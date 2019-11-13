@@ -307,34 +307,47 @@ function onPathFinder(roll) {
   //15-17 5 levels
  // 18-10 6 levels
   var levels = 0;
-  switch(roll){
-    case (roll>5):
-      levels = 1;
-      break;
-    case roll>5&&roll<=10:
-      levels=2;
-      break;
-    case roll>10&&roll<=13:
-      levels = 3;
-      break;
-    case roll>13&&roll<=15:
-      levels=4;
-      break;
-    case roll>15&&roll<=17:
-      levels=5;
-      break;
-    case roll>17:
-      levels = 6;
-      break;
-      
-  
-      
+  // switch(roll){
+  //   case (roll>5):
+  //     levels = 1;
+  //     break;
+  //   case roll>5&&roll<=10:
+  //     levels=2;
+  //     break;
+  //   case roll>10&&roll<=13:
+  //     levels = 3;
+  //     break;
+  //   case roll>13&&roll<=15:
+  //     levels=4;
+  //     break;
+  //   case roll>15&&roll<=17:
+  //     levels=5;
+  //     break;
+  //   case roll>17:
+  //     levels = 6;
+  //     break;
+ 
       if(roll>=5){
-          levels = 1;
-      }else
-  }
-  console.log("levels = "+levels);
+      levels = 1;
+      }else if(roll>5&&roll<=10){
+        levels =2 ;
+      }
+      else if(roll>10&&roll<=13){
+        levels =3 ;
+      }
+      else if(roll>13&&roll<=15){
+        levels =4 ;
+      }
+      else if(roll>15&&roll<=17){
+        levels =5 ;
+      }
+      else if(roll>17){
+        levels =6 ;
+      }
+     console.log("levels = "+levels);
   generateMap(currentLevel,levels);
+  }
+ 
   
   
   //all others before current level
@@ -344,7 +357,7 @@ function onPathFinder(roll) {
   
     
   
-}
+
 function generateMap(currentLevel,additionalLevels) {
   console.log("generate map current = "+currentLevel+" additional = "+additionalLevels);
   var visibleMap = "";
