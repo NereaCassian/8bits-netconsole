@@ -371,6 +371,11 @@ function generateMap(currentLevel,additionalLevels) {
   
   //check if end or not
   //add unknown or end
+  if(map.length >visibleLevels){
+    visibleMap += "Unknown";
+  }else{
+     visibleMap += "End";
+  }
   addLogText(visibleMap);
 }
 
