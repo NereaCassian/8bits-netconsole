@@ -308,11 +308,16 @@ function onPathFinder(roll) {
  // 18-10 6 levels
   
   switch(roll){
-    case(4):
-      console.log("hello")
+    case roll<=5:
+      console.log("hello");
+    case 7:
+      "hello";
   }
   //all others before current level
   //then plus roll amount
+  //then just show those levels
+  //and then if there's more or not
+  
     
   
 }
