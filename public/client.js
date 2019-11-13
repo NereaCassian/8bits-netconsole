@@ -183,6 +183,9 @@ function callCommand(command, roll, extraInfo) {
     case "Control":
     onControl(roll);
       break;
+    case "Control":
+    onControl(roll);
+      break;
   }
 }
 function onLevel() {
@@ -296,37 +299,13 @@ function onControl(roll){
   }
 }
 
-function onPathFinder(roll) {
+function onCloak(roll){
   
-  //then determine how much of the map to show
-  //1 - 20
-  //under 5 1 level
-  //5 - 10 2 levels
-  //10 -13 3 levels
-  //13-15 4 levels
-  //15-17 5 levels
- // 18-10 6 levels
+  
+}
+
+function onPathFinder(roll) {
   var levels = 0;
-  // switch(roll){
-  //   case (roll>5):
-  //     levels = 1;
-  //     break;
-  //   case roll>5&&roll<=10:
-  //     levels=2;
-  //     break;
-  //   case roll>10&&roll<=13:
-  //     levels = 3;
-  //     break;
-  //   case roll>13&&roll<=15:
-  //     levels=4;
-  //     break;
-  //   case roll>15&&roll<=17:
-  //     levels=5;
-  //     break;
-  //   case roll>17:
-  //     levels = 6;
-  //     break;
- 
       if(roll <= 5){
       levels = 1;
       }else if(roll > 5 &&roll <= 10){
@@ -344,37 +323,27 @@ function onPathFinder(roll) {
       else if(roll>17){
         levels =6 ;
       }
-     console.log("levels = "+levels);
   generateMap(currentLevel,levels);
   }
  
-  
-  
-  //all others before current level
-  //then plus roll amount
-  //then just show those levels
-  //and then if there's more or not
   
     
   
 
 function generateMap(currentLevel,additionalLevels) {
-  console.log("generate map current = "+currentLevel+" additional = "+additionalLevels);
+  
   var visibleMap = "";
   currentLevel++;
   var visibleLevels = currentLevel+additionalLevels;
   var originalLevels = visibleLevels;
   if (map.length<visibleLevels) visibleLevels=map.length;
-   console.log("visible levels = "+visibleLevels);
   for (var i = 0; i < visibleLevels; i++) {
-    if(currentLevel -1 ==i )visibleMap += "<b>Level " + map[i][0] + ": " + map[i][1] + "</b><br>";
+    if(currentLevel -1 == i )visibleMap += "<b>Level " + map[i][0] + ": " + map[i][1] + "</b><br>";
     else visibleMap += "Level " + map[i][0] + ": " + map[i][1] + "<br>";
   }
-  
-  //check if end or not
-  //add unknown or end
-  console.log("map length = "+map.length+" visibleLevels = "+visibleLevels);
-  if(map.length > visibleLevels-1){
+
+  console.log("map length = "+map.length+" originalLevels = "+originalLevels);
+  if(map.length > originalLevels-1){
     visibleMap += "Unknown";
   }else{
      visibleMap += "End";
