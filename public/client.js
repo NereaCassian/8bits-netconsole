@@ -306,6 +306,15 @@ function onPathFinder(roll) {
   //13-15 4 levels
   //15-17 5 levels
  // 18-10 6 levels
+  
+  switch(roll){
+    case(4):
+      console.log("hello")
+  }
+  //all others before current level
+  //then plus roll amount
+    
+  
 }
 function generateMap() {
   var visibleMap = "";
