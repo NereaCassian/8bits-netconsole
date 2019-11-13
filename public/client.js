@@ -299,6 +299,13 @@ function onControl(roll){
 function onPathFinder(roll) {
   generateMap();
   //then determine how much of the map to show
+  //1 - 20
+  //under 5 1 level
+  //5 - 10 2 levels
+  //10 -13 3 levels
+  //13-15 4 levels
+  //15-17 5 levels
+ // 18-10 6 levels
 }
 function generateMap() {
   var visibleMap = "";
