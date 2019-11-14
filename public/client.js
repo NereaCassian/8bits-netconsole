@@ -33,6 +33,8 @@ var map = [
 var currentLevel = 0;
 var levelStatus = "";
 var rollIsFor = "";
+var knownMap;
+
 if (!clickable) {
   input.focus();
   input.select();
@@ -82,9 +84,10 @@ var knownCommands = [
   "Jack",
   "Cloak",
   "Control",
-  "Zap"
+  "Zap",
+  "Map"
 ];
-var noRollNeeded = ["Level", "Move","Password","Jack"];
+var noRollNeeded = ["Level", "Move","Password","Jack","Map"];
 
 //on input
 function inputEntered(inputValue) {
@@ -195,6 +198,9 @@ function callCommand(command, roll, extraInfo) {
     case "Zap":
     onZap(roll);
       break;
+    case "Map":
+    onMap();
+      break;
   }
 }
 function onLevel() {
@@ -225,7 +231,6 @@ function move(direction) {
     } else {
       currentLevel++;
       if (currentLevel >= map.length) {
-        //think equal
         currentLevel--;
         addLogText("You are already on the last level.");
       } else {
@@ -332,6 +337,14 @@ function onZap(roll){
   addLogText("Zap attempt");
 }
 
+function onMap(){
+  if(!knownMap) {
+    addLogText("You must use Pathfinder to discover the netspace map before you can view it.");
+  }else{
+    
+  }
+}
+
 function onPathFinder(roll) {
   var levels = 0;
       if(roll <= 5){
@@ -351,6 +364,9 @@ function onPathFinder(roll) {
       else if(roll>17){
         levels =6 ;
       }
+  
+  var
+  
   generateMap(currentLevel,levels);
   }
  
@@ -361,8 +377,11 @@ function generateMap(currentLevel,additionalLevels) {
   var visibleMap = "";
   currentLevel++;
   var visibleLevels = currentLevel+additionalLevels;
+  
   var originalLevels = visibleLevels;
+  
   if (map.length<visibleLevels) visibleLevels=map.length;
+  knownMap=visibleLevels;
   for (var i = 0; i < visibleLevels; i++) {
     if(currentLevel -1 == i )visibleMap += "<b>Level " + map[i][0] + ": " + map[i][1] + "</b><br>";
     else visibleMap += "Level " + map[i][0] + ": " + map[i][1] + "<br>";
