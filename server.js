@@ -10,7 +10,6 @@ app.use(express.static("public"));
 //app.use(express.static("views"));
 
 app.get("/", function(request, response) {
-  console.log("request = "+request);
   response.sendFile(__dirname + "/views/index.html");
 });
 

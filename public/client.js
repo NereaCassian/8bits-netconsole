@@ -285,6 +285,7 @@ function onJack(extraInfo){
   if(extraInfo=="Out"||extraInfo=="out"){
   addLogText("You have left the netspace.")
     currentLevel=0;
+    knownMap = 0;
   }else{
     addLogText("Command Unknown");
   }
