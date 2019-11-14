@@ -300,7 +300,7 @@ function onPassword(password){
   
   var correctPassword = map[currentLevel][3];
   console.log("password = :"+password+": correctPassword = :"+correctPassword+": is correct ="+(password==correctPassword));
-  if(password ==correctPassword){ 
+  if(password ==correctPassword && password!=""){ 
     addLogText("Password <b>"+password+"</b> is correct.");
     nextLevelDown();
   }else{
@@ -376,7 +376,7 @@ function generateMap(currentLevel,additionalLevels) {
 
 function rollPasses(roll,dv){
   if (!dv)  dv = map[currentLevel][2];
-  if(dv==""||dv==undefined) dv = 0;
+  if(dv==""||dv==undefined|| isNaN(dv)) dv = 0;
   dv=parseInt(dv);
   roll=parseInt(roll);
   

@@ -10,13 +10,10 @@ function addNewLevel() {
   children[2].value = "";
   children[3].value = "";
   children[3].placeholder = "";
-  children[3].rows = 1;
-  children[3].cols = 5;
   newLevel.id = "Level " + makingLevel;
   makingLevel++;
   var create = document.getElementById("create");
   create.appendChild(newLevel);
-  console.log("rows = "+children[3].rows + "cols = "+children[3].cols);
 }
 function deleteLevel() {
   var oldLevelNumber = makingLevel - 1;
