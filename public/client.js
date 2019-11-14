@@ -342,7 +342,7 @@ function onMap(){
     addLogText("You must use Pathfinder to discover the netspace map before you can view it.");
   }else{
     console.log("currentLevel = "+currentLevel+" knownMap = "+knownMap);
-    if(currentLevel>=knownMap)knownMap = currentLevel;
+    if(currentLevel +1 >=knownMap)knownMap = currentLevel +1;
     generateMap(knownMap);
   }
 }
