@@ -36,5 +36,13 @@
     [2, "File", "10", "A crudely drawn smiley face"],
     [3, "Control Node", "1", "All the guns. Every gun."],
     [4, "Empty", "", ""]
+  ],
+  "fish'n'chips": [
+    [0, "Empty", "", ""],
+    [1, "Empty", "3", ""],
+    [2, "File", "3", ""],
+    [3, "File", "", ""],
+    [4, "Hellhound", "", ""],
+    [5, "Password", "", ""]
   ]
 }
