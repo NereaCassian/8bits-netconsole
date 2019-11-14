@@ -30,7 +30,7 @@ function onLevelTypeChange(elmt) {
   else if (elmt.value == "Password") textArea.placeholder = "Correct password";
   else if (elmt.value == "Virus")
     textArea.placeholder = "What the Virus is doing";
-  else if (elmt.value == "Hellhound") textArea.placeholder = "";
+  else if (elmt.value == "Hellhound") textArea.placeholder = "Password when Hellhound has been defeated";
   else if (elmt.value == "Control Node")
     textArea.placeholder = "What the Control Node controls";
 }
@@ -87,4 +87,3 @@ function openLink() {
   link = "http://" + link;
   window.open(link);
 }
-

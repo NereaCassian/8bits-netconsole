@@ -297,15 +297,18 @@ function onEyeDee(roll) {
 
 
 function onPassword(password){
-  
+  if(levelStatus != "Password"&& levelStatus!= "Hellhound"){
+    addLogText("Password can only be used on Password or Hellhound levels.");
+  }else{
   var correctPassword = map[currentLevel][3];
   console.log("password = :"+password+": correctPassword = :"+correctPassword+": is correct ="+(password==correctPassword));
-  if(password ==correctPassword && password!=""){ 
+  if(password == correctPassword && password!=""){ 
     addLogText("Password <b>"+password+"</b> is correct.");
     nextLevelDown();
   }else{
     addLogText("Incorrect Password");
   }
+}
 }
 
 function onControl(roll){
