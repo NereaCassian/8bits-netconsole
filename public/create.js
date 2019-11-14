@@ -50,6 +50,8 @@ function generateNetSpace() {
   var name = document.getElementById("netSpaceName").value;
   if (name == "") {
     alert("New Netspace name cannot be blank.");
+  }else if(name.includes("&")){
+    alert("New Netpace name cannot contain '&'");
   } else {
     socket.emit("new-net-space", name, newNetSpace);
     $("#newUrl").show();
