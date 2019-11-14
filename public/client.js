@@ -249,9 +249,9 @@ function addLogText(text, user, damage) {
   else if (damage) userText.className = "damageText";
   var log = document.getElementById("log");
   log.appendChild(userText);
+  // window.scrollTo(0,document.body.scrollHeight);
 }
 function onBackdoor(roll) {
-  var dv = parseInt(map[currentLevel][2], 10);
   if (levelStatus != "Password")
     addLogText("Backdoor can only be used on a password.");
   else if (rollPasses(roll)) {
@@ -369,6 +369,7 @@ function onPathFinder(roll) {
       }
   
   var visibleLevels=currentLevel+1+levels;
+  
   generateMap(visibleLevels);
   }
  
@@ -376,6 +377,7 @@ function onPathFinder(roll) {
 
 // function generateMap(currentLevel,additionalLevels) {
   function generateMap(visibleLevels) {
+    console.log("generate map visibleLevels = "+visibleLevels);
   var visibleMap = "";
 //   currentLevel++;
 //   var visibleLevels = currentLevel+additionalLevels;
@@ -383,13 +385,13 @@ function onPathFinder(roll) {
   var originalLevels = visibleLevels;
   
   if (map.length<visibleLevels) visibleLevels=map.length;
-  knownMap=visibleLevels;
+  knownMap=originalLevels;
   for (var i = 0; i < visibleLevels; i++) {
     if(currentLevel == i )visibleMap += "<b>Level " + map[i][0] + ": " + map[i][1] + "</b><br>";
     else visibleMap += "Level " + map[i][0] + ": " + map[i][1] + "<br>";
   }
 
- // console.log("map length = "+map.length+" originalLevels = "+originalLevels);
+  console.log("map length = "+map.length+" originalLevels = "+originalLevels);
   if(map.length > originalLevels-1){
     visibleMap += "Unknown";
   }else{
