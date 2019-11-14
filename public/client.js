@@ -341,7 +341,9 @@ function onMap(){
   if(!knownMap) {
     addLogText("You must use Pathfinder to discover the netspace map before you can view it.");
   }else{
-    
+    console.log("currentLevel = "+currentLevel+" knownMap = "+knownMap);
+    if(currentLevel>=knownMap)knownMap = currentLevel;
+    generateMap(knownMap);
   }
 }
 
@@ -365,29 +367,28 @@ function onPathFinder(roll) {
         levels =6 ;
       }
   
-  var
-  
-  generateMap(currentLevel,levels);
+  var visibleLevels=currentLevel+1+levels;
+  generateMap(visibleLevels);
   }
  
   
 
-function generateMap(currentLevel,additionalLevels) {
-  
+// function generateMap(currentLevel,additionalLevels) {
+  function generateMap(visibleLevels) {
   var visibleMap = "";
-  currentLevel++;
-  var visibleLevels = currentLevel+additionalLevels;
+//   currentLevel++;
+//   var visibleLevels = currentLevel+additionalLevels;
   
   var originalLevels = visibleLevels;
   
   if (map.length<visibleLevels) visibleLevels=map.length;
   knownMap=visibleLevels;
   for (var i = 0; i < visibleLevels; i++) {
-    if(currentLevel -1 == i )visibleMap += "<b>Level " + map[i][0] + ": " + map[i][1] + "</b><br>";
+    if(currentLevel == i )visibleMap += "<b>Level " + map[i][0] + ": " + map[i][1] + "</b><br>";
     else visibleMap += "Level " + map[i][0] + ": " + map[i][1] + "<br>";
   }
 
-  console.log("map length = "+map.length+" originalLevels = "+originalLevels);
+ // console.log("map length = "+map.length+" originalLevels = "+originalLevels);
   if(map.length > originalLevels-1){
     visibleMap += "Unknown";
   }else{
