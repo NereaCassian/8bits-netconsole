@@ -383,7 +383,7 @@ function rollPasses(roll,dv){
   dv=parseInt(dv);
   roll=parseInt(roll);
   
-  console.log("roll passes roll= "+roll+" dv = "+dv);
+  //console.log("roll passes roll= "+roll+" dv = "+dv);
   return roll >= dv;
 }
 
