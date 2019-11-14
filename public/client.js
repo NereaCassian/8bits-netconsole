@@ -1,8 +1,10 @@
 var socket = io();
 var createMode;
 var queryString = decodeURIComponent(window.location.search);
-//  queryString = queryString.substring(1);
-queryString = queryString.replace("?", "");
+  queryString = queryString.substring(1);
+var queries = queryString.split("&");
+queryString=queries[0];
+//queryString = queryString.replace("?", "");
 if (queryString == "create") {
   createMode = true;
 } else if(queryString ==""){
