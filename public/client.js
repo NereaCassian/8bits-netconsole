@@ -105,16 +105,18 @@ function inputEntered(inputValue) {
     var extraInfo = "";
     for (var i = 1; i < entries.length - 1; i++) {
       extraInfo = extraInfo + " " + entries[i];
+       console.log("extraInfo = "+extraInfo);
     }
     var lastWord = entries[entries.length - 1];
     if (isNaN(lastWord)) {
       //if last word is not number
-      extraInfo = extraInfo + lastWord;
+      if(extraInfo) extraInfo = extraInfo + " " +lastWord; //depending 
+      else extraInfo = extraInfo +lastWord;
     } else {
       // if last word is number
        roll = lastWord;
     }
-    
+    // console.log("extraInfo = "+extraInfo);
     onCommand(command,roll,extraInfo);
   }
 }
@@ -295,7 +297,7 @@ function onEyeDee(roll) {
 function onPassword(password){
   
   var correctPassword = map[currentLevel][3];
-  //console.log("password = "+password+" correctPassword = "+correctPassword+" is correct ="+(password==correctPassword));
+  console.log("password = "+password+" correctPassword = "+correctPassword+" is correct ="+(password==correctPassword));
   if(password ==correctPassword){ 
     addLogText("Password <b>"+password+"</b> is correct.");
     nextLevelDown();
