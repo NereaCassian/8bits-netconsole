@@ -103,6 +103,7 @@ function inputEntered(inputValue) {
     var command = entries[0];
     var roll ="";
     var extraInfo = "";
+    //extraInfo = entries[1];
     for (var i = 1; i < entries.length - 1; i++) {
       extraInfo = extraInfo + " " + entries[i];
        console.log("extraInfo = "+extraInfo);
@@ -297,7 +298,7 @@ function onEyeDee(roll) {
 function onPassword(password){
   
   var correctPassword = map[currentLevel][3];
-  console.log("password = "+password+" correctPassword = "+correctPassword+" is correct ="+(password==correctPassword));
+  console.log("password = :"+password+": correctPassword = :"+correctPassword+": is correct ="+(password==correctPassword));
   if(password ==correctPassword){ 
     addLogText("Password <b>"+password+"</b> is correct.");
     nextLevelDown();
