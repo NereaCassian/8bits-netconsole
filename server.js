@@ -18,6 +18,10 @@ app.get('/about', function(request, response) {
   response.sendFile(__dirname + '/views/about.html');
 });
 
+app.get('/create', function(request, response) {
+  response.sendFile(__dirname + '/views/create.html');
+});
+
 // listen for requests :)
 // const listener = app.listen(process.env.PORT, function() {
 //   console.log("Your app is listening on port " + listener.address().port);
@@ -57,9 +61,5 @@ io.on("connection", function(socket) {
     var netspace = JSON.parse(loadData("/app/record.json"))[name];
     if(netspace) socket.emit("load-map", netspace,name);
   });
-  
-  // socket.on("go-to-about"),function (){
-  //  //  response.sendFile(__dirname + '/views/NewPage.html');
-  // }
   
 });

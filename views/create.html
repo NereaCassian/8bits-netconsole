@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Netrunning</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- import the webpage's stylesheet -->
+    <link rel="stylesheet" href="/style.css" />
+
+    <!-- import the webpage's javascript file -->
+    <script src="/socket.io/socket.io.js" type="text/javascript"></script>
+    <script src="/create.js" type="text/javascript" defer></script>
+<!--      <script src="/client.js" defer></script> -->
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+
+  </head>
+  <body>
+    <h1 id="title">Netrunning</h1>
+    <p>
+      Welcome to the Net.
+    </p>
+    <div id="createMode">
+      <div id="create">
+        <p>
+          Create here
+        </p>
+<!--         <div id="createLevel"> -->
+                <div id="Level 0">
+          <span id="levelLabel">Level 0 </span>
+          <select onchange="onLevelTypeChange(this)">
+            <option>Empty</option>
+            <option>Password</option>
+            <option>File</option>
+            <option>Virus</option>
+            <option>Hellhound</option>
+            <option>Control Node</option>
+          </select>
+
+          <input placeholder="DV" size="5" />
+          <textarea placeholder=""></textarea>
+        </div>
+      </div>
+      <br />
+      <button onclick="addNewLevel()">
+        Add new level
+      </button>
+      <button onclick="deleteLevel()">
+        Delete Level
+      </button>
+      <br />
+      <br />
+      <input id="netSpaceName" placeholder="New NetSpace name"/>
+      <button onclick="generateNetSpace()">
+        Generate NetSpace link
+      </button>
+    </div>
+    <div id="newUrl">
+    <br> <br>
+      Netspace URL is <span id="url" class="userText"></span>
+    
+      <button onclick="copyUrl()">
+        Copy URL
+      </button>
+      <button onclick="openLink()">
+        Open Link
+      </button>
+    </div>
+
+  </body>
+</html>
+
+

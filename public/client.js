@@ -5,8 +5,8 @@ var queryString = decodeURIComponent(window.location.search);
 queryString = queryString.replace("?", "");
 if (queryString == "create") {
   createMode = true;
-} else if(true){
- // response.sendFile(__dirname + '/views/NewPage.html');
+} else if(queryString ==""){
+ window.location.replace("/about");
 
 }
 else {
