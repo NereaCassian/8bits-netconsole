@@ -5,7 +5,11 @@ var queryString = decodeURIComponent(window.location.search);
 queryString = queryString.replace("?", "");
 if (queryString == "create") {
   createMode = true;
-} else {
+} else if(true){
+ // response.sendFile(__dirname + '/views/NewPage.html');
+
+}
+else {
   createMode = false;
 }
 var clickable;

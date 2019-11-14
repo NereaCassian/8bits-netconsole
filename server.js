@@ -7,9 +7,15 @@ const got = require("got");
 const fs = require("fs");
 
 app.use(express.static("public"));
+//app.use(express.static("views"));
 
 app.get("/", function(request, response) {
+  console.log("request = "+request);
   response.sendFile(__dirname + "/views/index.html");
+});
+
+app.get('/about', function(request, response) {
+  response.sendFile(__dirname + '/views/about.html');
 });
 
 // listen for requests :)
@@ -51,4 +57,9 @@ io.on("connection", function(socket) {
     var netspace = JSON.parse(loadData("/app/record.json"))[name];
     if(netspace) socket.emit("load-map", netspace,name);
   });
+  
+  // socket.on("go-to-about"),function (){
+  //  //  response.sendFile(__dirname + '/views/NewPage.html');
+  // }
+  
 });
