@@ -52,6 +52,7 @@ socket.on("load-map", function(loadedMap, name) {
   map = loadedMap;
   if (queryString != "") $("#title").text("Netrunning: " + name);
    levelStatus = map[0][1];
+  onLevel();
 });
 input.addEventListener("keyup", function(event) {
   // Execute a function when the user releases a key on the keyboard
