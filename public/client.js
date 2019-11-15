@@ -19,7 +19,7 @@ var input = document.getElementById("input");
 
 
 
-  $("#hacker").show();
+ // $("#hacker").show();
   input.focus();
   input.select();
   clickable = false;
