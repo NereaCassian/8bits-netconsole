@@ -6,6 +6,9 @@ const got = require("got");
 
 const fs = require("fs");
 
+
+var record = "/app/.data/secretrecord.json";
+
 app.use(express.static("public"));
 //app.use(express.static("views"));
 
@@ -51,13 +54,13 @@ const loadData = path => {
 io.on("connection", function(socket) {
   
   socket.on("new-net-space", function(name, netSpace) {
-    var oldJson = JSON.parse(loadData("/app/secretrecord.json"));
+    var oldJson = JSON.parse(loadData(record));
     oldJson[name] = netSpace;
-    storeData(oldJson, "/app/record.json");
+    storeData(oldJson, record);
   });
 
   socket.on("get-net-space", function(name) {
-    var netspace = JSON.parse(loadData("/app/secretrecord.json"))[name];
+    var netspace = JSON.parse(loadData(record))[name];
     if(netspace) socket.emit("load-map", netspace,name);
   });
   
