@@ -439,14 +439,12 @@ function onDiceRoll(multiple,dice){
 function onCopy(){
   var allText=$("p");
   var string =""
-  for(var i= 0 ;i< allText.length; i++){
+  for(var i= 0; i< allText.length; i++){
     string+=allText[i].innerText +" \n";
   }
-  console.log(string);
   copyText(string);
-  
-  
 }
+
 function copyText(text) {
   var p = document.createElement('P');
   p.innerText=text;
