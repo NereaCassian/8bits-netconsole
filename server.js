@@ -51,13 +51,13 @@ const loadData = path => {
 io.on("connection", function(socket) {
   
   socket.on("new-net-space", function(name, netSpace) {
-    var oldJson = JSON.parse(loadData("/app/record.json"));
+    var oldJson = JSON.parse(loadData("/app/secretrecord.json"));
     oldJson[name] = netSpace;
     storeData(oldJson, "/app/record.json");
   });
 
   socket.on("get-net-space", function(name) {
-    var netspace = JSON.parse(loadData("/app/record.json"))[name];
+    var netspace = JSON.parse(loadData("/app/secretrecord.json"))[name];
     if(netspace) socket.emit("load-map", netspace,name);
   });
   
