@@ -24,10 +24,6 @@ app.get('/create', function(request, response) {
   response.sendFile(__dirname + '/views/create.html');
 });
 
-// listen for requests :)
-// const listener = app.listen(process.env.PORT, function() {
-//   console.log("Your app is listening on port " + listener.address().port);
-// });
 
 app.set("port", process.env.PORT || 5000);
 http.listen(app.get("port"), function() {
