@@ -160,9 +160,6 @@ function callCommand(command, roll, extraInfo) {
     case "Move":
       move(extraInfo);
       break;
-    case "Move down":
-      move("down");
-      break;
     case "Eye-Dee":
       onEyeDee(roll);
       break;
@@ -242,6 +239,8 @@ function move(direction) {
         onLevel();
       }
     }
+  } else{ //direction is not up or down
+    addLogText("Command Unknown.");
   }
 }
 
