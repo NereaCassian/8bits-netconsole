@@ -448,12 +448,29 @@ function onCopy(){
   
 }
 function copyText(text) {
-  var p = document.createNode(p);
-  p.className = "invisible";
-  p.id="temp";
-  p.select;
+  var p = document.createElement('P');
+  p.innerText=text;
+  var log = document.getElementById("log");
+  log.appendChild(p);
+  selectText(p);
   document.execCommand("copy");
   p.remove();
+  addLogText("Netspace Log copied to your clipboard.");
+}
+function selectText(node) {
+  if (document.body.createTextRange) {
+    const range = document.body.createTextRange();
+    range.moveToElementText(node);
+    range.select();
+  } else if (window.getSelection) {
+    const selection = window.getSelection();
+    const range = document.createRange();
+    range.selectNodeContents(node);
+    selection.removeAllRanges();
+    selection.addRange(range);
+  } else {
+    alert("Could not select text: Unsupported browser.");
+  }
 }
 //------------------------------------------------------------------------------------- Create mode code --------------------------------------
 // function addNewLevel() {
