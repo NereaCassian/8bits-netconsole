@@ -85,9 +85,10 @@ var knownCommands = [
   "Cloak",
   "Control",
   "Zap",
-  "Map"
+  "Map",
+  "Copy"
 ];
-var noRollNeeded = ["Level", "Move","Password","Jack","Map"];
+var noRollNeeded = ["Level", "Move","Password","Jack","Map","Copy"];
 
 //on input
 function inputEntered(inputValue) {
@@ -200,6 +201,9 @@ function callCommand(command, roll, extraInfo) {
       break;
     case "Map":
     onMap();
+      break;
+    case "Copy":
+    onCopy();
       break;
   }
 }
@@ -432,6 +436,25 @@ function onDiceRoll(multiple,dice){
   return total;
 }
 
+function onCopy(){
+  var allText=$("p");
+  var string =""
+  for(var i= 0 ;i< allText.length; i++){
+    string+=allText[i].innerText +" \n";
+  }
+  console.log(string);
+  copyText(string);
+  
+  
+}
+function copyText(text) {
+  var p = document.createNode(p);
+  p.className = "invisible";
+  p.id="temp";
+  p.select;
+  document.execCommand("copy");
+  p.remove();
+}
 //------------------------------------------------------------------------------------- Create mode code --------------------------------------
 // function addNewLevel() {
 //   var lastLevel = document.getElementById("Level 0");
