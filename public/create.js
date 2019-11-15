@@ -52,7 +52,10 @@ function generateNetSpace() {
     alert("New Netspace name cannot be blank.");
   }else if(name.includes("&")){
     alert("New Netpace name cannot contain '&'");
-  } else {
+  } else if(name=="example"){
+    alert("'example' is a protected Netspace name, please choose another name.")
+  }
+  else {
     socket.emit("new-net-space", name, newNetSpace);
     $("#newUrl").show();
     $("#url").text("netrunning.glitch.me/?" + name);
