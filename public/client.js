@@ -451,6 +451,7 @@ function copyText(text) {
   log.appendChild(p);
   selectText(p);
   document.execCommand("copy");
+
   p.remove();
   addLogText("Netspace Log copied to your clipboard.");
 }
