@@ -10,7 +10,6 @@ const fs = require("fs");
 var record = "/app/.data/secretrecord.json";
 
 app.use(express.static("public"));
-//app.use(express.static("views"));
 
 app.get("/", function(request, response) {
   response.sendFile(__dirname + "/views/index.html");
