@@ -62,7 +62,10 @@ io.on("connection", function(socket) {
   socket.on("get-current-netspace-names",function(){
     var data = JSON.parse(loadData(record));
     var keys=data.keys();
-    for()
+//     for(var i = 0; i<keys.length;i++){
+      socket.emit("key-names", keys);
+//     }
+   
     
   });
  
