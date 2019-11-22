@@ -59,4 +59,12 @@ io.on("connection", function(socket) {
     if(netspace) socket.emit("load-map", netspace,name);
   });
   
+  socket.on("get-current-netspace-names",function(){
+    var data = JSON.parse(loadData(record));
+    var keys=data.keys();
+    for()
+    
+  });
+ 
+  
 });
