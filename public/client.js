@@ -147,6 +147,9 @@ function onCommand(command, roll, extraInfo) {
 
 
 function callCommand(command, roll, extraInfo) {
+  // added
+  //input.select();
+  // window.scrollTo(0,document.body.scrollHeight);
   switch (command) {
     case "Backdoor":
       onBackdoor(roll);
@@ -252,7 +255,7 @@ function addLogText(text, user, damage) {
   else if (damage) userText.className = "damageText";
   var log = document.getElementById("log");
   log.appendChild(userText);
-  // window.scrollTo(0,document.body.scrollHeight);
+ // if(!user) window.scrollTo(0,document.body.scrollHeight);
 }
 function onBackdoor(roll) {
   if (levelStatus != "Password")
