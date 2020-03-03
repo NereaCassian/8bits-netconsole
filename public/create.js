@@ -51,7 +51,7 @@ function generateNetSpace() {
   if (name == "") {
     alert("New Netspace name cannot be blank.");
   }else if(name.includes("&")){
-    alert("New Netpace name cannot contain '&'");
+    alert("New Netspace name cannot contain '&'");
   } else if(name=="example"){
     alert("'example' is a protected Netspace name, please choose another name.")
   }
