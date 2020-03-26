@@ -86,7 +86,8 @@ var knownCommands = [
   "Control",
   "Zap",
   "Map",
-  "Copy"
+  "Copy",
+  "Roll"
 ];
 var noRollNeeded = ["Level", "Move","Password","Jack","Map","Copy"];
 
@@ -438,6 +439,16 @@ function onDiceRoll(multiple,dice){
   return total;
 }
 
+
+function generateRoll(numOfDice,sides){
+ var total = 0;
+  for(var i = 0; i<numOfDice; i++){
+  total += Math.floor(Math.random()* sides+1);
+  }
+  return total;
+}
+
+
 function onCopy(){
   var allText=$("p");
   var string =""
@@ -473,6 +484,9 @@ function selectText(node) {
     alert("Could not select text: Unsupported browser.");
   }
 }
+
+
+
 
 
 function getCurrentKeys(){
