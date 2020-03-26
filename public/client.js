@@ -89,7 +89,7 @@ var knownCommands = [
   "Copy",
   "Roll"
 ];
-var noRollNeeded = ["Level", "Move","Password","Jack","Map","Copy"];
+var noRollNeeded = ["Level", "Move","Password","Jack","Map","Copy","Roll"];
 
 //on input
 function inputEntered(inputValue) {
@@ -133,7 +133,7 @@ function onCommand(command, roll, extraInfo) {
   var isKnown = knownCommands.indexOf(command) != -1;
   var rollNeeded = noRollNeeded.indexOf(command) == -1;
   if (!isKnown) {
-    if (command != "") addLogText("Command Unknown.");
+    if (command != "") commandUnknown(command);
   } else if (!rollNeeded) {
     callCommand(command,roll,extraInfo);
   } else {//roll is needed
@@ -146,6 +146,14 @@ function onCommand(command, roll, extraInfo) {
   }
 }
 
+
+function commandUnknown(command){
+  var strings = command.split("d");
+  
+  
+  
+  addLogText("Command '"+command+"' Unknown.")
+}
 
 function callCommand(command, roll, extraInfo) {
   // added
@@ -205,6 +213,9 @@ function callCommand(command, roll, extraInfo) {
       break;
     case "Copy":
     onCopy();
+      break;
+    case "Roll":
+   onRoll(extraInfo);
       break;
   }
 }
@@ -429,6 +440,11 @@ function nextLevelDown(){
       }
 }
 
+function onRoll(extraInfo){
+  console.log("on roll info = "+extraInfo);
+  var strings = extraInfo.split("d");
+ addLogText(onDiceRoll(strings[0],strings[1])) ;
+}
 
 function onDiceRoll(multiple,dice){
   var total=0;
@@ -439,14 +455,6 @@ function onDiceRoll(multiple,dice){
   return total;
 }
 
-
-function generateRoll(numOfDice,sides){
- var total = 0;
-  for(var i = 0; i<numOfDice; i++){
-  total += Math.floor(Math.random()* sides+1);
-  }
-  return total;
-}
 
 
 function onCopy(){
