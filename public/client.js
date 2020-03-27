@@ -1,29 +1,25 @@
 var socket = io();
 var createMode;
 var queryString = decodeURIComponent(window.location.search);
-  queryString = queryString.substring(1);
+queryString = queryString.substring(1);
 var queries = queryString.split("&");
-queryString=queries[0];
+queryString = queries[0];
 //queryString = queryString.replace("?", "");
 if (queryString == "create") {
   createMode = true;
-} else if(queryString ==""){
- window.location.replace("/about");
-
-}
-else {
+} else if (queryString == "") {
+  window.location.replace("/about");
+} else {
   createMode = false;
 }
 var clickable;
 var input = document.getElementById("input");
 
-
-
- // $("#hacker").show();
-  input.focus();
-  input.select();
-  clickable = false;
-  setUpHackerMode();
+// $("#hacker").show();
+input.focus();
+input.select();
+clickable = false;
+setUpHackerMode();
 
 var map = [
   [0, "Empty", 0, ""],
@@ -53,7 +49,7 @@ function setUpHackerMode() {
 socket.on("load-map", function(loadedMap, name) {
   map = loadedMap;
   if (queryString != "") $("#title").text("Netrunning: " + name);
-   levelStatus = map[0][1];
+  levelStatus = map[0][1];
   onLevel();
 });
 input.addEventListener("keyup", function(event) {
@@ -89,7 +85,7 @@ var knownCommands = [
   "Copy",
   "Roll"
 ];
-var noRollNeeded = ["Level", "Move","Password","Jack","Map","Copy","Roll"];
+var noRollNeeded = ["Level", "Move", "Password", "Jack", "Map", "Copy", "Roll"];
 
 //on input
 function inputEntered(inputValue) {
@@ -105,38 +101,41 @@ function inputEntered(inputValue) {
     } else {
       onCommand(inputValue);
     }
-  } else { // if multiple words
+  } else {
+    // if multiple words
     var command = entries[0];
-    var roll ="";
+    var roll = "";
     var extraInfo = "";
     //extraInfo = entries[1];
     for (var i = 1; i < entries.length - 1; i++) {
       extraInfo = extraInfo + " " + entries[i];
-       console.log("extraInfo = "+extraInfo);
+      console.log("extraInfo = " + extraInfo);
     }
     var lastWord = entries[entries.length - 1];
     if (isNaN(lastWord)) {
       //if last word is not number
-      if(extraInfo) extraInfo = extraInfo + " " +lastWord; //depending 
-      else extraInfo = extraInfo +lastWord;
+      if (extraInfo) extraInfo = extraInfo + " " + lastWord;
+      //depending
+      else extraInfo = extraInfo + lastWord;
     } else {
       // if last word is number
-       roll = lastWord;
+      roll = lastWord;
     }
     // console.log("extraInfo = "+extraInfo);
-    onCommand(command,roll,extraInfo);
+    onCommand(command, roll, extraInfo);
   }
 }
 
 function onCommand(command, roll, extraInfo) {
- //  console.log("onCommand called "+command +" roll = "+roll+" info = "+extraInfo);
+  //  console.log("onCommand called "+command +" roll = "+roll+" info = "+extraInfo);
   var isKnown = knownCommands.indexOf(command) != -1;
   var rollNeeded = noRollNeeded.indexOf(command) == -1;
   if (!isKnown) {
     if (command != "") commandUnknown(command);
   } else if (!rollNeeded) {
-    callCommand(command,roll,extraInfo);
-  } else {//roll is needed
+    callCommand(command, roll, extraInfo);
+  } else {
+    //roll is needed
     if (!roll) {
       addLogText("Roll <b> 1d10 </b>+ Interface.");
       rollIsFor = command;
@@ -146,13 +145,17 @@ function onCommand(command, roll, extraInfo) {
   }
 }
 
-
-function commandUnknown(command){
+function commandUnknown(command) {
   var strings = command.split("d");
-  
-  
-  
-  addLogText("Command '"+command+"' Unknown.")
+  if (strings.length > 1) {
+    if (!isNaN(strings[0]) && !isNaN(strings[1])) {
+      onRoll(command);
+    } else {
+      addLogText("Command '" + command + "' Unknown.");
+    }
+  } else {
+    addLogText("Command '" + command + "' Unknown.");
+  }
 }
 
 function callCommand(command, roll, extraInfo) {
@@ -185,65 +188,65 @@ function callCommand(command, roll, extraInfo) {
       onEyeDee(roll);
       break;
     case "Eye":
-        onEyeDee(roll);
+      onEyeDee(roll);
       break;
     case "Password":
       onPassword(extraInfo);
       break;
     case "Slide":
-     onSlide(roll);
+      onSlide(roll);
       break;
     case "Banhammer":
-     onBanhammer(roll);
+      onBanhammer(roll);
       break;
     case "Jack":
-     onJack(extraInfo);
+      onJack(extraInfo);
       break;
     case "Control":
-    onControl(roll);
+      onControl(roll);
       break;
     case "Cloak":
-    onCloak(roll);
+      onCloak(roll);
       break;
     case "Zap":
-    onZap(roll);
+      onZap(roll);
       break;
     case "Map":
-    onMap();
+      onMap();
       break;
     case "Copy":
-    onCopy();
+      onCopy();
       break;
     case "Roll":
-   onRoll(extraInfo);
+      onRoll(extraInfo);
       break;
   }
 }
 function onLevel() {
-  addLogText("You are on <b>Level " + currentLevel + ": " + map[currentLevel][1] + "</b>");
+  addLogText(
+    "You are on <b>Level " + currentLevel + ": " + map[currentLevel][1] + "</b>"
+  );
   //get public info and add
-  
-  if(levelStatus == "Virus"){
-    addLogText("Virus is "+map[currentLevel][3]);
-  }else if(levelStatus=="Control Node"){
-    addLogText("Control Node controls "+map[currentLevel][3]);
+
+  if (levelStatus == "Virus") {
+    addLogText("Virus is " + map[currentLevel][3]);
+  } else if (levelStatus == "Control Node") {
+    addLogText("Control Node controls " + map[currentLevel][3]);
   }
-  
-  
 }
 function move(direction) {
   if (direction == "up" || direction == "Up") {
     currentLevel--;
-    if(currentLevel<0){
+    if (currentLevel < 0) {
       addLogText("You are already at the top level.");
       currentLevel++;
-    }else{
-    levelStatus = map[currentLevel][1];
-    onLevel();
+    } else {
+      levelStatus = map[currentLevel][1];
+      onLevel();
     }
   } else if (direction == "down" || direction == "Down") {
-    if (levelStatus == "Password"||levelStatus=="Hellhound") {
-      addLogText("You cannot move down past a "+levelStatus+".");
+    if (levelStatus == "Password" || levelStatus == "Hellhound") {
+      addLogText("You cannot move down past a " + levelStatus + ".");
     } else {
       currentLevel++;
       if (currentLevel >= map.length) {
@@ -254,11 +257,11 @@ function move(direction) {
         onLevel();
       }
     }
-  } else{ //direction is not up or down
+  } else {
+    //direction is not up or down
     addLogText("Command Unknown.");
   }
 }
-
 
 function addLogText(text, user, damage) {
   var userText = document.createElement("P");
@@ -267,7 +270,7 @@ function addLogText(text, user, damage) {
   else if (damage) userText.className = "damageText";
   var log = document.getElementById("log");
   log.appendChild(userText);
- // if(!user) window.scrollTo(0,document.body.scrollHeight);
+  // if(!user) window.scrollTo(0,document.body.scrollHeight);
 }
 function onBackdoor(roll) {
   if (levelStatus != "Password")
@@ -280,36 +283,33 @@ function onBackdoor(roll) {
   }
 }
 
-
-function onSlide(roll){
-  if(levelStatus != "Hellhound"){ 
+function onSlide(roll) {
+  if (levelStatus != "Hellhound") {
     addLogText("Slide can only be used on a Hellhound or Black Ice.");
-  }else{
-    if(rollPasses(roll)){
+  } else {
+    if (rollPasses(roll)) {
       addLogText("Slide successful.");
       nextLevelDown();
-    }else{
+    } else {
       addLogText("Slide attempt failed.");
     }
   }
-  
-  
 }
 
-function onBanhammer(roll){
-  addLogText("Banhammer with attempt of <b>"+roll+"</b>.");
+function onBanhammer(roll) {
+  addLogText("Banhammer with attempt of <b>" + roll + "</b>.");
 }
-function onJack(extraInfo){
-  if(extraInfo=="Out"||extraInfo=="out"){
-  addLogText("You have left the netspace.")
-    currentLevel=0;
+function onJack(extraInfo) {
+  if (extraInfo == "Out" || extraInfo == "out") {
+    addLogText("You have left the netspace.");
+    currentLevel = 0;
     knownMap = 0;
-  }else{
+  } else {
     addLogText("Command Unknown");
   }
 }
 function onEyeDee(roll) {
- // console.log("onEyeDee roll = "+roll);
+  // console.log("onEyeDee roll = "+roll);
   if (levelStatus != "File") addLogText("Eye-Dee can only be used on a File.");
   else if (rollPasses(roll)) {
     addLogText("Success");
@@ -319,156 +319,159 @@ function onEyeDee(roll) {
   }
 }
 
-
-function onPassword(password){
-  if(levelStatus != "Password"&& levelStatus!= "Hellhound"){
+function onPassword(password) {
+  if (levelStatus != "Password" && levelStatus != "Hellhound") {
     addLogText("Password can only be used on Password or Hellhound levels.");
-  }else{
-  var correctPassword = map[currentLevel][3];
-  console.log("password = :"+password+": correctPassword = :"+correctPassword+": is correct ="+(password==correctPassword));
-  if(password == correctPassword && password!=""){ 
-    addLogText("Password <b>"+password+"</b> is correct.");
-    nextLevelDown();
-  }else{
-    addLogText("Incorrect Password");
+  } else {
+    var correctPassword = map[currentLevel][3];
+    console.log(
+      "password = :" +
+        password +
+        ": correctPassword = :" +
+        correctPassword +
+        ": is correct =" +
+        (password == correctPassword)
+    );
+    if (password == correctPassword && password != "") {
+      addLogText("Password <b>" + password + "</b> is correct.");
+      nextLevelDown();
+    } else {
+      addLogText("Incorrect Password");
+    }
   }
 }
-}
 
-function onControl(roll){
-  if(rollPasses(roll)){
-     addLogText("You have successfully taken control of this node.");
-  }else{
-     addLogText("Control attempt failed.");
+function onControl(roll) {
+  if (rollPasses(roll)) {
+    addLogText("You have successfully taken control of this node.");
+  } else {
+    addLogText("Control attempt failed.");
   }
 }
 
-function onCloak(roll){
+function onCloak(roll) {
   var dv = map.length * 2;
-  if(rollPasses(roll, dv)){
-    addLogText("You have successfully cloaked your actions.")
-  }else{
-    addLogText("Cloak attempt unsuccessful.")
+  if (rollPasses(roll, dv)) {
+    addLogText("You have successfully cloaked your actions.");
+  } else {
+    addLogText("Cloak attempt unsuccessful.");
   }
 }
 
-function onZap(roll){
+function onZap(roll) {
   addLogText("Zap attempt");
 }
 
-function onMap(){
-  if(!knownMap) {
-    addLogText("You must use Pathfinder to discover the netspace map before you can view it.");
-  }else{
-    console.log("currentLevel = "+currentLevel+" knownMap = "+knownMap);
-    if(currentLevel +1 >=knownMap)knownMap = currentLevel +1;
+function onMap() {
+  if (!knownMap) {
+    addLogText(
+      "You must use Pathfinder to discover the netspace map before you can view it."
+    );
+  } else {
+    console.log("currentLevel = " + currentLevel + " knownMap = " + knownMap);
+    if (currentLevel + 1 >= knownMap) knownMap = currentLevel + 1;
     generateMap(knownMap);
   }
 }
 
 function onPathFinder(roll) {
   var levels = 0;
-      if(roll <= 5){
-      levels = 1;
-      }else if(roll > 5 &&roll <= 10){
-        levels =2 ;
-      }
-      else if(roll> 10 &&roll <= 13){
-        levels =3 ;
-      }
-      else if(roll>13&&roll<=15){
-        levels =4 ;
-      }
-      else if(roll>15&&roll<=17){
-        levels =5 ;
-      }
-      else if(roll>17){
-        levels =6 ;
-      }
-  
-  var visibleLevels=currentLevel+1+levels;
-  
-  generateMap(visibleLevels);
+  if (roll <= 5) {
+    levels = 1;
+  } else if (roll > 5 && roll <= 10) {
+    levels = 2;
+  } else if (roll > 10 && roll <= 13) {
+    levels = 3;
+  } else if (roll > 13 && roll <= 15) {
+    levels = 4;
+  } else if (roll > 15 && roll <= 17) {
+    levels = 5;
+  } else if (roll > 17) {
+    levels = 6;
   }
- 
-  
+
+  var visibleLevels = currentLevel + 1 + levels;
+
+  generateMap(visibleLevels);
+}
 
 // function generateMap(currentLevel,additionalLevels) {
-  function generateMap(visibleLevels) {
-    console.log("generate map visibleLevels = "+visibleLevels);
+function generateMap(visibleLevels) {
+  console.log("generate map visibleLevels = " + visibleLevels);
   var visibleMap = "";
-//   currentLevel++;
-//   var visibleLevels = currentLevel+additionalLevels;
-  
+  //   currentLevel++;
+  //   var visibleLevels = currentLevel+additionalLevels;
+
   var originalLevels = visibleLevels;
-  
-  if (map.length<visibleLevels) visibleLevels=map.length;
-  knownMap=originalLevels;
+
+  if (map.length < visibleLevels) visibleLevels = map.length;
+  knownMap = originalLevels;
   for (var i = 0; i < visibleLevels; i++) {
-    if(currentLevel == i )visibleMap += "<b>Level " + map[i][0] + ": " + map[i][1] + "</b><br>";
+    if (currentLevel == i)
+      visibleMap += "<b>Level " + map[i][0] + ": " + map[i][1] + "</b><br>";
     else visibleMap += "Level " + map[i][0] + ": " + map[i][1] + "<br>";
   }
 
-  console.log("map length = "+map.length+" originalLevels = "+originalLevels);
-  if(map.length > originalLevels-1){
+  console.log(
+    "map length = " + map.length + " originalLevels = " + originalLevels
+  );
+  if (map.length > originalLevels - 1) {
     visibleMap += "Unknown";
-  }else{
-     visibleMap += "End";
+  } else {
+    visibleMap += "End";
   }
   addLogText(visibleMap);
 }
 
-function rollPasses(roll,dv){
-  if (!dv)  dv = map[currentLevel][2];
-  if(dv==""||dv==undefined|| isNaN(dv)) dv = 0;
-  dv=parseInt(dv);
-  roll=parseInt(roll);
-  
+function rollPasses(roll, dv) {
+  if (!dv) dv = map[currentLevel][2];
+  if (dv == "" || dv == undefined || isNaN(dv)) dv = 0;
+  dv = parseInt(dv);
+  roll = parseInt(roll);
+
   //console.log("roll passes roll= "+roll+" dv = "+dv);
   return roll >= dv;
 }
 
-function nextLevelDown(){
+function nextLevelDown() {
   currentLevel++;
   if (currentLevel >= map.length) {
-        //think equal
-        currentLevel--;
-        addLogText("You are already on the last level.");
-      } else {
-        levelStatus = map[currentLevel][1];
-       onLevel();
-      }
+    //think equal
+    currentLevel--;
+    addLogText("You are already on the last level.");
+  } else {
+    levelStatus = map[currentLevel][1];
+    onLevel();
+  }
 }
 
-function onRoll(extraInfo){
-  console.log("on roll info = "+extraInfo);
+function onRoll(extraInfo) {
+  console.log("on roll info = " + extraInfo);
   var strings = extraInfo.split("d");
- addLogText(onDiceRoll(strings[0],strings[1])) ;
+  addLogText(onDiceRoll(strings[0], strings[1]));
 }
 
-function onDiceRoll(multiple,dice){
-  var total=0;
-  for(var i=0;i<multiple;i++){
+function onDiceRoll(multiple, dice) {
+  var total = 0;
+  for (var i = 0; i < multiple; i++) {
     total += Math.floor(Math.random() * dice) + 1;
   }
-  console.log("onDiceRoll "+total);
+  console.log("onDiceRoll " + total);
   return total;
 }
 
-
-
-function onCopy(){
-  var allText=$("p");
-  var string =""
-  for(var i= 0; i< allText.length; i++){
-    string+=allText[i].innerText +" \n";
+function onCopy() {
+  var allText = $("p");
+  var string = "";
+  for (var i = 0; i < allText.length; i++) {
+    string += allText[i].innerText + " \n";
   }
   copyText(string);
 }
 
 function copyText(text) {
-  var p = document.createElement('P');
-  p.innerText=text;
+  var p = document.createElement("P");
+  p.innerText = text;
   var log = document.getElementById("log");
   log.appendChild(p);
   selectText(p);
@@ -493,14 +496,10 @@ function selectText(node) {
   }
 }
 
-
-
-
-
-function getCurrentKeys(){
+function getCurrentKeys() {
   socket.emit("get-current-keys");
 }
 
-socket.on("key-names",function(keys){
-  console.log("Keys = "+keys);
+socket.on("key-names", function(keys) {
+  console.log("Keys = " + keys);
 });
