@@ -84,9 +84,10 @@ var knownCommands = [
   "Zap",
   "Map",
   "Copy",
-  "Roll"
+  "Roll",
+  "List"
 ];
-var noRollNeeded = ["Level", "Move", "Password", "Jack", "Map", "Copy", "Roll"];
+var noRollNeeded = ["Level", "Move", "Password", "Jack", "Map", "Copy", "Roll","List"];
 
 //on input
 function inputEntered(inputValue) {
@@ -102,6 +103,13 @@ function inputEntered(inputValue) {
     } else {
       onCommand(inputValue);
     }
+  }else if(entries[0]==""){
+ // var newInput="";
+ //    for(var i=0;i<entries.length;i<entries){
+ //    newInput+=entries[i]+" ";
+ //  }
+    inputEntered(entries[1]);
+    
   } else {
     // if multiple words
     var command = entries[0];
@@ -221,6 +229,9 @@ function callCommand(command, roll, extraInfo) {
     case "Roll":
       onRoll(extraInfo);
       break;
+      case "List":
+      onList();
+      break;
   }
 }
 function onLevel() {
@@ -260,7 +271,8 @@ function move(direction) {
     }
   } else {
     //direction is not up or down
-    addLogText("Command Unknown.");
+  //  addLogText("Command Unknown.");
+    commandUnknown("Move");
   }
 }
 
@@ -464,6 +476,15 @@ function onDiceRoll(multiple, dice) {
 if(multiple>1) addLogText(string);
   return total;
 }
+
+function onList(){
+  var commandsString="";
+  for(var i =0;i<knownCommands.length;i++){
+    commandsString+=knownCommands[i]+"<br>";
+  }
+  addLogText(commandsString);
+}
+
 
 function onCopy() {
   var allText = $("p");
