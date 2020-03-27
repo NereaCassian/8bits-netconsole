@@ -14,6 +14,7 @@ if (queryString == "create") {
 }
 var clickable;
 var input = document.getElementById("input");
+var lastEnteredCommand;
 
 // $("#hacker").show();
 input.focus();
@@ -453,10 +454,14 @@ function onRoll(extraInfo) {
 
 function onDiceRoll(multiple, dice) {
   var total = 0;
+  var string = "";
   for (var i = 0; i < multiple; i++) {
-    total += Math.floor(Math.random() * dice) + 1;
+    
+  var thisRoll = Math.floor(Math.random() * dice) + 1;
+   string+= thisRoll+" ";
+   total+=thisRoll;
   }
-  console.log("onDiceRoll " + total);
+if(multiple>1) addLogText(string);
   return total;
 }
 
