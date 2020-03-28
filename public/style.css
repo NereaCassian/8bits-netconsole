@@ -30,4 +30,6 @@ body {
 textarea{
   display:inline-block;
   vertical-align:middle;
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
 }
