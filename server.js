@@ -71,9 +71,9 @@ io.on("connection", function(socket) {
 
   socket.on("get-net-space", function(name) {
     //new code
-    var pureJson=loadData(record);
-    console.log("pureJson = "+pureJson);
-    
+  // var netspace = JSON.parse(loadData(record))[name];
+  //  // netspace=netspace[0][3].replace(/\n/g,"<br>");
+  //   console.log("netspace = "+netspace);
     //old code
     var netspace = JSON.parse(loadData(record))[name];
     if(netspace) socket.emit("load-map", netspace,name);
