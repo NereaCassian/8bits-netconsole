@@ -48,11 +48,6 @@ function setUpHackerMode() {
   }
 }
 socket.on("load-map", function(loadedMap, name) {
-  console.log("loaded map = "+loadedMap);
-  for(var i=0;i<loadedMap.length;i++){                  //change to html line breaks
-   //  if(loadedMap[i][3]) loadedMap=loadedMap[i][3].replace(/\n/g,"<br>");
-  }
-  console.log("loaded map = "+loadedMap);
   map = loadedMap;
   if (queryString != "") $("#title").text("Netrunning: " + name);
   levelStatus = map[0][1];
