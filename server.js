@@ -62,7 +62,7 @@ io.on("connection", function(socket) {
   
   socket.on("new-net-space", function(name, netSpace) {
     var oldJson = JSON.parse(loadData(record));
-    netSpace=replaceLineBreaks(netSpace);  //new code
+  //  netSpace=replaceLineBreaks(netSpace);  //new code
     oldJson[name] = netSpace;
    
     
@@ -70,6 +70,11 @@ io.on("connection", function(socket) {
   });
 
   socket.on("get-net-space", function(name) {
+    //new code
+    var pureJson=loadData(record);
+    console.log("pureJson = "+pureJson);
+    
+    //old code
     var netspace = JSON.parse(loadData(record))[name];
     if(netspace) socket.emit("load-map", netspace,name);
   });
