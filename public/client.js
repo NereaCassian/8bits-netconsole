@@ -50,7 +50,7 @@ function setUpHackerMode() {
 socket.on("load-map", function(loadedMap, name) {
   console.log("loaded map = "+loadedMap);
   for(var i=0;i<loadedMap.length;i++){                  //change to html line breaks
-     if(loadedMap[i][3]) loadedMap=loadedMap[i][3].replace(/\n/g,"<br>");
+   //  if(loadedMap[i][3]) loadedMap=loadedMap[i][3].replace(/\n/g,"<br>");
   }
   console.log("loaded map = "+loadedMap);
   map = loadedMap;
@@ -331,7 +331,11 @@ function onEyeDee(roll) {
   if (levelStatus != "File") addLogText("Eye-Dee can only be used on a File.");
   else if (rollPasses(roll)) {
     addLogText("Success");
-    addLogText("File contents: " + map[currentLevel][3]);
+    
+    var tempFileContents = map[currentLevel][3];
+    tempFileContents = tempFileContents.replace(/\n/g,"<br>");
+  addLogText("File contents: " + tempFileContents); //changing to br on temp contents
+   // addLogText("File contents: " + map[currentLevel][3]);
   } else {
     addLogText("Eye-Dee attempt was unsuccessful.");
   }
