@@ -47,14 +47,6 @@ function generateNetSpace() {
     newLevelArray = [];
   }
   console.log(newNetSpace);
-  //replace here
-  
-//   for(var i =0;i<newNetSpace.length;i++){
-//    newNetSpace[i][3].replace("\n","<br>"); 
-//   }
-  
-//    console.log(newNetSpace);
-  
   
   
   var name = document.getElementById("netSpaceName").value;
