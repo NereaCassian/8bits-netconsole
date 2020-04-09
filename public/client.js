@@ -247,6 +247,9 @@ function callCommand(command, roll, extraInfo) {
     case "Help":
       onHelp(extraInfo);
       break;
+    case "Remove":
+      onRemove(roll);
+      break;
   }
 }
 function onLevel() {
@@ -376,10 +379,14 @@ function onRemove(roll) {
   else {
     if(rollPasses(roll)){
       addLogText("You have successfully removed this virus");
-      //level is empty
+      map[currentLevel][1]="Empty";
+      map[currentLevel][2]="";
+      map[currentLevel][3]="";
+      levelStatus="Empty";
+      onLevel();
     }
     else{
-      addLogText("Virus removal attempt failed.")
+      addLogText("Virus removal attempt failed.");
     }
   }
 }
@@ -457,6 +464,8 @@ function generateMap(visibleLevels) {
   } else {
     visibleMap += "End";
   }
+  visibleMap = visibleMap.replace(/Virus/g,"File");
+  
   addLogText(visibleMap);
 }
 
