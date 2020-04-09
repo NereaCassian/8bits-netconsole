@@ -346,16 +346,7 @@ function onPassword(password,roll) {
   } else {
     if(!password && roll) password = roll;
     
-    
     var correctPassword = map[currentLevel][3];
-    console.log(
-      "password = :" +
-        password +
-        ": correctPassword = :" +
-        correctPassword +
-        ": is correct =" +
-        (password == correctPassword)
-    );
     if (password == correctPassword && password != "") {
       addLogText("Password <b>" + password + "</b> is correct.");
       nextLevelDown();
@@ -592,3 +583,4 @@ socket.on("key-names", function(keys) {
 //move don says move unknown
 //moveup unknown
 
+//map without pathfinder should just show what you know
