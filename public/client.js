@@ -412,26 +412,19 @@ function onPathFinder(roll) {
   generateMap(visibleLevels);
 }
 
-// function generateMap(currentLevel,additionalLevels) {
 function generateMap(visibleLevels) {
-  console.log("generate map visibleLevels = " + visibleLevels);
   var visibleMap = "";
-  //   currentLevel++;
-  //   var visibleLevels = currentLevel+additionalLevels;
-
   var originalLevels = visibleLevels;
 
   if (map.length < visibleLevels) visibleLevels = map.length;
   knownMap = originalLevels;
+  //if virus undiscoverd replace
   for (var i = 0; i < visibleLevels; i++) {
     if (currentLevel == i)
       visibleMap += "<b>Level " + map[i][0] + ": " + map[i][1] + "</b><br>";
     else visibleMap += "Level " + map[i][0] + ": " + map[i][1] + "<br>";
   }
 
-  console.log(
-    "map length = " + map.length + " originalLevels = " + originalLevels
-  );
   if (map.length > originalLevels - 1) {
     visibleMap += "Unknown";
   } else {
@@ -445,8 +438,6 @@ function rollPasses(roll, dv) {
   if (dv == "" || dv == undefined || isNaN(dv)) dv = 0;
   dv = parseInt(dv);
   roll = parseInt(roll);
-
-  //console.log("roll passes roll= "+roll+" dv = "+dv);
   return roll >= dv;
 }
 
@@ -590,6 +581,7 @@ socket.on("key-names", function(keys) {
 //empty level option to add note
 //fix password can be numeric
 
-
+//for list new array by situation
+//add help
 
 
