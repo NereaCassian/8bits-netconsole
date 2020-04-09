@@ -88,7 +88,17 @@ var knownCommands = [
   "List",
   "Help"
 ];
-var noRollNeeded = ["Level", "Move", "Password", "Jack", "Map", "Copy", "Roll","List","Help"];
+var noRollNeeded = [
+  "Level",
+  "Move",
+  "Password",
+  "Jack",
+  "Map",
+  "Copy",
+  "Roll",
+  "List",
+  "Help"
+];
 
 //on input
 function inputEntered(inputValue) {
@@ -104,13 +114,12 @@ function inputEntered(inputValue) {
     } else {
       onCommand(inputValue);
     }
-  }else if(entries[0]==""){
- // var newInput="";
- //    for(var i=0;i<entries.length;i<entries){
- //    newInput+=entries[i]+" ";
- //  }
+  } else if (entries[0] == "") {
+    // var newInput="";
+    //    for(var i=0;i<entries.length;i<entries){
+    //    newInput+=entries[i]+" ";
+    //  }
     inputEntered(entries[1]);
-    
   } else {
     // if multiple words
     var command = entries[0];
@@ -131,7 +140,7 @@ function inputEntered(inputValue) {
       // if last word is number
       roll = lastWord;
     }
-  
+
     onCommand(command, roll, extraInfo);
   }
 }
@@ -201,7 +210,7 @@ function callCommand(command, roll, extraInfo) {
       onEyeDee(roll);
       break;
     case "Password":
-      onPassword(extraInfo,roll);
+      onPassword(extraInfo, roll);
       break;
     case "Slide":
       onSlide(roll);
@@ -230,10 +239,10 @@ function callCommand(command, roll, extraInfo) {
     case "Roll":
       onRoll(extraInfo);
       break;
-      case "List":
+    case "List":
       onList();
       break;
-      case "Help":
+    case "Help":
       onHelp();
       break;
   }
@@ -248,8 +257,8 @@ function onLevel() {
     addLogText("Virus is " + map[currentLevel][3]);
   } else if (levelStatus == "Control Node") {
     addLogText("Control Node controls " + map[currentLevel][3]);
-  } else if(levelStatus == "Empty" && map[currentLevel][3]){
-    addLogText("Note: "+map[currentLevel][3]);
+  } else if (levelStatus == "Empty" && map[currentLevel][3]) {
+    addLogText("Note: " + map[currentLevel][3]);
   }
 }
 function move(direction) {
@@ -323,7 +332,7 @@ function onJack(extraInfo) {
     currentLevel = 0;
     knownMap = 0;
   } else {
-  //  addLogText("Command Unknown");
+    //  addLogText("Command Unknown");
     commandUnknown("Banhammer");
   }
 }
@@ -332,22 +341,22 @@ function onEyeDee(roll) {
   if (levelStatus != "File") addLogText("Eye-Dee can only be used on a File.");
   else if (rollPasses(roll)) {
     addLogText("Success");
-    
+
     var tempFileContents = map[currentLevel][3];
-    tempFileContents = tempFileContents.replace(/\n/g,"<br>");
-  addLogText("File contents: " + tempFileContents); //changing to br on temp contents
-   // addLogText("File contents: " + map[currentLevel][3]);
+    tempFileContents = tempFileContents.replace(/\n/g, "<br>");
+    addLogText("File contents: " + tempFileContents); //changing to br on temp contents
+    // addLogText("File contents: " + map[currentLevel][3]);
   } else {
     addLogText("Eye-Dee attempt was unsuccessful.");
   }
 }
 
-function onPassword(password,roll) {
+function onPassword(password, roll) {
   if (levelStatus != "Password" && levelStatus != "Hellhound") {
     addLogText("Password can only be used on Password or Hellhound levels.");
   } else {
-    if(!password && roll) password = roll;
-    
+    if (!password && roll) password = roll;
+
     var correctPassword = map[currentLevel][3];
     if (password == correctPassword && password != "") {
       addLogText("Password <b>" + password + "</b> is correct.");
@@ -386,7 +395,7 @@ function onMap() {
     // );
     generateMap(1);
   } else {
-   // console.log("currentLevel = " + currentLevel + " knownMap = " + knownMap);
+    // console.log("currentLevel = " + currentLevel + " knownMap = " + knownMap);
     if (currentLevel + 1 >= knownMap) knownMap = currentLevel + 1;
     generateMap(knownMap);
   }
@@ -434,10 +443,7 @@ function generateMap(visibleLevels) {
   addLogText(visibleMap);
 }
 
-function updateKnownMap(knownLevel){
-  
-}
-
+function updateKnownMap(knownLevel) {}
 
 function rollPasses(roll, dv) {
   if (!dv) dv = map[currentLevel][2];
@@ -467,26 +473,40 @@ function onDiceRoll(multiple, dice) {
   var total = 0;
   var string = "";
   for (var i = 0; i < multiple; i++) {
-    
-  var thisRoll = Math.floor(Math.random() * dice) + 1;
-   string+= thisRoll+" ";
-   total+=thisRoll;
+    var thisRoll = Math.floor(Math.random() * dice) + 1;
+    string += thisRoll + " ";
+    total += thisRoll;
   }
-if(multiple>1) addLogText(string);
+  if (multiple > 1) addLogText(string);
   return total;
 }
 
-function onList(){
-  var commandsString="";
-  for(var i =0;i<knownCommands.length;i++){
-    commandsString+=knownCommands[i]+"<br>";
+function onList() {
+  var commandsString = "";
+  for (var i = 0; i < knownCommands.length; i++) {
+    commandsString += knownCommands[i] + "<br>";
   }
   addLogText(commandsString);
 }
 
+function onHelp() {
+  var helpArray = [
+    ["Navigation", "Help", "Map", "Pathfinder", "Move Down", "Move Up"],
+    ["Password", "Password (eg)123", "Backdoor"],
+    ["File","Eyedee","Move Down"],
+    ["Virus]
+  ];
+  var string = "";
 
-function onHelp(){
-      
+  for (var y = 0; y < helpArray.length; y++) {
+    string += "<b>" + helpArray[y][0] + " commands</b><br>";
+    for (var i = 1; i < helpArray[y].length; i++) {
+      string += helpArray[y][i] + "<br>";
+    }
+    string+="<br>";
+  }
+
+  addLogText(string);
 }
 
 function onCopy() {
@@ -533,7 +553,6 @@ socket.on("key-names", function(keys) {
   console.log("Keys = " + keys);
 });
 
-
 //hellhound hit points and dv hit points, defence, perception, attack
 //defense and attack
 //you go first
@@ -543,34 +562,31 @@ socket.on("key-names", function(keys) {
 //slide you roll d10 plus interface hellhound adds d10 plus perception if equal you slide
 //flack stops first hit dealing damage no roll just do it
 
-
 //hellhound rolls 1 d10 and adds attack
 //defense 7 attack 8
 //you roll interface and d10
 //if hellhound is higher you evade
 //if hits 3d6 damage
-// you role interface 
+// you role interface
 //hellhound d10 and add interface
 //you do 1d6 to hellhound
-//off hit points 
+//off hit points
 //25 hits points
 // have to get hellhounds to 0
 // 3 attacks speedy gonalez increases speed
 //banhammer 3d6 to hellhound
 //flack stops first hit from dealing damage
-//flack before hit 
+//flack before hit
 //can only use once
 // flack is preemptive - next attack no damage
 //first successful hit deals no damage
-//interface hellhound rolls perception 
-//is slide roles better than 
+//interface hellhound rolls perception
+//is slide roles better than
 //banhammer res is attack
-//hit 3d6 
+//hit 3d6
 //once per netrun
 
-
-
-//virus 
+//virus
 //virus by someone else
 //appears as file
 // pathfinder
@@ -599,7 +615,6 @@ socket.on("key-names", function(keys) {
 //space in front of word prints it twice
 
 //space in passwords
-
 
 //navigation
 //  -help
