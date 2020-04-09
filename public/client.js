@@ -102,7 +102,8 @@ var noRollNeeded = [
 
 //on input
 function inputEntered(inputValue) {
-  inputValue = inputValue.charAt(0).toUpperCase() + inputValue.slice(1); //make first letter Uppercase
+  inputValue =
+    inputValue.charAt(0).toUpperCase() + inputValue.slice(1).toLowerCase(); //make first letter Uppercase
   addLogText(inputValue, true); //add user's text to log
   var entries = inputValue.split(" ");
   if (entries.length == 1) {
@@ -493,40 +494,49 @@ function onHelp(topic) {
   var helpArray = [
     ["Navigation", "Level", "Map", "Pathfinder", "Move Down", "Move Up"],
     ["Password", "Password (eg)123", "Backdoor"],
-    ["File","Eyedee","Move Down"],
-    ["Virus","Remove Virus", "Move Down"],
-    ["Control Node","Control","Move Down"],
-    ["Hellhound","Attack","Banhammer","Flack","Slide"],
-    ["Other","(eg)1d10","Roll (eg)3d6","Cloak","Leave Virus","Copy","Help (eg) Virus"]
+    ["File", "Eyedee", "Move Down"],
+    ["Virus", "Remove Virus", "Move Down"],
+    ["Control Node", "Control", "Move Down"],
+    ["Hellhound", "Attack", "Banhammer", "Flack", "Slide"],
+    [
+      "Other",
+      "(eg)1d10",
+      "Roll (eg)3d6",
+      "Cloak",
+      "Leave Virus",
+      "Copy",
+      "Help (eg) Virus"
+    ]
   ];
-  
-  
+
   var string = "";
-  var legitTopic=false;
-  //check if topic is there
-  for(var x=0;x<helpArray.length;x++){
-    if(topic==helpArray[x][0]) le
-    
-    
-  }
-  
-  
-  
-if(!topic){
-  for (var y = 0; y < helpArray.length; y++) {
-    string += "<b>" + helpArray[y][0] + " commands</b><br>";
-    for (var i = 1; i < helpArray[y].length; i++) {
-      string += helpArray[y][i] + "<br>";
+  var legitTopic = false;
+
+  if (topic) {
+    topic = topic.charAt(0).toUpperCase() + topic.slice(1).toLowerCase();
+    for (var x = 0; x < helpArray.length; x++) {
+      if (topic == helpArray[x][0]) {
+        legitTopic = true;
+        string += "<b>" + helpArray[x][0] + " commands</b><br>";
+        for (var i = 1; i < helpArray[x].length; i++) {
+          string += helpArray[x][i] + "<br>";
+        }
+        addLogText(string);
+      }
     }
-    string+="<br>";
   }
 
-  addLogText(string);
-}
-  
-  
-  
-  
+  if (!topic||!legitTopic) {
+    for (var y = 0; y < helpArray.length; y++) {
+      string += "<b>" + helpArray[y][0] + " commands</b><br>";
+      for (var i = 1; i < helpArray[y].length; i++) {
+        string += helpArray[y][i] + "<br>";
+      }
+      string += "<br>";
+    }
+
+    addLogText(string);
+  }
 }
 
 function onCopy() {
@@ -635,6 +645,5 @@ socket.on("key-names", function(keys) {
 //space in front of word prints it twice
 
 //space in passwords
-
 
 // add remove virus
