@@ -248,6 +248,8 @@ function onLevel() {
     addLogText("Virus is " + map[currentLevel][3]);
   } else if (levelStatus == "Control Node") {
     addLogText("Control Node controls " + map[currentLevel][3]);
+  } else if(levelStatus == "Empty" && map[currentLevel][3]){
+    addLogText("Note: "+map[currentLevel][3]);
   }
 }
 function move(direction) {
