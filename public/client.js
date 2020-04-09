@@ -379,9 +379,10 @@ function onZap(roll) {
 
 function onMap() {
   if (!knownMap) {
-    addLogText(
-      "You must use Pathfinder to discover the netspace map before you can view it."
-    );
+    // addLogText(
+    //   "You must use Pathfinder to discover the netspace map before you can view it."
+    // );
+    generateMap(1);
   } else {
    // console.log("currentLevel = " + currentLevel + " knownMap = " + knownMap);
     if (currentLevel + 1 >= knownMap) knownMap = currentLevel + 1;
@@ -584,3 +585,6 @@ socket.on("key-names", function(keys) {
 //moveup unknown
 
 //map without pathfinder should just show what you know
+//space in front of word prints it twice
+
+//space in passwords
