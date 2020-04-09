@@ -533,3 +533,43 @@ function getCurrentKeys() {
 socket.on("key-names", function(keys) {
   console.log("Keys = " + keys);
 });
+
+
+//hellhound hit points and dv 
+//defense and attack
+//hellhound rolls 1 d10 and adds attack
+//defense 7 attack 8
+//you roll interface and d10
+//if hellhound is higher you evade
+//if hits 3d6 damage
+// you role interface 
+//hellhound d10 and add interface
+//you do 1d6 to hellhound
+//off hit points 
+//25 hits points
+// have to get hellhounds to 0
+// 3 attacks speedy gonalez increases speed
+//banhammer 3d6 to hellhound
+//flack stops first hit from dealing damage
+//flack before hit 
+//can only use once
+// flack is preemptive - next attack no damage
+//first successful hit deals no damage
+//interface hellhound rolls perception 
+//is slide roles better than 
+//banhammer res is attack
+//hit 3d6 
+//once per netrun
+
+
+
+//virus 
+//virus by someone else
+//appears as file
+// pathfinder
+//eyedee shows as virus
+//remove it by rolling virus check
+
+
+
+
