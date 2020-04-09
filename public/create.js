@@ -26,7 +26,7 @@ function deleteLevel() {
 function onLevelTypeChange(elmt) {
   var textArea = elmt.parentNode.children[3];
   if (elmt.value == "File") textArea.placeholder = "File contents when opened";
-  else if (elmt.value == "Empty") textArea.placeholder = "";
+  else if (elmt.value == "Empty") textArea.placeholder = "(Optional) Note";
   else if (elmt.value == "Password") textArea.placeholder = "Correct password";
   else if (elmt.value == "Virus")
     textArea.placeholder = "What the Virus is doing";
