@@ -85,9 +85,10 @@ var knownCommands = [
   "Map",
   "Copy",
   "Roll",
-  "List"
+  "List",
+  "Help"
 ];
-var noRollNeeded = ["Level", "Move", "Password", "Jack", "Map", "Copy", "Roll","List"];
+var noRollNeeded = ["Level", "Move", "Password", "Jack", "Map", "Copy", "Roll","List","Help"];
 
 //on input
 function inputEntered(inputValue) {
@@ -130,7 +131,7 @@ function inputEntered(inputValue) {
       // if last word is number
       roll = lastWord;
     }
-    // console.log("extraInfo = "+extraInfo);
+  
     onCommand(command, roll, extraInfo);
   }
 }
@@ -200,7 +201,7 @@ function callCommand(command, roll, extraInfo) {
       onEyeDee(roll);
       break;
     case "Password":
-      onPassword(extraInfo);
+      onPassword(extraInfo,roll);
       break;
     case "Slide":
       onSlide(roll);
@@ -230,6 +231,9 @@ function callCommand(command, roll, extraInfo) {
       onRoll(extraInfo);
       break;
       case "List":
+      onList();
+      break;
+      case "Help":
       onList();
       break;
   }
@@ -336,10 +340,13 @@ function onEyeDee(roll) {
   }
 }
 
-function onPassword(password) {
+function onPassword(password,roll) {
   if (levelStatus != "Password" && levelStatus != "Hellhound") {
     addLogText("Password can only be used on Password or Hellhound levels.");
   } else {
+    if(!password && roll) password = roll;
+    
+    
     var correctPassword = map[currentLevel][3];
     console.log(
       "password = :" +
@@ -581,5 +588,7 @@ socket.on("key-names", function(keys) {
 
 //for list new array by situation
 //add help
-
+//add level to known map when you're there
+//move don says move unknown
+//moveup unknown
 
