@@ -234,7 +234,7 @@ function callCommand(command, roll, extraInfo) {
       onList();
       break;
       case "Help":
-      onList();
+      onHelp();
       break;
   }
 }
@@ -434,6 +434,11 @@ function generateMap(visibleLevels) {
   addLogText(visibleMap);
 }
 
+function updateKnownMap(knownLevel){
+  
+}
+
+
 function rollPasses(roll, dv) {
   if (!dv) dv = map[currentLevel][2];
   if (dv == "" || dv == undefined || isNaN(dv)) dv = 0;
@@ -479,6 +484,10 @@ function onList(){
   addLogText(commandsString);
 }
 
+
+function onHelp(){
+      
+}
 
 function onCopy() {
   var allText = $("p");
