@@ -418,7 +418,7 @@ function generateMap(visibleLevels) {
 
   if (map.length < visibleLevels) visibleLevels = map.length;
   knownMap = originalLevels;
-  //if virus undiscoverd replace
+  //if virus undiscovered new map replace virus with file
   for (var i = 0; i < visibleLevels; i++) {
     if (currentLevel == i)
       visibleMap += "<b>Level " + map[i][0] + ": " + map[i][1] + "</b><br>";
@@ -444,7 +444,6 @@ function rollPasses(roll, dv) {
 function nextLevelDown() {
   currentLevel++;
   if (currentLevel >= map.length) {
-    //think equal
     currentLevel--;
     addLogText("You are already on the last level.");
   } else {
@@ -454,7 +453,6 @@ function nextLevelDown() {
 }
 
 function onRoll(extraInfo) {
-  console.log("on roll info = " + extraInfo);
   var strings = extraInfo.split("d");
   addLogText(onDiceRoll(strings[0], strings[1]));
 }
