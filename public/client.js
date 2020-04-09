@@ -86,7 +86,8 @@ var knownCommands = [
   "Copy",
   "Roll",
   "List",
-  "Help"
+  "Help",
+  "Remove"
 ];
 var noRollNeeded = [
   "Level",
@@ -368,6 +369,21 @@ function onPassword(password, roll) {
   }
 }
 
+function onRemove(roll) {
+  if (levelStatus != "Virus") {
+    addLogText("Remove Virus can only be used on a virus.");
+  }
+  else {
+    if(rollPasses(roll)){
+      addLogText("You have successfully removed this virus");
+      //level is empty
+    }
+    else{
+      addLogText("Virus removal attempt failed.")
+    }
+  }
+}
+
 function onControl(roll) {
   if (rollPasses(roll)) {
     addLogText("You have successfully taken control of this node.");
@@ -526,7 +542,7 @@ function onHelp(topic) {
     }
   }
 
-  if (!topic||!legitTopic) {
+  if (!topic || !legitTopic) {
     for (var y = 0; y < helpArray.length; y++) {
       string += "<b>" + helpArray[y][0] + " commands</b><br>";
       for (var i = 1; i < helpArray[y].length; i++) {
