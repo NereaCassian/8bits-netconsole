@@ -275,8 +275,7 @@ function move(direction) {
     }
   } else {
     //direction is not up or down
-  //  addLogText("Command Unknown.");
-    commandUnknown("Move");
+    addLogText("Move commands must be 'Move up' or 'Move down'");
   }
 }
 
@@ -322,7 +321,8 @@ function onJack(extraInfo) {
     currentLevel = 0;
     knownMap = 0;
   } else {
-    addLogText("Command Unknown");
+  //  addLogText("Command Unknown");
+    commandUnknown("Banhammer");
   }
 }
 function onEyeDee(roll) {
@@ -383,7 +383,7 @@ function onMap() {
       "You must use Pathfinder to discover the netspace map before you can view it."
     );
   } else {
-    console.log("currentLevel = " + currentLevel + " knownMap = " + knownMap);
+   // console.log("currentLevel = " + currentLevel + " knownMap = " + knownMap);
     if (currentLevel + 1 >= knownMap) knownMap = currentLevel + 1;
     generateMap(knownMap);
   }
