@@ -243,7 +243,7 @@ function callCommand(command, roll, extraInfo) {
       onList();
       break;
     case "Help":
-      onHelp();
+      onHelp(extraInfo);
       break;
   }
 }
@@ -489,15 +489,30 @@ function onList() {
   addLogText(commandsString);
 }
 
-function onHelp() {
+function onHelp(topic) {
   var helpArray = [
-    ["Navigation", "Help", "Map", "Pathfinder", "Move Down", "Move Up"],
+    ["Navigation", "Level", "Map", "Pathfinder", "Move Down", "Move Up"],
     ["Password", "Password (eg)123", "Backdoor"],
     ["File","Eyedee","Move Down"],
-    ["Virus]
+    ["Virus","Remove Virus", "Move Down"],
+    ["Control Node","Control","Move Down"],
+    ["Hellhound","Attack","Banhammer","Flack","Slide"],
+    ["Other","(eg)1d10","Roll (eg)3d6","Cloak","Leave Virus","Copy","Help (eg) Virus"]
   ];
+  
+  
   var string = "";
-
+  var legitTopic=false;
+  //check if topic is there
+  for(var x=0;x<helpArray.length;x++){
+    if(topic==helpArray[x][0]) le
+    
+    
+  }
+  
+  
+  
+if(!topic){
   for (var y = 0; y < helpArray.length; y++) {
     string += "<b>" + helpArray[y][0] + " commands</b><br>";
     for (var i = 1; i < helpArray[y].length; i++) {
@@ -507,6 +522,11 @@ function onHelp() {
   }
 
   addLogText(string);
+}
+  
+  
+  
+  
 }
 
 function onCopy() {
@@ -616,8 +636,5 @@ socket.on("key-names", function(keys) {
 
 //space in passwords
 
-//navigation
-//  -help
-// -map
-// - level
-//-pathfinder
+
+// add remove virus
