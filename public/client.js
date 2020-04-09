@@ -535,8 +535,16 @@ socket.on("key-names", function(keys) {
 });
 
 
-//hellhound hit points and dv 
+//hellhound hit points and dv hit points, defence, perception, attack
 //defense and attack
+//you go first
+//options
+//attack 1d6
+//banhammer 3d6 once per netrun
+//slide you roll d10 plus interface hellhound adds d10 plus perception if equal you slide
+//flack stops first hit dealing damage no roll just do it
+
+
 //hellhound rolls 1 d10 and adds attack
 //defense 7 attack 8
 //you roll interface and d10
@@ -569,6 +577,17 @@ socket.on("key-names", function(keys) {
 // pathfinder
 //eyedee shows as virus
 //remove it by rolling virus check
+//virus remove like password
+//1d10 plus interface
+//input own virus
+//only on last level
+//implement own virus
+//1d10 plus interface that is the dv of the virus
+//virus doesn't stop you moving down
+//upload virus
+//optional extra homework task update database
+
+
 
 
 
