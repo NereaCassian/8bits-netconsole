@@ -590,3 +590,10 @@ socket.on("key-names", function(keys) {
 //space in front of word prints it twice
 
 //space in passwords
+
+
+//navigation
+//  -help
+// -map
+// - level
+//-pathfinder
