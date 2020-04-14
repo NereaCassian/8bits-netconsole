@@ -130,7 +130,7 @@ function inputEntered(inputValue) {
     //extraInfo = entries[1];
     for (var i = 1; i < entries.length - 1; i++) {
       extraInfo = extraInfo + " " + entries[i];
-      console.log("extraInfo = " + extraInfo);
+     // console.log("extraInfo = " + extraInfo);
     }
     var lastWord = entries[entries.length - 1];
     if (isNaN(lastWord)) {
