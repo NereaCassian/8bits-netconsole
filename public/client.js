@@ -677,3 +677,4 @@ socket.on("key-names", function(keys) {
 
 // for copying - copy as is, make a new url save in database to show each p 
 //check what class it is
+//store class name for each p
