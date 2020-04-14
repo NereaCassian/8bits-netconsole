@@ -672,3 +672,7 @@ socket.on("key-names", function(keys) {
 //space in passwords
 
 // add remove virus
+
+
+// for copying - copy as is, make a new url save in database to show each p 
+//check what class it is
