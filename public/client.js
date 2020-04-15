@@ -479,7 +479,9 @@ function generateMap(visibleLevels) {
   addLogText(visibleMap);
 }
 
-function updateKnownMap(knownLevel) {}
+function updateKnownMap(knownLevel) {
+  
+}
 
 function rollPasses(roll, dv) {
   if (!dv) dv = map[currentLevel][2];
@@ -549,7 +551,7 @@ function onHelp(topic) {
 
   if (topic) {
     topic = topic.charAt(0).toUpperCase() + topic.slice(1).toLowerCase();
-    if(topic == "Control" || topic ==" control node") topic = "Control Node";
+    if(topic == "Control" || topic =="Control node") topic = "Control Node";
     for (var x = 0; x < helpArray.length; x++) {
       if (topic == helpArray[x][0]) {
         legitTopic = true;
@@ -678,6 +680,9 @@ socket.on("key-names", function(keys) {
 //moveup unknown
 
 //map without pathfinder should just show what you know
+//unknown not unknown if it's the end or you move down
+
+
 
 //space in front of word prints it twice
 
