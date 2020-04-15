@@ -551,6 +551,7 @@ function onHelp(topic) {
       "Cloak",
       "Leave Virus",
       "Copy",
+      "Share",
       "Help (eg) Virus"
     ]
   ];
@@ -637,7 +638,12 @@ function onShare(){
   }
   console.log(lines);
   socket.emit("save-report",queryString,lines);
-  //send to backend
+  
+  addLogText("www.netrunning.glitch.me/report/"+queryString);
+  
+   var link = "www.netrunning.glitch.me/report/?"+queryString;
+  link = "http://" + link;
+  window.open(link);
 }
 
 function getCurrentKeys() {

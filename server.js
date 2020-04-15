@@ -52,24 +52,11 @@ const loadData = path => {
 };
 
 
-// function replaceLineBreaks(array){
-  
-//   for(var i =0;i<array.length;i++){
-//     console.log("array[i][3] = "+array[i][3]);
-//   array[i][3].replace("\n","<br>"); 
-//   }
-//   console.log("array = "+array);
-//   return array;
-  
-// }
-
 io.on("connection", function(socket) {
   
   socket.on("new-net-space", function(name, netSpace) {
     var oldJson = JSON.parse(loadData(record));
     oldJson[name] = netSpace;
-   
-    
     storeData(oldJson, record);
   });
 
