@@ -357,12 +357,13 @@ function onEyeDee(roll) {
 }
 
 function onPassword(password, roll) {
-  if (levelStatus != "Password" && levelStatus != "Hellhound") {
-    addLogText("Password can only be used on Password or Hellhound levels.");
+  if (levelStatus != "Password") {
+    addLogText("Password can only be used on Password levels.");
   } else {
     if (!password && roll) password = roll;
 
     var correctPassword = map[currentLevel][3];
+    console.log("attempted password = '"+password+"' correct password = '"+correctPassword+"'");
     if (password == correctPassword && password != "") {
       addLogText("Password <b>" + password + "</b> is correct.");
       nextLevelDown();
@@ -669,6 +670,7 @@ socket.on("key-names", function(keys) {
 //moveup unknown
 
 //map without pathfinder should just show what you know
+
 //space in front of word prints it twice
 
 //space in passwords
@@ -679,3 +681,7 @@ socket.on("key-names", function(keys) {
 // for copying - copy as is, make a new url save in database to show each p 
 //check what class it is
 //store class name for each p
+
+
+//eventually not letting you retry eg backdoor
+
