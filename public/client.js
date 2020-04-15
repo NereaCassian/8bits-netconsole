@@ -149,7 +149,6 @@ function inputEntered(inputValue) {
       // if last word is number
       roll = lastWord;
     }
-console.log(command,roll,extraInfo);
     onCommand(command, roll, extraInfo);
   }
 }
