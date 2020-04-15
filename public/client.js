@@ -90,7 +90,8 @@ var knownCommands = [
   "Help",
   "Remove",
   "Leave",
-  "Share"
+  "Share",
+  "Report"
 ];
 var noRollNeeded = [
   "Level",
@@ -263,6 +264,9 @@ function callCommand(command, roll, extraInfo) {
       onLeave(roll);
       break;
     case "Share":
+      onShare();
+      break;
+    case "Report":
       onShare();
       break;
   }
@@ -726,8 +730,6 @@ socket.on("key-names", function(keys) {
 
 // add remove virus
 
-// for copying - copy as is, make a new url save in database to show each p
-//check what class it is
-//store class name for each p
+
 
 //eventually not letting you retry eg backdoor

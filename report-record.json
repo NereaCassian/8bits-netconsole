@@ -1,1 +1,58 @@
-{"sdks":[["You are on <b>Level 0: Empty</b>",""],["Sdfa","userText"],["Command 'Sdfa' Unknown.",""],["Sdfa","userText"],["Command 'Sdfa' Unknown.",""],["Share","userText"],["www.netrunning.glitch.me/report/sdks",""],["Sdf","userText"],["Command 'Sdf' Unknown.",""],["","userText"],["Sdfas","userText"],["Command 'Sdfas' Unknown.",""],["Share","userText"],["www.netrunning.glitch.me/report/sdks",""],["Map","userText"],["<b>Level 0: Empty</b><br>Unknown",""],["Move down","userText"],["You are already on the last level.",""],["Pathfinder 20","userText"],["<b>Level 0: Empty</b><br>End",""],["1d7","userText"],["2",""],["Share","userText"],["www.netrunning.glitch.me/report/sdks",""],["Share","userText"],["www.netrunning.glitch.me/report/sdks",""],["Help","userText"],["<b>Navigation commands</b><br>Level<br>Map<br>Pathfinder<br>Move Down<br>Move Up<br><br><b>Password commands</b><br>Password (eg)123<br>Backdoor<br><br><b>File commands</b><br>Eyedee<br>Move Down<br><br><b>Virus commands</b><br>Remove Virus<br>Move Down<br><br><b>Control Node commands</b><br>Control<br>Move Down<br><br><b>Hellhound commands</b><br>Attack<br>Banhammer<br>Flack<br>Slide<br><br><b>Other commands</b><br>(eg)1d10<br>Roll (eg)3d6<br>Cloak<br>Leave Virus<br>Copy<br>Help (eg) Virus<br><br>",""],["Share","userText"],["www.netrunning.glitch.me/report/sdks",""],["Share","userText"],["www.netrunning.glitch.me/report/sdks",""],["Share g","userText"]],"example":[["Sahr","userText"],["Command 'Sahr' Unknown.",""],["Share","userText"]],"test virus":[["You are on <b>Level 0: File</b>",""],["Help file","userText"],["<b>File commands</b><br>Eyedee<br>Move Down<br>",""],["Eyedee","userText"],["Roll <b> 1d10 </b>+ Interface.",""],["2","userText"],["Success",""],["File contents: good file",""],["Share","userText"],["www.netrunning.glitch.me/report/test virus",""],["Share","userText"]]}
+{
+  "sdks": [
+    ["You are on <b>Level 0: Empty</b>", ""],
+    ["Sdfa", "userText"],
+    ["Command 'Sdfa' Unknown.", ""],
+    ["Sdfa", "userText"],
+    ["Command 'Sdfa' Unknown.", ""],
+    ["Share", "userText"],
+    ["www.netrunning.glitch.me/report/sdks", ""],
+    ["Sdf", "userText"],
+    ["Command 'Sdf' Unknown.", ""],
+    ["", "userText"],
+    ["Sdfas", "userText"],
+    ["Command 'Sdfas' Unknown.", ""],
+    ["Share", "userText"],
+    ["www.netrunning.glitch.me/report/sdks", ""],
+    ["Map", "userText"],
+    ["<b>Level 0: Empty</b><br>Unknown", ""],
+    ["Move down", "userText"],
+    ["You are already on the last level.", ""],
+    ["Pathfinder 20", "userText"],
+    ["<b>Level 0: Empty</b><br>End", ""],
+    ["1d7", "userText"],
+    ["2", ""],
+    ["Share", "userText"],
+    ["www.netrunning.glitch.me/report/sdks", ""],
+    ["Share", "userText"],
+    ["www.netrunning.glitch.me/report/sdks", ""],
+    ["Help", "userText"],
+    [
+      "<b>Navigation commands</b><br>Level<br>Map<br>Pathfinder<br>Move Down<br>Move Up<br><br><b>Password commands</b><br>Password (eg)123<br>Backdoor<br><br><b>File commands</b><br>Eyedee<br>Move Down<br><br><b>Virus commands</b><br>Remove Virus<br>Move Down<br><br><b>Control Node commands</b><br>Control<br>Move Down<br><br><b>Hellhound commands</b><br>Attack<br>Banhammer<br>Flack<br>Slide<br><br><b>Other commands</b><br>(eg)1d10<br>Roll (eg)3d6<br>Cloak<br>Leave Virus<br>Copy<br>Help (eg) Virus<br><br>",
+      ""
+    ],
+    ["Share", "userText"],
+    ["www.netrunning.glitch.me/report/sdks", ""],
+    ["Share", "userText"],
+    ["www.netrunning.glitch.me/report/sdks", ""],
+    ["Share g", "userText"]
+  ],
+  "example": [
+    ["Sahr", "userText"],
+    ["Command 'Sahr' Unknown.", ""],
+    ["Share", "userText"]
+  ],
+  "test virus": [
+    ["You are on <b>Level 0: File</b>", ""],
+    ["Help file", "userText"],
+    ["<b>File commands</b><br>Eyedee<br>Move Down<br>", ""],
+    ["Eyedee", "userText"],
+    ["Roll <b> 1d10 </b>+ Interface.", ""],
+    ["2", "userText"],
+    ["Success", ""],
+    ["File contents: good file", ""],
+    ["Share", "userText"],
+    ["www.netrunning.glitch.me/report/test virus", ""],
+    ["Share", "userText"]
+  ]
+}
