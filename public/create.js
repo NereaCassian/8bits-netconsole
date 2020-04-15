@@ -30,7 +30,7 @@ function onLevelTypeChange(elmt) {
   else if (elmt.value == "Password") textArea.placeholder = "Correct password";
   else if (elmt.value == "Virus")
     textArea.placeholder = "What the Virus is doing";
-  else if (elmt.value == "Hellhound") textArea.placeholder = "HP/Attack/Defence/Perception";
+  else if (elmt.value == "Hellhound") textArea.placeholder = "HP/Attack/Defence/Percept";
   else if (elmt.value == "Control Node")
     textArea.placeholder = "What the Control Node controls";
 }

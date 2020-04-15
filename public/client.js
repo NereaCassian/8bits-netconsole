@@ -392,6 +392,7 @@ function onRemove(roll) {
 }
 
 function onControl(roll) {
+ //check level status
   if (rollPasses(roll)) {
     addLogText("You have successfully taken control of this node.");
   } else {
