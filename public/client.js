@@ -261,8 +261,10 @@ function callCommand(command, roll, extraInfo) {
       break;
     case "Leave":
       onLeave(roll);
+      break;
     case "Share":
       onShare();
+      break;
   }
 }
 function onLevel() {
@@ -535,7 +537,7 @@ function onList() {
 }
 
 function onLeave(roll) {
-  addLogText("You have successfully left a Virus of level "+roll);
+  addLogText("You have successfully left a Virus of DV <b>"+roll+"</b>");
   //must be on last level
 }
 function onHelp(topic) {
