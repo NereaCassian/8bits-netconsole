@@ -37,11 +37,6 @@
     ["www.netrunning.glitch.me/report/sdks", ""],
     ["Share g", "userText"]
   ],
-  "example": [
-    ["Sahr", "userText"],
-    ["Command 'Sahr' Unknown.", ""],
-    ["Share", "userText"]
-  ],
   "test virus": [
     ["You are on <b>Level 0: File</b>", ""],
     ["Help file", "userText"],
