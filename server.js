@@ -90,4 +90,9 @@ io.on("connection", function(socket) {
     storeData(data,reportRecord);
   })
   
+  socket.on("get-report", function(name) {
+    var data = JSON.parse(loadData(reportRecord))[name];
+    if(data) socket.emit("load-report", data,name);
+  });
+  
 });
