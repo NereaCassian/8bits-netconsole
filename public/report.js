@@ -6,7 +6,7 @@ queryString = queryString.substring(1);
 var queries = queryString.split("&");
 queryString = queries[0];
 
-console.log("queryString = "+queryString);
+
 
 loadReport();
 

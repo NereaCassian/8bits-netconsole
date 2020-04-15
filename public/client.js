@@ -103,6 +103,7 @@ var noRollNeeded = [
   "List",
   "Help",
   "Share"
+ 
 ];
 
 //on input
