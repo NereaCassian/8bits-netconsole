@@ -539,8 +539,6 @@ function onHelp(topic) {
 
   if (topic) {
     topic = topic.charAt(0).toUpperCase() + topic.slice(1).toLowerCase();
-    //if control make control node
-    console.log("help topic = "+topic);
     if(topic == "Control" || topic ==" control node") topic = "Control Node";
     for (var x = 0; x < helpArray.length; x++) {
       if (topic == helpArray[x][0]) {
