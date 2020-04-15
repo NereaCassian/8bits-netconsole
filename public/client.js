@@ -88,7 +88,8 @@ var knownCommands = [
   "Roll",
   "List",
   "Help",
-  "Remove"
+  "Remove",
+  "Leave"
 ];
 var noRollNeeded = [
   "Level",
@@ -258,6 +259,8 @@ function callCommand(command, roll, extraInfo) {
     case "Remove":
       onRemove(roll);
       break;
+    case "Leave":
+      onLeave(roll);
   }
 }
 function onLevel() {
@@ -527,6 +530,10 @@ function onList() {
   addLogText(commandsString);
 }
 
+
+function onLeave(roll){
+  addLogText("Virus left");
+}
 function onHelp(topic) {
   var helpArray = [
     ["Navigation", "Level", "Map", "Pathfinder", "Move Down", "Move Up"],
