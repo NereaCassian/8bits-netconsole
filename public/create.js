@@ -9,7 +9,7 @@ function addNewLevel() {
   children[0].innerHTML = "Level " + makingLevel;
   children[2].value = "";
   children[3].value = "";
-  children[3].placeholder = "";
+  children[3].placeholder = "(Optional) Note";
   newLevel.id = "Level " + makingLevel;
   makingLevel++;
   var create = document.getElementById("create");
@@ -30,7 +30,7 @@ function onLevelTypeChange(elmt) {
   else if (elmt.value == "Password") textArea.placeholder = "Correct password";
   else if (elmt.value == "Virus")
     textArea.placeholder = "What the Virus is doing";
-  else if (elmt.value == "Hellhound") textArea.placeholder = "Password when Hellhound has been defeated";
+  else if (elmt.value == "Hellhound") textArea.placeholder = "HP/Attack/Defence/Perception";
   else if (elmt.value == "Control Node")
     textArea.placeholder = "What the Control Node controls";
 }
