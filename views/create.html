@@ -12,9 +12,8 @@
     <!-- import the webpage's javascript file -->
     <script src="/socket.io/socket.io.js" type="text/javascript"></script>
     <script src="/create.js" type="text/javascript" defer></script>
-<!--      <script src="/client.js" defer></script> -->
+    <!--      <script src="/client.js" defer></script> -->
     <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
-
   </head>
   <body>
     <h1 id="title">Netrunning</h1>
@@ -26,8 +25,7 @@
         <p>
           Create here
         </p>
-<!--         <div id="createLevel"> -->
-                <div id="Level 0">
+        <div id="Level 0">
           <span id="levelLabel">Level 0 </span>
           <select onchange="onLevelTypeChange(this)">
             <option>Empty</option>
@@ -51,15 +49,16 @@
       </button>
       <br />
       <br />
-      <input id="netSpaceName" placeholder="New NetSpace name"/>
+      <input id="netSpaceName" placeholder="New NetSpace name" />
       <button onclick="generateNetSpace()">
         Generate NetSpace link
       </button>
     </div>
     <div id="newUrl">
-    <br> <br>
+      <br />
+      <br />
       Netspace URL is <span id="url" class="userText"></span>
-    
+
       <button onclick="copyUrl()">
         Copy URL
       </button>
@@ -67,8 +66,5 @@
         Open Link
       </button>
     </div>
-
   </body>
 </html>
-
-
