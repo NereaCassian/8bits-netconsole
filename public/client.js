@@ -89,7 +89,8 @@ var knownCommands = [
   "List",
   "Help",
   "Remove",
-  "Leave"
+  "Leave",
+  "Share"
 ];
 var noRollNeeded = [
   "Level",
@@ -100,7 +101,8 @@ var noRollNeeded = [
   "Copy",
   "Roll",
   "List",
-  "Help"
+  "Help",
+  "Share"
 ];
 
 //on input
@@ -258,6 +260,8 @@ function callCommand(command, roll, extraInfo) {
       break;
     case "Leave":
       onLeave(roll);
+    case "Share":
+      onShare();
   }
 }
 function onLevel() {
@@ -616,6 +620,11 @@ function selectText(node) {
   } else {
     alert("Could not select text: Unsupported browser.");
   }
+}
+
+
+function onShare(){
+  
 }
 
 function getCurrentKeys() {
