@@ -1,11 +1,8 @@
 {
-  "10": [
-    [0, "Empty", "", ""],
-    [1, "File", "", ""],
-    [2, "Hellhound", "", ""],
-    [3, "Virus", "", ""],
-    [4, "File", "", ""]
-  ],
-  "kl": [[0, "Empty", "", ""], [1, "Empty", "", "nm"]]
+  "sdks": [
+    ["You are on <b>Level 0: Empty</b>", ""],
+    ["Dsjflsd", "userText"],
+    ["Command 'Dsjflsd' Unknown.", ""],
+    ["Share", "userText"]
+  ]
 }
-

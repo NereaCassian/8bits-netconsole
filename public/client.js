@@ -624,12 +624,20 @@ function selectText(node) {
 
 
 function onShare(){
-  //get all ps
-  //save to json file
-  //generate report-record link
-  
-  var ps = [];
-  
+  var singleLine=[];
+  var lines = [];
+  var allText = $("p");
+  //start loop at 1 to miss title
+  for(var i =1;i<allText.length;i++){
+    singleLine[0]=allText[i].innerHTML;
+    singleLine[1]=allText[i].className;
+    // console.log("singleLine = "+singleLine);
+    lines.push(singleLine);
+    singleLine=[];
+  }
+  console.log(lines);
+  socket.emit("save-report",queryString,lines);
+  //send to backend
 }
 
 function getCurrentKeys() {

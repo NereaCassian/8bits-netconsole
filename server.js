@@ -8,6 +8,7 @@ const fs = require("fs");
 
 
 var record = "/app/.data/secretrecord.json";
+var reportRecord = "/app/report-record.json";
 
 app.use(express.static("public"));
 
@@ -82,5 +83,11 @@ io.on("connection", function(socket) {
     socket.emit("key-names", Object.keys(data));
   });
  
+  
+  socket.on("save-report",function(name,report){
+    var data = JSON.parse(loadData(reportRecord));
+    data[name] = report;
+    storeData(data,reportRecord);
+  })
   
 });
