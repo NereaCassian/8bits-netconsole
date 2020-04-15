@@ -535,7 +535,8 @@ function onList() {
 }
 
 function onLeave(roll) {
-  addLogText("Virus left");
+  addLogText("You have successfully left a Virus of level "+roll);
+  //must be on last level
 }
 function onHelp(topic) {
   var helpArray = [

@@ -12,10 +12,7 @@ loadReport();
 
 
 function loadReport(){
-  //get record
 socket.emit("get-report",queryString);
-  
-  
 }
 
 socket.on("load-report", function(report,name) {
