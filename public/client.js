@@ -624,6 +624,11 @@ function selectText(node) {
 
 
 function onShare(){
+  //get all ps
+  //save to json file
+  //generate report-record link
+  
+  var ps = [];
   
 }
 
