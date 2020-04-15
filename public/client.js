@@ -74,6 +74,7 @@ var knownCommands = [
   "Eye-dee",
   "Eyedee",
   "Eye",
+  "ID",
   "Move",
   "Password",
   "Slide",
@@ -130,13 +131,12 @@ function inputEntered(inputValue) {
     //extraInfo = entries[1];
     
   // extraInfo = entries[1];
-    
-    if(entries=>2){
+   
        
     for (var i = 1; i < entries.length - 1; i++) {
-     if(i==1) extraInfo = extraInfo + " " + entries[i];
-      extraInfo = extraInfo + " " + entries[i];
-    }
+     if(i==1) extraInfo = extraInfo + entries[i];
+      else extraInfo = extraInfo + " " + entries[i];
+    
     }
     var lastWord = entries[entries.length - 1];
     if (isNaN(lastWord)) {
@@ -211,6 +211,8 @@ function callCommand(command, roll, extraInfo) {
     case "Eyedee":
       onEyeDee(roll);
       break;
+    case "ID":
+      onEyeDee(roll);
     case "Eye-dee":
       onEyeDee(roll);
       break;
