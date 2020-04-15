@@ -128,9 +128,15 @@ function inputEntered(inputValue) {
     var roll = "";
     var extraInfo = "";
     //extraInfo = entries[1];
+    
+  // extraInfo = entries[1];
+    
+    if(entries=>2){
+       
     for (var i = 1; i < entries.length - 1; i++) {
+     if(i==1) extraInfo = extraInfo + " " + entries[i];
       extraInfo = extraInfo + " " + entries[i];
-     // console.log("extraInfo = " + extraInfo);
+    }
     }
     var lastWord = entries[entries.length - 1];
     if (isNaN(lastWord)) {
@@ -142,7 +148,7 @@ function inputEntered(inputValue) {
       // if last word is number
       roll = lastWord;
     }
-
+console.log(command,roll,extraInfo);
     onCommand(command, roll, extraInfo);
   }
 }
