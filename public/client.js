@@ -539,7 +539,9 @@ function onList() {
 }
 
 function onLeave(roll) {
-  addLogText("You have successfully left a Virus of DV <b>"+roll+"</b>");
+  var lastLevel = map.length;
+  if(currentLevel !=lastLevel -1) addLogText("You can only leave a virus on the lowest level of the NetSpace.");
+  else addLogText("You have successfully left a Virus of DV <b>"+roll+"</b>");
   //must be on last level
 }
 function onHelp(topic) {
@@ -710,7 +712,7 @@ socket.on("key-names", function(keys) {
 //optional extra homework task update database
 
 //for list new array by situation
-//add help
+
 //add level to known map when you're there
 //move don says move unknown
 //moveup unknown
@@ -720,7 +722,7 @@ socket.on("key-names", function(keys) {
 
 //space in front of word prints it twice
 
-//space in passwords
+
 
 // add remove virus
 
