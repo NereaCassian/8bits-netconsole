@@ -30,7 +30,8 @@ function onLevelTypeChange(elmt) {
   else if (elmt.value == "Password") textArea.placeholder = "Correct password";
   else if (elmt.value == "Virus")
     textArea.placeholder = "What the Virus is doing";
-  else if (elmt.value == "Hellhound") textArea.placeholder = "HP/Attack/Defence/Percept";
+  else if (elmt.value == "Hellhound")
+    textArea.placeholder = "HP/Attack/Defence/Percept";
   else if (elmt.value == "Control Node")
     textArea.placeholder = "What the Control Node controls";
 }
@@ -47,17 +48,19 @@ function generateNetSpace() {
     newLevelArray = [];
   }
   console.log(newNetSpace);
-  
-  
+
   var name = document.getElementById("netSpaceName").value;
   if (name == "") {
     alert("New Netspace name cannot be blank.");
-  }else if(name.includes("&")){
+  } else if (name.includes("&")) {
     alert("New Netspace name cannot contain '&'");
-  } else if(name=="example"){
-    alert("'example' is a protected Netspace name, please choose another name.")
-  }
-  else {
+  } else if (name.includes("?")) {
+    alert("New Netspace name cannot contain '?'");
+  } else if (name == "example") {
+    alert(
+      "'example' is a protected Netspace name, please choose another name."
+    );
+  } else {
     socket.emit("new-net-space", name, newNetSpace);
     $("#newUrl").show();
     $("#url").text("netrunning.glitch.me/?" + name);
