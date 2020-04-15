@@ -677,8 +677,6 @@ socket.on("key-names", function(keys) {
 //upload virus
 //optional extra homework task update database
 
-//empty level option to add note
-//fix password can be numeric
 
 //for list new array by situation
 //add help
