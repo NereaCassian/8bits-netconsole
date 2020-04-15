@@ -23,6 +23,10 @@ app.get('/create', function(request, response) {
   response.sendFile(__dirname + '/views/create.html');
 });
 
+app.get('/report', function(request, response) {
+  response.sendFile(__dirname + '/views/report.html');
+});
+
 
 app.set("port", process.env.PORT || 5000);
 http.listen(app.get("port"), function() {

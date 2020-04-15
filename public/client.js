@@ -130,14 +130,12 @@ function inputEntered(inputValue) {
     var roll = "";
     var extraInfo = "";
     //extraInfo = entries[1];
-    
-  // extraInfo = entries[1];
-   
-       
+
+    // extraInfo = entries[1];
+
     for (var i = 1; i < entries.length - 1; i++) {
-     if(i==1) extraInfo = extraInfo + entries[i];
+      if (i == 1) extraInfo = extraInfo + entries[i];
       else extraInfo = extraInfo + " " + entries[i];
-    
     }
     var lastWord = entries[entries.length - 1];
     if (isNaN(lastWord)) {
@@ -373,7 +371,13 @@ function onPassword(password, roll) {
     if (!password && roll) password = roll;
 
     var correctPassword = map[currentLevel][3];
-    console.log("attempted password = '"+password+"' correct password = '"+correctPassword+"'");
+    console.log(
+      "attempted password = '" +
+        password +
+        "' correct password = '" +
+        correctPassword +
+        "'"
+    );
     if (password == correctPassword && password != "") {
       addLogText("Password <b>" + password + "</b> is correct.");
       nextLevelDown();
@@ -386,24 +390,22 @@ function onPassword(password, roll) {
 function onRemove(roll) {
   if (levelStatus != "Virus") {
     addLogText("Remove Virus can only be used on a virus.");
-  }
-  else {
-    if(rollPasses(roll)){
+  } else {
+    if (rollPasses(roll)) {
       addLogText("You have successfully removed this virus");
-      map[currentLevel][1]="Empty";
-      map[currentLevel][2]="";
-      map[currentLevel][3]="";
-      levelStatus="Empty";
+      map[currentLevel][1] = "Empty";
+      map[currentLevel][2] = "";
+      map[currentLevel][3] = "";
+      levelStatus = "Empty";
       onLevel();
-    }
-    else{
+    } else {
       addLogText("Virus removal attempt failed.");
     }
   }
 }
 
 function onControl(roll) {
- //check level status
+  //check level status
   if (rollPasses(roll)) {
     addLogText("You have successfully taken control of this node.");
   } else {
@@ -476,14 +478,12 @@ function generateMap(visibleLevels) {
   } else {
     visibleMap += "End";
   }
-  visibleMap = visibleMap.replace(/Virus/g,"File");
-  
+  visibleMap = visibleMap.replace(/Virus/g, "File");
+
   addLogText(visibleMap);
 }
 
-function updateKnownMap(knownLevel) {
-  
-}
+function updateKnownMap(knownLevel) {}
 
 function rollPasses(roll, dv) {
   if (!dv) dv = map[currentLevel][2];
@@ -529,8 +529,7 @@ function onList() {
   addLogText(commandsString);
 }
 
-
-function onLeave(roll){
+function onLeave(roll) {
   addLogText("Virus left");
 }
 function onHelp(topic) {
@@ -557,7 +556,7 @@ function onHelp(topic) {
 
   if (topic) {
     topic = topic.charAt(0).toUpperCase() + topic.slice(1).toLowerCase();
-    if(topic == "Control" || topic =="Control node") topic = "Control Node";
+    if (topic == "Control" || topic == "Control node") topic = "Control Node";
     for (var x = 0; x < helpArray.length; x++) {
       if (topic == helpArray[x][0]) {
         legitTopic = true;
@@ -676,7 +675,6 @@ socket.on("key-names", function(keys) {
 //upload virus
 //optional extra homework task update database
 
-
 //for list new array by situation
 //add help
 //add level to known map when you're there
@@ -686,19 +684,14 @@ socket.on("key-names", function(keys) {
 //map without pathfinder should just show what you know
 //unknown not unknown if it's the end or you move down
 
-
-
 //space in front of word prints it twice
 
 //space in passwords
 
 // add remove virus
 
-
-// for copying - copy as is, make a new url save in database to show each p 
+// for copying - copy as is, make a new url save in database to show each p
 //check what class it is
 //store class name for each p
 
-
 //eventually not letting you retry eg backdoor
-
