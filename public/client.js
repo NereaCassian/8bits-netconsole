@@ -318,6 +318,8 @@ function addLogText(text, user, damage) {
   var log = document.getElementById("log");
   log.appendChild(userText);
   // if(!user) window.scrollTo(0,document.body.scrollHeight);
+  
+  console.log("Known map = "+knownMap);
 }
 function onBackdoor(roll) {
   if (levelStatus != "Password")
