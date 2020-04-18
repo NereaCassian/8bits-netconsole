@@ -7,10 +7,9 @@ body {
   font-size: 20px;
 }
 
-
 .hackerInput {
   background-color: black;
-  width: 70%;  
+  width: 70%;
   border: 2px solid darkgreen;
   padding: 12px 20px;
   color: white;
@@ -23,13 +22,13 @@ body {
   color: white;
 }
 
-.damageText{
-  color:red;
+.damageText {
+  color: red;
 }
 
-textarea{
-  display:inline-block;
-  vertical-align:middle;
-/*   white-space: pre-line;
+textarea {
+  display: inline-block;
+  vertical-align: middle;
+  /*   white-space: pre-line;
   overflow-wrap: break-word; */
 }

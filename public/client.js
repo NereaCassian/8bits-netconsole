@@ -104,7 +104,6 @@ var noRollNeeded = [
   "List",
   "Help",
   "Share"
- 
 ];
 
 //on input
@@ -322,8 +321,8 @@ function addLogText(text, user, damage) {
   var log = document.getElementById("log");
   log.appendChild(userText);
   // if(!user) window.scrollTo(0,document.body.scrollHeight);
-  
-  console.log("Known map = "+knownMap);
+
+  console.log("Known map = " + knownMap);
 }
 function onBackdoor(roll) {
   if (levelStatus != "Password")
@@ -544,8 +543,12 @@ function onList() {
 
 function onLeave(roll) {
   var lastLevel = map.length;
-  if(currentLevel !=lastLevel -1) addLogText("You can only leave a virus on the lowest level of the NetSpace.");
-  else addLogText("You have successfully left a Virus of DV <b>"+roll+"</b>");
+  if (currentLevel != lastLevel - 1)
+    addLogText(
+      "You can only leave a virus on the lowest level of the NetSpace."
+    );
+  else
+    addLogText("You have successfully left a Virus of DV <b>" + roll + "</b>");
   //must be on last level
 }
 function onHelp(topic) {
@@ -635,25 +638,24 @@ function selectText(node) {
   }
 }
 
-
-function onShare(){
-  var singleLine=[];
+function onShare() {
+  var singleLine = [];
   var lines = [];
   var allText = $("p");
   //start loop at 1 to miss title
-  for(var i =1;i<allText.length;i++){
-    singleLine[0]=allText[i].innerHTML;
-    singleLine[1]=allText[i].className;
+  for (var i = 1; i < allText.length; i++) {
+    singleLine[0] = allText[i].innerHTML;
+    singleLine[1] = allText[i].className;
     // console.log("singleLine = "+singleLine);
     lines.push(singleLine);
-    singleLine=[];
+    singleLine = [];
   }
   console.log(lines);
-  socket.emit("save-report",queryString,lines);
-  
-  addLogText("www.netrunning.glitch.me/report/"+queryString);
-  
-   var link = "www.netrunning.glitch.me/report/?"+queryString;
+  socket.emit("save-report", queryString, lines);
+
+  addLogText("www.netrunning.glitch.me/report/" + queryString);
+
+  var link = "www.netrunning.glitch.me/report/?" + queryString;
   link = "http://" + link;
   window.open(link);
 }
@@ -726,10 +728,6 @@ socket.on("key-names", function(keys) {
 
 //space in front of word prints it twice
 
-
-
 // add remove virus
-
-
 
 //eventually not letting you retry eg backdoor
