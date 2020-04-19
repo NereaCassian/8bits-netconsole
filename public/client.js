@@ -363,7 +363,7 @@ function onJack(extraInfo) {
 }
 function onEyeDee(roll) {
   // console.log("onEyeDee roll = "+roll);
-  if (levelStatus != "File") addLogText("Eye-Dee can only be used on a File.");
+  if (levelStatus != "File" && levelStatus != "Virus") addLogText("Eye-Dee can only be used on a File.");
   else if (rollPasses(roll)) {
     addLogText("Success");
 
