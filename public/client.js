@@ -91,7 +91,8 @@ var knownCommands = [
   "Remove",
   "Leave",
   "Share",
-  "Report"
+  "Report",
+  "Record"
 ];
 var noRollNeeded = [
   "Level",
@@ -103,7 +104,8 @@ var noRollNeeded = [
   "Roll",
   "List",
   "Help",
-  "Share"
+  "Share",
+  "Record"
 ];
 
 //on input
@@ -266,6 +268,9 @@ function callCommand(command, roll, extraInfo) {
       onShare();
       break;
     case "Report":
+      onShare();
+      break;
+    case "Record":
       onShare();
       break;
   }
