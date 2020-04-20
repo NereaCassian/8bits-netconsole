@@ -30,7 +30,7 @@ var map = [
 var currentLevel = 0;
 var levelStatus = "";
 var rollIsFor = "";
-var knownMap;
+var knownLevels;
 
 if (!clickable) {
   input.focus();
@@ -327,7 +327,7 @@ function addLogText(text, user, damage) {
   log.appendChild(userText);
   // if(!user) window.scrollTo(0,document.body.scrollHeight);
 
-  console.log("Known map = " + knownMap);
+  console.log("Known map = " + knownLevels);
 }
 function onBackdoor(roll) {
   if (levelStatus != "Password")
@@ -360,7 +360,7 @@ function onJack(extraInfo) {
   if (extraInfo == "Out" || extraInfo == "out") {
     addLogText("You have left the netspace.");
     currentLevel = 0;
-    knownMap = 0;
+    knownLevels = 0;
   } else {
     //  addLogText("Command Unknown");
     commandUnknown("Banhammer");
@@ -438,15 +438,15 @@ function onZap(roll) {
 }
 
 function onMap() {
-  if (!knownMap) {
+  if (!knownLevels) {
     // addLogText(
     //   "You must use Pathfinder to discover the netspace map before you can view it."
     // );
     generateMap(1);
   } else {
     // console.log("currentLevel = " + currentLevel + " knownMap = " + knownMap);
-    if (currentLevel + 1 >= knownMap) knownMap = currentLevel + 1;
-    generateMap(knownMap);
+    if (currentLevel + 1 >= knownLevels) knownLevels = currentLevel + 1;
+    generateMap(knownLevels);
   }
 }
 
@@ -476,7 +476,7 @@ function generateMap(visibleLevels) {
   var originalLevels = visibleLevels;
 
   if (map.length < visibleLevels) visibleLevels = map.length;
-  knownMap = originalLevels;
+  knownLevels = originalLevels;
   //if virus undiscovered new map replace virus with file
   for (var i = 0; i < visibleLevels; i++) {
     if (currentLevel == i)
@@ -516,8 +516,12 @@ function nextLevelDown() {
 }
 
 function onRoll(extraInfo) {
-  var strings = extraInfo.split("d");
-  addLogText(onDiceRoll(strings[0], strings[1]));
+  if (extraInfo == ""||extraInfo==null)
+    addLogText("Please specify quantity and sides of dice, eg <b>Roll 1d10</b>");
+  else {
+    var strings = extraInfo.split("d");
+    addLogText(onDiceRoll(strings[0], strings[1]));
+  }
 }
 
 function onDiceRoll(multiple, dice) {
@@ -730,3 +734,5 @@ socket.on("key-names", function(keys) {
 // add remove virus
 
 //eventually not letting you retry eg backdoor
+
+//roll only breaks
