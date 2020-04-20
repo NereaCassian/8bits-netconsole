@@ -368,7 +368,8 @@ function onJack(extraInfo) {
 }
 function onEyeDee(roll) {
   // console.log("onEyeDee roll = "+roll);
-  if (levelStatus != "File" && levelStatus != "Virus") addLogText("Eye-Dee can only be used on a File.");
+  if (levelStatus != "File" && levelStatus != "Virus")
+    addLogText("Eye-Dee can only be used on a File.");
   else if (rollPasses(roll)) {
     addLogText("Success");
 
@@ -388,13 +389,6 @@ function onPassword(password, roll) {
     if (!password && roll) password = roll;
 
     var correctPassword = map[currentLevel][3];
-    console.log(
-      "attempted password = '" +
-        password +
-        "' correct password = '" +
-        correctPassword +
-        "'"
-    );
     if (password == correctPassword && password != "") {
       addLogText("Password <b>" + password + "</b> is correct.");
       nextLevelDown();
