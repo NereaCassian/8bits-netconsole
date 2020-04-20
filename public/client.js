@@ -216,6 +216,10 @@ function callCommand(command, roll, extraInfo) {
       break;
     case "ID":
       onEyeDee(roll);
+      break;
+     case "Id":
+      onEyeDee(roll);
+      break;
     case "Eye-dee":
       onEyeDee(roll);
       break;
@@ -735,4 +739,3 @@ socket.on("key-names", function(keys) {
 
 //eventually not letting you retry eg backdoor
 
-//roll only breaks
