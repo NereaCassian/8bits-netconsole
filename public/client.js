@@ -105,7 +105,8 @@ var noRollNeeded = [
   "List",
   "Help",
   "Share",
-  "Record"
+  "Record",
+  "Report"
 ];
 
 //on input
