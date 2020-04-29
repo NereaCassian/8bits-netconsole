@@ -25,6 +25,8 @@ function deleteLevel() {
 }
 function onLevelTypeChange(elmt) {
   var textArea = elmt.parentNode.children[3];
+  var dvArea = elmt.parentNode.children[2];
+  
   if (elmt.value == "File") textArea.placeholder = "File contents when opened";
   else if (elmt.value == "Empty") textArea.placeholder = "(Optional) Note";
   else if (elmt.value == "Password") textArea.placeholder = "Correct password";
@@ -34,11 +36,12 @@ function onLevelTypeChange(elmt) {
     textArea.placeholder = "HP/Attack/Defence/Percept";
   else if (elmt.value == "Control Node")
     textArea.placeholder = "What the Control Node controls";
+
   
-  var dvArea = elmt.parentNode.children[2];
-  if(elmt.value =="Hellhound"){
-    dvArea     
-  }
+  if (elmt.value == "Hellhound") {
+    //console.log("dvArea = "+elmt.parentNode.children[2].placeholder);
+    dvArea.placeholder = "df";
+  } else dvArea.placeholder == "DV";
 }
 function generateNetSpace() {
   var newNetSpace = [];
