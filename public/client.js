@@ -763,3 +763,8 @@ socket.on("key-names", function(keys) {
 //and if you've done it before?
 
 //fix cloak attempt impossible
+
+
+//notes for calvin
+// passwords can be numbers now
+//all passwords from now on are case insensitive in making

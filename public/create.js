@@ -33,21 +33,25 @@ function onLevelTypeChange(elmt) {
   else if (elmt.value == "Virus")
     textArea.placeholder = "What the Virus is doing";
   else if (elmt.value == "Hellhound")
-    textArea.placeholder = "HP/Attack/Defence/Percept";
+    textArea.placeholder = "Perception/Attack/Defence";
   else if (elmt.value == "Control Node")
     textArea.placeholder = "What the Control Node controls";
-
   
-  if (elmt.value == "Hellhound") {
-    //console.log("dvArea = "+elmt.parentNode.children[2].placeholder);
-    dvArea.placeholder = "df";
-  } else dvArea.placeholder == "DV";
+  if (elmt.value == "Hellhound") dvArea.placeholder = "HP";
+  else if (elmt.value == "Empty") dvArea.placeholder = "-";
+  else dvArea.placeholder = "DV";
 }
 function generateNetSpace() {
   var newNetSpace = [];
   var newLevelArray = [];
   for (var j = 0; j < makingLevel; j++) {
-    var level = document.getElementById("Level " + j);
+     
+   var level = document.getElementById("Level " + j);
+    
+    if(level.children[1].value == "Password"){ // make password case insensitive
+      level.children[3].value =level.children[3].value.toLowerCase();
+    }
+    
     newLevelArray.push(j);
     for (var i = 1; i < 4; i++) {
       newLevelArray.push(level.children[i].value);
@@ -55,7 +59,7 @@ function generateNetSpace() {
     newNetSpace.push(newLevelArray);
     newLevelArray = [];
   }
-  console.log(newNetSpace);
+  
 
   var name = document.getElementById("netSpaceName").value;
   if (name == "") {
