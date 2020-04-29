@@ -755,3 +755,9 @@ socket.on("key-names", function(keys) {
 //shortcut for getting down to certain level?
 
 //fix facebook link issue
+
+
+// array for attempts 
+//add mini array for each level
+//with level attempts - unsuccessful
+//and if you've done it before?
