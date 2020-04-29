@@ -748,3 +748,8 @@ socket.on("key-names", function(keys) {
 //record needs your name on it
 
 //flack once per netspace
+
+//passwords capitalisation - is issue
+//make all lower case passwords when forming
+
+//shortcut for getting down to certain level?
