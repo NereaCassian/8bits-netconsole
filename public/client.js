@@ -740,3 +740,11 @@ socket.on("key-names", function(keys) {
 
 //eventually not letting you retry eg backdoor
 
+//backdoor 3 try limit
+//eyedee 1 limit
+
+//being able to see and edit with password?
+
+//record needs your name on it
+
+//flack once per netspace
