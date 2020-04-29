@@ -58,6 +58,9 @@ function generateNetSpace() {
     }
     newNetSpace.push(newLevelArray);
     newLevelArray = [];
+    
+    var generateButton = document.getElementById("generateNetspaceButton");
+   // generateButton.value
   }
   
 

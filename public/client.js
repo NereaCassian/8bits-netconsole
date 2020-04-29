@@ -218,7 +218,7 @@ function callCommand(command, roll, extraInfo) {
     case "ID":
       onEyeDee(roll);
       break;
-     case "Id":
+    case "Id":
       onEyeDee(roll);
       break;
     case "Eye-dee":
@@ -270,13 +270,13 @@ function callCommand(command, roll, extraInfo) {
       onLeave(roll);
       break;
     case "Share":
-      onShare();
+      onShare(extraInfo);
       break;
     case "Report":
-      onShare();
+      onShare(extraInfo);
       break;
     case "Record":
-      onShare();
+      onShare(extraInfo);
       break;
   }
 }
@@ -521,8 +521,10 @@ function nextLevelDown() {
 }
 
 function onRoll(extraInfo) {
-  if (extraInfo == ""||extraInfo==null)
-    addLogText("Please specify quantity and sides of dice, eg <b>Roll 1d10</b>");
+  if (extraInfo == "" || extraInfo == null)
+    addLogText(
+      "Please specify quantity and sides of dice, eg <b>Roll 1d10</b>"
+    );
   else {
     var strings = extraInfo.split("d");
     addLogText(onDiceRoll(strings[0], strings[1]));
@@ -646,7 +648,7 @@ function selectText(node) {
   }
 }
 
-function onShare() {
+function onShare(name) {
   var singleLine = [];
   var lines = [];
   var allText = $("p");
@@ -654,16 +656,18 @@ function onShare() {
   for (var i = 1; i < allText.length; i++) {
     singleLine[0] = allText[i].innerHTML;
     singleLine[1] = allText[i].className;
-    // console.log("singleLine = "+singleLine);
     lines.push(singleLine);
     singleLine = [];
   }
-  console.log(lines);
-  socket.emit("save-report", queryString, lines);
 
-  addLogText("www.netrunning.glitch.me/report/" + queryString);
+  var reportName = queryString;
+  if (name) reportName = queryString + "-" + name;
 
-  var link = "www.netrunning.glitch.me/report/?" + queryString;
+  socket.emit("save-report", reportName, lines);
+
+  addLogText("www.netrunning.glitch.me/report/?" + reportName);
+
+  var link = "www.netrunning.glitch.me/report/?" + reportName;
   link = "http://" + link;
   window.open(link);
 }
@@ -734,8 +738,6 @@ socket.on("key-names", function(keys) {
 //map without pathfinder should just show what you know
 //unknown not unknown if it's the end or you move down
 
-//space in front of word prints it twice
-
 // add remove virus
 
 //eventually not letting you retry eg backdoor
@@ -745,25 +747,22 @@ socket.on("key-names", function(keys) {
 
 //being able to see and edit with password?
 
-//record needs your name on it
 
 //flack once per netspace
 
-//passwords capitalisation - is issue
-//make all lower case passwords when forming
 
 //shortcut for getting down to certain level?
 
-//fix facebook link issue
+//make more obvious if you're not on a netspace
 
-
-// array for attempts 
+// array for attempts
 //add mini array for each level
 //with level attempts - unsuccessful
 //and if you've done it before?
 
 //fix cloak attempt impossible
 
+//update netspace button once pressed
 
 //notes for calvin
 // passwords can be numbers now
