@@ -34,6 +34,11 @@ function onLevelTypeChange(elmt) {
     textArea.placeholder = "HP/Attack/Defence/Percept";
   else if (elmt.value == "Control Node")
     textArea.placeholder = "What the Control Node controls";
+  
+  var dvArea = elmt.parentNode.children[2];
+  if(elmt.value =="Hellhound"){
+    dvArea     
+  }
 }
 function generateNetSpace() {
   var newNetSpace = [];

@@ -761,3 +761,5 @@ socket.on("key-names", function(keys) {
 //add mini array for each level
 //with level attempts - unsuccessful
 //and if you've done it before?
+
+//fix cloak attempt impossible
