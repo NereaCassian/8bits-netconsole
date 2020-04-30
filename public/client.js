@@ -339,7 +339,7 @@ function move(direction) {
       }
     }
   } else {
-    //direction is not up or down
+    // direction is not up or down
     addLogText("Move commands must be 'Move up' or 'Move down'");
   }
 }
@@ -634,7 +634,7 @@ function onHelp(topic) {
     ["File", "Eyedee", "Move Down"],
     ["Virus", "Remove Virus", "Move Down"],
     ["Control Node", "Control", "Move Down"],
-    ["Hellhound", "Zap", "Banhammer", "Flack", "Slide"],
+    ["Hellhound", "Banhammer", "Flack", "Slide", "Zap"],
     [
       "Other",
       "(eg)1d10",
@@ -826,6 +826,10 @@ socket.on("key-names", function(keys) {
 
 //fix cloak attempt impossible
 
+//check how many net actions you get
+//ask for interface
+
+
 //add check for hellhound stats put in wrong
 
 //roll is for can be ignored for a new command
@@ -837,3 +841,4 @@ socket.on("key-names", function(keys) {
 //all passwords from now on are case insensitive in making
 //check flack is once per session
 //notes work now
+//HP or REZ
