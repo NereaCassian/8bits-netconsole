@@ -36,6 +36,7 @@ var startingNetActions = 1;
 var currentNetActions;
 var flackActive = false;
 var flackUsed = false;
+var banhammerUsed = false;
 
 var hellhoundStats = [0, 0, 0];
 
@@ -413,6 +414,8 @@ function hellhoundAttack(defence) {
   currentNetActions = startingNetActions;
 }
 function onZap(roll) {
+  //roll is attack
+  //get hellhound defense
   addLogText("Zap attempt of " + roll);
 }
 
@@ -430,6 +433,7 @@ function onFlack() {
 }
 function onBanhammer(roll) {
   addLogText("Banhammer with attempt of <b>" + roll + "</b>.");
+  //can only be used once
   //3d6 to hellhound
   //check if hellhound is still alive
 }
