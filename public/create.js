@@ -26,7 +26,7 @@ function deleteLevel() {
 function onLevelTypeChange(elmt) {
   var textArea = elmt.parentNode.children[3];
   var dvArea = elmt.parentNode.children[2];
-  
+
   if (elmt.value == "File") textArea.placeholder = "File contents when opened";
   else if (elmt.value == "Empty") textArea.placeholder = "(Optional) Note";
   else if (elmt.value == "Password") textArea.placeholder = "Correct password";
@@ -36,7 +36,7 @@ function onLevelTypeChange(elmt) {
     textArea.placeholder = "Perception/Attack/Defence";
   else if (elmt.value == "Control Node")
     textArea.placeholder = "What the Control Node controls";
-  
+
   if (elmt.value == "Hellhound") dvArea.placeholder = "HP";
   else if (elmt.value == "Empty") dvArea.placeholder = "-";
   else dvArea.placeholder = "DV";
@@ -45,24 +45,20 @@ function generateNetSpace() {
   var newNetSpace = [];
   var newLevelArray = [];
   for (var j = 0; j < makingLevel; j++) {
-     
-   var level = document.getElementById("Level " + j);
-    
-    if(level.children[1].value == "Password"){ // make password case insensitive
-      level.children[3].value =level.children[3].value.toLowerCase();
+    var level = document.getElementById("Level " + j);
+
+    if (level.children[1].value == "Password") {
+      // make password case insensitive
+      level.children[3].value = level.children[3].value.toLowerCase();
     }
-    
+
     newLevelArray.push(j);
     for (var i = 1; i < 4; i++) {
       newLevelArray.push(level.children[i].value);
     }
     newNetSpace.push(newLevelArray);
     newLevelArray = [];
-    
-    var generateButton = document.getElementById("generateNetspaceButton");
-   // generateButton.value
   }
-  
 
   var name = document.getElementById("netSpaceName").value;
   if (name == "") {
@@ -81,6 +77,8 @@ function generateNetSpace() {
     $("#url").text("netrunning.glitch.me/?" + name);
     var url = $("#url");
     selectText("url");
+    var generateButton = document.getElementById("generateNetSpaceButton");
+    generateButton.innerHTML = "Update NetSpace";
   }
 }
 function selectText(id) {

@@ -439,7 +439,7 @@ function onCloak(roll) {
 }
 
 function onZap(roll) {
-  addLogText("Zap attempt");
+  addLogText("Zap attempt of "+roll);
 }
 
 function onMap() {
@@ -761,8 +761,6 @@ socket.on("key-names", function(keys) {
 //and if you've done it before?
 
 //fix cloak attempt impossible
-
-//update netspace button once pressed
 
 //notes for calvin
 // passwords can be numbers now
