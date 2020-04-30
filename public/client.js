@@ -383,7 +383,7 @@ function onSlide(roll) {
 
 function netActionTaken() {
   currentNetActions--;
-  if (currentNetActions == 0) {
+  if (currentNetActions <= 0) {
     addLogText(
       "<b>Hellhound attack</b> <br> Roll <b>1d10</b> + Interface for defence"
     );
@@ -416,7 +416,16 @@ function hellhoundAttack(defence) {
 function onZap(roll) {
   //roll is attack
   //get hellhound defense
+  
+  var hellhoundDefence = hellhoundStats[2];
   addLogText("Zap attempt of " + roll);
+}
+
+function onBanhammer(roll) {
+  addLogText("Banhammer with attempt of <b>" + roll + "</b>.");
+  //can only be used once
+  //3d6 to hellhound
+  //check if hellhound is still alive
 }
 
 function onFlack() {
@@ -431,12 +440,7 @@ function onFlack() {
     netActionTaken();
   }
 }
-function onBanhammer(roll) {
-  addLogText("Banhammer with attempt of <b>" + roll + "</b>.");
-  //can only be used once
-  //3d6 to hellhound
-  //check if hellhound is still alive
-}
+
 function onJack(extraInfo) {
   if (extraInfo == "Out" || extraInfo == "out") {
     addLogText("You have left the netspace.");
@@ -504,12 +508,7 @@ function onControl(roll) {
 }
 
 function onCloak(roll) {
-  var dv = map.length * 2;
-  if (rollPasses(roll, dv)) {
-    addLogText("You have successfully cloaked your actions.");
-  } else {
-    addLogText("Cloak attempt unsuccessful.");
-  }
+addLogText("You have cloaked your actions with level <b>"+roll+"</b>");
 }
 
 function onMap() {
@@ -808,7 +807,6 @@ socket.on("key-names", function(keys) {
 //map without pathfinder should just show what you know
 //unknown not unknown if it's the end or you move down
 
-// add remove virus
 
 //eventually not letting you retry eg backdoor
 
@@ -828,7 +826,6 @@ socket.on("key-names", function(keys) {
 //with level attempts - unsuccessful
 //and if you've done it before?
 
-//fix cloak attempt impossible
 
 //check how many net actions you get
 //ask for interface
