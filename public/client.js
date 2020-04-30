@@ -36,6 +36,8 @@ var currentNetActions = 3;
 var flackActive = false;
 var flackUsed = false;
 
+var hellhoundStats=[0,0,0];
+
 if (!clickable) {
   input.focus();
   input.select();
@@ -368,8 +370,16 @@ function onSlide(roll) {
 function netActionTaken(){
   //decrease current net actions
   //if it's now 0
+  
+  //make hellhound take action
+  
+  
   //else say how many you have now
   //on hellhound make actions 3?
+  
+}
+
+function hellhoundAttack(){
   
 }
 
