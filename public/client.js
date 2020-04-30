@@ -418,7 +418,16 @@ function onZap(roll) {
   //get hellhound defense
   
   var hellhoundDefence = hellhoundStats[2];
+  if(parseInt(roll)>parseInt(hellhoundDefence)){
+    //do damage to hellhound
+    //roll 1d6
+    
+  }
   addLogText("Zap attempt of " + roll);
+}
+
+function onDamageHellhound(roll){
+  
 }
 
 function onBanhammer(roll) {
