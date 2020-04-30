@@ -202,8 +202,6 @@ function callCommand(command, roll, extraInfo) {
   // added
   //input.select();
   // window.scrollTo(0,document.body.scrollHeight);
-  
-  console.log("call command "+command);
   switch (command) {
     case "Backdoor":
       onBackdoor(roll);
@@ -292,7 +290,7 @@ function callCommand(command, roll, extraInfo) {
     case "HellhoundAttack":
       hellhoundAttack(roll);
       break;
-  case "Flack":
+    case "Flack":
       onFlack();
       break;
   }
@@ -310,8 +308,8 @@ function onLevel() {
   } else if (levelStatus == "Empty" && map[currentLevel][3]) {
     addLogText("Note: " + map[currentLevel][3]);
   } else if (levelStatus == "Hellhound") {
-    if(!currentNetActions) currentNetActions = startingNetActions;
-    addLogText("You have <b>"+currentNetActions+"</b> actions.");
+    if (!currentNetActions) currentNetActions = startingNetActions;
+    addLogText("You have <b>" + currentNetActions + "</b> actions.");
     //get hellhound stats
 
     hellhoundStats = map[currentLevel][3].split("/");
@@ -384,11 +382,13 @@ function onSlide(roll) {
 
 function netActionTaken() {
   currentNetActions--;
-  if(currentNetActions == 0){
-    addLogText("<b>Hellhound attack</b> <br> Roll <b>1d10</b> + Interface for defence");
-    rollIsFor="HellhoundAttack"; 
-  }else{
-    addLogText("You have <b>"+currentNetActions+"</b> actions left.");
+  if (currentNetActions == 0) {
+    addLogText(
+      "<b>Hellhound attack</b> <br> Roll <b>1d10</b> + Interface for defence"
+    );
+    rollIsFor = "HellhoundAttack";
+  } else {
+    addLogText("You have <b>" + currentNetActions + "</b> actions left.");
   }
 }
 
@@ -397,28 +397,31 @@ function hellhoundAttack(defence) {
   defence = parseInt(defence);
   //check flack
   if (attack > defence) {
-    if(flackActive) {
-      addLogText("Hellhound's attack was successful but you were protected by Flack.");
+    if (flackActive) {
+      addLogText(
+        "Hellhound's attack was successful but you were protected by Flack."
+      );
       flackActive = false;
-    }
-    else addLogText("Take <b>3d6</b> damage.", false, true);
-    
+    } else addLogText("Take <b>3d6</b> damage.", false, true);
   } else {
     addLogText(
-      "Hellhound's attack was unsuccessful. <br> You have <b>"+startingNetActions+"</b> actions."
+      "Hellhound's attack was unsuccessful. <br> You have <b>" +
+        startingNetActions +
+        "</b> actions."
     );
   }
-   currentNetActions = startingNetActions;
+  currentNetActions = startingNetActions;
 }
 function onZap(roll) {
   addLogText("Zap attempt of " + roll);
 }
 
-function onFlack(){
-  if (levelStatus != "Hellhound") addLogText("You can only activate Flack on a Hellhound Level.");
-  else if(flackActive) addLogText("Flack is already active.");
-  else if(flackUsed) addLogText("Flack can only be used once per NetRun.");
-  else{
+function onFlack() {
+  if (levelStatus != "Hellhound")
+    addLogText("You can only activate Flack on a Hellhound Level.");
+  else if (flackActive) addLogText("Flack is already active.");
+  else if (flackUsed) addLogText("Flack can only be used once per NetRun.");
+  else {
     flackActive = true;
     flackUsed = true;
     addLogText("Flack activated.");
@@ -504,8 +507,6 @@ function onCloak(roll) {
     addLogText("Cloak attempt unsuccessful.");
   }
 }
-
-
 
 function onMap() {
   if (!knownLevels) {
@@ -624,7 +625,7 @@ function onLeave(roll) {
     );
   else
     addLogText("You have successfully left a Virus of DV <b>" + roll + "</b>");
- //let user type what virus does? 
+  //let user type what virus does?
 }
 function onHelp(topic) {
   var helpArray = [
@@ -633,7 +634,7 @@ function onHelp(topic) {
     ["File", "Eyedee", "Move Down"],
     ["Virus", "Remove Virus", "Move Down"],
     ["Control Node", "Control", "Move Down"],
-    ["Hellhound", "Attack", "Banhammer", "Flack", "Slide"],
+    ["Hellhound", "Zap", "Banhammer", "Flack", "Slide"],
     [
       "Other",
       "(eg)1d10",
@@ -828,6 +829,8 @@ socket.on("key-names", function(keys) {
 //add check for hellhound stats put in wrong
 
 //roll is for can be ignored for a new command
+
+//scrolling down issue
 
 //notes for calvin
 // passwords can be numbers now
