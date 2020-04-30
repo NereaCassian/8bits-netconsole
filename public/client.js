@@ -397,7 +397,12 @@ function hellhoundAttack(defence) {
   defence = parseInt(defence);
   //check flack
   if (attack > defence) {
-    addLogText("Take <b>3d6</b> damage.", false, true);
+    if(flackActive) {
+      addLogText("Hellhound's attack was successful but you were protected by Flack.");
+      flackActive = false;
+    }
+    else addLogText("Take <b>3d6</b> damage.", false, true);
+    
   } else {
     addLogText(
       "Hellhound's attack was unsuccessful. <br> You have <b>"+startingNetActions+"</b> actions."
@@ -410,7 +415,15 @@ function onZap(roll) {
 }
 
 function onFlack(){
-  //check on hellhound level
+  if (levelStatus != "Hellhound") addLogText("You can only activate Flack on a Hellhound Level.");
+  else if(flackActive) addLogText("Flack is already active.");
+  else if(flackUsed) addLogText("Flack can only be used once per NetRun.");
+  else{
+    flackActive = true;
+    flackUsed = true;
+    addLogText("Flack activated.");
+    netActionTaken();
+  }
 }
 function onBanhammer(roll) {
   addLogText("Banhammer with attempt of <b>" + roll + "</b>.");
@@ -813,6 +826,8 @@ socket.on("key-names", function(keys) {
 //fix cloak attempt impossible
 
 //add check for hellhound stats put in wrong
+
+//roll is for can be ignored for a new command
 
 //notes for calvin
 // passwords can be numbers now
