@@ -36,7 +36,7 @@ var currentNetActions = 3;
 var flackActive = false;
 var flackUsed = false;
 
-var hellhoundStats=[0,0,0];
+var hellhoundStats = [0, 0, 0];
 
 if (!clickable) {
   input.focus();
@@ -298,13 +298,11 @@ function onLevel() {
     addLogText("Control Node controls " + map[currentLevel][3]);
   } else if (levelStatus == "Empty" && map[currentLevel][3]) {
     addLogText("Note: " + map[currentLevel][3]);
-  }else if(levelStatus =="Hellhound"){
+  } else if (levelStatus == "Hellhound") {
     addLogText("You have <b>3</b> actions.");
     //get hellhound stats
-    
-    hellhoundStats= map[currentLevel][3].split("/");
-   
-    
+
+    hellhoundStats = map[currentLevel][3].split("/");
   }
 }
 function move(direction) {
@@ -362,7 +360,7 @@ function onSlide(roll) {
   if (levelStatus != "Hellhound") {
     addLogText("Slide can only be used on a Hellhound or Black Ice.");
   } else {
-    if (rollPasses(roll,hellhoundStats[0])) {
+    if (rollPasses(roll, hellhoundStats[0])) {
       addLogText("Slide successful.");
       nextLevelDown();
     } else {
@@ -372,32 +370,32 @@ function onSlide(roll) {
   }
 }
 
-function netActionTaken(){
+function netActionTaken() {
   //decrease current net actions
   //if it's now 0
-  
   //make hellhound take action
-  
-  
   //else say how many you have now
   //on hellhound make actions 3?
-  
 }
 
-function hellhoundAttack(defence){
-  var attack = onDiceRoll(1,10) + parseInt(hellhoundStats[1]);
+function hellhoundAttack(defence) {
+  var attack = onDiceRoll(1, 10) + parseInt(hellhoundStats[1]);
   defence = parseInt(defence);
   //check flack
-  if (attack > defence){
-    addLogText("Take <b>3d6</b> damage.",false,true);
-  }else{
-    addLogText("Hellhound's attack was unsuccessful. <br> You have <b>3</b> actions.");
-    currentNetActions = 3; 
+  if (attack > defence) {
+    addLogText("Take <b>3d6</b> damage.", false, true);
+  } else {
+    addLogText(
+      "Hellhound's attack was unsuccessful. <br> You have <b>3</b> actions."
+    );
+    currentNetActions = 3;
   }
 }
 
 function onBanhammer(roll) {
   addLogText("Banhammer with attempt of <b>" + roll + "</b>.");
+  //3d6 to hellhound
+  //check if hellhound is still alive
 }
 function onJack(extraInfo) {
   if (extraInfo == "Out" || extraInfo == "out") {
@@ -475,7 +473,7 @@ function onCloak(roll) {
 }
 
 function onZap(roll) {
-  addLogText("Zap attempt of "+roll);
+  addLogText("Zap attempt of " + roll);
 }
 
 function onMap() {
@@ -595,7 +593,7 @@ function onLeave(roll) {
     );
   else
     addLogText("You have successfully left a Virus of DV <b>" + roll + "</b>");
-  //must be on last level
+ //let user type what virus does? 
 }
 function onHelp(topic) {
   var helpArray = [
@@ -783,9 +781,7 @@ socket.on("key-names", function(keys) {
 
 //being able to see and edit with password?
 
-
 //flack once per netspace
-
 
 //shortcut for getting down to certain level?
 
