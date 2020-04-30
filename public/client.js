@@ -32,6 +32,7 @@ var levelStatus = "";
 var rollIsFor = "";
 var knownLevels;
 
+var startingNetActions = 1;
 var currentNetActions = 1;
 var flackActive = false;
 var flackUsed = false;
@@ -304,7 +305,7 @@ function onLevel() {
   } else if (levelStatus == "Empty" && map[currentLevel][3]) {
     addLogText("Note: " + map[currentLevel][3]);
   } else if (levelStatus == "Hellhound") {
-    addLogText("You have <b>3</b> actions.");
+    addLogText("You have <b>"+currentNetActions+"</b> actions.");
     //get hellhound stats
 
     hellhoundStats = map[currentLevel][3].split("/");
@@ -377,7 +378,7 @@ function onSlide(roll) {
 
 function netActionTaken() {
   currentNetActions--;
-  if(currentNetActions ==0){
+  if(currentNetActions == 0){
     addLogText("<b>Hellhound attack</b> <br> Roll <b>1d10</b> + Interface for defence");
     rollIsFor="HellhoundAttack"; 
   }else{
@@ -393,10 +394,10 @@ function hellhoundAttack(defence) {
     addLogText("Take <b>3d6</b> damage.", false, true);
   } else {
     addLogText(
-      "Hellhound's attack was unsuccessful. <br> You have <b>3</b> actions."
+      "Hellhound's attack was unsuccessful. <br> You have <b>"+startingNetActions+"</b> actions."
     );
   }
-   currentNetActions = 3;
+   currentNetActions = startingNetActions;
 }
 
 function onBanhammer(roll) {
@@ -807,3 +808,4 @@ socket.on("key-names", function(keys) {
 // passwords can be numbers now
 //all passwords from now on are case insensitive in making
 //check flack is once per session
+//notes work now
