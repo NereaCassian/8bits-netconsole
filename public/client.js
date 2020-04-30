@@ -32,6 +32,10 @@ var levelStatus = "";
 var rollIsFor = "";
 var knownLevels;
 
+var currentNetActions = 3;
+var flackActive = false;
+var flackUsed = false;
+
 if (!clickable) {
   input.focus();
   input.select();
@@ -292,6 +296,8 @@ function onLevel() {
     addLogText("Control Node controls " + map[currentLevel][3]);
   } else if (levelStatus == "Empty" && map[currentLevel][3]) {
     addLogText("Note: " + map[currentLevel][3]);
+  }else if(levelStatus =="Hellhound"){
+    addLogText("You have <b>3</b> actions.")
   }
 }
 function move(direction) {
@@ -354,8 +360,17 @@ function onSlide(roll) {
       nextLevelDown();
     } else {
       addLogText("Slide attempt failed.");
+      netActionTaken();
     }
   }
+}
+
+function netActionTaken(){
+  //decrease current net actions
+  //if it's now 0
+  //else say how many you have now
+  //on hellhound make actions 3?
+  
 }
 
 function onBanhammer(roll) {
@@ -765,3 +780,4 @@ socket.on("key-names", function(keys) {
 //notes for calvin
 // passwords can be numbers now
 //all passwords from now on are case insensitive in making
+//check flack is once per session
