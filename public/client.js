@@ -32,7 +32,7 @@ var levelStatus = "";
 var rollIsFor = "";
 var knownLevels;
 
-var currentNetActions = 3;
+var currentNetActions = 1;
 var flackActive = false;
 var flackUsed = false;
 
@@ -199,6 +199,8 @@ function callCommand(command, roll, extraInfo) {
   // added
   //input.select();
   // window.scrollTo(0,document.body.scrollHeight);
+  
+  console.log("call command "+command);
   switch (command) {
     case "Backdoor":
       onBackdoor(roll);
@@ -283,6 +285,9 @@ function callCommand(command, roll, extraInfo) {
       break;
     case "Record":
       onShare(extraInfo);
+      break;
+    case "HellhoundAttack":
+      hellhoundAttack(roll);
       break;
   }
 }
@@ -371,16 +376,13 @@ function onSlide(roll) {
 }
 
 function netActionTaken() {
-  //decrease current net actions
   currentNetActions--;
-  //if it's now 0
   if(currentNetActions ==0){
-    addLogText("Hellhound attack <br> Roll 1d10 +Interface for defence");
-    rollIsfor="HellhoundAttack"; 
+    addLogText("<b>Hellhound attack</b> <br> Roll <b>1d10</b> + Interface for defence");
+    rollIsFor="HellhoundAttack"; 
+  }else{
+    addLogText("You have <b>"+currentNetActions+"</b> actions left.");
   }
-  //make hellhound take action
-  //else say how many you have now
-  //on hellhound make actions 3?
 }
 
 function hellhoundAttack(defence) {
@@ -393,8 +395,8 @@ function hellhoundAttack(defence) {
     addLogText(
       "Hellhound's attack was unsuccessful. <br> You have <b>3</b> actions."
     );
-    currentNetActions = 3;
   }
+   currentNetActions = 3;
 }
 
 function onBanhammer(roll) {
