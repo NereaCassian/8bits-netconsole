@@ -302,7 +302,8 @@ function onLevel() {
     addLogText("You have <b>3</b> actions.");
     //get hellhound stats
     
-    console.log("hellhound stats = "+map[currentLevel][3]);
+    hellhoundStats= map[currentLevel][3].split("/");
+   
     
   }
 }
@@ -361,7 +362,7 @@ function onSlide(roll) {
   if (levelStatus != "Hellhound") {
     addLogText("Slide can only be used on a Hellhound or Black Ice.");
   } else {
-    if (rollPasses(roll)) {
+    if (rollPasses(roll,hellhoundStats[0])) {
       addLogText("Slide successful.");
       nextLevelDown();
     } else {
@@ -383,7 +384,18 @@ function netActionTaken(){
   
 }
 
-function hellhoundAttack(){
+function hellhoundAttack(defence){
+  //called by roll is for
+  
+  var attack = onDiceRoll(1,10) +parseInt()
+  //1d10 plus attack
+//get you to roll defense?
+  //roll is for 
+  
+  //which works best
+  //if yes - damage?
+  //take 3d6 damage
+  
   
 }
 
