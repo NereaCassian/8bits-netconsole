@@ -372,7 +372,12 @@ function onSlide(roll) {
 
 function netActionTaken() {
   //decrease current net actions
+  currentNetActions--;
   //if it's now 0
+  if(currentNetActions ==0){
+    addLogText("Hellhound attack <br> Roll 1d10 +Interface for defence");
+    rollIsfor="HellhoundAttack"; 
+  }
   //make hellhound take action
   //else say how many you have now
   //on hellhound make actions 3?
