@@ -33,7 +33,7 @@ var rollIsFor = "";
 var knownLevels;
 
 var startingNetActions = 1;
-var currentNetActions = 1;
+var currentNetActions;
 var flackActive = false;
 var flackUsed = false;
 
@@ -99,7 +99,8 @@ var knownCommands = [
   "Leave",
   "Share",
   "Report",
-  "Record"
+  "Record",
+  "Flack"
 ];
 var noRollNeeded = [
   "Level",
@@ -113,7 +114,8 @@ var noRollNeeded = [
   "Help",
   "Share",
   "Record",
-  "Report"
+  "Report",
+  "Flack"
 ];
 
 //on input
@@ -290,6 +292,9 @@ function callCommand(command, roll, extraInfo) {
     case "HellhoundAttack":
       hellhoundAttack(roll);
       break;
+  case "Flack":
+      onFlack();
+      break;
   }
 }
 function onLevel() {
@@ -305,6 +310,7 @@ function onLevel() {
   } else if (levelStatus == "Empty" && map[currentLevel][3]) {
     addLogText("Note: " + map[currentLevel][3]);
   } else if (levelStatus == "Hellhound") {
+    if(!currentNetActions) currentNetActions = startingNetActions;
     addLogText("You have <b>"+currentNetActions+"</b> actions.");
     //get hellhound stats
 
@@ -399,7 +405,13 @@ function hellhoundAttack(defence) {
   }
    currentNetActions = startingNetActions;
 }
+function onZap(roll) {
+  addLogText("Zap attempt of " + roll);
+}
 
+function onFlack(){
+  //check on hellhound level
+}
 function onBanhammer(roll) {
   addLogText("Banhammer with attempt of <b>" + roll + "</b>.");
   //3d6 to hellhound
@@ -480,9 +492,7 @@ function onCloak(roll) {
   }
 }
 
-function onZap(roll) {
-  addLogText("Zap attempt of " + roll);
-}
+
 
 function onMap() {
   if (!knownLevels) {
