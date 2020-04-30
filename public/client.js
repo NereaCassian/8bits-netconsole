@@ -299,7 +299,11 @@ function onLevel() {
   } else if (levelStatus == "Empty" && map[currentLevel][3]) {
     addLogText("Note: " + map[currentLevel][3]);
   }else if(levelStatus =="Hellhound"){
-    addLogText("You have <b>3</b> actions.")
+    addLogText("You have <b>3</b> actions.");
+    //get hellhound stats
+    
+    console.log("hellhound stats = "+map[currentLevel][3]);
+    
   }
 }
 function move(direction) {
