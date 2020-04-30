@@ -385,18 +385,15 @@ function netActionTaken(){
 }
 
 function hellhoundAttack(defence){
-  //called by roll is for
-  
-  var attack = onDiceRoll(1,10) +parseInt()
-  //1d10 plus attack
-//get you to roll defense?
-  //roll is for 
-  
-  //which works best
-  //if yes - damage?
-  //take 3d6 damage
-  
-  
+  var attack = onDiceRoll(1,10) + parseInt(hellhoundStats[1]);
+  defence = parseInt(defence);
+  //check flack
+  if (attack > defence){
+    addLogText("Take <b>3d6</b> damage.",false,true);
+  }else{
+    addLogText("Hellhound's attack was unsuccessful. <br> You have <b>3</b> actions.");
+    currentNetActions = 3; 
+  }
 }
 
 function onBanhammer(roll) {
@@ -408,7 +405,6 @@ function onJack(extraInfo) {
     currentLevel = 0;
     knownLevels = 0;
   } else {
-    //  addLogText("Command Unknown");
     commandUnknown("Banhammer");
   }
 }
@@ -802,6 +798,8 @@ socket.on("key-names", function(keys) {
 //and if you've done it before?
 
 //fix cloak attempt impossible
+
+//add check for hellhound stats put in wrong
 
 //notes for calvin
 // passwords can be numbers now
