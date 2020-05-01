@@ -372,20 +372,16 @@ function onBackdoor(roll) {
 
 function setUpNewHellhound() {
   //make sure no old hellhound data
-  
+
   if (!startingNetActions) {
     addLogText("Please enter your interface level.");
     rollIsFor = "Interface";
   } else {
-     hellhoundStats = map[currentLevel][3].split("/");
-  hellhoundHP = parseInt(map[currentLevel][2]);
-     if (!currentNetActions) currentNetActions = startingNetActions;
-  addLogText("You have <b>" + currentNetActions + "</b> actions.");
+    hellhoundStats = map[currentLevel][3].split("/");
+    hellhoundHP = parseInt(map[currentLevel][2]);
+    if (!currentNetActions) currentNetActions = startingNetActions;
+    addLogText("You have <b>" + currentNetActions + "</b> actions.");
   }
- 
-  
-
- 
 }
 
 function setNetActions(int) {
@@ -399,7 +395,11 @@ function setNetActions(int) {
 function onSlide(roll) {
   if (levelStatus != "Hellhound") {
     addLogText("Slide can only be used on a Hellhound or Black Ice.");
-  } else {
+  } else if (!startingNetActions && rollIsFor == "Interface")
+    addLogText(
+      "Please enter your interface. This will determine how many actions you can take against the Hellhound."
+    );
+  else {
     if (rollPasses(roll, hellhoundStats[0])) {
       addLogText("Slide successful.");
       nextLevelDown();
@@ -445,60 +445,73 @@ function hellhoundAttack(defence) {
   currentNetActions = startingNetActions;
 }
 function onZap(roll) {
-  var hellhoundDefence = parseInt(hellhoundStats[2]) + onDiceRoll(1, 10);
-  console.log(
-    "zap attack = " + roll + " hellhound defence = " + hellhoundDefence
-  );
-  if (parseInt(roll) > hellhoundDefence) {
-    var damage = onDiceRoll(1, 6);
+  if (!startingNetActions && rollIsFor == "Interface")
     addLogText(
-      "Your Zap attack was successful. <br> Hellhound takes (1d6) <b>" +
-        damage +
-        "</b> damage."
+      "Please enter your interface. This will determine how many actions you can take against the Hellhound."
     );
-    //now do damage
-    hellhoundHP = hellhoundHP - damage;
-    if (hellhoundHP <= 0) {
-      hellhoundDestroyed();
+  else {
+    var hellhoundDefence =
+      parseInt(hellhoundStats[2]) + onDiceRoll(1, 10, false);
+    console.log(
+      "zap attack = " + roll + " hellhound defence = " + hellhoundDefence
+    );
+    if (parseInt(roll) > hellhoundDefence) {
+      var damage = onDiceRoll(1, 6);
+      addLogText(
+        "Your Zap attack was successful. <br> Hellhound takes (1d6) <b>" +
+          damage +
+          "</b> damage."
+      );
+      hellhoundHP = hellhoundHP - damage;
+      if (hellhoundHP <= 0) {
+        hellhoundDestroyed();
+      } else {
+        // onLevel();
+        netActionTaken();
+      }
+      console.log("Hp after damage= " + hellhoundHP);
     } else {
-      // onLevel();
+      addLogText("Your Zap attempt was unsuccessful.");
       netActionTaken();
     }
-    console.log("Hp after damage= " + hellhoundHP);
-  } else {
-    addLogText("Your Zap attempt was unsuccessful.");
-    netActionTaken();
   }
 }
 
 function onBanhammer(roll) {
   //add in only once check
-  var hellhoundDefence = parseInt(hellhoundStats[2]) + onDiceRoll(1, 10);
-  console.log(
-    "banhammer attack = " + roll + " hellhound defence = " + hellhoundDefence
-  );
-  if (parseInt(roll) > hellhoundDefence) {
-    var damage = onDiceRoll(3, 6);
+  if (banhammerUsed) addLogText("Banhammer can only be used once per Netrun.");
+  else if (!startingNetActions && rollIsFor == "Interface")
     addLogText(
-      "Your Banhammer attack was successful. <br> Hellhound takes (3d6) <b>" +
-        damage +
-        "</b> damage."
+      "Please enter your interface. This will determine how many actions you can take against the Hellhound."
     );
-    //now do damage
-    hellhoundHP = hellhoundHP - damage;
-    if (hellhoundHP <= 0) {
-      hellhoundDestroyed();
+  else {
+    var hellhoundDefence = parseInt(hellhoundStats[2]) + onDiceRoll(1, 10);
+    console.log(
+      "banhammer attack = " + roll + " hellhound defence = " + hellhoundDefence
+    );
+    if (parseInt(roll) > hellhoundDefence) {
+      var damage = onDiceRoll(3, 6);
+      addLogText(
+        "Your Banhammer attack was successful. <br> Hellhound takes (3d6) <b>" +
+          damage +
+          "</b> damage."
+      );
+      //now do damage
+      hellhoundHP = hellhoundHP - damage;
+      if (hellhoundHP <= 0) {
+        hellhoundDestroyed();
+      } else {
+        // onLevel();
+        netActionTaken();
+      }
+      console.log("Hp after damage= " + hellhoundHP);
     } else {
-      // onLevel();
+      addLogText("Your Banhammer attempt was unsuccessful.");
       netActionTaken();
     }
-    console.log("Hp after damage= " + hellhoundHP);
-  } else {
-    addLogText("Your Banhammer attempt was unsuccessful.");
-    netActionTaken();
+    banhammerUsed = true;
   }
 }
-
 
 function hellhoundDestroyed() {
   //set all to 0
@@ -506,11 +519,13 @@ function hellhoundDestroyed() {
   nextLevelDown();
 }
 
-
-
 function onFlack() {
   if (levelStatus != "Hellhound")
     addLogText("You can only activate Flack on a Hellhound Level.");
+  else if (!startingNetActions && rollIsFor == "Interface")
+    addLogText(
+      "Please enter your interface. This will determine how many actions you can take against the Hellhound."
+    );
   else if (flackActive) addLogText("Flack is already active.");
   else if (flackUsed) addLogText("Flack can only be used once per NetRun.");
   else {
@@ -926,3 +941,4 @@ socket.on("key-names", function(keys) {
 //check flack is once per session
 //notes work now
 //HP or REZ
+//banhammer once per hellhound or netrun
