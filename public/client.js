@@ -133,6 +133,7 @@ function inputEntered(inputValue) {
       //if one roll
       inputValue = parseInt(inputValue);
       callCommand(rollIsFor, inputValue);
+      console.log("Call command roll is for "+rollIsFor);
       rollIsFor = "";
       console.log("clear roll called");
     } else {
