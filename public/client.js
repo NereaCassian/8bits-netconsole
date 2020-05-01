@@ -381,7 +381,9 @@ function setUpNewHellhound(){
     //work out acitons from interface
   }
   hellhoundStats = map[currentLevel][3].split("/");
-  hellhoundHP = map[currentLevel][2];
+  hellhoundHP = parseInt(map[currentLevel][2]);
+  console.log("set up hp = "+hellhoundHP);
+  console.log("map current level = "+map[currentLevel]);
   
   if (!currentNetActions) currentNetActions = startingNetActions;
     addLogText("You have <b>" + currentNetActions + "</b> actions.");  
@@ -455,7 +457,7 @@ function onZap(roll) {
     }else{
       onLevel();
     }
-    console.log("Hp = "+hellhoundHP);
+    console.log("Hp after damage= "+hellhoundHP);
     
   }
   addLogText("Zap attempt of " + roll);
