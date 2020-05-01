@@ -395,10 +395,13 @@ function setNetActions(int){
 //can be called 
   //can be used in dice rolls
   
+  if(int>0&&int<=3){
+    starting
+  }
+  
 }
 
 function onSlide(roll) {
-  console.log("Slide hp "+hellhoundHP);
   if (levelStatus != "Hellhound") {
     addLogText("Slide can only be used on a Hellhound or Black Ice.");
   } else {
@@ -428,6 +431,8 @@ function hellhoundAttack(defence) {
   var attack = onDiceRoll(1, 10) + parseInt(hellhoundStats[1]);
   defence = parseInt(defence);
   //check flack
+  
+  console.log("Hellhound attack = "+attack+" defence = "+defence);
   if (attack > defence) {
     if (flackActive) {
       addLogText(
@@ -445,28 +450,31 @@ function hellhoundAttack(defence) {
   currentNetActions = startingNetActions;
 }
 function onZap(roll) {
-  console.log("Hp on zap= "+hellhoundHP);
   var hellhoundDefence = parseInt(hellhoundStats[2]) + onDiceRoll(1,10);
-  
+  console.log("zap attack = "+roll+" hellhound defence = "+hellhoundDefence);
   if(parseInt(roll)>hellhoundDefence){
-    var damage = onDiceRoll;(1,6);
-   addLogText("Your Zap attack was successful. Hellhound takes (1d6) <b>"+damage+"</b>.")
+    var damage = onDiceRoll(1,6);
+   addLogText("Your Zap attack was successful. <br> Hellhound takes (1d6) <b>"+damage+"</b> damage.")
     //now do damage
     hellhoundHP = hellhoundHP - damage;
     if(hellhoundHP <=0){
       hellhoundDestroyed();
     }else{
-      onLevel();
+      // onLevel();
+      netActionTaken();
     }
     console.log("Hp after damage= "+hellhoundHP);
     
+  }else{
+    addLogText("Your Zap attempt was unsuccessful.");
+    netActionTaken();
   }
-  addLogText("Zap attempt of " + roll);
 }
 
 function hellhoundDestroyed(){
   //set all to 0
-  nextLevelDown();
+  addLogText("You have destroyed the Hellhound.");
+  //nextLevelDown();
 }
 
 
