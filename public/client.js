@@ -698,7 +698,7 @@ function onRoll(extraInfo) {
     );
   else {
     var strings = extraInfo.split("d");
-    addLogText(onDiceRoll(strings[0], strings[1]), true);
+    addLogText(onDiceRoll(strings[0], strings[1], true));
   }
 }
 
