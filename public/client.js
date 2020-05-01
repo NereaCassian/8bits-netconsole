@@ -393,9 +393,10 @@ function setNetActions(int) {
 }
 
 function onSlide(roll) {
+  console.log("starting net actions = "+startingNetActions);
   if (levelStatus != "Hellhound") {
     addLogText("Slide can only be used on a Hellhound or Black Ice.");
-  } else if (!startingNetActions && rollIsFor == "Interface")
+  } else if (!startingNetActions)
     addLogText(
       "Please enter your interface. This will determine how many actions you can take against the Hellhound."
     );
@@ -445,7 +446,7 @@ function hellhoundAttack(defence) {
   currentNetActions = startingNetActions;
 }
 function onZap(roll) {
-  if (!startingNetActions && rollIsFor == "Interface")
+  if (!startingNetActions)
     addLogText(
       "Please enter your interface. This will determine how many actions you can take against the Hellhound."
     );
@@ -480,7 +481,7 @@ function onZap(roll) {
 function onBanhammer(roll) {
   //add in only once check
   if (banhammerUsed) addLogText("Banhammer can only be used once per Netrun.");
-  else if (!startingNetActions && rollIsFor == "Interface")
+  else if (!startingNetActions)
     addLogText(
       "Please enter your interface. This will determine how many actions you can take against the Hellhound."
     );
@@ -522,7 +523,7 @@ function hellhoundDestroyed() {
 function onFlack() {
   if (levelStatus != "Hellhound")
     addLogText("You can only activate Flack on a Hellhound Level.");
-  else if (!startingNetActions && rollIsFor == "Interface")
+  else if (!startingNetActions)
     addLogText(
       "Please enter your interface. This will determine how many actions you can take against the Hellhound."
     );
