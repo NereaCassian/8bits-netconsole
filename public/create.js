@@ -81,6 +81,12 @@ function generateNetSpace() {
     generateButton.innerHTML = "Update NetSpace";
   }
 }
+
+function correctHellhound(text){
+  
+}
+
+
 function selectText(id) {
   var node = document.getElementById(id);
   if (document.body.createTextRange) {

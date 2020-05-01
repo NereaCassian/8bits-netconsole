@@ -369,6 +369,18 @@ function onBackdoor(roll) {
   }
 }
 
+function setUpNewHellhound(){
+  //add hellhound stats
+  //ask for interface - if don't have it
+  //work out how many net actions
+  
+  //make sure no old hellhound data
+}
+
+function setNetActions(int){
+
+}
+
 function onSlide(roll) {
   if (levelStatus != "Hellhound") {
     addLogText("Slide can only be used on a Hellhound or Black Ice.");
@@ -416,23 +428,17 @@ function hellhoundAttack(defence) {
   currentNetActions = startingNetActions;
 }
 function onZap(roll) {
-  //roll is attack
-  //get hellhound defense
+  var hellhoundDefence = parseInt(hellhoundStats[2]) + onDiceRoll(1,10);
   
-  var hellhoundDefence = hellhoundStats[2];
-  
-  var defence = hellhoundDefence +
-  if(parseInt(roll)>parseInt(hellhoundDefence)){
-    //do damage to hellhound
-    //roll 1d6
-    
+  if(parseInt(roll)>hellhoundDefence){
+    var damage = onDiceRoll;(1,6);
+   addLogText("Your Zap attack was successful. Hellhound takes (1d6) <b>"+damage+"</b>.")
+    //now do damage
   }
   addLogText("Zap attempt of " + roll);
 }
 
-function onDamageHellhound(roll){
-  
-}
+
 
 function onBanhammer(roll) {
   addLogText("Banhammer with attempt of <b>" + roll + "</b>.");
