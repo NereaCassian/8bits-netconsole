@@ -32,13 +32,12 @@ var levelStatus = "";
 var rollIsFor = "";
 var knownLevels;
 
-var startingNetActions = 1;
+var startingNetActions;
 var currentNetActions;
 var playerInterface;
 var flackActive = false;
 var flackUsed = false;
 var banhammerUsed = false;
-
 
 var hellhoundStats = [0, 0, 0];
 var hellhoundHP;
@@ -299,7 +298,7 @@ function callCommand(command, roll, extraInfo) {
       onFlack();
       break;
     case "Interface":
-     setNetActions(roll);
+      setNetActions(roll);
       break;
   }
 }
@@ -317,7 +316,7 @@ function onLevel() {
   } else if (levelStatus == "Empty" && map[currentLevel][3]) {
     addLogText("Note: " + map[currentLevel][3]);
   } else if (levelStatus == "Hellhound") {
-    if(!hellhoundHP)setUpNewHellhound();
+    if (!hellhoundHP) setUpNewHellhound();
   }
 }
 function move(direction) {
@@ -358,7 +357,7 @@ function addLogText(text, user, damage) {
   log.appendChild(userText);
   // if(!user) window.scrollTo(0,document.body.scrollHeight);
 
-//  console.log("Known map = " + knownLevels);
+  //  console.log("Known map = " + knownLevels);
 }
 function onBackdoor(roll) {
   if (levelStatus != "Password")
@@ -371,34 +370,30 @@ function onBackdoor(roll) {
   }
 }
 
-function setUpNewHellhound(){
+function setUpNewHellhound() {
   //make sure no old hellhound data
   
-  if(!startingNetActions){
-     addLogText("Please enter your interface level.");
-    rollIsFor="Interface";
-  } else{
-    //work out acitons from interface
-  }
-  hellhoundStats = map[currentLevel][3].split("/");
+  if (!startingNetActions) {
+    addLogText("Please enter your interface level.");
+    rollIsFor = "Interface";
+  } else {
+     hellhoundStats = map[currentLevel][3].split("/");
   hellhoundHP = parseInt(map[currentLevel][2]);
-  console.log("set up hp = "+hellhoundHP);
-  console.log("map current level = "+map[currentLevel]);
+     if (!currentNetActions) currentNetActions = startingNetActions;
+  addLogText("You have <b>" + currentNetActions + "</b> actions.");
+  }
+ 
   
-  if (!currentNetActions) currentNetActions = startingNetActions;
-    addLogText("You have <b>" + currentNetActions + "</b> actions.");  
+
+ 
 }
 
-
-
-function setNetActions(int){
-//can be called 
-  //can be used in dice rolls
-  
-  if(int>0&&int<=3){
-    starting
-  }
-  
+function setNetActions(int) {
+  if (int >= 0 && int <= 3) startingNetActions = 1;
+  else if (int >= 4 && int <= 6) startingNetActions = 2;
+  else if (int >= 7 && int <= 9) startingNetActions = 3;
+  else if (int >= 10) startingNetActions = 4;
+  onLevel();
 }
 
 function onSlide(roll) {
@@ -431,8 +426,8 @@ function hellhoundAttack(defence) {
   var attack = onDiceRoll(1, 10) + parseInt(hellhoundStats[1]);
   defence = parseInt(defence);
   //check flack
-  
-  console.log("Hellhound attack = "+attack+" defence = "+defence);
+
+  console.log("Hellhound attack = " + attack + " defence = " + defence);
   if (attack > defence) {
     if (flackActive) {
       addLogText(
@@ -450,33 +445,37 @@ function hellhoundAttack(defence) {
   currentNetActions = startingNetActions;
 }
 function onZap(roll) {
-  var hellhoundDefence = parseInt(hellhoundStats[2]) + onDiceRoll(1,10);
-  console.log("zap attack = "+roll+" hellhound defence = "+hellhoundDefence);
-  if(parseInt(roll)>hellhoundDefence){
-    var damage = onDiceRoll(1,6);
-   addLogText("Your Zap attack was successful. <br> Hellhound takes (1d6) <b>"+damage+"</b> damage.")
+  var hellhoundDefence = parseInt(hellhoundStats[2]) + onDiceRoll(1, 10);
+  console.log(
+    "zap attack = " + roll + " hellhound defence = " + hellhoundDefence
+  );
+  if (parseInt(roll) > hellhoundDefence) {
+    var damage = onDiceRoll(1, 6);
+    addLogText(
+      "Your Zap attack was successful. <br> Hellhound takes (1d6) <b>" +
+        damage +
+        "</b> damage."
+    );
     //now do damage
     hellhoundHP = hellhoundHP - damage;
-    if(hellhoundHP <=0){
+    if (hellhoundHP <= 0) {
       hellhoundDestroyed();
-    }else{
+    } else {
       // onLevel();
       netActionTaken();
     }
-    console.log("Hp after damage= "+hellhoundHP);
-    
-  }else{
+    console.log("Hp after damage= " + hellhoundHP);
+  } else {
     addLogText("Your Zap attempt was unsuccessful.");
     netActionTaken();
   }
 }
 
-function hellhoundDestroyed(){
+function hellhoundDestroyed() {
   //set all to 0
   addLogText("You have destroyed the Hellhound.");
   //nextLevelDown();
 }
-
 
 function onBanhammer(roll) {
   addLogText("Banhammer with attempt of <b>" + roll + "</b>.");
@@ -565,7 +564,7 @@ function onControl(roll) {
 }
 
 function onCloak(roll) {
-addLogText("You have cloaked your actions with level <b>"+roll+"</b>");
+  addLogText("You have cloaked your actions with level <b>" + roll + "</b>");
 }
 
 function onMap() {
@@ -864,7 +863,6 @@ socket.on("key-names", function(keys) {
 //map without pathfinder should just show what you know
 //unknown not unknown if it's the end or you move down
 
-
 //eventually not letting you retry eg backdoor
 
 //backdoor 3 try limit
@@ -883,10 +881,8 @@ socket.on("key-names", function(keys) {
 //with level attempts - unsuccessful
 //and if you've done it before?
 
-
 //check how many net actions you get
 //ask for interface
-
 
 //add check for hellhound stats put in wrong
 
