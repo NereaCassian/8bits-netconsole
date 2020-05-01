@@ -134,6 +134,7 @@ function inputEntered(inputValue) {
       inputValue = parseInt(inputValue);
       callCommand(rollIsFor, inputValue);
       rollIsFor = "";
+      console.log("clear roll called");
     } else {
       onCommand(inputValue);
     }
@@ -423,7 +424,7 @@ function netActionTaken() {
   } else {
     addLogText("You have <b>" + currentNetActions + "</b> actions left.");
   }
-  //console.log("roll is for "+rollIsFor);
+  console.log("net action roll is for "+rollIsFor);
 }
 
 function hellhoundAttack(defence) {
