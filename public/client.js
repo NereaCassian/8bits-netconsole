@@ -41,6 +41,7 @@ var banhammerUsed = false;
 
 
 var hellhoundStats = [0, 0, 0];
+var hellhoundHP;
 
 if (!clickable) {
   input.focus();
@@ -103,7 +104,8 @@ var knownCommands = [
   "Share",
   "Report",
   "Record",
-  "Flack"
+  "Flack",
+  "Interface"
 ];
 var noRollNeeded = [
   "Level",
@@ -296,6 +298,9 @@ function callCommand(command, roll, extraInfo) {
     case "Flack":
       onFlack();
       break;
+    case "Interface":
+     setNetActions(roll);
+      break;
   }
 }
 function onLevel() {
@@ -311,11 +316,7 @@ function onLevel() {
   } else if (levelStatus == "Empty" && map[currentLevel][3]) {
     addLogText("Note: " + map[currentLevel][3]);
   } else if (levelStatus == "Hellhound") {
-    if (!currentNetActions) currentNetActions = startingNetActions;
-    addLogText("You have <b>" + currentNetActions + "</b> actions.");
-    //get hellhound stats
-
-    hellhoundStats = map[currentLevel][3].split("/");
+    if(!hellhoundHP)setUpNewHellhound();
   }
 }
 function move(direction) {
@@ -370,15 +371,29 @@ function onBackdoor(roll) {
 }
 
 function setUpNewHellhound(){
-  //add hellhound stats
-  //ask for interface - if don't have it
-  //work out how many net actions
-  
   //make sure no old hellhound data
+  
+  if(!startingNetActions){
+     addLogText("Please enter your interface level.");
+    rollIsFor="Interface";
+  } else{
+    //work out acitons from interface
+  }
+  hellhoundStats = map[currentLevel][3].split("/");
+  hellhoundHP = map[currentLevel][2];
+  
+  if (!currentNetActions) currentNetActions = startingNetActions;
+    addLogText("You have <b>" + currentNetActions + "</b> actions.");  
+}
+
+function hellhoundDestroyed(){
+  //set all to 0
 }
 
 function setNetActions(int){
-
+//can be called 
+  //can be used in dice rolls
+  
 }
 
 function onSlide(roll) {
@@ -434,6 +449,13 @@ function onZap(roll) {
     var damage = onDiceRoll;(1,6);
    addLogText("Your Zap attack was successful. Hellhound takes (1d6) <b>"+damage+"</b>.")
     //now do damage
+    var hellhoundHP = hellhoundHP - damage;
+    if(hellhoundHP <=0){
+      hellhoundDestroyed();
+    }else{
+      onLevel();
+    }
+    
   }
   addLogText("Zap attempt of " + roll);
 }
