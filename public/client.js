@@ -34,9 +34,11 @@ var knownLevels;
 
 var startingNetActions = 1;
 var currentNetActions;
+var playerInterface;
 var flackActive = false;
 var flackUsed = false;
 var banhammerUsed = false;
+
 
 var hellhoundStats = [0, 0, 0];
 
@@ -418,6 +420,8 @@ function onZap(roll) {
   //get hellhound defense
   
   var hellhoundDefence = hellhoundStats[2];
+  
+  var defence = hellhoundDefence +
   if(parseInt(roll)>parseInt(hellhoundDefence)){
     //do damage to hellhound
     //roll 1d6
