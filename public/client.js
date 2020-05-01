@@ -349,7 +349,7 @@ function move(direction) {
 }
 
 function addLogText(text, user, damage) {
-  //console.log("roll is for = "+rollIsFor);
+  console.log("roll is for = "+rollIsFor);
   var userText = document.createElement("P");
   userText.innerHTML = text;
   if (user) userText.className = "userText";
@@ -423,10 +423,11 @@ function netActionTaken() {
   } else {
     addLogText("You have <b>" + currentNetActions + "</b> actions left.");
   }
+  //console.log("roll is for "+rollIsFor);
 }
 
 function hellhoundAttack(defence) {
-  console.log("hellhound attack");
+//  console.log("hellhound attack");
   var attack = onDiceRoll(1, 10) + parseInt(hellhoundStats[1]);
   defence = parseInt(defence);
   //check flack
