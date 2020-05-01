@@ -471,18 +471,42 @@ function onZap(roll) {
   }
 }
 
-function hellhoundDestroyed() {
-  //set all to 0
-  addLogText("You have destroyed the Hellhound.");
-  //nextLevelDown();
+function onBanhammer(roll) {
+  //add in only once check
+  var hellhoundDefence = parseInt(hellhoundStats[2]) + onDiceRoll(1, 10);
+  console.log(
+    "banhammer attack = " + roll + " hellhound defence = " + hellhoundDefence
+  );
+  if (parseInt(roll) > hellhoundDefence) {
+    var damage = onDiceRoll(3, 6);
+    addLogText(
+      "Your Banhammer attack was successful. <br> Hellhound takes (3d6) <b>" +
+        damage +
+        "</b> damage."
+    );
+    //now do damage
+    hellhoundHP = hellhoundHP - damage;
+    if (hellhoundHP <= 0) {
+      hellhoundDestroyed();
+    } else {
+      // onLevel();
+      netActionTaken();
+    }
+    console.log("Hp after damage= " + hellhoundHP);
+  } else {
+    addLogText("Your Banhammer attempt was unsuccessful.");
+    netActionTaken();
+  }
 }
 
-function onBanhammer(roll) {
-  addLogText("Banhammer with attempt of <b>" + roll + "</b>.");
-  //can only be used once
-  //3d6 to hellhound
-  //check if hellhound is still alive
+
+function hellhoundDestroyed() {
+  //set all to 0
+  addLogText("You have <b>destroyed</b> the Hellhound.");
+  nextLevelDown();
 }
+
+
 
 function onFlack() {
   if (levelStatus != "Hellhound")
@@ -652,11 +676,11 @@ function onRoll(extraInfo) {
     );
   else {
     var strings = extraInfo.split("d");
-    addLogText(onDiceRoll(strings[0], strings[1]));
+    addLogText(onDiceRoll(strings[0], strings[1]), true);
   }
 }
 
-function onDiceRoll(multiple, dice) {
+function onDiceRoll(multiple, dice, printMultiples) {
   var total = 0;
   var string = "";
   for (var i = 0; i < multiple; i++) {
@@ -664,7 +688,7 @@ function onDiceRoll(multiple, dice) {
     string += thisRoll + " ";
     total += thisRoll;
   }
-  if (multiple > 1) addLogText(string);
+  if (multiple > 1 && printMultiples) addLogText(string);
   return total;
 }
 
@@ -887,6 +911,12 @@ socket.on("key-names", function(keys) {
 //add check for hellhound stats put in wrong
 
 //roll is for can be ignored for a new command
+
+//if try to banhammer or zap when no interface, ask
+
+//interface to change actions number doesn't quite work
+//needs to check how many you have and how many you should have now
+//dice roll issue - 3 d6 showing rolls when called internally
 
 //scrolling down issue
 
