@@ -321,7 +321,7 @@ function onLevel() {
   }
 }
 function move(direction) {
-  if (direction == "up" || direction == "Up") {
+  if (direction == "up") {
     currentLevel--;
     if (currentLevel < 0) {
       addLogText("You are already at the top level.");
@@ -330,7 +330,7 @@ function move(direction) {
       levelStatus = map[currentLevel][1];
       onLevel();
     }
-  } else if (direction == "down" || direction == "Down") {
+  } else if (direction == "down") {
     if (levelStatus == "Password" || levelStatus == "Hellhound") {
       addLogText("You cannot move down past a " + levelStatus + ".");
     } else {
@@ -398,6 +398,7 @@ function setNetActions(int){
 }
 
 function onSlide(roll) {
+  console.log("Slide hp "+hellhoundHP);
   if (levelStatus != "Hellhound") {
     addLogText("Slide can only be used on a Hellhound or Black Ice.");
   } else {
@@ -444,14 +445,14 @@ function hellhoundAttack(defence) {
   currentNetActions = startingNetActions;
 }
 function onZap(roll) {
-  console.log("Hp = "+hellhoundHP);
+  console.log("Hp on zap= "+hellhoundHP);
   var hellhoundDefence = parseInt(hellhoundStats[2]) + onDiceRoll(1,10);
   
   if(parseInt(roll)>hellhoundDefence){
     var damage = onDiceRoll;(1,6);
    addLogText("Your Zap attack was successful. Hellhound takes (1d6) <b>"+damage+"</b>.")
     //now do damage
-    var hellhoundHP = hellhoundHP - damage;
+    hellhoundHP = hellhoundHP - damage;
     if(hellhoundHP <=0){
       hellhoundDestroyed();
     }else{
