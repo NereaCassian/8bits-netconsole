@@ -94,11 +94,9 @@ function generateNetSpace() {
 function correctHellhound(text){
  var allNumbers = true;
   var array = text.split("/");
-  console.log("array = "+array);
   for (var i=0;i<array.length;i++){
-    if(array[i].isNaN) allNumbers = false;
+    if(isNaN(array[i])) allNumbers = false;
   }
-  console.log("array lenght = "+array.length+" all numbers = "+allNumbers);
   if(array.length == 3 && allNumbers) return true;
   else return false;
 }
