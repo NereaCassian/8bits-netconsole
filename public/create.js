@@ -2,6 +2,8 @@ var socket = io();
 var makingLevel = 1;
 $("#newUrl").hide();
 
+var allHellhoundsOkay = true;
+
 function addNewLevel() {
   var lastLevel = document.getElementById("Level 0");
   var newLevel = lastLevel.cloneNode(true);
@@ -42,6 +44,7 @@ function onLevelTypeChange(elmt) {
   else dvArea.placeholder = "DV";
 }
 function generateNetSpace() {
+  allHellhoundsOkay = true;
   var newNetSpace = [];
   var newLevelArray = [];
   for (var j = 0; j < makingLevel; j++) {
@@ -50,6 +53,10 @@ function generateNetSpace() {
     if (level.children[1].value == "Password") {
       // make password case insensitive
       level.children[3].value = level.children[3].value.toLowerCase();
+    } else if(level.children[1].value =="Hellhound"){
+      if(!correctHellhound(level.children[3].value)){
+        allHellhoundsOkay=false;
+      }
     }
 
     newLevelArray.push(j);
@@ -71,6 +78,8 @@ function generateNetSpace() {
     alert(
       "'example' is a protected Netspace name, please choose another name."
     );
+  } else if(!allHellhoundsOkay){
+    alert("Hellhound data must be 3 numbers seperated by '/' eg 7/8/9")
   } else {
     socket.emit("new-net-space", name, newNetSpace);
     $("#newUrl").show();
@@ -83,7 +92,15 @@ function generateNetSpace() {
 }
 
 function correctHellhound(text){
-  
+ var allNumbers = true;
+  var array = text.split("/");
+  console.log("array = "+array);
+  for (var i=0;i<array.length;i++){
+    if(array[i].isNaN) allNumbers = false;
+  }
+  console.log("array lenght = "+array.length+" all numbers = "+allNumbers);
+  if(array.length == 3 && allNumbers) return true;
+  else return false;
 }
 
 
