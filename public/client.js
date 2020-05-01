@@ -304,6 +304,7 @@ function callCommand(command, roll, extraInfo) {
   }
 }
 function onLevel() {
+  console.log("onLevel called");
   addLogText(
     "You are on <b>Level " + currentLevel + ": " + map[currentLevel][1] + "</b>"
   );
@@ -357,7 +358,7 @@ function addLogText(text, user, damage) {
   log.appendChild(userText);
   // if(!user) window.scrollTo(0,document.body.scrollHeight);
 
-  console.log("Known map = " + knownLevels);
+//  console.log("Known map = " + knownLevels);
 }
 function onBackdoor(roll) {
   if (levelStatus != "Password")
@@ -386,9 +387,7 @@ function setUpNewHellhound(){
     addLogText("You have <b>" + currentNetActions + "</b> actions.");  
 }
 
-function hellhoundDestroyed(){
-  //set all to 0
-}
+
 
 function setNetActions(int){
 //can be called 
@@ -443,6 +442,7 @@ function hellhoundAttack(defence) {
   currentNetActions = startingNetActions;
 }
 function onZap(roll) {
+  console.log("Hp = "+hellhoundHP);
   var hellhoundDefence = parseInt(hellhoundStats[2]) + onDiceRoll(1,10);
   
   if(parseInt(roll)>hellhoundDefence){
@@ -455,11 +455,16 @@ function onZap(roll) {
     }else{
       onLevel();
     }
+    console.log("Hp = "+hellhoundHP);
     
   }
   addLogText("Zap attempt of " + roll);
 }
 
+function hellhoundDestroyed(){
+  //set all to 0
+  nextLevelDown();
+}
 
 
 function onBanhammer(roll) {
@@ -483,12 +488,12 @@ function onFlack() {
 }
 
 function onJack(extraInfo) {
-  if (extraInfo == "Out" || extraInfo == "out") {
+  if (extraInfo == "out") {
     addLogText("You have left the netspace.");
     currentLevel = 0;
     knownLevels = 0;
   } else {
-    commandUnknown("Banhammer");
+    addLogText("Did you mean 'Jack out?'");
   }
 }
 function onEyeDee(roll) {
