@@ -349,6 +349,7 @@ function move(direction) {
 }
 
 function addLogText(text, user, damage) {
+  //console.log("roll is for = "+rollIsFor);
   var userText = document.createElement("P");
   userText.innerHTML = text;
   if (user) userText.className = "userText";
@@ -412,6 +413,7 @@ function onSlide(roll) {
 }
 
 function netActionTaken() {
+  console.log("net action taken called");
   currentNetActions--;
   if (currentNetActions <= 0) {
     addLogText(
