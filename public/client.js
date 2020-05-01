@@ -424,6 +424,7 @@ function netActionTaken() {
 }
 
 function hellhoundAttack(defence) {
+  console.log("hellhound attack");
   var attack = onDiceRoll(1, 10) + parseInt(hellhoundStats[1]);
   defence = parseInt(defence);
   //check flack
