@@ -132,7 +132,7 @@ function inputEntered(inputValue) {
     if (!isNaN(inputValue) && inputValue != "") {
       //if one roll
       inputValue = parseInt(inputValue);
-      //callCommand(rollIsFor, inputValue);
+      callCommand(rollIsFor, inputValue);
       //change here today
       onCommand(rollIsFor,inputValue)
       
