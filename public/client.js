@@ -134,7 +134,7 @@ function inputEntered(inputValue) {
       inputValue = parseInt(inputValue);
       callCommand(rollIsFor, inputValue);
       //change here today
-      onCommand(rollIsFor,inputValue)
+   //   onCommand(rollIsFor,inputValue)
       
       console.log("Call command roll is for "+rollIsFor);
       rollIsFor = "";
