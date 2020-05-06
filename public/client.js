@@ -137,6 +137,7 @@ function inputEntered(inputValue) {
       rollIsFor = "";
       console.log("clear roll called");
     } else {
+      //1 word not a roll
       onCommand(inputValue);
     }
   } else if (entries[0] == "") {
@@ -185,6 +186,7 @@ function onCommand(command, roll, extraInfo) {
     if (!roll) {
       addLogText("Roll <b> 1d10 </b>+ Interface.");
       rollIsFor = command;
+      console.log("roll is for assigned = "+rollIsFor);
     } else {
       callCommand(command, roll, extraInfo);
     }
