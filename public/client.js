@@ -136,9 +136,9 @@ function inputEntered(inputValue) {
       //change here today
    //   onCommand(rollIsFor,inputValue)
       
-      console.log("Call command roll is for "+rollIsFor);
+    //  console.log("Call command roll is for "+rollIsFor);
       rollIsFor = "";
-      console.log("clear roll called");
+   //   console.log("clear roll called");
     } else {
       //1 word not a roll
       onCommand(inputValue);
@@ -177,7 +177,7 @@ function inputEntered(inputValue) {
 }
 
 function onCommand(command, roll, extraInfo) {
-  //  console.log("onCommand called "+command +" roll = "+roll+" info = "+extraInfo);
+    console.log("onCommand called "+command +" roll = "+roll+" info = "+extraInfo);
   var isKnown = knownCommands.indexOf(command) != -1;
   var rollNeeded = noRollNeeded.indexOf(command) == -1;
   if (!isKnown) {
@@ -189,7 +189,7 @@ function onCommand(command, roll, extraInfo) {
     if (!roll) {
       addLogText("Roll <b> 1d10 </b>+ Interface.");
       rollIsFor = command;
-      console.log("roll is for assigned = "+rollIsFor);
+     // console.log("roll is for assigned = "+rollIsFor);
     } else {
       callCommand(command, roll, extraInfo);
     }
@@ -213,6 +213,7 @@ function callCommand(command, roll, extraInfo) {
   // added
   //input.select();
   // window.scrollTo(0,document.body.scrollHeight);
+  console.log("callCommand Command = "+command+" roll = "+roll+" extraInfo = "+extraInfo);
   switch (command) {
     case "Backdoor":
       onBackdoor(roll);
@@ -310,7 +311,7 @@ function callCommand(command, roll, extraInfo) {
   }
 }
 function onLevel() {
-  console.log("onLevel called");
+ // console.log("onLevel called");
   addLogText(
     "You are on <b>Level " + currentLevel + ": " + map[currentLevel][1] + "</b>"
   );
@@ -356,7 +357,7 @@ function move(direction) {
 }
 
 function addLogText(text, user, damage) {
-  console.log("roll is for = "+rollIsFor);
+  //console.log("roll is for = "+rollIsFor);
   var userText = document.createElement("P");
   userText.innerHTML = text;
   if (user) userText.className = "userText";
@@ -401,7 +402,7 @@ function setNetActions(int) {
 }
 
 function onSlide(roll) {
-  console.log("starting net actions = "+startingNetActions);
+  //console.log("starting net actions = "+startingNetActions);
   if (levelStatus != "Hellhound") {
     addLogText("Slide can only be used on a Hellhound or Black Ice.");
   } else if (!startingNetActions)
@@ -420,7 +421,7 @@ function onSlide(roll) {
 }
 
 function netActionTaken() {
-  console.log("net action taken called");
+  //console.log("net action taken called");
   currentNetActions--;
   if (currentNetActions <= 0) {
     addLogText(
@@ -430,7 +431,7 @@ function netActionTaken() {
   } else {
     addLogText("You have <b>" + currentNetActions + "</b> actions left.");
   }
-  console.log("net action roll is for "+rollIsFor);
+ // console.log("net action roll is for "+rollIsFor);
 }
 
 function hellhoundAttack(defence) {
@@ -439,7 +440,7 @@ function hellhoundAttack(defence) {
   defence = parseInt(defence);
   //check flack
 
-  console.log("Hellhound attack = " + attack + " defence = " + defence);
+  //console.log("Hellhound attack = " + attack + " defence = " + defence);
   if (attack > defence) {
     if (flackActive) {
       addLogText(
@@ -464,9 +465,9 @@ function onZap(roll) {
   else {
     var hellhoundDefence =
       parseInt(hellhoundStats[2]) + onDiceRoll(1, 10, false);
-    console.log(
-      "zap attack = " + roll + " hellhound defence = " + hellhoundDefence
-    );
+    // console.log(
+    //   "zap attack = " + roll + " hellhound defence = " + hellhoundDefence
+    // );
     if (parseInt(roll) > hellhoundDefence) {
       var damage = onDiceRoll(1, 6);
       addLogText(
@@ -481,7 +482,7 @@ function onZap(roll) {
         // onLevel();
         netActionTaken();
       }
-      console.log("Hp after damage= " + hellhoundHP);
+      //console.log("Hp after damage= " + hellhoundHP);
     } else {
       addLogText("Your Zap attempt was unsuccessful.");
       netActionTaken();
@@ -516,7 +517,7 @@ function onBanhammer(roll) {
         // onLevel();
         netActionTaken();
       }
-      console.log("Hp after damage= " + hellhoundHP);
+     // console.log("Hp after damage= " + hellhoundHP);
     } else {
       addLogText("Your Banhammer attempt was unsuccessful.");
       netActionTaken();
