@@ -124,6 +124,7 @@ var noRollNeeded = [
 
 //on input
 function inputEntered(inputValue) {
+  console.log("inputEntered rollIsFor = '"+rollIsFor+"'");
   inputValue =
     inputValue.charAt(0).toUpperCase() + inputValue.slice(1).toLowerCase(); //make first letter Uppercase
   addLogText(inputValue, true); //add user's text to log
@@ -421,13 +422,13 @@ function onSlide(roll) {
 }
 
 function netActionTaken() {
-  //console.log("net action taken called");
   currentNetActions--;
   if (currentNetActions <= 0) {
     addLogText(
       "<b>Hellhound attack</b> <br> Roll <b>1d10</b> + Interface for defence"
     );
     rollIsFor = "HellhoundAttack";
+    console.log("Hellhound attack rollIsFor = '"+rollIsFor+"'");
   } else {
     addLogText("You have <b>" + currentNetActions + "</b> actions left.");
   }
