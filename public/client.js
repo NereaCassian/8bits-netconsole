@@ -1,17 +1,12 @@
 var socket = io();
-var createMode;
 var queryString = decodeURIComponent(window.location.search);
 queryString = queryString.substring(1);
 var queries = queryString.split("&");
 queryString = queries[0];
 //queryString = queryString.replace("?", "");
-if (queryString == "create") {
-  createMode = true;
-} else if (queryString == "") {
+if (queryString == "") {
   window.location.replace("/about");
-} else {
-  createMode = false;
-}
+} 
 var clickable;
 var input = document.getElementById("input");
 var lastEnteredCommand;
@@ -558,6 +553,8 @@ function onFlack() {
     addLogText(
       "Please enter your interface. This will determine how many actions you can take against the Hellhound."
     );
+     rollIsFor = "Interface";
+  }
   else if (flackActive) addLogText("Flack is already active.");
   else if (flackUsed) addLogText("Flack can only be used once per NetRun.");
   else {

@@ -81,6 +81,7 @@ function generateNetSpace() {
   } else if(!allHellhoundsOkay){
     alert("Hellhound data must be 3 numbers seperated by '/' eg 7/8/9")
   } else {
+    name = name.replace(/ /g,"-");
     socket.emit("new-net-space", name, newNetSpace);
     $("#newUrl").show();
     $("#url").text("netrunning.glitch.me/?" + name);
