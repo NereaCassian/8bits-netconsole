@@ -134,8 +134,8 @@ function inputEntered(inputValue) {
       //if one roll
       inputValue = parseInt(inputValue);
       callCommand(rollIsFor, inputValue);
-      //change here today
-   //   onCommand(rollIsFor,inputValue)
+      //change here today - orig call change to on
+   //  onCommand(rollIsFor,inputValue)
       
     //  console.log("Call command roll is for "+rollIsFor);
       rollIsFor = "";
