@@ -122,9 +122,11 @@ var noRollNeeded = [
   "Flack"
 ];
 
+var dontClearRoll = ["HellhoundAttack"]; //don't clear after roll -next step needs it
+
 //on input
 function inputEntered(inputValue) {
-  console.log("inputEntered rollIsFor = '"+rollIsFor+"'");
+  console.log("inputEntered rollIsFor = '" + rollIsFor + "'");
   inputValue =
     inputValue.charAt(0).toUpperCase() + inputValue.slice(1).toLowerCase(); //make first letter Uppercase
   addLogText(inputValue, true); //add user's text to log
@@ -135,11 +137,14 @@ function inputEntered(inputValue) {
       inputValue = parseInt(inputValue);
       callCommand(rollIsFor, inputValue);
       //change here today - orig call change to on
-   //  onCommand(rollIsFor,inputValue)
+      //  onCommand(rollIsFor,inputValue)
+
+      if (dontClearRoll.indexOf(rollIsFor) == -1) {
+        //if it's not in don't clear
+        rollIsFor = "";
+      }
+
       
-    //  console.log("Call command roll is for "+rollIsFor);
-      rollIsFor = "";
-   //   console.log("clear roll called");
     } else {
       //1 word not a roll
       onCommand(inputValue);
@@ -178,7 +183,9 @@ function inputEntered(inputValue) {
 }
 
 function onCommand(command, roll, extraInfo) {
-    console.log("onCommand called "+command +" roll = "+roll+" info = "+extraInfo);
+  console.log(
+    "onCommand called " + command + " roll = " + roll + " info = " + extraInfo
+  );
   var isKnown = knownCommands.indexOf(command) != -1;
   var rollNeeded = noRollNeeded.indexOf(command) == -1;
   if (!isKnown) {
@@ -190,7 +197,7 @@ function onCommand(command, roll, extraInfo) {
     if (!roll) {
       addLogText("Roll <b> 1d10 </b>+ Interface.");
       rollIsFor = command;
-     // console.log("roll is for assigned = "+rollIsFor);
+      // console.log("roll is for assigned = "+rollIsFor);
     } else {
       callCommand(command, roll, extraInfo);
     }
@@ -214,7 +221,14 @@ function callCommand(command, roll, extraInfo) {
   // added
   //input.select();
   // window.scrollTo(0,document.body.scrollHeight);
-  console.log("callCommand Command = "+command+" roll = "+roll+" extraInfo = "+extraInfo);
+  console.log(
+    "callCommand Command = " +
+      command +
+      " roll = " +
+      roll +
+      " extraInfo = " +
+      extraInfo
+  );
   switch (command) {
     case "Backdoor":
       onBackdoor(roll);
@@ -312,7 +326,7 @@ function callCommand(command, roll, extraInfo) {
   }
 }
 function onLevel() {
- // console.log("onLevel called");
+  // console.log("onLevel called");
   addLogText(
     "You are on <b>Level " + currentLevel + ": " + map[currentLevel][1] + "</b>"
   );
@@ -428,15 +442,15 @@ function netActionTaken() {
       "<b>Hellhound attack</b> <br> Roll <b>1d10</b> + Interface for defence"
     );
     rollIsFor = "HellhoundAttack";
-    console.log("Hellhound attack rollIsFor = '"+rollIsFor+"'");
+    console.log("Hellhound attack rollIsFor = '" + rollIsFor + "'");
   } else {
     addLogText("You have <b>" + currentNetActions + "</b> actions left.");
   }
- // console.log("net action roll is for "+rollIsFor);
+  // console.log("net action roll is for "+rollIsFor);
 }
 
 function hellhoundAttack(defence) {
-//  console.log("hellhound attack");
+  //  console.log("hellhound attack");
   var attack = onDiceRoll(1, 10) + parseInt(hellhoundStats[1]);
   defence = parseInt(defence);
   //check flack
@@ -518,7 +532,7 @@ function onBanhammer(roll) {
         // onLevel();
         netActionTaken();
       }
-     // console.log("Hp after damage= " + hellhoundHP);
+      // console.log("Hp after damage= " + hellhoundHP);
     } else {
       addLogText("Your Banhammer attempt was unsuccessful.");
       netActionTaken();
