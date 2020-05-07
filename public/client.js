@@ -122,7 +122,7 @@ var noRollNeeded = [
   "Flack"
 ];
 
-var dontClearRoll = ["HellhoundAttack"]; //don't clear after roll -next step needs it
+var dontClearRoll = ["HellhoundAttack","Interface"]; //don't clear after roll -next step needs it
 
 //on input
 function inputEntered(inputValue) {
@@ -143,8 +143,6 @@ function inputEntered(inputValue) {
         //if it's not in don't clear
         rollIsFor = "";
       }
-
-      
     } else {
       //1 word not a roll
       onCommand(inputValue);
@@ -414,6 +412,7 @@ function setNetActions(int) {
   else if (int >= 7 && int <= 9) startingNetActions = 3;
   else if (int >= 10) startingNetActions = 4;
   onLevel();
+  rollIsFor="";
 }
 
 function onSlide(roll) {
@@ -471,12 +470,15 @@ function hellhoundAttack(defence) {
     );
   }
   currentNetActions = startingNetActions;
+  rollIsFor = "";
 }
 function onZap(roll) {
-  if (!startingNetActions)
+  if (!startingNetActions){
     addLogText(
       "Please enter your interface. This will determine how many actions you can take against the Hellhound."
     );
+  rollIsFor = "Interface";
+  }
   else {
     var hellhoundDefence =
       parseInt(hellhoundStats[2]) + onDiceRoll(1, 10, false);
@@ -548,8 +550,10 @@ function hellhoundDestroyed() {
 }
 
 function onFlack() {
-  if (levelStatus != "Hellhound")
+  if (levelStatus != "Hellhound"){
     addLogText("You can only activate Flack on a Hellhound Level.");
+     rollIsFor = "Interface";
+  }
   else if (!startingNetActions)
     addLogText(
       "Please enter your interface. This will determine how many actions you can take against the Hellhound."
