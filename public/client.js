@@ -553,9 +553,8 @@ function hellhoundDestroyed() {
 function onFlack() {
   if (levelStatus != "Hellhound"){
     addLogText("You can only activate Flack on a Hellhound Level.");
-     rollIsFor = "Interface";
   }
-  else if (!startingNetActions)
+  else if (!startingNetActions){
     addLogText(
       "Please enter your interface. This will determine how many actions you can take against the Hellhound."
     );
