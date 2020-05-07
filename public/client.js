@@ -508,12 +508,13 @@ function onZap(roll) {
 }
 
 function onBanhammer(roll) {
-  //add in only once check
   if (banhammerUsed) addLogText("Banhammer can only be used once per Netrun.");
-  else if (!startingNetActions)
+  else if (!startingNetActions){
     addLogText(
       "Please enter your interface. This will determine how many actions you can take against the Hellhound."
     );
+   rollIsFor = "Interface";
+  }
   else {
     var hellhoundDefence = parseInt(hellhoundStats[2]) + onDiceRoll(1, 10);
     console.log(
@@ -952,8 +953,6 @@ socket.on("key-names", function(keys) {
 //with level attempts - unsuccessful
 //and if you've done it before?
 
-//check how many net actions you get
-//ask for interface
 
 //add check for hellhound stats put in wrong
 
