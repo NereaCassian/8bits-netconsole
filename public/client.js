@@ -6,7 +6,7 @@ queryString = queries[0];
 //queryString = queryString.replace("?", "");
 if (queryString == "") {
   window.location.replace("/about");
-} 
+}
 var clickable;
 var input = document.getElementById("input");
 var lastEnteredCommand;
@@ -117,7 +117,7 @@ var noRollNeeded = [
   "Flack"
 ];
 
-var dontClearRoll = ["HellhoundAttack","Interface"]; //don't clear after roll -next step needs it
+var dontClearRoll = ["HellhoundAttack", "Interface"]; //don't clear after roll -next step needs it
 
 //on input
 function inputEntered(inputValue) {
@@ -319,7 +319,6 @@ function callCommand(command, roll, extraInfo) {
   }
 }
 function onLevel() {
-  // console.log("onLevel called");
   addLogText(
     "You are on <b>Level " + currentLevel + ": " + map[currentLevel][1] + "</b>"
   );
@@ -407,18 +406,14 @@ function setNetActions(int) {
   else if (int >= 7 && int <= 9) startingNetActions = 3;
   else if (int >= 10) startingNetActions = 4;
   onLevel();
-  rollIsFor="";
+  rollIsFor = "";
 }
 
 function onSlide(roll) {
   //console.log("starting net actions = "+startingNetActions);
   if (levelStatus != "Hellhound") {
     addLogText("Slide can only be used on a Hellhound or Black Ice.");
-  } else if (!startingNetActions)
-    addLogText(
-      "Please enter your interface. This will determine how many actions you can take against the Hellhound."
-    );
-  else {
+  } else if (interfaceIsSet()) {
     if (rollPasses(roll, hellhoundStats[0])) {
       addLogText("Slide successful.");
       nextLevelDown();
@@ -427,6 +422,16 @@ function onSlide(roll) {
       netActionTaken();
     }
   }
+}
+
+function interfaceIsSet() {
+  if (!startingNetActions) {
+    addLogText(
+      "Please enter your interface. This will determine how many actions you can take against the Hellhound."
+    );
+    rollIsFor = "Interface";
+    return false;
+  } else return true;
 }
 
 function netActionTaken() {
@@ -468,13 +473,7 @@ function hellhoundAttack(defence) {
   rollIsFor = "";
 }
 function onZap(roll) {
-  if (!startingNetActions){
-    addLogText(
-      "Please enter your interface. This will determine how many actions you can take against the Hellhound."
-    );
-  rollIsFor = "Interface";
-  }
-  else {
+  if (interfaceIsSet()) {
     var hellhoundDefence =
       parseInt(hellhoundStats[2]) + onDiceRoll(1, 10, false);
     // console.log(
@@ -504,13 +503,7 @@ function onZap(roll) {
 
 function onBanhammer(roll) {
   if (banhammerUsed) addLogText("Banhammer can only be used once per Netrun.");
-  else if (!startingNetActions){
-    addLogText(
-      "Please enter your interface. This will determine how many actions you can take against the Hellhound."
-    );
-   rollIsFor = "Interface";
-  }
-  else {
+  else if (interfaceIsSet()) {
     var hellhoundDefence = parseInt(hellhoundStats[2]) + onDiceRoll(1, 10);
     console.log(
       "banhammer attack = " + roll + " hellhound defence = " + hellhoundDefence
@@ -546,22 +539,17 @@ function hellhoundDestroyed() {
 }
 
 function onFlack() {
-  if (levelStatus != "Hellhound"){
+  if (levelStatus != "Hellhound") {
     addLogText("You can only activate Flack on a Hellhound Level.");
-  }
-  else if (!startingNetActions){
-    addLogText(
-      "Please enter your interface. This will determine how many actions you can take against the Hellhound."
-    );
-     rollIsFor = "Interface";
-  }
-  else if (flackActive) addLogText("Flack is already active.");
-  else if (flackUsed) addLogText("Flack can only be used once per NetRun.");
-  else {
-    flackActive = true;
-    flackUsed = true;
-    addLogText("Flack activated.");
-    netActionTaken();
+  } else if (interfaceIsSet()) {
+    if (flackActive) addLogText("Flack is already active.");
+    else if (flackUsed) addLogText("Flack can only be used once per NetRun.");
+    else {
+      flackActive = true;
+      flackUsed = true;
+      addLogText("Flack activated.");
+      netActionTaken();
+    }
   }
 }
 
@@ -948,7 +936,6 @@ socket.on("key-names", function(keys) {
 //add mini array for each level
 //with level attempts - unsuccessful
 //and if you've done it before?
-
 
 //add check for hellhound stats put in wrong
 
