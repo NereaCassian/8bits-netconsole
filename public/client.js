@@ -441,6 +441,14 @@ function updateKnownMap(knownLevel) {
   
 }
 
+function onMap2(){
+  
+}
+
+function onPathfinder2(){
+  
+}
+
 function onBackdoor(roll) {
   if (levelStatus != "Password")
     addLogText("Backdoor can only be used on a password.");
