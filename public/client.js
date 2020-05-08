@@ -27,6 +27,8 @@ var levelStatus = "";
 var rollIsFor = "";
 var knownLevels;
 
+var knownMap =[]; 
+
 var startingNetActions;
 var currentNetActions;
 var playerInterface;
