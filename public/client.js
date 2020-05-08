@@ -187,7 +187,6 @@ function onCommand(command, roll, extraInfo) {
     if (!roll) {
       addLogText("Roll <b> 1d10 </b>+ Interface.");
       rollIsFor = command;
-      // console.log("roll is for assigned = "+rollIsFor);
     } else {
       callCommand(command, roll, extraInfo);
     }
@@ -407,7 +406,6 @@ function setNetActions(int) {
 }
 
 function onSlide(roll) {
-  //console.log("starting net actions = "+startingNetActions);
   if (levelStatus != "Hellhound") {
     addLogText("Slide can only be used on a Hellhound or Black Ice.");
   } else if (interfaceIsSet()) {
