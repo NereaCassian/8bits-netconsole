@@ -643,15 +643,15 @@ function onPathFinder(roll) {
   if (roll <= 5) {
     levels = 1;
   } else if (roll > 5 && roll <= 10) {
-    levels = 2;
-  } else if (roll > 10 && roll <= 13) {
     levels = 3;
-  } else if (roll > 13 && roll <= 15) {
-    levels = 4;
-  } else if (roll > 15 && roll <= 17) {
+  } else if (roll > 10 && roll <= 13) {
     levels = 5;
+  } else if (roll > 13 && roll <= 15) {
+    levels = 7;
+  } else if (roll > 15 && roll <= 17) {
+    levels = 9;
   } else if (roll > 17) {
-    levels = 6;
+    levels = 11;
   }
 
   var visibleLevels = currentLevel + 1 + levels;
