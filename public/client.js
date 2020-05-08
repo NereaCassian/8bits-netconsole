@@ -435,19 +435,25 @@ function generateMap(visibleLevels) {
 }
 
 function updateKnownMap(knownLevel) {
-   knownMap[knownLevel] = map[knownLevel][3];//check what it is in map
-  
-  
-  
+  knownMap[knownLevel] = map[knownLevel][3]; //check what it is in map
 }
 
-function onMap2(){
-  
+function onMap2() {
+  knownMap = ["Empty", "Hellhound", "File"];
+  var visibleMap = "";
+  for (var i = 0; i < knownMap.length; i++) {
+    if (currentLevel == i)
+      visibleMap += "<b>Level " + i + ": " + knownMap[i] + "</b><br>";
+    else visibleMap += "Level " + map[i][0] + ": " + knownMap[i] + "<br>";
+  }
+  //unknown or end
+  if (map.length > knownMap) {
+    
+  }
+  addLogText(visibleMap);
 }
 
-function onPathfinder2(){
-  
-}
+function generateMap2() {}
 
 function onBackdoor(roll) {
   if (levelStatus != "Password")
