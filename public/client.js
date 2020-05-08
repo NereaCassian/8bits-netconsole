@@ -27,7 +27,7 @@ var levelStatus = "";
 var rollIsFor = "";
 var knownLevels;
 
-var knownMap =[]; 
+var knownMap = [];
 
 var startingNetActions;
 var currentNetActions;
@@ -374,6 +374,66 @@ function addLogText(text, user, damage) {
 
   //  console.log("Known map = " + knownLevels);
 }
+
+function onMap() {
+  if (!knownLevels) {
+    // addLogText(
+    //   "You must use Pathfinder to discover the netspace map before you can view it."
+    // );
+    generateMap(1);
+  } else {
+    // console.log("currentLevel = " + currentLevel + " knownMap = " + knownMap);
+    if (currentLevel + 1 >= knownLevels) knownLevels = currentLevel + 1;
+    generateMap(knownLevels);
+  }
+}
+
+function onPathFinder(roll) {
+  var levels = 0;
+  if (roll <= 5) {
+    levels = 1;
+  } else if (roll > 5 && roll <= 10) {
+    levels = 3;
+  } else if (roll > 10 && roll <= 13) {
+    levels = 5;
+  } else if (roll > 13 && roll <= 15) {
+    levels = 7;
+  } else if (roll > 15 && roll <= 17) {
+    levels = 9;
+  } else if (roll > 17) {
+    levels = 11;
+  }
+
+  var visibleLevels = currentLevel + 1 + levels;
+
+  generateMap(visibleLevels);
+}
+
+function generateMap(visibleLevels) {
+  var visibleMap = "";
+  var originalLevels = visibleLevels;
+
+  if (map.length < visibleLevels) visibleLevels = map.length;
+  knownLevels = originalLevels;
+  //if virus undiscovered new map replace virus with file
+  for (var i = 0; i < visibleLevels; i++) {
+    if (currentLevel == i)
+      visibleMap += "<b>Level " + map[i][0] + ": " + map[i][1] + "</b><br>";
+    else visibleMap += "Level " + map[i][0] + ": " + map[i][1] + "<br>";
+  }
+
+  if (map.length > originalLevels - 1) {
+    visibleMap += "Unknown";
+  } else {
+    visibleMap += "End";
+  }
+  visibleMap = visibleMap.replace(/Virus/g, "File");
+
+  addLogText(visibleMap);
+}
+
+function updateKnownMap(knownLevel) {}
+
 function onBackdoor(roll) {
   if (levelStatus != "Password")
     addLogText("Backdoor can only be used on a password.");
@@ -626,65 +686,6 @@ function onControl(roll) {
 function onCloak(roll) {
   addLogText("You have cloaked your actions with level <b>" + roll + "</b>");
 }
-
-function onMap() {
-  if (!knownLevels) {
-    // addLogText(
-    //   "You must use Pathfinder to discover the netspace map before you can view it."
-    // );
-    generateMap(1);
-  } else {
-    // console.log("currentLevel = " + currentLevel + " knownMap = " + knownMap);
-    if (currentLevel + 1 >= knownLevels) knownLevels = currentLevel + 1;
-    generateMap(knownLevels);
-  }
-}
-
-function onPathFinder(roll) {
-  var levels = 0;
-  if (roll <= 5) {
-    levels = 1;
-  } else if (roll > 5 && roll <= 10) {
-    levels = 3;
-  } else if (roll > 10 && roll <= 13) {
-    levels = 5;
-  } else if (roll > 13 && roll <= 15) {
-    levels = 7;
-  } else if (roll > 15 && roll <= 17) {
-    levels = 9;
-  } else if (roll > 17) {
-    levels = 11 ;
-  }
-
-  var visibleLevels = currentLevel + 1 + levels;
-
-  generateMap(visibleLevels);
-}
-
-function generateMap(visibleLevels) {
-  var visibleMap = "";
-  var originalLevels = visibleLevels;
-
-  if (map.length < visibleLevels) visibleLevels = map.length;
-  knownLevels = originalLevels;
-  //if virus undiscovered new map replace virus with file
-  for (var i = 0; i < visibleLevels; i++) {
-    if (currentLevel == i)
-      visibleMap += "<b>Level " + map[i][0] + ": " + map[i][1] + "</b><br>";
-    else visibleMap += "Level " + map[i][0] + ": " + map[i][1] + "<br>";
-  }
-
-  if (map.length > originalLevels - 1) {
-    visibleMap += "Unknown";
-  } else {
-    visibleMap += "End";
-  }
-  visibleMap = visibleMap.replace(/Virus/g, "File");
-
-  addLogText(visibleMap);
-}
-
-function updateKnownMap(knownLevel) {}
 
 function rollPasses(roll, dv) {
   if (!dv) dv = map[currentLevel][2];
