@@ -435,7 +435,10 @@ function generateMap(visibleLevels) {
 }
 
 function updateKnownMap(knownLevel) {
-   
+   knownMap[knownLevel] = map[knownLevel][3];//check what it is in map
+  
+  
+  
 }
 
 function onBackdoor(roll) {
