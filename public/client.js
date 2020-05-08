@@ -408,13 +408,13 @@ function setNetActions(int) {
 }
 
 function onSlide(roll) {
-  //add slide this turn check
   if (levelStatus != "Hellhound") {
     addLogText("Slide can only be used on a Hellhound or Black Ice.");
   } else if (slideUsedThisTurn) {
     addLogText("Slide can only be used once per turn.");
   } else if (interfaceIsSet()) {
-    if (rollPasses(roll, hellhoundStats[0])) {
+    var perception = onDiceRoll(1, 10) + parseInt(hellhoundStats[0]);
+    if (rollPasses(roll, perception)) {
       addLogText("Slide successful.");
       nextLevelDown();
     } else {
@@ -442,7 +442,7 @@ function netActionTaken() {
       "<b>Hellhound attack</b> <br> Roll <b>1d10</b> + Interface for defence"
     );
     rollIsFor = "HellhoundAttack";
-    slideUsedThisTurn = false;
+    // slideUsedThisTurn = false;
     console.log("Hellhound attack rollIsFor = '" + rollIsFor + "'");
   } else {
     addLogText("You have <b>" + currentNetActions + "</b> actions left.");
@@ -472,6 +472,7 @@ function hellhoundAttack(defence) {
   }
   currentNetActions = startingNetActions;
   rollIsFor = "";
+  slideUsedThisTurn = false; //resetting start of turn
 }
 function onZap(roll) {
   if (interfaceIsSet()) {
