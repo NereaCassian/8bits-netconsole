@@ -176,9 +176,6 @@ function inputEntered(inputValue) {
 }
 
 function onCommand(command, roll, extraInfo) {
-  console.log(
-    "onCommand called " + command + " roll = " + roll + " info = " + extraInfo
-  );
   var isKnown = knownCommands.indexOf(command) != -1;
   var rollNeeded = noRollNeeded.indexOf(command) == -1;
   if (!isKnown) {
@@ -445,7 +442,6 @@ function netActionTaken() {
   } else {
     addLogText("You have <b>" + currentNetActions + "</b> actions left.");
   }
-  // console.log("net action roll is for "+rollIsFor);
 }
 
 function hellhoundAttack(defence) {
