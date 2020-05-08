@@ -33,6 +33,7 @@ var playerInterface;
 var flackActive = false;
 var flackUsed = false;
 var banhammerUsed = false;
+var slideUsedThisTurn = false;
 
 var hellhoundStats = [0, 0, 0];
 var hellhoundHP;
@@ -393,6 +394,7 @@ function setUpNewHellhound() {
     hellhoundHP = parseInt(map[currentLevel][2]);
     if (!currentNetActions) currentNetActions = startingNetActions;
     addLogText("You have <b>" + currentNetActions + "</b> actions.");
+    slideUsedThisTurn = false;
   }
 }
 
@@ -406,8 +408,11 @@ function setNetActions(int) {
 }
 
 function onSlide(roll) {
+  //add slide this turn check
   if (levelStatus != "Hellhound") {
     addLogText("Slide can only be used on a Hellhound or Black Ice.");
+  } else if (slideUsedThisTurn) {
+    addLogText("Slide can only be used once per turn.");
   } else if (interfaceIsSet()) {
     if (rollPasses(roll, hellhoundStats[0])) {
       addLogText("Slide successful.");
@@ -416,6 +421,7 @@ function onSlide(roll) {
       addLogText("Slide attempt failed.");
       netActionTaken();
     }
+    slideUsedThisTurn = true;
   }
 }
 
@@ -436,6 +442,7 @@ function netActionTaken() {
       "<b>Hellhound attack</b> <br> Roll <b>1d10</b> + Interface for defence"
     );
     rollIsFor = "HellhoundAttack";
+    slideUsedThisTurn = false;
     console.log("Hellhound attack rollIsFor = '" + rollIsFor + "'");
   } else {
     addLogText("You have <b>" + currentNetActions + "</b> actions left.");
@@ -920,7 +927,6 @@ socket.on("key-names", function(keys) {
 
 //being able to see and edit with password?
 
-
 //shortcut for getting down to certain level?
 
 //make more obvious if you're not on a netspace
@@ -930,12 +936,10 @@ socket.on("key-names", function(keys) {
 //with level attempts - unsuccessful
 //and if you've done it before?
 
-//space in front on command breaks it 
-
+//space in front on command breaks it
 
 //interface to change actions number doesn't quite work
 //needs to check how many you have and how many you should have now
-
 
 //scrolling down issue
 
