@@ -920,7 +920,6 @@ socket.on("key-names", function(keys) {
 
 //being able to see and edit with password?
 
-//flack once per netspace
 
 //shortcut for getting down to certain level?
 
@@ -931,22 +930,18 @@ socket.on("key-names", function(keys) {
 //with level attempts - unsuccessful
 //and if you've done it before?
 
-//add check for hellhound stats put in wrong
+//space in front on command breaks it 
 
-//roll is for can be ignored for a new command
-
-//if try to banhammer or zap when no interface, ask
 
 //interface to change actions number doesn't quite work
 //needs to check how many you have and how many you should have now
-//dice roll issue - 3 d6 showing rolls when called internally
+
 
 //scrolling down issue
 
 //notes for calvin
 // passwords can be numbers now
 //all passwords from now on are case insensitive in making
-//check flack is once per session
 //notes work now
 //HP or REZ
 //banhammer once per hellhound or netrun
