@@ -51,7 +51,6 @@ function generateNetSpace() {
     var level = document.getElementById("Level " + j);
 
     if (level.children[1].value == "Password") {
-      // make password case insensitive
       level.children[3].value = level.children[3].value.toLowerCase();
     } else if(level.children[1].value =="Hellhound"){
       if(!correctHellhound(level.children[3].value)){
