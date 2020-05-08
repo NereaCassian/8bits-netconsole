@@ -434,7 +434,9 @@ function generateMap(visibleLevels) {
   addLogText(visibleMap);
 }
 
-function updateKnownMap(knownLevel) {}
+function updateKnownMap(knownLevel) {
+  
+}
 
 function onBackdoor(roll) {
   if (levelStatus != "Password")
