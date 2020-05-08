@@ -928,6 +928,8 @@ socket.on("key-names", function(keys) {
 
 //being able to see and edit with password?
 
+//not allow spaces in passwords
+
 //shortcut for getting down to certain level?
 
 //make more obvious if you're not on a netspace
