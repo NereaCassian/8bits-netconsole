@@ -376,6 +376,8 @@ function addLogText(text, user, damage) {
 }
 
 function onMap() {
+  //show map
+  //on level add level to map
   if (!knownLevels) {
     // addLogText(
     //   "You must use Pathfinder to discover the netspace map before you can view it."
