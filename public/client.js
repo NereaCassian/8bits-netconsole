@@ -587,8 +587,8 @@ function onZap(roll) {
 }
 
 function onBanhammer(roll) {
-  if (banhammerUsed) addLogText("Banhammer can only be used once per Netrun.");
-  else if (interfaceIsSet()) {
+  //if (banhammerUsed) addLogText("Banhammer can only be used once per Netrun.");
+   if (interfaceIsSet()) {
     var hellhoundDefence = parseInt(hellhoundStats[2]) + onDiceRoll(1, 10);
     console.log(
       "banhammer attack = " + roll + " hellhound defence = " + hellhoundDefence
@@ -607,6 +607,7 @@ function onBanhammer(roll) {
       } else {
         // onLevel();
         netActionTaken();
+        //comment out for new banhammer
       }
       // console.log("Hp after damage= " + hellhoundHP);
     } else {
