@@ -448,7 +448,6 @@ function onMap2() {
   }
   //unknown or end
   if (map.length > knownMap) {
-    
   }
   addLogText(visibleMap);
 }
@@ -588,7 +587,7 @@ function onZap(roll) {
 
 function onBanhammer(roll) {
   //if (banhammerUsed) addLogText("Banhammer can only be used once per Netrun.");
-   if (interfaceIsSet()) {
+  if (interfaceIsSet()) {
     var hellhoundDefence = parseInt(hellhoundStats[2]) + onDiceRoll(1, 10);
     console.log(
       "banhammer attack = " + roll + " hellhound defence = " + hellhoundDefence
