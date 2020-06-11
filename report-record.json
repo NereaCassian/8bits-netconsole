@@ -1,11 +1,1 @@
-{
-  "10": [
-    [0, "Empty", "", ""],
-    [1, "File", "", ""],
-    [2, "Hellhound", "", ""],
-    [3, "Virus", "", ""],
-    [4, "File", "", ""]
-  ],
-  "kl": [[0, "Empty", "", ""], [1, "Empty", "", "nm"]]
-}
-
+{"10":[[0,"Empty","",""],[1,"File","",""],[2,"Hellhound","",""],[3,"Virus","",""],[4,"File","",""]],"kl":[[0,"Empty","",""],[1,"Empty","","nm"]],"example":[["Help","userText"],["<b>Navigation commands</b><br>Level<br>Map<br>Pathfinder<br>Move Down<br>Move Up<br><br><b>Password commands</b><br>Password (eg)123<br>Backdoor<br><br><b>File commands</b><br>Eyedee<br>Move Down<br><br><b>Virus commands</b><br>Remove Virus<br>Move Down<br><br><b>Control Node commands</b><br>Control<br>Move Down<br><br><b>Hellhound commands</b><br>Banhammer<br>Flack<br>Slide<br>Zap<br><br><b>Other commands</b><br>(eg)1d10<br>Roll (eg)3d6<br>Cloak<br>Leave Virus<br>Copy<br>Share<br>Help (eg) Virus<br><br>",""],["Share","userText"]]}
