@@ -125,6 +125,8 @@ var dontClearRoll = ["HellhoundAttack", "Interface"]; //don't clear after roll -
 //on input
 function inputEntered(inputValue) {
   console.log("inputEntered rollIsFor = '" + rollIsFor + "'");
+  inputValue = inputValue.replace(/</g,"&#60;");
+  inputValue = inputValue.replace(/>/g,"&#62;");
   inputValue =
     inputValue.charAt(0).toUpperCase() + inputValue.slice(1).toLowerCase(); //make first letter Uppercase
   addLogText(inputValue, true); //add user's text to log
