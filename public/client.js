@@ -494,8 +494,8 @@ function setNetActions(int) {
 function onSlide(roll) {
   if (levelStatus != "Hellhound") {
     addLogText("Slide can only be used on a Hellhound or Black Ice.");
-  } else if (slideUsedThisTurn) {
-    addLogText("Slide can only be used once per turn.");
+  // } else if (slideUsedThisTurn) {
+  //   addLogText("Slide can only be used once per turn.");
   } else if (interfaceIsSet()) {
     var perception = onDiceRoll(1, 10) + parseInt(hellhoundStats[0]);
     if (rollPasses(roll, perception)) {
