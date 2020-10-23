@@ -1,1 +1,517 @@
-{"10":[[0,"Empty","",""],[1,"File","",""],[2,"Hellhound","",""],[3,"Virus","",""],[4,"File","",""]],"kl":[[0,"Empty","",""],[1,"Empty","","nm"]],"example":[["Help","userText"],["<b>Navigation commands</b><br>Level<br>Map<br>Pathfinder<br>Move Down<br>Move Up<br><br><b>Password commands</b><br>Password (eg)123<br>Backdoor<br><br><b>File commands</b><br>Eyedee<br>Move Down<br><br><b>Virus commands</b><br>Remove Virus<br>Move Down<br><br><b>Control Node commands</b><br>Control<br>Move Down<br><br><b>Hellhound commands</b><br>Banhammer<br>Flack<br>Slide<br>Zap<br><br><b>Other commands</b><br>(eg)1d10<br>Roll (eg)3d6<br>Cloak<br>Leave Virus<br>Copy<br>Share<br>Help (eg) Virus<br><br>",""],["Share","userText"]],"Red-Legion-Network":[["You are on <b>Level 0: Empty</b>",""],["Map","userText"],["<b>Level 0: Empty</b><br>Unknown",""],["1d10","userText"],["5",""],["14","userText"],["Map 14","userText"],["<b>Level 0: Empty</b><br>Unknown",""],["Move down","userText"],["You are on <b>Level 1: Password</b>",""],["1d1-","userText"],["Command '1d1-' Unknown.",""],["1d10","userText"],["8",""],["Backdoor 17","userText"],["Success",""],["You are on <b>Level 2: Empty</b>",""],["Move down","userText"],["You are on <b>Level 3: File</b>",""],["Eyedee","userText"],["Roll <b> 1d10 </b>+ Interface.",""],["1d10","userText"],["8",""],["17","userText"],["Success",""],["File contents: A large library of pirated media, including films, music, and Net games. They've got all the hits; Grand Theft Aero, Fivetnight, Counterstrike; Interplanatary Offensive… the list goes on. Nothing very useful though, unless you want to take some copies?",""],["Map","userText"],["Level 0: Empty<br>Level 1: Password<br>Level 2: Empty<br><b>Level 3: File</b><br>Unknown",""],["Help","userText"],["<b>Navigation commands</b><br>Level<br>Map<br>Pathfinder<br>Move Down<br>Move Up<br><br><b>Password commands</b><br>Password (eg)123<br>Backdoor<br><br><b>File commands</b><br>Eyedee<br>Move Down<br><br><b>Virus commands</b><br>Remove Virus<br>Move Down<br><br><b>Control Node commands</b><br>Control<br>Move Down<br><br><b>Hellhound commands</b><br>Banhammer<br>Flack<br>Slide<br>Zap<br><br><b>Other commands</b><br>(eg)1d10<br>Roll (eg)3d6<br>Cloak<br>Leave Virus<br>Copy<br>Share<br>Help (eg) Virus<br><br>",""],["Pathfinder","userText"],["Roll <b> 1d10 </b>+ Interface.",""],["1d10","userText"],["4",""],["13","userText"],["Level 0: Empty<br>Level 1: Password<br>Level 2: Empty<br><b>Level 3: File</b><br>Level 4: Empty<br>Level 5: Control Node<br>Level 6: Empty<br>Level 7: Password<br>Level 8: Empty<br>Unknown",""],["Move down","userText"],["You are on <b>Level 4: Empty</b>",""],["Move down","userText"],["You are on <b>Level 5: Control Node</b>",""],["Control Node controls the alarm system throughout the hideout. It can either be triggered, or silenced.",""],["Move down","userText"],["You are on <b>Level 6: Empty</b>",""],["Move down","userText"],["You are on <b>Level 7: Password</b>",""],["Backdoor","userText"],["Roll <b> 1d10 </b>+ Interface.",""],["1d10","userText"],["6",""],["15","userText"],["Success",""],["You are on <b>Level 8: Empty</b>",""],["Map","userText"],["Level 0: Empty<br>Level 1: Password<br>Level 2: Empty<br>Level 3: File<br>Level 4: Empty<br>Level 5: Control Node<br>Level 6: Empty<br>Level 7: Password<br><b>Level 8: Empty</b><br>Unknown",""],["Pathfinder","userText"],["Roll <b> 1d10 </b>+ Interface.",""],["1d10","userText"],["10",""],["19","userText"],["Level 0: Empty<br>Level 1: Password<br>Level 2: Empty<br>Level 3: File<br>Level 4: Empty<br>Level 5: Control Node<br>Level 6: Empty<br>Level 7: Password<br><b>Level 8: Empty</b><br>Level 9: File<br>Level 10: Hellhound<br>Level 11: Empty<br>Level 12: File<br>Level 13: Empty<br>Level 14: Control Node<br>Level 15: Empty<br>Level 16: Password<br>Level 17: Hellhound<br>Level 18: Control Node<br>Level 19: File<br>Unknown",""],["Move down","userText"],["You are on <b>Level 9: File</b>",""],["Eyedee","userText"],["Roll <b> 1d10 </b>+ Interface.",""],["1d10","userText"],["1",""],["10","userText"],["Success",""],["File contents: A variety of orders sent out to different Legionnaires, instructing them to carry out hits against citizens in Camden Ward. None of them stand out to you, but it's good evidence either way.",""],["Move down","userText"],["You are on <b>Level 10: Hellhound</b>",""],["Please enter your interface level.",""],["9","userText"],["You are on <b>Level 10: Hellhound</b>",""],["You have <b>3</b> actions.",""],["Help hellhound","userText"],["<b>Hellhound commands</b><br>Banhammer<br>Flack<br>Slide<br>Zap<br>",""],["Slide","userText"],["Roll <b> 1d10 </b>+ Interface.",""],["1d10","userText"],["9",""],["18","userText"],["Slide successful.",""],["You are on <b>Level 11: Empty</b>",""],["Pathfinder","userText"],["Roll <b> 1d10 </b>+ Interface.",""],["1d10","userText"],["2",""],["11","userText"],["Level 0: Empty<br>Level 1: Password<br>Level 2: Empty<br>Level 3: File<br>Level 4: Empty<br>Level 5: Control Node<br>Level 6: Empty<br>Level 7: Password<br>Level 8: Empty<br>Level 9: File<br>Level 10: Hellhound<br><b>Level 11: Empty</b><br>Level 12: File<br>Level 13: Empty<br>Level 14: Control Node<br>Level 15: Empty<br>Level 16: Password<br>Unknown",""],["Move down","userText"],["You are on <b>Level 12: File</b>",""],["Eyedee","userText"],["Roll <b> 1d10 </b>+ Interface.",""],["1d10","userText"],["1",""],["10","userText"],["Success",""],["File contents: Records of protection money collected from almost everyone in Lime Grove. The ones who haven't paid up have red liens through them…",""],["Move down","userText"],["You are on <b>Level 13: Empty</b>",""],["Move down","userText"],["You are on <b>Level 14: Control Node</b>",""],["Control Node controls the blast doors sealing off the hideout from the rest of the building. They can be enabled or disabled.",""],["Move down","userText"],["You are on <b>Level 15: Empty</b>",""],["Map","userText"],["Level 0: Empty<br>Level 1: Password<br>Level 2: Empty<br>Level 3: File<br>Level 4: Empty<br>Level 5: Control Node<br>Level 6: Empty<br>Level 7: Password<br>Level 8: Empty<br>Level 9: File<br>Level 10: Hellhound<br>Level 11: Empty<br>Level 12: File<br>Level 13: Empty<br>Level 14: Control Node<br><b>Level 15: Empty</b><br>Level 16: Password<br>Unknown",""],["Pathfinder","userText"],["Roll <b> 1d10 </b>+ Interface.",""],["1d10","userText"],["9",""],["18","userText"],["Level 0: Empty<br>Level 1: Password<br>Level 2: Empty<br>Level 3: File<br>Level 4: Empty<br>Level 5: Control Node<br>Level 6: Empty<br>Level 7: Password<br>Level 8: Empty<br>Level 9: File<br>Level 10: Hellhound<br>Level 11: Empty<br>Level 12: File<br>Level 13: Empty<br>Level 14: Control Node<br><b>Level 15: Empty</b><br>Level 16: Password<br>Level 17: Hellhound<br>Level 18: Control Node<br>Level 19: File<br>Level 20: Empty<br>Level 21: Password<br>Level 22: Empty<br>Level 23: Empty<br>Level 24: File<br>Level 25: File<br>End",""],["Move down","userText"],["You are on <b>Level 16: Password</b>",""],["Backdoor","userText"],["Roll <b> 1d10 </b>+ Interface.",""],["1d10","userText"],["5",""],["14","userText"],["Success",""],["You are on <b>Level 17: Hellhound</b>",""],["Slide","userText"],["Roll <b> 1d10 </b>+ Interface.",""],["1d10","userText"],["2",""],["11","userText"],["Slide can only be used once per turn.",""],["Move down","userText"],["You cannot move down past a Hellhound.",""],["Cheat","userText"],["Command 'Cheat' Unknown.",""],["Zap 25","userText"],["Your Zap attack was successful. <br> Hellhound takes (1d6) <b>3</b> damage.",""],["You have <b>2</b> actions left.",""],["Zap 100","userText"],["Your Zap attack was successful. <br> Hellhound takes (1d6) <b>4</b> damage.",""],["You have <b>1</b> actions left.",""],["Zap 10000000","userText"],["Your Zap attack was successful. <br> Hellhound takes (1d6) <b>6</b> damage.",""],["<b>Hellhound attack</b> <br> Roll <b>1d10</b> + Interface for defence",""],["1","userText"],["Take <b>3d6</b> damage.","damageText"],["1","userText"],["Slide","userText"],["Roll <b> 1d10 </b>+ Interface.",""],["1","userText"],["Slide attempt failed.",""],["You have <b>2</b> actions left.",""],["Slide","userText"],["Roll <b> 1d10 </b>+ Interface.",""],["1d10","userText"],["2",""],["11","userText"],["Slide can only be used once per turn.",""],["Zap ","userText"],["Roll <b> 1d10 </b>+ Interface.",""],["1d10","userText"],["10",""],["19","userText"],["Your Zap attack was successful. <br> Hellhound takes (1d6) <b>3</b> damage.",""],["You have <b>1</b> actions left.",""],["Slide","userText"],["Roll <b> 1d10 </b>+ Interface.",""],["1d1","userText"],["1",""],["1d10","userText"],["4",""],["13","userText"],["Slide can only be used once per turn.",""],["Zap 10000","userText"],["Your Zap attack was successful. <br> Hellhound takes (1d6) <b>1</b> damage.",""],["<b>Hellhound attack</b> <br> Roll <b>1d10</b> + Interface for defence",""],["Zap 999999","userText"],["Your Zap attack was successful. <br> Hellhound takes (1d6) <b>2</b> damage.",""],["<b>Hellhound attack</b> <br> Roll <b>1d10</b> + Interface for defence",""],["10000","userText"],["Hellhound's attack was unsuccessful. <br> You have <b>3</b> actions.",""],["Zap 1999","userText"],["Your Zap attack was successful. <br> Hellhound takes (1d6) <b>2</b> damage.",""],["You have <b>2</b> actions left.",""],["Zap 10000","userText"],["Your Zap attack was successful. <br> Hellhound takes (1d6) <b>1</b> damage.",""],["You have <b>1</b> actions left.",""],["Zap 99999","userText"],["Your Zap attack was successful. <br> Hellhound takes (1d6) <b>5</b> damage.",""],["You have <b>destroyed</b> the Hellhound.",""],["You are on <b>Level 18: Control Node</b>",""],["Control Node controls the sentry guns positioned throughout the hideout. They can be activated or deactivated. They can also be reconfigured to fire at the Legionnaires, rather than you, but only if you remain on this floor of the network",""],["Map","userText"],["Level 0: Empty<br>Level 1: Password<br>Level 2: Empty<br>Level 3: File<br>Level 4: Empty<br>Level 5: Control Node<br>Level 6: Empty<br>Level 7: Password<br>Level 8: Empty<br>Level 9: File<br>Level 10: Hellhound<br>Level 11: Empty<br>Level 12: File<br>Level 13: Empty<br>Level 14: Control Node<br>Level 15: Empty<br>Level 16: Password<br>Level 17: Hellhound<br><b>Level 18: Control Node</b><br>Level 19: File<br>Level 20: Empty<br>Level 21: Password<br>Level 22: Empty<br>Level 23: Empty<br>Level 24: File<br>Level 25: File<br>End",""],["Move down","userText"],["You are on <b>Level 19: File</b>",""],["Eyedee","userText"],["Roll <b> 1d10 </b>+ Interface.",""],["1d10","userText"],["1",""],["10","userText"],["Eye-Dee attempt was unsuccessful.",""],["Move down","userText"],["You are on <b>Level 20: Empty</b>",""],["Move down","userText"],["You are on <b>Level 21: Password</b>",""],["Eyedee","userText"],["Roll <b> 1d10 </b>+ Interface.",""],["1d10","userText"],["3",""],["12","userText"],["Eye-Dee can only be used on a File.",""],["Level","userText"],["You are on <b>Level 21: Password</b>",""],["Backdoor","userText"],["Roll <b> 1d10 </b>+ Interface.",""],["1d10","userText"],["5",""],["14","userText"],["Success",""],["You are on <b>Level 22: Empty</b>",""],["Map","userText"],["Level 0: Empty<br>Level 1: Password<br>Level 2: Empty<br>Level 3: File<br>Level 4: Empty<br>Level 5: Control Node<br>Level 6: Empty<br>Level 7: Password<br>Level 8: Empty<br>Level 9: File<br>Level 10: Hellhound<br>Level 11: Empty<br>Level 12: File<br>Level 13: Empty<br>Level 14: Control Node<br>Level 15: Empty<br>Level 16: Password<br>Level 17: Hellhound<br>Level 18: Control Node<br>Level 19: File<br>Level 20: Empty<br>Level 21: Password<br><b>Level 22: Empty</b><br>Level 23: Empty<br>Level 24: File<br>Level 25: File<br>End",""],["Move down","userText"],["You are on <b>Level 23: Empty</b>",""],["Move down","userText"],["You are on <b>Level 24: File</b>",""],["Eyedee","userText"],["Roll <b> 1d10 </b>+ Interface.",""],["1d10","userText"],["4",""],["13","userText"],["Success",""],["File contents: Records of contact between several Legionnaires, and members of the Syndicate. Looks like they've been in cahoots after all… There's not a lot here, but it could go a long way in convincing the other syndicate families that the Shaw's are up to no good.",""],["Move down","userText"],["You are on <b>Level 25: Virus</b>",""],["Virus is copying all the data in the network to a private Syndicate server off-site. Looks like Darrius wanted some assurance that the Legion weren't going to stab him in the back.",""],["Map","userText"],["Level 0: Empty<br>Level 1: Password<br>Level 2: Empty<br>Level 3: File<br>Level 4: Empty<br>Level 5: Control Node<br>Level 6: Empty<br>Level 7: Password<br>Level 8: Empty<br>Level 9: File<br>Level 10: Hellhound<br>Level 11: Empty<br>Level 12: File<br>Level 13: Empty<br>Level 14: Control Node<br>Level 15: Empty<br>Level 16: Password<br>Level 17: Hellhound<br>Level 18: Control Node<br>Level 19: File<br>Level 20: Empty<br>Level 21: Password<br>Level 22: Empty<br>Level 23: Empty<br>Level 24: File<br><b>Level 25: File</b><br>End",""],["Hel","userText"],["Command 'Hel' Unknown.",""],["Help","userText"],["<b>Navigation commands</b><br>Level<br>Map<br>Pathfinder<br>Move Down<br>Move Up<br><br><b>Password commands</b><br>Password (eg)123<br>Backdoor<br><br><b>File commands</b><br>Eyedee<br>Move Down<br><br><b>Virus commands</b><br>Remove Virus<br>Move Down<br><br><b>Control Node commands</b><br>Control<br>Move Down<br><br><b>Hellhound commands</b><br>Banhammer<br>Flack<br>Slide<br>Zap<br><br><b>Other commands</b><br>(eg)1d10<br>Roll (eg)3d6<br>Cloak<br>Leave Virus<br>Copy<br>Share<br>Help (eg) Virus<br><br>",""],["Share","userText"]],"Cassius-Crane":[["You are on <b>Level 0: Empty</b>",""],["Pathfinder","userText"],["Roll <b> 1d10 </b>+ Interface.",""],["1d10","userText"],["5",""],["14","userText"],["<b>Level 0: Empty</b><br>Level 1: Password<br>Level 2: Empty<br>Level 3: File<br>Level 4: Empty<br>Level 5: Empty<br>Level 6: Password<br>Level 7: File<br>Unknown",""],["Move down","userText"],["You are on <b>Level 1: Password</b>",""],["Backdoor","userText"],["Roll <b> 1d10 </b>+ Interface.",""],["1d10","userText"],["2",""],["11","userText"],["Success",""],["You are on <b>Level 2: Empty</b>",""],["Map","userText"],["Level 0: Empty<br>Level 1: Password<br><b>Level 2: Empty</b><br>Level 3: File<br>Level 4: Empty<br>Level 5: Empty<br>Level 6: Password<br>Level 7: File<br>Unknown",""],["Move down","userText"],["You are on <b>Level 3: File</b>",""],["Eyedee","userText"],["Roll <b> 1d10 </b>+ Interface.",""],["1d10","userText"],["3",""],["12","userText"],["Success",""],["File contents: Orders from Cassius to Hector, the Red Legion Capo at the Red Lion, ordering him to move Marcus back to Lime Grove, to await public execution. Whoops, guess you foiled that plan…",""],["Map","userText"],["Level 0: Empty<br>Level 1: Password<br>Level 2: Empty<br><b>Level 3: File</b><br>Level 4: Empty<br>Level 5: Empty<br>Level 6: Password<br>Level 7: File<br>Unknown",""],["Move down","userText"],["You are on <b>Level 4: Empty</b>",""],["Move down","userText"],["You are on <b>Level 5: Empty</b>",""],["Move down","userText"],["You are on <b>Level 6: Password</b>",""],["Backdoor","userText"],["Roll <b> 1d10 </b>+ Interface.",""],["1d10","userText"],["8",""],["17","userText"],["Success",""],["You are on <b>Level 7: File</b>",""],["Eyedee","userText"],["Roll <b> 1d10 </b>+ Interface.",""],["1d10","userText"],["7",""],["16","userText"],["Success",""],["File contents: A variety of orders sent out to different Legionnaires, instructing them to carry out hits against citizens in Camden Ward. None of them stand out to you, but it's good evidence either way.",""],["Map","userText"],["Level 0: Empty<br>Level 1: Password<br>Level 2: Empty<br>Level 3: File<br>Level 4: Empty<br>Level 5: Empty<br>Level 6: Password<br><b>Level 7: File</b><br>Unknown",""],["Pathfinder","userText"],["Roll <b> 1d10 </b>+ Interface.",""],["1d10","userText"],["4",""],["13","userText"],["Level 0: Empty<br>Level 1: Password<br>Level 2: Empty<br>Level 3: File<br>Level 4: Empty<br>Level 5: Empty<br>Level 6: Password<br><b>Level 7: File</b><br>Level 8: Empty<br>Level 9: Hellhound<br>Level 10: File<br>Level 11: Password<br>Level 12: Empty<br>Unknown",""],["Move down","userText"],["You are on <b>Level 8: Empty</b>",""],["Move down","userText"],["You are on <b>Level 9: Hellhound</b>",""],["Please enter your interface level.",""],["9","userText"],["You are on <b>Level 9: Hellhound</b>",""],["You have <b>3</b> actions.",""],["Slide 2000","userText"],["Slide successful.",""],["You are on <b>Level 10: File</b>",""],["Eyedee","userText"],["Roll <b> 1d10 </b>+ Interface.",""],["1d10","userText"],["5",""],["14","userText"],["Success",""],["File contents: Records of monetary payments from Miles Powell, a Shaw Capo in the Syndicate. Looks like they're on the payroll after all. This is all the information you need to get the Syndicate on side - Jackpot!",""],["Map","userText"],["Level 0: Empty<br>Level 1: Password<br>Level 2: Empty<br>Level 3: File<br>Level 4: Empty<br>Level 5: Empty<br>Level 6: Password<br>Level 7: File<br>Level 8: Empty<br>Level 9: Hellhound<br><b>Level 10: File</b><br>Level 11: Password<br>Level 12: Empty<br>Unknown",""],["Move down","userText"],["You are on <b>Level 11: Password</b>",""],["Backdoor","userText"],["Roll <b> 1d10 </b>+ Interface.",""],["1d10","userText"],["6",""],["15","userText"],["Success",""],["You are on <b>Level 12: Empty</b>",""],["Pathfinder","userText"],["Roll <b> 1d10 </b>+ Interface.",""],["1d10","userText"],["10",""],["19","userText"],["Level 0: Empty<br>Level 1: Password<br>Level 2: Empty<br>Level 3: File<br>Level 4: Empty<br>Level 5: Empty<br>Level 6: Password<br>Level 7: File<br>Level 8: Empty<br>Level 9: Hellhound<br>Level 10: File<br>Level 11: Password<br><b>Level 12: Empty</b><br>Level 13: File<br>Level 14: Empty<br>Level 15: File<br>End",""],["Move down","userText"],["You are on <b>Level 13: File</b>",""],["Eyedee","userText"],["Roll <b> 1d10 </b>+ Interface.",""],["1d10","userText"],["7",""],["16","userText"],["Success",""],["File contents: Communications with Darius Shaw, the head of the Shaw Family, discussing Red Legion expansion plans. If the payment receipts weren't enough to take down the Shaw's and the Red Legion, this certainly will be!",""],["Move down","userText"],["You are on <b>Level 14: Empty</b>",""],["Move down","userText"],["You are on <b>Level 15: File</b>",""],["Map","userText"],["Level 0: Empty<br>Level 1: Password<br>Level 2: Empty<br>Level 3: File<br>Level 4: Empty<br>Level 5: Empty<br>Level 6: Password<br>Level 7: File<br>Level 8: Empty<br>Level 9: Hellhound<br>Level 10: File<br>Level 11: Password<br>Level 12: Empty<br>Level 13: File<br>Level 14: Empty<br><b>Level 15: File</b><br>End",""],["Eyedee","userText"],["Roll <b> 1d10 </b>+ Interface.",""],["1d10","userText"],["5",""],["14","userText"],["Success",""],["File contents: Communications between Cassius and a Sheriff named Isaac Nadir, who is apparently on their payroll. That's not good…",""],["Share","userText"]]}
+{
+  "10": [
+    [0, "Empty", "", ""],
+    [1, "File", "", ""],
+    [2, "Hellhound", "", ""],
+    [3, "Virus", "", ""],
+    [4, "File", "", ""]
+  ],
+  "kl": [[0, "Empty", "", ""], [1, "Empty", "", "nm"]],
+  "example": [
+    ["Help", "userText"],
+    [
+      "<b>Navigation commands</b><br>Level<br>Map<br>Pathfinder<br>Move Down<br>Move Up<br><br><b>Password commands</b><br>Password (eg)123<br>Backdoor<br><br><b>File commands</b><br>Eyedee<br>Move Down<br><br><b>Virus commands</b><br>Remove Virus<br>Move Down<br><br><b>Control Node commands</b><br>Control<br>Move Down<br><br><b>Hellhound commands</b><br>Banhammer<br>Flack<br>Slide<br>Zap<br><br><b>Other commands</b><br>(eg)1d10<br>Roll (eg)3d6<br>Cloak<br>Leave Virus<br>Copy<br>Share<br>Help (eg) Virus<br><br>",
+      ""
+    ],
+    ["Share", "userText"]
+  ],
+  "Red-Legion-Network": [
+    ["You are on <b>Level 0: Empty</b>", ""],
+    ["Map", "userText"],
+    ["<b>Level 0: Empty</b><br>Unknown", ""],
+    ["1d10", "userText"],
+    ["5", ""],
+    ["14", "userText"],
+    ["Map 14", "userText"],
+    ["<b>Level 0: Empty</b><br>Unknown", ""],
+    ["Move down", "userText"],
+    ["You are on <b>Level 1: Password</b>", ""],
+    ["1d1-", "userText"],
+    ["Command '1d1-' Unknown.", ""],
+    ["1d10", "userText"],
+    ["8", ""],
+    ["Backdoor 17", "userText"],
+    ["Success", ""],
+    ["You are on <b>Level 2: Empty</b>", ""],
+    ["Move down", "userText"],
+    ["You are on <b>Level 3: File</b>", ""],
+    ["Eyedee", "userText"],
+    ["Roll <b> 1d10 </b>+ Interface.", ""],
+    ["1d10", "userText"],
+    ["8", ""],
+    ["17", "userText"],
+    ["Success", ""],
+    [
+      "File contents: A large library of pirated media, including films, music, and Net games. They've got all the hits; Grand Theft Aero, Fivetnight, Counterstrike; Interplanatary Offensive… the list goes on. Nothing very useful though, unless you want to take some copies?",
+      ""
+    ],
+    ["Map", "userText"],
+    [
+      "Level 0: Empty<br>Level 1: Password<br>Level 2: Empty<br><b>Level 3: File</b><br>Unknown",
+      ""
+    ],
+    ["Help", "userText"],
+    [
+      "<b>Navigation commands</b><br>Level<br>Map<br>Pathfinder<br>Move Down<br>Move Up<br><br><b>Password commands</b><br>Password (eg)123<br>Backdoor<br><br><b>File commands</b><br>Eyedee<br>Move Down<br><br><b>Virus commands</b><br>Remove Virus<br>Move Down<br><br><b>Control Node commands</b><br>Control<br>Move Down<br><br><b>Hellhound commands</b><br>Banhammer<br>Flack<br>Slide<br>Zap<br><br><b>Other commands</b><br>(eg)1d10<br>Roll (eg)3d6<br>Cloak<br>Leave Virus<br>Copy<br>Share<br>Help (eg) Virus<br><br>",
+      ""
+    ],
+    ["Pathfinder", "userText"],
+    ["Roll <b> 1d10 </b>+ Interface.", ""],
+    ["1d10", "userText"],
+    ["4", ""],
+    ["13", "userText"],
+    [
+      "Level 0: Empty<br>Level 1: Password<br>Level 2: Empty<br><b>Level 3: File</b><br>Level 4: Empty<br>Level 5: Control Node<br>Level 6: Empty<br>Level 7: Password<br>Level 8: Empty<br>Unknown",
+      ""
+    ],
+    ["Move down", "userText"],
+    ["You are on <b>Level 4: Empty</b>", ""],
+    ["Move down", "userText"],
+    ["You are on <b>Level 5: Control Node</b>", ""],
+    [
+      "Control Node controls the alarm system throughout the hideout. It can either be triggered, or silenced.",
+      ""
+    ],
+    ["Move down", "userText"],
+    ["You are on <b>Level 6: Empty</b>", ""],
+    ["Move down", "userText"],
+    ["You are on <b>Level 7: Password</b>", ""],
+    ["Backdoor", "userText"],
+    ["Roll <b> 1d10 </b>+ Interface.", ""],
+    ["1d10", "userText"],
+    ["6", ""],
+    ["15", "userText"],
+    ["Success", ""],
+    ["You are on <b>Level 8: Empty</b>", ""],
+    ["Map", "userText"],
+    [
+      "Level 0: Empty<br>Level 1: Password<br>Level 2: Empty<br>Level 3: File<br>Level 4: Empty<br>Level 5: Control Node<br>Level 6: Empty<br>Level 7: Password<br><b>Level 8: Empty</b><br>Unknown",
+      ""
+    ],
+    ["Pathfinder", "userText"],
+    ["Roll <b> 1d10 </b>+ Interface.", ""],
+    ["1d10", "userText"],
+    ["10", ""],
+    ["19", "userText"],
+    [
+      "Level 0: Empty<br>Level 1: Password<br>Level 2: Empty<br>Level 3: File<br>Level 4: Empty<br>Level 5: Control Node<br>Level 6: Empty<br>Level 7: Password<br><b>Level 8: Empty</b><br>Level 9: File<br>Level 10: Hellhound<br>Level 11: Empty<br>Level 12: File<br>Level 13: Empty<br>Level 14: Control Node<br>Level 15: Empty<br>Level 16: Password<br>Level 17: Hellhound<br>Level 18: Control Node<br>Level 19: File<br>Unknown",
+      ""
+    ],
+    ["Move down", "userText"],
+    ["You are on <b>Level 9: File</b>", ""],
+    ["Eyedee", "userText"],
+    ["Roll <b> 1d10 </b>+ Interface.", ""],
+    ["1d10", "userText"],
+    ["1", ""],
+    ["10", "userText"],
+    ["Success", ""],
+    [
+      "File contents: A variety of orders sent out to different Legionnaires, instructing them to carry out hits against citizens in Camden Ward. None of them stand out to you, but it's good evidence either way.",
+      ""
+    ],
+    ["Move down", "userText"],
+    ["You are on <b>Level 10: Hellhound</b>", ""],
+    ["Please enter your interface level.", ""],
+    ["9", "userText"],
+    ["You are on <b>Level 10: Hellhound</b>", ""],
+    ["You have <b>3</b> actions.", ""],
+    ["Help hellhound", "userText"],
+    ["<b>Hellhound commands</b><br>Banhammer<br>Flack<br>Slide<br>Zap<br>", ""],
+    ["Slide", "userText"],
+    ["Roll <b> 1d10 </b>+ Interface.", ""],
+    ["1d10", "userText"],
+    ["9", ""],
+    ["18", "userText"],
+    ["Slide successful.", ""],
+    ["You are on <b>Level 11: Empty</b>", ""],
+    ["Pathfinder", "userText"],
+    ["Roll <b> 1d10 </b>+ Interface.", ""],
+    ["1d10", "userText"],
+    ["2", ""],
+    ["11", "userText"],
+    [
+      "Level 0: Empty<br>Level 1: Password<br>Level 2: Empty<br>Level 3: File<br>Level 4: Empty<br>Level 5: Control Node<br>Level 6: Empty<br>Level 7: Password<br>Level 8: Empty<br>Level 9: File<br>Level 10: Hellhound<br><b>Level 11: Empty</b><br>Level 12: File<br>Level 13: Empty<br>Level 14: Control Node<br>Level 15: Empty<br>Level 16: Password<br>Unknown",
+      ""
+    ],
+    ["Move down", "userText"],
+    ["You are on <b>Level 12: File</b>", ""],
+    ["Eyedee", "userText"],
+    ["Roll <b> 1d10 </b>+ Interface.", ""],
+    ["1d10", "userText"],
+    ["1", ""],
+    ["10", "userText"],
+    ["Success", ""],
+    [
+      "File contents: Records of protection money collected from almost everyone in Lime Grove. The ones who haven't paid up have red liens through them…",
+      ""
+    ],
+    ["Move down", "userText"],
+    ["You are on <b>Level 13: Empty</b>", ""],
+    ["Move down", "userText"],
+    ["You are on <b>Level 14: Control Node</b>", ""],
+    [
+      "Control Node controls the blast doors sealing off the hideout from the rest of the building. They can be enabled or disabled.",
+      ""
+    ],
+    ["Move down", "userText"],
+    ["You are on <b>Level 15: Empty</b>", ""],
+    ["Map", "userText"],
+    [
+      "Level 0: Empty<br>Level 1: Password<br>Level 2: Empty<br>Level 3: File<br>Level 4: Empty<br>Level 5: Control Node<br>Level 6: Empty<br>Level 7: Password<br>Level 8: Empty<br>Level 9: File<br>Level 10: Hellhound<br>Level 11: Empty<br>Level 12: File<br>Level 13: Empty<br>Level 14: Control Node<br><b>Level 15: Empty</b><br>Level 16: Password<br>Unknown",
+      ""
+    ],
+    ["Pathfinder", "userText"],
+    ["Roll <b> 1d10 </b>+ Interface.", ""],
+    ["1d10", "userText"],
+    ["9", ""],
+    ["18", "userText"],
+    [
+      "Level 0: Empty<br>Level 1: Password<br>Level 2: Empty<br>Level 3: File<br>Level 4: Empty<br>Level 5: Control Node<br>Level 6: Empty<br>Level 7: Password<br>Level 8: Empty<br>Level 9: File<br>Level 10: Hellhound<br>Level 11: Empty<br>Level 12: File<br>Level 13: Empty<br>Level 14: Control Node<br><b>Level 15: Empty</b><br>Level 16: Password<br>Level 17: Hellhound<br>Level 18: Control Node<br>Level 19: File<br>Level 20: Empty<br>Level 21: Password<br>Level 22: Empty<br>Level 23: Empty<br>Level 24: File<br>Level 25: File<br>End",
+      ""
+    ],
+    ["Move down", "userText"],
+    ["You are on <b>Level 16: Password</b>", ""],
+    ["Backdoor", "userText"],
+    ["Roll <b> 1d10 </b>+ Interface.", ""],
+    ["1d10", "userText"],
+    ["5", ""],
+    ["14", "userText"],
+    ["Success", ""],
+    ["You are on <b>Level 17: Hellhound</b>", ""],
+    ["Slide", "userText"],
+    ["Roll <b> 1d10 </b>+ Interface.", ""],
+    ["1d10", "userText"],
+    ["2", ""],
+    ["11", "userText"],
+    ["Slide can only be used once per turn.", ""],
+    ["Move down", "userText"],
+    ["You cannot move down past a Hellhound.", ""],
+    ["Cheat", "userText"],
+    ["Command 'Cheat' Unknown.", ""],
+    ["Zap 25", "userText"],
+    [
+      "Your Zap attack was successful. <br> Hellhound takes (1d6) <b>3</b> damage.",
+      ""
+    ],
+    ["You have <b>2</b> actions left.", ""],
+    ["Zap 100", "userText"],
+    [
+      "Your Zap attack was successful. <br> Hellhound takes (1d6) <b>4</b> damage.",
+      ""
+    ],
+    ["You have <b>1</b> actions left.", ""],
+    ["Zap 10000000", "userText"],
+    [
+      "Your Zap attack was successful. <br> Hellhound takes (1d6) <b>6</b> damage.",
+      ""
+    ],
+    [
+      "<b>Hellhound attack</b> <br> Roll <b>1d10</b> + Interface for defence",
+      ""
+    ],
+    ["1", "userText"],
+    ["Take <b>3d6</b> damage.", "damageText"],
+    ["1", "userText"],
+    ["Slide", "userText"],
+    ["Roll <b> 1d10 </b>+ Interface.", ""],
+    ["1", "userText"],
+    ["Slide attempt failed.", ""],
+    ["You have <b>2</b> actions left.", ""],
+    ["Slide", "userText"],
+    ["Roll <b> 1d10 </b>+ Interface.", ""],
+    ["1d10", "userText"],
+    ["2", ""],
+    ["11", "userText"],
+    ["Slide can only be used once per turn.", ""],
+    ["Zap ", "userText"],
+    ["Roll <b> 1d10 </b>+ Interface.", ""],
+    ["1d10", "userText"],
+    ["10", ""],
+    ["19", "userText"],
+    [
+      "Your Zap attack was successful. <br> Hellhound takes (1d6) <b>3</b> damage.",
+      ""
+    ],
+    ["You have <b>1</b> actions left.", ""],
+    ["Slide", "userText"],
+    ["Roll <b> 1d10 </b>+ Interface.", ""],
+    ["1d1", "userText"],
+    ["1", ""],
+    ["1d10", "userText"],
+    ["4", ""],
+    ["13", "userText"],
+    ["Slide can only be used once per turn.", ""],
+    ["Zap 10000", "userText"],
+    [
+      "Your Zap attack was successful. <br> Hellhound takes (1d6) <b>1</b> damage.",
+      ""
+    ],
+    [
+      "<b>Hellhound attack</b> <br> Roll <b>1d10</b> + Interface for defence",
+      ""
+    ],
+    ["Zap 999999", "userText"],
+    [
+      "Your Zap attack was successful. <br> Hellhound takes (1d6) <b>2</b> damage.",
+      ""
+    ],
+    [
+      "<b>Hellhound attack</b> <br> Roll <b>1d10</b> + Interface for defence",
+      ""
+    ],
+    ["10000", "userText"],
+    [
+      "Hellhound's attack was unsuccessful. <br> You have <b>3</b> actions.",
+      ""
+    ],
+    ["Zap 1999", "userText"],
+    [
+      "Your Zap attack was successful. <br> Hellhound takes (1d6) <b>2</b> damage.",
+      ""
+    ],
+    ["You have <b>2</b> actions left.", ""],
+    ["Zap 10000", "userText"],
+    [
+      "Your Zap attack was successful. <br> Hellhound takes (1d6) <b>1</b> damage.",
+      ""
+    ],
+    ["You have <b>1</b> actions left.", ""],
+    ["Zap 99999", "userText"],
+    [
+      "Your Zap attack was successful. <br> Hellhound takes (1d6) <b>5</b> damage.",
+      ""
+    ],
+    ["You have <b>destroyed</b> the Hellhound.", ""],
+    ["You are on <b>Level 18: Control Node</b>", ""],
+    [
+      "Control Node controls the sentry guns positioned throughout the hideout. They can be activated or deactivated. They can also be reconfigured to fire at the Legionnaires, rather than you, but only if you remain on this floor of the network",
+      ""
+    ],
+    ["Map", "userText"],
+    [
+      "Level 0: Empty<br>Level 1: Password<br>Level 2: Empty<br>Level 3: File<br>Level 4: Empty<br>Level 5: Control Node<br>Level 6: Empty<br>Level 7: Password<br>Level 8: Empty<br>Level 9: File<br>Level 10: Hellhound<br>Level 11: Empty<br>Level 12: File<br>Level 13: Empty<br>Level 14: Control Node<br>Level 15: Empty<br>Level 16: Password<br>Level 17: Hellhound<br><b>Level 18: Control Node</b><br>Level 19: File<br>Level 20: Empty<br>Level 21: Password<br>Level 22: Empty<br>Level 23: Empty<br>Level 24: File<br>Level 25: File<br>End",
+      ""
+    ],
+    ["Move down", "userText"],
+    ["You are on <b>Level 19: File</b>", ""],
+    ["Eyedee", "userText"],
+    ["Roll <b> 1d10 </b>+ Interface.", ""],
+    ["1d10", "userText"],
+    ["1", ""],
+    ["10", "userText"],
+    ["Eye-Dee attempt was unsuccessful.", ""],
+    ["Move down", "userText"],
+    ["You are on <b>Level 20: Empty</b>", ""],
+    ["Move down", "userText"],
+    ["You are on <b>Level 21: Password</b>", ""],
+    ["Eyedee", "userText"],
+    ["Roll <b> 1d10 </b>+ Interface.", ""],
+    ["1d10", "userText"],
+    ["3", ""],
+    ["12", "userText"],
+    ["Eye-Dee can only be used on a File.", ""],
+    ["Level", "userText"],
+    ["You are on <b>Level 21: Password</b>", ""],
+    ["Backdoor", "userText"],
+    ["Roll <b> 1d10 </b>+ Interface.", ""],
+    ["1d10", "userText"],
+    ["5", ""],
+    ["14", "userText"],
+    ["Success", ""],
+    ["You are on <b>Level 22: Empty</b>", ""],
+    ["Map", "userText"],
+    [
+      "Level 0: Empty<br>Level 1: Password<br>Level 2: Empty<br>Level 3: File<br>Level 4: Empty<br>Level 5: Control Node<br>Level 6: Empty<br>Level 7: Password<br>Level 8: Empty<br>Level 9: File<br>Level 10: Hellhound<br>Level 11: Empty<br>Level 12: File<br>Level 13: Empty<br>Level 14: Control Node<br>Level 15: Empty<br>Level 16: Password<br>Level 17: Hellhound<br>Level 18: Control Node<br>Level 19: File<br>Level 20: Empty<br>Level 21: Password<br><b>Level 22: Empty</b><br>Level 23: Empty<br>Level 24: File<br>Level 25: File<br>End",
+      ""
+    ],
+    ["Move down", "userText"],
+    ["You are on <b>Level 23: Empty</b>", ""],
+    ["Move down", "userText"],
+    ["You are on <b>Level 24: File</b>", ""],
+    ["Eyedee", "userText"],
+    ["Roll <b> 1d10 </b>+ Interface.", ""],
+    ["1d10", "userText"],
+    ["4", ""],
+    ["13", "userText"],
+    ["Success", ""],
+    [
+      "File contents: Records of contact between several Legionnaires, and members of the Syndicate. Looks like they've been in cahoots after all… There's not a lot here, but it could go a long way in convincing the other syndicate families that the Shaw's are up to no good.",
+      ""
+    ],
+    ["Move down", "userText"],
+    ["You are on <b>Level 25: Virus</b>", ""],
+    [
+      "Virus is copying all the data in the network to a private Syndicate server off-site. Looks like Darrius wanted some assurance that the Legion weren't going to stab him in the back.",
+      ""
+    ],
+    ["Map", "userText"],
+    [
+      "Level 0: Empty<br>Level 1: Password<br>Level 2: Empty<br>Level 3: File<br>Level 4: Empty<br>Level 5: Control Node<br>Level 6: Empty<br>Level 7: Password<br>Level 8: Empty<br>Level 9: File<br>Level 10: Hellhound<br>Level 11: Empty<br>Level 12: File<br>Level 13: Empty<br>Level 14: Control Node<br>Level 15: Empty<br>Level 16: Password<br>Level 17: Hellhound<br>Level 18: Control Node<br>Level 19: File<br>Level 20: Empty<br>Level 21: Password<br>Level 22: Empty<br>Level 23: Empty<br>Level 24: File<br><b>Level 25: File</b><br>End",
+      ""
+    ],
+    ["Hel", "userText"],
+    ["Command 'Hel' Unknown.", ""],
+    ["Help", "userText"],
+    [
+      "<b>Navigation commands</b><br>Level<br>Map<br>Pathfinder<br>Move Down<br>Move Up<br><br><b>Password commands</b><br>Password (eg)123<br>Backdoor<br><br><b>File commands</b><br>Eyedee<br>Move Down<br><br><b>Virus commands</b><br>Remove Virus<br>Move Down<br><br><b>Control Node commands</b><br>Control<br>Move Down<br><br><b>Hellhound commands</b><br>Banhammer<br>Flack<br>Slide<br>Zap<br><br><b>Other commands</b><br>(eg)1d10<br>Roll (eg)3d6<br>Cloak<br>Leave Virus<br>Copy<br>Share<br>Help (eg) Virus<br><br>",
+      ""
+    ],
+    ["Share", "userText"]
+  ],
+  "Cassius-Crane": [
+    ["You are on <b>Level 0: Empty</b>", ""],
+    ["Pathfinder", "userText"],
+    ["Roll <b> 1d10 </b>+ Interface.", ""],
+    ["1d10", "userText"],
+    ["5", ""],
+    ["14", "userText"],
+    [
+      "<b>Level 0: Empty</b><br>Level 1: Password<br>Level 2: Empty<br>Level 3: File<br>Level 4: Empty<br>Level 5: Empty<br>Level 6: Password<br>Level 7: File<br>Unknown",
+      ""
+    ],
+    ["Move down", "userText"],
+    ["You are on <b>Level 1: Password</b>", ""],
+    ["Backdoor", "userText"],
+    ["Roll <b> 1d10 </b>+ Interface.", ""],
+    ["1d10", "userText"],
+    ["2", ""],
+    ["11", "userText"],
+    ["Success", ""],
+    ["You are on <b>Level 2: Empty</b>", ""],
+    ["Map", "userText"],
+    [
+      "Level 0: Empty<br>Level 1: Password<br><b>Level 2: Empty</b><br>Level 3: File<br>Level 4: Empty<br>Level 5: Empty<br>Level 6: Password<br>Level 7: File<br>Unknown",
+      ""
+    ],
+    ["Move down", "userText"],
+    ["You are on <b>Level 3: File</b>", ""],
+    ["Eyedee", "userText"],
+    ["Roll <b> 1d10 </b>+ Interface.", ""],
+    ["1d10", "userText"],
+    ["3", ""],
+    ["12", "userText"],
+    ["Success", ""],
+    [
+      "File contents: Orders from Cassius to Hector, the Red Legion Capo at the Red Lion, ordering him to move Marcus back to Lime Grove, to await public execution. Whoops, guess you foiled that plan…",
+      ""
+    ],
+    ["Map", "userText"],
+    [
+      "Level 0: Empty<br>Level 1: Password<br>Level 2: Empty<br><b>Level 3: File</b><br>Level 4: Empty<br>Level 5: Empty<br>Level 6: Password<br>Level 7: File<br>Unknown",
+      ""
+    ],
+    ["Move down", "userText"],
+    ["You are on <b>Level 4: Empty</b>", ""],
+    ["Move down", "userText"],
+    ["You are on <b>Level 5: Empty</b>", ""],
+    ["Move down", "userText"],
+    ["You are on <b>Level 6: Password</b>", ""],
+    ["Backdoor", "userText"],
+    ["Roll <b> 1d10 </b>+ Interface.", ""],
+    ["1d10", "userText"],
+    ["8", ""],
+    ["17", "userText"],
+    ["Success", ""],
+    ["You are on <b>Level 7: File</b>", ""],
+    ["Eyedee", "userText"],
+    ["Roll <b> 1d10 </b>+ Interface.", ""],
+    ["1d10", "userText"],
+    ["7", ""],
+    ["16", "userText"],
+    ["Success", ""],
+    [
+      "File contents: A variety of orders sent out to different Legionnaires, instructing them to carry out hits against citizens in Camden Ward. None of them stand out to you, but it's good evidence either way.",
+      ""
+    ],
+    ["Map", "userText"],
+    [
+      "Level 0: Empty<br>Level 1: Password<br>Level 2: Empty<br>Level 3: File<br>Level 4: Empty<br>Level 5: Empty<br>Level 6: Password<br><b>Level 7: File</b><br>Unknown",
+      ""
+    ],
+    ["Pathfinder", "userText"],
+    ["Roll <b> 1d10 </b>+ Interface.", ""],
+    ["1d10", "userText"],
+    ["4", ""],
+    ["13", "userText"],
+    [
+      "Level 0: Empty<br>Level 1: Password<br>Level 2: Empty<br>Level 3: File<br>Level 4: Empty<br>Level 5: Empty<br>Level 6: Password<br><b>Level 7: File</b><br>Level 8: Empty<br>Level 9: Hellhound<br>Level 10: File<br>Level 11: Password<br>Level 12: Empty<br>Unknown",
+      ""
+    ],
+    ["Move down", "userText"],
+    ["You are on <b>Level 8: Empty</b>", ""],
+    ["Move down", "userText"],
+    ["You are on <b>Level 9: Hellhound</b>", ""],
+    ["Please enter your interface level.", ""],
+    ["9", "userText"],
+    ["You are on <b>Level 9: Hellhound</b>", ""],
+    ["You have <b>3</b> actions.", ""],
+    ["Slide 2000", "userText"],
+    ["Slide successful.", ""],
+    ["You are on <b>Level 10: File</b>", ""],
+    ["Eyedee", "userText"],
+    ["Roll <b> 1d10 </b>+ Interface.", ""],
+    ["1d10", "userText"],
+    ["5", ""],
+    ["14", "userText"],
+    ["Success", ""],
+    [
+      "File contents: Records of monetary payments from Miles Powell, a Shaw Capo in the Syndicate. Looks like they're on the payroll after all. This is all the information you need to get the Syndicate on side - Jackpot!",
+      ""
+    ],
+    ["Map", "userText"],
+    [
+      "Level 0: Empty<br>Level 1: Password<br>Level 2: Empty<br>Level 3: File<br>Level 4: Empty<br>Level 5: Empty<br>Level 6: Password<br>Level 7: File<br>Level 8: Empty<br>Level 9: Hellhound<br><b>Level 10: File</b><br>Level 11: Password<br>Level 12: Empty<br>Unknown",
+      ""
+    ],
+    ["Move down", "userText"],
+    ["You are on <b>Level 11: Password</b>", ""],
+    ["Backdoor", "userText"],
+    ["Roll <b> 1d10 </b>+ Interface.", ""],
+    ["1d10", "userText"],
+    ["6", ""],
+    ["15", "userText"],
+    ["Success", ""],
+    ["You are on <b>Level 12: Empty</b>", ""],
+    ["Pathfinder", "userText"],
+    ["Roll <b> 1d10 </b>+ Interface.", ""],
+    ["1d10", "userText"],
+    ["10", ""],
+    ["19", "userText"],
+    [
+      "Level 0: Empty<br>Level 1: Password<br>Level 2: Empty<br>Level 3: File<br>Level 4: Empty<br>Level 5: Empty<br>Level 6: Password<br>Level 7: File<br>Level 8: Empty<br>Level 9: Hellhound<br>Level 10: File<br>Level 11: Password<br><b>Level 12: Empty</b><br>Level 13: File<br>Level 14: Empty<br>Level 15: File<br>End",
+      ""
+    ],
+    ["Move down", "userText"],
+    ["You are on <b>Level 13: File</b>", ""],
+    ["Eyedee", "userText"],
+    ["Roll <b> 1d10 </b>+ Interface.", ""],
+    ["1d10", "userText"],
+    ["7", ""],
+    ["16", "userText"],
+    ["Success", ""],
+    [
+      "File contents: Communications with Darius Shaw, the head of the Shaw Family, discussing Red Legion expansion plans. If the payment receipts weren't enough to take down the Shaw's and the Red Legion, this certainly will be!",
+      ""
+    ],
+    ["Move down", "userText"],
+    ["You are on <b>Level 14: Empty</b>", ""],
+    ["Move down", "userText"],
+    ["You are on <b>Level 15: File</b>", ""],
+    ["Map", "userText"],
+    [
+      "Level 0: Empty<br>Level 1: Password<br>Level 2: Empty<br>Level 3: File<br>Level 4: Empty<br>Level 5: Empty<br>Level 6: Password<br>Level 7: File<br>Level 8: Empty<br>Level 9: Hellhound<br>Level 10: File<br>Level 11: Password<br>Level 12: Empty<br>Level 13: File<br>Level 14: Empty<br><b>Level 15: File</b><br>End",
+      ""
+    ],
+    ["Eyedee", "userText"],
+    ["Roll <b> 1d10 </b>+ Interface.", ""],
+    ["1d10", "userText"],
+    ["5", ""],
+    ["14", "userText"],
+    ["Success", ""],
+    [
+      "File contents: Communications between Cassius and a Sheriff named Isaac Nadir, who is apparently on their payroll. That's not good…",
+      ""
+    ],
+    ["Share", "userText"]
+  ]
+}
