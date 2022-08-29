@@ -1,4 +1,5 @@
-Welcome to Netrunning
-======================
+# 8bits NETCONSOLE
 
-Hello world
+# hello world
+
+Una pequeña consola interactiva para las sesiones de netrunning de Cyberpunk RED
